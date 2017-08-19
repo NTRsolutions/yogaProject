@@ -2,7 +2,7 @@
 <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
-	                    <div class="col-md-6">
+	                    <div class="col-md-6 col-md-offset-6 ">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
 	                                <h4 class="title">Login</h4>
