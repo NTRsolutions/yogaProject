@@ -217,6 +217,18 @@ if ($conn->query($sql12) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+$sql13 = "CREATE TABLE admin (
+admin_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+username VARCHAR(50) ,
+password VARCHAR(50)
+)";
+
+if ($conn->query($sql13) === TRUE) {
+    echo "Table admin created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
 
 $conn->close();
 ?>
