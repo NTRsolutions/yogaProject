@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<?php include 'config.php'; ?>
 <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
@@ -9,12 +10,12 @@
 									<p class="category">Please Enter Your Username and Password</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form>
+	                                <form action="#" method="post">
 	                                    <div class="row">
 	                                        <div class="col-md-12">
 												<div class="form-group label-floating">
 													<label class="control-label">UserName </label>
-													<input type="text" class="form-control" >
+													<input type="text" class="form-control" name="username">
 												</div>
 	                                        </div>
 	                                        
@@ -26,7 +27,7 @@
 	                                        <div class="col-md-12">
 												<div class="form-group label-floating">
 													<label class="control-label">Password</label>
-													<input type="text" class="form-control" >
+													<input type="text" class="form-control" name="password" >
 												</div>
 	                                        </div>
 	                                    </div>

@@ -3,18 +3,19 @@ include 'config.php';
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $sql = "SELECT * FROM yoga";
+    $sql = "SELECT * FROM admin";
     $result = $conn->query($sql);
     if($result->num_rows > 0){
+        echo $result->num_rows;
         while($row = $result->fetch_assoc()){
             $username1 = $row['username'];
             $password1 = $row['password'];
             if($username == $username1 && $password == $password1){
-                echo "<script>Login Success Fully</script>";
+                echo "<script>alert('Login Success Fully')</script>";
                 break;
             }
             else {
-                echo "<script>Please enter valid username and password</script>";
+                echo "<script>alert('Please enter valid username and password')</script>";
                 break;
             }
         }
