@@ -52,3 +52,5 @@
 					</div>
 				</div>
 			</nav>
+    <?php include 'script_include.php'; ?>
+    <?php include 'footer.php'; ?>
