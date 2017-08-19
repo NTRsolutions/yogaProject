@@ -26,4 +26,4 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 else {
     echo "<script> alert('no Value Found while logging IN') </script>";
 }
-?>
+?> 
