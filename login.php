@@ -1,32 +1,32 @@
 <?php include 'header.php'; ?>
 <?php include 'config.php'; ?>
-<?php 
-if(isset($_POST['username']) && isset($_POST['password'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];    
-    $data = array(
-        'username'=>$username,
-        'password'=>$password
-    );
-    # Create a connection
-    $url = 'http://localhost/yogaProject/login_api.php';
-    $ch = curl_init($url);
-    # Form data string
-    $postString = http_build_query($data, '', '&');
-    # Setting our options
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $response = curl_exec($ch);
-    print_r($response);
-    curl_close($ch);
+<style>
+.main-panel > .content
+      {
+      	margin:70px 50px 50px 150px!important;
+      	width:60%!important;
+        
+          
+      }
+    @media screen and (min-width:320px) and (max-width:780px){
+    
+
+.main-panel > .content
+      {
+      	margin:50px 50px 50px 77px!important;
+      	width:60%!important;
+        
+          
+      }
 }
-?>
-<div class="content">
+
+</style>
+<div class="wrapper">
+ <div class="main-panel">
+     <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
-	                    <div class="col-md-6 col-md-offset-6 ">
+	                    <div class="col-md-8">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
 	                                <h4 class="title">Login</h4>
@@ -50,7 +50,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 	                                        <div class="col-md-12">
 												<div class="form-group label-floating">
 													<label class="control-label">Password</label>
-													<input type="text" class="form-control" name="password" >
+													<input type="password" class="form-control" name="password" >
 												</div>
 	                                        </div>
 	                                    </div>
@@ -65,4 +65,5 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 	        </div>
      </div>
  </div>
+
 <?php include 'script_include.php'; ?>
