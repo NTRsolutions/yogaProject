@@ -1,4 +1,6 @@
+
 <?php include 'header.php'; ?>
+<?php include 'config.php'; ?>
 <style>
 .main-panel > .content
       {
