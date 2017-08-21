@@ -24,7 +24,8 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         echo "<script>alert('DataBase is Empty')</script>";
     }
 }
-else {
+return;
+/*else {
     echo "<script> alert('no Value Found while logging IN') </script>";
-}
+}*/
 ?> 
