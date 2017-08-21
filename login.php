@@ -19,7 +19,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $response = curl_exec($ch);
-    //print_r($response);
+    print_r($response);
     curl_close($ch);
 }
 ?>
