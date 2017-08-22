@@ -1,7 +1,31 @@
 <?php include 'header.php'; ?>
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
-
+<?php 
+if(isset($_POST['submit'])){
+    if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees']) &&isset($_POST['c_contact']) &&isset($_POST['c_address'])){
+    $data = array(
+        'c_name' => $_POST['c_name'],
+        'c_surname' => $_POST['c_surname'],
+        'c_fees' => $_POST['c_fees'],
+        'c_contact' => $_POST['c_contact'],
+        'c_address' => $_POST['c_address'],
+    );
+    # Create a connection
+    $url = 'http://localhost/yogaProject/add_client_api.php';
+    $ch = curl_init($url);
+    # Form data string
+    $postString = http_build_query($data, '', '&');
+    # Setting our options
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    # Get the response
+    $response = curl_exec($ch);
+    curl_close($ch);    
+    }
+}
+?>
 
 
  
