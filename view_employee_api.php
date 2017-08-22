@@ -1,6 +1,6 @@
 <?php 
 include 'config.php';
-$sql = "SELECT * FROM Employee";
+$sql = "SELECT * FROM Employee ORDER BY e_ID DESC";
 $result = $conn->query($sql);
 $employee = array();
 if ($result->num_rows > 0) {
