@@ -2,7 +2,7 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
-<?php echo "sadsadsadad";
+<?php 
 if(isset($_POST['submit'])){ 
     if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees'])) &&isset($_POST['c_contact']) &&isset($_POST['c_address'])){
     $data = array(
@@ -23,6 +23,7 @@ if(isset($_POST['submit'])){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $response = curl_exec($ch);
+        print_r($response);
     curl_close($ch);    
     }
 }
