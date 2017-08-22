@@ -2,8 +2,8 @@
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
 <?php 
-if(isset($_POST['submit'])){ 
-    if(isset($_POST['e_name']) && isset($_POST['e_surname']) &&isset($_POST['e_salary']) &&isset($_POST['e_contact']) &&isset($_POST['e_address'])){
+if(isset($_POST['submit'])){
+    if(isset($_POST['e_name']) && isset($_POST['e_surname']) &&isset($_POST['e_salary']) &&isset($_POST['e_contact']) &&isset($_POST['e_address'])){ echo "Bravo";
     $data = array(
         'e_name' => $_POST['e_name'],
         'e_surname' => $_POST['e_surname'],
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                            <textarea rows="4" cols="50" name="c_address"  class="form- control"></textarea> 
+                                            <textarea rows="4" cols="50" name="e_address"  class="form- control"></textarea> 
                                         </div>
                                     </div>
                                 </div>
