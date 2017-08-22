@@ -60,9 +60,11 @@
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
                         <h4 class="title">Add Batches</h4>
-                        <!--  <p class="category">Here is a subtitle for this table</p> -->
-                        <div class="collapse navbar-collapse">
-                            <form class="navbar-form navbar-right" role="search">
+                        
+                        
+<!--
+                            <div class="collapse navbar-collapse">
+                              <form class="navbar-form navbar-right" role="search">
                                 <div class="form-group  is-empty">
                                     <input type="text" class="form-control" placeholder="Search">
                                     <span class="material-input"></span>
@@ -71,7 +73,8 @@
                                     <i class="material-icons">search</i><div class="ripple-container"></div>
                                 </button>
 						       </form>
-						</div>
+						      </div>
+-->
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table table-hover">
@@ -81,7 +84,8 @@
                                 <th>Name</th>
                                 <th>Timings</th>
                                 <th>Employees</th>
-                                <th>Name</th>
+                                <th></th>
+                                  <th></th>
                             </thead>
                             <tbody>
                                 <tr>
@@ -90,7 +94,10 @@
                                     <td>$36,738</td>
                                     <td>Niger</td>
                                     <td>Oud-Turnhout</td>
-                                    <td>Oud-Turnhout</td>
+                                     <td><button class="btn btn-default">Edit</button></td>
+
+                                    <td><button class="btn btn-default">Delete</button></td>
+                                                                       
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -98,7 +105,10 @@
                                     <td>$23,789</td>
                                     <td>Curaçao</td>
                                     <td>Sinaai-Waas</td>
-                                    <td>Sinaai-Waas</td>
+                                     <td><button type="button" class="btn btn-success">Edit</button></td>
+
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>3</td>
@@ -106,6 +116,10 @@
                                     <td>$56,142</td>
                                     <td>Netherlands</td>
                                     <td>Baileux</td>
+                                     <td><button type="button" class="btn btn-success">Edit</button></td>
+
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>4</td>
@@ -113,6 +127,10 @@
                                     <td>$38,735</td>
                                     <td>Korea, South</td>
                                     <td>Overland Park</td>
+                                     <td><button type="button" class="btn btn-success">Edit</button></td>
+
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>5</td>
@@ -120,6 +138,10 @@
                                     <td>$63,542</td>
                                     <td>Malawi</td>
                                     <td>Feldkirchen in Kärnten</td>
+                                     <td><button type="button" class="btn btn-success">Edit</button></td>
+
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>6</td>
@@ -127,6 +149,10 @@
                                     <td>$78,615</td>
                                     <td>Chile</td>
                                     <td>Gloucester</td>
+                                     <td><button type="button" class="btn btn-success">Edit</button></td>
+
+                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                    
                                 </tr>
                             </tbody>
                         </table>
