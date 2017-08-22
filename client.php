@@ -1,7 +1,16 @@
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
-	   
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_client_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$client = json_decode($content);
+$client_view = $client->client_view;
+?>	   
        
 <div class="content">
     <div class="container-fluid">
@@ -80,80 +89,31 @@
                         <table class="table table-hover">
                             <thead class="text-primary">
                                 <th>Sr no.</th>
-                                <th>Batch</th>
+                                <th>ID</th>
                                 <th>Name</th>
-                                <th>Timings</th>
-                                <th>Employees</th>
+                                <th>Contact</th>
+                                <th>Status</th>
                                 <th></th>
                                   <th></th>
                             </thead>
-                            <tbody>
+                            <tbody><?php $i=1;foreach($client_view as $value): ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
+                                    <td><?php echo $i;$i++; ?></td>
+                                    <td><?php echo $value->c_ID; ?></td>
+                                    <td><?php echo $value->c_name; ?></td>
+                                    <td><?php echo $value->contact; ?></td>
+                                    <?php if($value->status_payment == 'unpaid'){ ?>
+                                    <td><font style="color:red"><?php echo $value->status_payment;?></font></td>
+                                    <?php }?>
+                                    <?php if($value->status_payment == 'paid'){ ?>
+                                    <td><font style="color:green"><?php echo $value->status_payment;?></font></td>
+                                    <?php }?>
+                                    
                                      <td><button class="btn btn-default">Edit</button></td>
 
                                     <td><button class="btn btn-default">Delete</button></td>
                                                                        
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                     <td><button type="button" class="btn btn-success">Edit</button></td>
-
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                     <td><button type="button" class="btn btn-success">Edit</button></td>
-
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                     <td><button type="button" class="btn btn-success">Edit</button></td>
-
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                     <td><button type="button" class="btn btn-success">Edit</button></td>
-
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                     <td><button type="button" class="btn btn-success">Edit</button></td>
-
-                                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                                    
-                                </tr>
+                                </tr><?php endforeach;?>
                             </tbody>
                         </table>
 	                </div>   
