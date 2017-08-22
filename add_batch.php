@@ -4,13 +4,17 @@
 <?php 
 include 'config.php';
 if(isset($_POST['submit'])){ 
-if(isset($_POST['batch_name']) && isset($_POST['batch_timing']) && isset($_POST['client_id'])){
-    $batch_name = $_POST['batch_name'];
-    $batch_timing = $_POST['batch_timing'];
-    $client_id = $_POST['client_id'];
-
+if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
+    
+     $batch_name = $_POST['batch_name'];
+     $batch_timing = $_POST['batch_timing'];
+     $data = array(
+        'batch_name' => $_POST['batch_name'],
+        'batch_timing' => $_POST['batch_timing'],
+    );
+    //print_r($data);
     # Create a connection
-    $url = 'http://localhost/yogaProject/add_batch_api.php';
+    $url = 'http://localhost:8080/yogaproject/add_batch_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');
@@ -20,10 +24,24 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing']) && isset($_POST[
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $response = curl_exec($ch);
+    print_r($response);
     curl_close($ch);    
-    }
-}
+    }   
 
+
+
+    // output data of each row
+/*    while($row = $result->fetch_assoc()) {
+        echo "<br> batch_name: ". $row["batch_name"]. " - batch_timing: ". $row["batch_timing"]. "<br>";
+    }*/
+
+
+
+
+    
+}     $sql = "SELECT * FROM batch";
+$result = $conn->query($sql);
+?>
      <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
@@ -34,7 +52,7 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing']) && isset($_POST[
 									<p class="category">Fill up the Required Batch</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="#" method="post">
+	                                <form action="add_batch.php" method="post">
 	                               
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
@@ -49,13 +67,13 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing']) && isset($_POST[
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Time</label>
-													<input type="text" class="form-control" name="batch_time">
+													<input type="text" class="form-control" name="batch_timing">
 												</div>
 	                                        </div>
 	                                    </div>
                                         
                                         
-                                        <button type="submit" class="btn btn-primary pull-right">Add Batch</button>
+                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Add Batch</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>
@@ -92,50 +110,17 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing']) && isset($_POST[
 	                                    	<th>Employees</th>
 	                                    	<th>Name</th>
 	                                    </thead>
-	                                    <tbody>
+	                                    <tbody><?php while($row = $result->fetch_assoc()) { ?>
 	                                        <tr>
-	                                        	<td>1</td>
-	                                        	<td>Dakota Rice</td>
-	                                        	<td>$36,738</td>
-	                                        	<td>Niger</td>
+	                                        	<td>1 </td>
+	                                        	<td><?php echo $row['batch_id']; ?></td>
+	                                        	<td><?php echo $row['batch_name']; ?></td>
+	                                        	<td><?php echo $row['batch_timing']; ?></td>
 	                                        	<td>Oud-Turnhout</td>
 	                                        	<td>Oud-Turnhout</td>
 	                                        </tr>
-	                                        <tr>
-	                                        	<td>2</td>
-	                                        	<td>Minerva Hooper</td>
-	                                        	<td>$23,789</td>
-	                                        	<td>Curaçao</td>
-	                                        	<td>Sinaai-Waas</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>3</td>
-	                                        	<td>Sage Rodriguez</td>
-	                                        	<td>$56,142</td>
-	                                        	<td>Netherlands</td>
-	                                        	<td>Baileux</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>4</td>
-	                                        	<td>Philip Chaney</td>
-	                                        	<td>$38,735</td>
-	                                        	<td>Korea, South</td>
-	                                        	<td>Overland Park</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>5</td>
-	                                        	<td>Doris Greene</td>
-	                                        	<td>$63,542</td>
-	                                        	<td>Malawi</td>
-	                                        	<td>Feldkirchen in Kärnten</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>6</td>
-	                                        	<td>Mason Porter</td>
-	                                        	<td>$78,615</td>
-	                                        	<td>Chile</td>
-	                                        	<td>Gloucester</td>
-	                                        </tr>
+                                            <?php  }?>
+	                                        
 	                                    </tbody>
 	                                </table>
 	                   

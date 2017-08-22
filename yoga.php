@@ -101,8 +101,7 @@ if ($conn->query($sql4) === TRUE) {
 $sql5 = "CREATE TABLE Batch (
 batch_id INT(11) AUTO_INCREMENT PRIMARY KEY, 
 batch_name VARCHAR(50) ,
-batch_timing VARCHAR(50),
-c_id INT(11)
+batch_timing VARCHAR(50)
 )";
 
 if ($conn->query($sql5) === TRUE) {
@@ -178,7 +177,7 @@ if ($conn->query($sql9) === TRUE) {
 
 
 
-$sql10 = "CREATE TABLE Client_date_duration (
+/*$sql10 = "CREATE TABLE Client_date_duration (
 c_duration_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 c_id INT(11) ,
 start_date DATE ,
@@ -191,7 +190,7 @@ if ($conn->query($sql10) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-
+*/
 
 // sql to create table
 
@@ -233,6 +232,17 @@ if ($conn->query($sql13) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+$sql14 = "CREATE TABLE batch_client_mapping (
+bcm_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+batch_id INT(11),
+client_id INT(11)
+)";
+
+if ($conn->query($sql14) === TRUE) {
+    echo "Table batch_client_mapping created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
 
 $conn->close();
 ?>
