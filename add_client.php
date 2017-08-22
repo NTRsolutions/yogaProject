@@ -4,7 +4,7 @@
 <?php include 'nav.php'; ?>
 <?php echo "sadsadsadad";
 if(isset($_POST['submit'])){ 
-    if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees']) &&isset($_POST['c_contact']) &&isset($_POST['c_address'])){
+    if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees'])) &&isset($_POST['c_contact']) &&isset($_POST['c_address'])){
     $data = array(
         'c_name' => $_POST['c_name'],
         'c_surname' => $_POST['c_surname'],

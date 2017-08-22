@@ -1,6 +1,28 @@
 <?php include 'header.php'; ?>
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
+<?php 
+include 'config.php';
+if(isset($_POST['submit'])){ 
+if(isset($_POST['batch_name']) && isset($_POST['batch_timing']) && isset($_POST['client_id'])){
+    $batch_name = $_POST['batch_name'];
+    $batch_timing = $_POST['batch_timing'];
+    $client_id = $_POST['client_id'];
+
+    # Create a connection
+    $url = 'http://localhost/yogaProject/add_batch_api.php';
+    $ch = curl_init($url);
+    # Form data string
+    $postString = http_build_query($data, '', '&');
+    # Setting our options
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    # Get the response
+    $response = curl_exec($ch);
+    curl_close($ch);    
+    }
+}
 
      <div class="content">
 	            <div class="container-fluid">
