@@ -7,10 +7,10 @@ if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees
      $c_fees = $_POST['c_fees'];
      $c_contact = $_POST['c_contact'];
      $c_address = $_POST['c_address'];
-    $sql = "INSERT INTO Client (c_name, c_surname, fees, adsress, contact, status_payment)
+    $sql = "INSERT INTO Client (c_name, c_surname, fees, address, contact, status_payment)
     VALUES ('$c_name', '$c_surname', '$c_fees','$c_contact','$c_address','unpaid')";
     if ($conn->query($sql) === TRUE) {
-        echo "<script>Client created successfully</script>";
+        echo "<script>alert('Client created successfully')</script>";
     } else {
         echo "While adding Client <br> Error: " . $sql . "<br>" . $conn->error;
     }
