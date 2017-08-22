@@ -62,7 +62,7 @@
                         <h4 class="title">Add Batches</h4>
                         
                         
-<!--
+
                             <div class="collapse navbar-collapse">
                               <form class="navbar-form navbar-right" role="search">
                                 <div class="form-group  is-empty">
@@ -74,7 +74,7 @@
                                 </button>
 						       </form>
 						      </div>
--->
+
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table table-hover">

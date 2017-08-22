@@ -79,14 +79,15 @@ if(isset($_POST['submit'])){
                                         </div>
 
 
-	                                    <div class="row">
-	                                        <div class="col-md-12">
-												<div class="form-group label-floating">
-													 <label class="control-label">Address</label>
-                                                    <textarea rows="4" cols="50" name="e_address"  class="form-control"></textarea>
-                                                </div>
-	                                        </div>
-	                                    </div>
+	                                   <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Address</label>
+                                            <textarea rows="4" cols="50" name="c_address"  class="form- control"></textarea> 
+                                        </div>
+                                    </div>
+                                </div>
+                                 
                                         <button type="submit" name="submit"class="btn btn-primary pull-right">Login</button>
 	                                    <div class="clearfix"></div>
 	                                </form>

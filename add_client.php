@@ -68,6 +68,8 @@
                                         </div>
                                     </div>
 	                            </div>
+                                
+                                
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
@@ -76,6 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <button type="submit" name="submit"class="btn btn-primary pull-right">Login</button>
                                 <div class="clearfix"></div>
                             </form>
