@@ -1,3 +1,17 @@
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost:8080/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$batch = json_decode($content);
+$batch_view = $batch->batch_view;
+//print_r($batch_view);
+//$batch_view = $batch->batch_view;
+?>
+
+
 <?php include 'header.php'; ?>
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
@@ -24,7 +38,7 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $response = curl_exec($ch);
-    print_r($response);
+    //print_r($response);
     curl_close($ch);    
     }   
 
@@ -108,18 +122,19 @@ $result = $conn->query($sql);
 	                                    	<th>Name</th>
 	                                    	<th>Timings</th>
 	                                    	<th>Employees</th>
-	                                    	<th>Name</th>
+	                                    	
 	                                    </thead>
-	                                    <tbody><?php while($row = $result->fetch_assoc()) { ?>
+	                                    <tbody><?php $i=1;foreach($batch_view as $value): ?>
 	                                        <tr>
-	                                        	<td>1 </td>
-	                                        	<td><?php echo $row['batch_id']; ?></td>
-	                                        	<td><?php echo $row['batch_name']; ?></td>
-	                                        	<td><?php echo $row['batch_timing']; ?></td>
-	                                        	<td>Oud-Turnhout</td>
-	                                        	<td>Oud-Turnhout</td>
+	                                        	<td><?php echo $i; $i++; ?></td>
+	                                        	<td><?php echo $value->batch_id; ?></td>
+	                                        	<td><?php echo $value->batch_name; ?></td>
+	                                        	<td><?php echo $value->batch_timing; ?></td>
+	                                        	
+	                                        	
+	                                        	
 	                                        </tr>
-                                            <?php  }?>
+                                            <?php endforeach; ?>
 	                                        
 	                                    </tbody>
 	                                </table>
