@@ -8,7 +8,7 @@ if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees
      echo $c_contact = $_POST['c_contact'];
      echo $c_address = $_POST['c_address'];
     $sql = "INSERT INTO Client (c_name, c_surname, fees, address, contact, status_payment)
-    VALUES ('$c_name', '$c_surname', '$c_fees','$c_contact','$c_address','unpaid')";
+    VALUES ('$c_name', '$c_surname', '$c_fees','$c_address','$c_contact','unpaid')";
     if ($conn->query($sql) === TRUE) {
         echo "<script>Client created successfully</script>";
     } else {

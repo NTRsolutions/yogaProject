@@ -116,7 +116,7 @@ $sql6 = "CREATE TABLE Client (
 c_ID INT(11)  AUTO_INCREMENT PRIMARY KEY, 
 c_name VARCHAR(50) ,
 c_surname VARCHAR(50) ,
-adress VARCHAR(50) ,
+address VARCHAR(50) ,
 contact VARCHAR(50) ,
 fees VARCHAR(50) ,
 status_payment VARCHAR(50)
