@@ -10,9 +10,38 @@ if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees
     $sql = "INSERT INTO Client (c_name, c_surname, fees, address, contact, status_payment)
     VALUES ('$c_name', '$c_surname', '$c_fees','$c_contact','$c_address','unpaid')";
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Client created successfully')</script>";
+        ?> 
+<div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria- hidden="true">&times;</span></button>
+        <strong>Success!</strong> You have been signed in successfully!
+</div>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 1000)
+</script>
+    <?php
+        //echo "<script>alert('Client created successfully')</script>";
     } else {
-        echo "While adding Client <br> Error: " . $sql . "<br>" . $conn->error;
+         
+        ?> 
+<div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria- hidden="true">&times;</span></button>
+        <strong>Success!</strong> Sorry! unsuccessful entry
+</div>
+<script>
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 1000);
+</script>
+    <?php
+
+        
+//        echo "While adding Client <br> Error: " . $sql . "<br>" . $conn->error;
     }
 }
 else {
