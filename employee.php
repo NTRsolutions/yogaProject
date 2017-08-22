@@ -1,3 +1,14 @@
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_employee_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$employe = json_decode($content);
+$employee_view = $employe->employee_view;
+?>
+
 <?php include 'header.php'; ?>
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
@@ -63,7 +74,7 @@
 	                            <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Add Batches</h4>
+	                                <h4 class="title">Employees</h4>
 	                               <!--  <p class="category">Here is a subtitle for this table</p> -->
 	                                <div class="collapse navbar-collapse">
 						        <form class="navbar-form navbar-right" role="search">
@@ -81,58 +92,25 @@
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
 	                                        <th>Sr no.</th>
-	                                    	<th>Batch</th>
+	                                    	<th>ID</th>
 	                                    	<th>Name</th>
-	                                    	<th>Timings</th>
-	                                    	<th>Employees</th>
-	                                    	<th>Name</th>
-	                                    </thead>
-	                                    <tbody>
+	                                    	<th>Contact</th>
+	                                    	<th>Status</th>
+	                                   </thead>
+	                                    <tbody><?php $i=1;foreach($employee_view as $value): ?>
 	                                        <tr>
-	                                        	<td>1</td>
-	                                        	<td>Dakota Rice</td>
-	                                        	<td>$36,738</td>
-	                                        	<td>Niger</td>
-	                                        	<td>Oud-Turnhout</td>
-	                                        	<td>Oud-Turnhout</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>2</td>
-	                                        	<td>Minerva Hooper</td>
-	                                        	<td>$23,789</td>
-	                                        	<td>Curaçao</td>
-	                                        	<td>Sinaai-Waas</td>
-	                                        	<td>Sinaai-Waas</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>3</td>
-	                                        	<td>Sage Rodriguez</td>
-	                                        	<td>$56,142</td>
-	                                        	<td>Netherlands</td>
-	                                        	<td>Baileux</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>4</td>
-	                                        	<td>Philip Chaney</td>
-	                                        	<td>$38,735</td>
-	                                        	<td>Korea, South</td>
-	                                        	<td>Overland Park</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>5</td>
-	                                        	<td>Doris Greene</td>
-	                                        	<td>$63,542</td>
-	                                        	<td>Malawi</td>
-	                                        	<td>Feldkirchen in Kärnten</td>
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>6</td>
-	                                        	<td>Mason Porter</td>
-	                                        	<td>$78,615</td>
-	                                        	<td>Chile</td>
-	                                        	<td>Gloucester</td>
-	                                        </tr>
-	                                    </tbody>
+	                                        	<td><?php echo $i;$i++; ?></td>
+	                                        	<td><?php echo $value->e_ID;?></td>
+	                                        	<td><?php echo $value->e_name;?></td>
+	                                        	<td><?php echo $value->contact;?></td>
+                                                <?php if($value->status == 'unpaid'){ ?>
+	                                        	<td><font style="color:red"><?php echo $value->status;?></font></td>
+                                                <?php }?>
+                                                <?php if($value->status == 'paid'){ ?>
+	                                        	<td><font style="color:green"><?php echo $value->status;?></font></td>
+                                                <?php }?>
+	                                        </tr><?php endforeach;?>
+                                        </tbody>
 	                                </table>
 	                                        </div>
 	                        </div>
