@@ -244,5 +244,6 @@ if ($conn->query($sql14) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+
 $conn->close();
 ?>
