@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 
-                                <button type="submit" name="submit"class="btn btn-primary pull-right">Login</button>
+                                <button type="submit" name="submit"class="btn btn-primary pull-right">Add</button>
                                 <div class="clearfix"></div>
                             </form>
                         </div>

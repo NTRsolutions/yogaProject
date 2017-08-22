@@ -1,36 +1,36 @@
 <?php include 'header.php'; ?>
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
-<?php 
-if(isset($_POST['submit'])){
-    if(isset($_POST['e_name']) && isset($_POST['e_surname']) &&isset($_POST['e_salary']) &&isset($_POST['e_contact']) &&isset($_POST['e_address'])){ echo "Bravo";
-    $data = array(
-        'e_name' => $_POST['e_name'],
-        'e_surname' => $_POST['e_surname'],
-        'e_salary' => $_POST['e_salary'],
-        'e_contact' => $_POST['e_contact'],
-        'e_address' => $_POST['e_address'],
-    );
-    # Create a connection
-    $url = 'http://localhost/yogaProject/add_employee_api.php';
-    $ch = curl_init($url);
-    # Form data string
-    $postString = http_build_query($data, '', '&');
-    # Setting our options
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $response = curl_exec($ch);
-        print_r($response);
-    curl_close($ch);    
-    }
-}
-   
-?>
 <div class="content">
 	            <div class="container-fluid">
-	                <div class="row">
+	                <?php 
+                    if(isset($_POST['submit'])){
+                        if(isset($_POST['e_name']) && isset($_POST['e_surname']) &&isset($_POST['e_salary']) &&isset($_POST['e_contact']) &&isset($_POST['e_address'])){
+                        $data = array(
+                            'e_name' => $_POST['e_name'],
+                            'e_surname' => $_POST['e_surname'],
+                            'e_salary' => $_POST['e_salary'],
+                            'e_contact' => $_POST['e_contact'],
+                            'e_address' => $_POST['e_address'],
+                        );
+                        # Create a connection
+                        $url = 'http://localhost/yogaProject/add_employee_api.php';
+                        $ch = curl_init($url);
+                        # Form data string
+                        $postString = http_build_query($data, '', '&');
+                        # Setting our options
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        # Get the response
+                        $response = curl_exec($ch);
+                            print_r($response);
+                        curl_close($ch);    
+                        }
+                    }
+
+                    ?>
+                    <div class="row">
 	                    <div class="col-md-8">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
                                     </div>
                                 </div>
                                  
-                                        <button type="submit" name="submit"class="btn btn-primary pull-right">Login</button>
+                                        <button type="submit" name="submit"class="btn btn-primary pull-right">Add</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>

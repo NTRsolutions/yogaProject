@@ -68,7 +68,7 @@ $client_view = $client->client_view;
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
-                        <h4 class="title">Add Batches</h4>
+                        <h4 class="title">Client Details</h4>
                         
                         
 
@@ -109,9 +109,9 @@ $client_view = $client->client_view;
                                     <td><font style="color:green"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
                                     
-                                     <td><button class="btn btn-default">Edit</button></td>
+                                     <td><button class="btn btn-warning">Edit</button></td>
 
-                                    <td><button class="btn btn-default">Delete</button></td>
+                                    <td><button class="btn btn-primary">Delete</button></td>
                                                                        
                                 </tr><?php endforeach;?>
                             </tbody>

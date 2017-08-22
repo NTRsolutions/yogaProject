@@ -74,7 +74,7 @@ $employee_view = $employe->employee_view;
 	                            <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Employees</h4>
+	                                <h4 class="title">Employee Details</h4>
 	                               <!--  <p class="category">Here is a subtitle for this table</p> -->
 	                                <div class="collapse navbar-collapse">
 						        <form class="navbar-form navbar-right" role="search">
@@ -96,6 +96,8 @@ $employee_view = $employe->employee_view;
 	                                    	<th>Name</th>
 	                                    	<th>Contact</th>
 	                                    	<th>Status</th>
+                                            <th></th>
+	                                    	<th></th>
 	                                   </thead>
 	                                    <tbody><?php $i=1;foreach($employee_view as $value): ?>
 	                                        <tr>
@@ -109,6 +111,10 @@ $employee_view = $employe->employee_view;
                                                 <?php if($value->status == 'paid'){ ?>
 	                                        	<td><font style="color:green"><?php echo $value->status;?></font></td>
                                                 <?php }?>
+                                                 <td><button class="btn btn-warning">Edit</button></td>
+
+                                              <td><button class="btn btn-primary">Delete</button></td>
+                                    
 	                                        </tr><?php endforeach;?>
                                         </tbody>
 	                                </table>
