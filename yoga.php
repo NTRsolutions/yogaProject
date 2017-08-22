@@ -69,6 +69,8 @@ $sql3 = "CREATE TABLE Employee (
 e_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 e_name VARCHAR(50) ,
 e_surname VARCHAR (50) ,
+address VARCHAR(50) ,
+contact VARCHAR(50) ,
 salary VARCHAR(50) ,
 status VARCHAR(50)
 )";
@@ -114,6 +116,8 @@ $sql6 = "CREATE TABLE Client (
 c_ID INT(11)  AUTO_INCREMENT PRIMARY KEY, 
 c_name VARCHAR(50) ,
 c_surname VARCHAR(50) ,
+adress VARCHAR(50) ,
+contact VARCHAR(50) ,
 fees VARCHAR(50) ,
 status_payment VARCHAR(50)
 )";
