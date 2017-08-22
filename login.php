@@ -1,33 +1,23 @@
-
 <?php include 'header.php'; ?>
-<?php include 'config.php'; ?>
-<style>
-.main-panel > .content
-      {
-      	margin:70px 50px 50px 150px!important;
-      	width:60%!important;
-        
-          
-      }
-    @media screen and (min-width:320px) and (max-width:780px){
-    
 
-.main-panel > .content
-      {
-      	margin:50px 50px 50px 77px!important;
-      	width:60%!important;
-        
-          
+     <style>
+     	
+       .card{
+       	margin-top: 50px!important;
+        }
+      h1{
+          text-align: center;
+          color:purple;
+          font-weight: 200;
       }
-}
-
-</style>
-<div class="wrapper">
- <div class="main-panel">
+     </style>
+     
      <div class="content">
+
+               <h1>Yoga</h1>
 	            <div class="container-fluid">
 	                <div class="row">
-	                    <div class="col-md-8">
+	                    <div class="col-md-4 col-md-offset-4">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
 	                                <h4 class="title">Login</h4>
@@ -64,6 +54,5 @@
                     </div>
 	            </div>
 	        </div>
-     </div>
- </div>
+    
 <?php include 'script_include.php'; ?>
