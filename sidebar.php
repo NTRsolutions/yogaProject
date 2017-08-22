@@ -46,7 +46,7 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="maps.php">
+	                    <a href="sms.php">
 	                       <i class="material-icons">sms</i>
 	                        <p>SMS</p>
 	                    </a>
