@@ -1,8 +1,9 @@
+<?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
-  <?php include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
-<?php 
-if(isset($_POST['submit'])){
+<?php include 'sidebar.php'; ?>
+<?php include 'nav.php'; ?>
+<?php echo "sadsadsadad";
+if(isset($_POST['submit'])){ 
     if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees']) &&isset($_POST['c_contact']) &&isset($_POST['c_address'])){
     $data = array(
         'c_name' => $_POST['c_name'],
@@ -41,7 +42,7 @@ if(isset($_POST['submit'])){
 									<p class="category">Fill up the Client Form</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="#" method="post">
+	                                <form action="add_client.php" method="post">
 	                                           <div class="row">
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
@@ -91,7 +92,7 @@ if(isset($_POST['submit'])){
                                                 </div>
 	                                        </div>
                                              </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Login</button>
+                                        <button type="submit" name="submit"class="btn btn-primary pull-right">Login</button>
 	                                    <div class="clearfix"></div>
                                        
                                     </form>
@@ -103,9 +104,5 @@ if(isset($_POST['submit'])){
                     </div>
 	            </div>
 	        </div>
-     
-   
-
 	<?php include 'footer.php'; ?>
-
 <?php include 'script_include.php'; ?>
