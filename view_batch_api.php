@@ -6,8 +6,7 @@ include 'config.php';
     if ($result->num_rows >0){
      // output data of each row
     while($row = $result->fetch_assoc()){
-        
-        array_push($batch,array('batch_id'=>$row['batch_id'],'batch_name'=>$row['batch_name'],'batch_timing'=>$row['batch_timing']));
+   array_push($batch,array('batch_id'=>$row['batch_id'],'batch_name'=>$row['batch_name'],'batch_timing'=>$row['batch_timing']));
     }
         $batch_view = array('batch_view'=>$batch);
         echo json_encode($batch_view);
