@@ -17,7 +17,8 @@ $batch_view = $batch->batch_view;
 
     #myInput{
         width:20%;
-        float:right
+        float:right;
+         color:white;
     }
     
     .form-group{
@@ -142,17 +143,16 @@ $result = $conn->query($sql);
 	                                        	<td><?php echo $value->batch_name; ?></td>
 	                                        	<td><?php echo $value->batch_timing; ?></td>
 	                                        	
-                                                <td><button class="btn btn-sm btn-warning">Edit</button></td>
-
-                                               <td>     <div class="dropdown">
-   <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Yes</a></li>
-      <li><a href="#">No</a></li>
-         </ul>
-  </div>
-  </td>                                       
+                                                <td><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                                <td>     <div class="dropdown">
+                                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+                                                        <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">Yes</a></li>
+                                                        <li><a href="#">No</a></li>
+                                                    </ul>
+                                                    </div>
+                                                </td>                                       
 	                                       </tr>
                                             <?php endforeach; ?>
 	                                        

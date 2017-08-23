@@ -16,6 +16,8 @@
     
         float:right;
     }
+    
+    
 
 </style>
 
@@ -83,7 +85,7 @@ $client_view = $client->client_view;
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">plus_one</i> Add Performance
+                            <i class="material-icons">plus_one</i> Add Payment
                         </div>
                     </div>
                 </div>
@@ -124,17 +126,17 @@ $client_view = $client->client_view;
                                     <td><font style="color:green"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
                                     
-                                   <td><a href="edit_client.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                    <td><a href="edit_client.php" class="btn btn-sm btn-warning">Edit</a></td>
                                      
-                            <td>     <div class="dropdown">
-   <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">Yes</a></li>
-      <li><a href="#">No</a></li>
-         </ul>
-  </div>
-  </td>                              
+                                    <td>     <div class="dropdown">
+                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Yes</a></li>
+                                            <li><a href="#">No</a></li>
+                                        </ul>
+                                        </div>
+                                    </td>                              
                                   
                                 </tr><?php endforeach;?>
                             </tbody>
