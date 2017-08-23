@@ -12,7 +12,7 @@
                         'c_surname' => $_POST['c_surname'],
                         'c_fees' => $_POST['c_fees'],
                         'c_contact' => $_POST['c_contact'],
-                        'c_address' => $_POST['c_address'],
+                        'c_address' => $_POST['c_address']
                     );
                     # Create a connection
                     $url = 'http://localhost/yogaProject/add_client_api.php';

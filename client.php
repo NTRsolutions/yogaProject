@@ -111,7 +111,7 @@ $client_view = $client->client_view;
                                     
                                      <td><button class="btn btn-warning">Edit</button></td>
 
-                                    <td><button class="btn btn-primary">Delete</button></td>
+                                    <td><button class="btn btn-primary">delete</button></td>
                                                                        
                                 </tr><?php endforeach;?>
                             </tbody>
