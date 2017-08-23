@@ -121,7 +121,7 @@ $result = $conn->query($sql);
 	                            <div class="card-header" data-background-color="purple">
 	                                 <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
-                                     <h4 class="title">Client Details</h4>
+                                     <h4 class="title">Batches Details</h4>
 
 						         </div>
 	                        </div>

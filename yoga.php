@@ -118,7 +118,8 @@ c_surname VARCHAR(50) ,
 address VARCHAR(50) ,
 contact VARCHAR(50) ,
 fees VARCHAR(50) ,
-status_payment VARCHAR(50)
+status_payment VARCHAR(50),
+batch_id INT(11)
 )";
 
 if ($conn->query($sql6) === TRUE) {
