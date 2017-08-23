@@ -124,13 +124,7 @@ $client_view = $client->client_view;
                                     <?php }?>
                                     
                                    <td><a href="edit_client.php" class="btn btn-warning">Edit</a></td> 
-                                    
-                                    
-
-                                  <td>   <a class="btn btn-primary" href="delete.page?id=1" onclick="return confirm('Are you sure you want to delete?')">Delete</a> </td>
-  
-                                   
-                                                                       
+                                    <td><button class="btn btn-primary">delete</button></td>
                                 </tr><?php endforeach;?>
                             </tbody>
                         </table>

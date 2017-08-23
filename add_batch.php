@@ -1,3 +1,17 @@
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$batch = json_decode($content);
+$batch_view = $batch->batch_view;
+//print_r($batch_view);
+//$batch_view = $batch->batch_view;
+?>
+
+
 <?php include 'header.php'; ?>
 <style>
 
@@ -20,7 +34,47 @@
 
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
+<?php 
+include 'config.php';
+if(isset($_POST['submit'])){ 
+if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
+    
+     $batch_name = $_POST['batch_name'];
+     $batch_timing = $_POST['batch_timing'];
+     $data = array(
+        'batch_name' => $_POST['batch_name'],
+        'batch_timing' => $_POST['batch_timing'],
+    );
+    //print_r($data);
+    # Create a connection
+    $url = 'http://localhost/yogaproject/add_batch_api.php';
+    $ch = curl_init($url);
+    # Form data string
+    $postString = http_build_query($data, '', '&');
+    # Setting our options
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    # Get the response
+    $response = curl_exec($ch);
+    //print_r($response);
+    curl_close($ch);    
+    }   
 
+
+
+    // output data of each row
+/*    while($row = $result->fetch_assoc()) {
+        echo "<br> batch_name: ". $row["batch_name"]. " - batch_timing: ". $row["batch_timing"]. "<br>";
+    }*/
+
+
+
+
+    
+}     $sql = "SELECT * FROM batch";
+$result = $conn->query($sql);
+?>
      <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
@@ -31,7 +85,7 @@
 									<p class="category">Fill up the Required Batch</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="#" method="post">
+	                                <form action="add_batch.php" method="post">
 	                               
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
@@ -46,13 +100,13 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Time</label>
-													<input type="text" class="form-control" name="batch_time">
+													<input type="text" class="form-control" name="batch_timing">
 												</div>
 	                                        </div>
 	                                    </div>
                                         
                                         
-                                        <button type="submit" class="btn btn-primary pull-right">Add Batch</button>
+                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Add Batch</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>
@@ -79,77 +133,20 @@
 	                                    	<th>Name</th>
 	                                    	<th>Timings</th>
 	                                    	<th>Employees</th>
-	                                    	<th></th>
-                                            <th></th>
-	                                    </thead>
-	                                    <tbody>
+                                        </thead>
+	                                    <tbody><?php $i=1;foreach($batch_view as $value): ?>
 	                                        <tr>
-	                                        	<td>1</td>
-	                                        	<td>Dakota Rice</td>
-	                                        	<td>$36,738</td>
-	                                        	<td>Niger</td>
-	                                        	<td>Oud-Turnhout</td>
-	                                   
+	                                        	<td><?php echo $i; $i++; ?></td>
+	                                        	<td><?php echo $value->batch_id; ?></td>
+	                                        	<td><?php echo $value->batch_name; ?></td>
+	                                        	<td><?php echo $value->batch_timing; ?></td>
+	                                        	
                                                 <td><button class="btn btn-warning">Edit</button></td>
 
                                               <td><button class="btn btn-primary">Delete</button></td>
-                                    
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>2</td>
-	                                        	<td>Minerva Hooper</td>
-	                                        	<td>$23,789</td>
-	                                        	<td>Curaçao</td>
-	                                        	<td>Sinaai-Waas</td>
-                                                <td><button class="btn btn-warning">Edit</button></td>
-
-                                              <td><button class="btn btn-primary">Delete</button></td>
-                                    
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>3</td>
-	                                        	<td>Sage Rodriguez</td>
-	                                        	<td>$56,142</td>
-	                                        	<td>Netherlands</td>
-	                                        	<td>Baileux</td>
-                                                 <td><button class="btn btn-warning">Edit</button></td>
-
-                                              <td><button class="btn btn-primary">Delete</button></td>
-                                    
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>4</td>
-	                                        	<td>Philip Chaney</td>
-	                                        	<td>$38,735</td>
-	                                        	<td>Korea, South</td>
-	                                        	<td>Overland Park</td>
-                                                 <td><button class="btn btn-warning">Edit</button></td>
-
-                                              <td><button class="btn btn-primary">Delete</button></td>
-                                    
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>5</td>
-	                                        	<td>Doris Greene</td>
-	                                        	<td>$63,542</td>
-	                                        	<td>Malawi</td>
-	                                        	<td>Feldkirchen in Kärnten</td>
-                                                 <td><button class="btn btn-warning">Edit</button></td>
-
-                                              <td><button class="btn btn-primary">Delete</button></td>
-                                    
-	                                        </tr>
-	                                        <tr>
-	                                        	<td>6</td>
-	                                        	<td>Mason Porter</td>
-	                                        	<td>$78,615</td>
-	                                        	<td>Chile</td>
-	                                        	<td>Gloucester</td>
-                                                 <td><button class="btn btn-warning">Edit</button></td>
-
-                                              <td><button class="btn btn-primary">Delete</button></td>
-                                    
-	                                        </tr>
+	                                       </tr>
+                                            <?php endforeach; ?>
+	                                        
 	                                    </tbody>
 	                                </table>
 	                   
