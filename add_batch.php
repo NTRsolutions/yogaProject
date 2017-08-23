@@ -7,7 +7,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
-//print_r($batch_view);
+
 //$batch_view = $batch->batch_view;
 ?>
 
@@ -121,7 +121,7 @@ $result = $conn->query($sql);
 	                            <div class="card-header" data-background-color="purple">
 	                                 <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
-                                     <h4 class="title">Client Details</h4>
+                                     <h4 class="title">Batch Details</h4>
 
 						         </div>
 	                        </div>
@@ -141,9 +141,17 @@ $result = $conn->query($sql);
 	                                        	<td><?php echo $value->batch_name; ?></td>
 	                                        	<td><?php echo $value->batch_timing; ?></td>
 	                                        	
-                                                <td><button class="btn btn-warning">Edit</button></td>
+                                                <td><button class="btn btn-sm btn-warning">Edit</button></td>
 
-                                              <td><button class="btn btn-primary">Delete</button></td>
+                                               <td>     <div class="dropdown">
+   <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Yes</a></li>
+      <li><a href="#">No</a></li>
+         </ul>
+  </div>
+  </td>                                       
 	                                       </tr>
                                             <?php endforeach; ?>
 	                                        

@@ -108,10 +108,17 @@
 	                                        	<td>Niger</td>
 	                                        	<td>Oud-Turnhout</td>
 	                                        	
-                                                  <td><button class="btn btn-warning">Edit</button></td>
+                                                  <td><button class="btn btn-sm btn-warning">Edit</button></td>
 
-                                              <td><button class="btn btn-primary">Delete</button></td>
-                                    
+                                               <td>     <div class="dropdown">
+   <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">Yes</a></li>
+      <li><a href="#">No</a></li>
+         </ul>
+  </div>
+  </td>                                                     
 	                                        </tr>
 	                                        <tr>
 	                                        	<td>2</td>
