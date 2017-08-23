@@ -121,7 +121,7 @@ $result = $conn->query($sql);
 	                            <div class="card-header" data-background-color="purple">
 	                                 <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
-                           <h4 class="title">Batch Details</h4>
+                             <h4 class="title">Batch Details</h4>
 
 
 						         </div>
@@ -130,7 +130,7 @@ $result = $conn->query($sql);
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
 	                                        <th>Sr no.</th>
-	                                    	<th>Batch</th>
+	                                    	<th>Batch id</th>
 	                                    	<th>Name</th>
 	                                    	<th>Timings</th>
 	                                    	<th>Employees</th>
