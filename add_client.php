@@ -99,7 +99,7 @@ $batch_view = $batch->batch_view;
 									<p class="hidden-lg hidden-md">Notifications</p>
 								</a>
 								
-                                    <select name="batch"><?php foreach($batch_view as $value): ?>
+                                    <select name="batch"><?php foreach($batch_view as $value); ?>
 									<li>
                                         <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
                                         </li>

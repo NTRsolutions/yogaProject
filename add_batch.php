@@ -136,7 +136,7 @@ $result = $conn->query($sql);
 	                                    	<th>Timings</th>
 	                                    	<th>Employees</th>
                                         </thead>
-	                                    <tbody><?php $i=1;foreach($batch_view as $value): ?>
+	                                    <tbody><?php $i=1;foreach($batch_view as $value):?>
 	                                        <tr>
 	                                        	<td><?php echo $i; $i++; ?></td>
 	                                        	<td><?php echo $value->batch_id; ?></td>
