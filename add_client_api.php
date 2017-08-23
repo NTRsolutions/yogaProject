@@ -1,6 +1,6 @@
 <?php 
 include 'config.php';
-if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees'])&& isset($_POST['c_contact'])&& isset($_POST['c_address'])){
+if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees']) && isset($_POST['c_contact']) && isset($_POST['c_address'])){
 
      $c_name = $_POST['c_name'];
      $c_surname = $_POST['c_surname'];
