@@ -80,12 +80,15 @@
 
 
 	                                   <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                            <textarea rows="4" cols="50" name="e_address"  class="form- control"></textarea> 
+                                    <textarea rows="3" cols="30" name="e_address"  class="form-control"></textarea> 
                                         </div>
                                     </div>
+                                           
+                                          
+                                           
                                 </div>
                                  
                                         <button type="submit" name="submit"class="btn btn-primary pull-right">Add</button>
