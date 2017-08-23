@@ -11,7 +11,7 @@
                             'e_surname' => $_POST['e_surname'],
                             'e_salary' => $_POST['e_salary'],
                             'e_contact' => $_POST['e_contact'],
-                            'e_address' => $_POST['e_address'],
+                            'e_address' => $_POST['e_address']
                         );
                         # Create a connection
                         $url = 'http://localhost/yogaProject/add_employee_api.php';
