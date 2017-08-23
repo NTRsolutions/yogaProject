@@ -10,6 +10,26 @@ $employee_view = $employe->employee_view;
 ?>
 
 <?php include 'header.php'; ?>
+<style>
+
+    #myInput{
+        width:20%;
+        float:right
+    }
+    
+    .form-group{
+        padding-bottom: 0px!important;
+        margin: 0 0 0 0!important;
+    }
+    
+    .icon{
+    
+        float:right;
+    }
+
+</style>
+
+
   <?php include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
 	   
@@ -46,7 +66,10 @@ $employee_view = $employe->employee_view;
 								</div>
 								<div class="card-footer">
 									<div class="stats">
-										<i class="material-icons">plus_one</i> Mark Attendance
+										 <a href="attendance.php">
+                                <i class="material-icons">plus_one</i> Mark Attendance
+                            </a>
+				
 									</div>
 								</div>
 							</div>
@@ -71,23 +94,16 @@ $employee_view = $employe->employee_view;
                  
                 
                                 
-	                            <div class="col-md-12">
+	                    <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Employee Details</h4>
-	                               <!--  <p class="category">Here is a subtitle for this table</p> -->
-	                                <div class="collapse navbar-collapse">
-						        <form class="navbar-form navbar-right" role="search">
-							           <div class="form-group  is-empty">
-								         <input type="text" class="form-control" placeholder="Search">
-								          <span class="material-input"></span>
-							          </div>
-							       <button type="submit" class="btn btn-white btn-round btn-just-icon">
-								    <i class="material-icons">search</i><div class="ripple-container"></div>
-							      </button>
-						       </form>
-						</div>
-	                            </div>
+	                                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+                                     <i class="material-icons icon">search</i> 
+                                     <h4 class="title">Employee Details</h4>
+
+ 
+					        	</div>
+	                        </div>
 	                            <div class="card-content table-responsive">
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
@@ -111,7 +127,7 @@ $employee_view = $employe->employee_view;
                                                 <?php if($value->status == 'paid'){ ?>
 	                                        	<td><font style="color:green"><?php echo $value->status;?></font></td>
                                                 <?php }?>
-                                                 <td><button class="btn btn-warning">Edit</button></td>
+                                                  <td><a href="edit_employee.php" class="btn btn-warning">Edit</a></td>
 
                                               <td><button class="btn btn-primary">Delete</button></td>
                                     

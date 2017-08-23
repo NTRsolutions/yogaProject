@@ -1,4 +1,23 @@
 <?php include 'header.php'; ?>
+<style>
+
+    #myInput{
+        width:20%;
+        float:right
+    }
+    
+    .form-group{
+        padding-bottom: 0px!important;
+        margin: 0 0 0 0!important;
+    }
+    
+    .icon{
+    
+        float:right;
+    }
+
+</style>
+
 <?php include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
 <?php  
@@ -44,7 +63,10 @@ $client_view = $client->client_view;
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">plus_one</i> Mark Attendance
+                            <a href="attendance.php">
+                                <i class="material-icons">plus_one</i> Mark Attendance
+                            </a>
+				
                         </div>
                     </div>
                 </div>
@@ -68,22 +90,14 @@ $client_view = $client->client_view;
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
-                        <h4 class="title">Client Details</h4>
+                
                         
-                        
+                          <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+                                     <i class="material-icons icon">search</i> 
+                                     <h4 class="title">Client Details</h4>
 
-                            <div class="collapse navbar-collapse">
-                              <form class="navbar-form navbar-right" role="search">
-                                <div class="form-group  is-empty">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <span class="material-input"></span>
-                                </div>
-                                <button type="submit" class="btn btn-white btn-round btn-just-icon" name="submit">
-                                    <i class="material-icons">search</i><div class="ripple-container"></div>
-                                </button>
-						       </form>
-						      </div>
 
+                          
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table table-hover">
@@ -109,9 +123,13 @@ $client_view = $client->client_view;
                                     <td><font style="color:green"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
                                     
-                                     <td><button class="btn btn-warning">Edit</button></td>
+                                   <td><a href="edit_client.php" class="btn btn-warning">Edit</a></td> 
+                                    
+                                    
 
-                                    <td><button class="btn btn-primary">Delete</button></td>
+                                  <td>   <a class="btn btn-primary" href="delete.page?id=1" onclick="return confirm('Are you sure you want to delete?')">Delete</a> </td>
+  
+                                   
                                                                        
                                 </tr><?php endforeach;?>
                             </tbody>
