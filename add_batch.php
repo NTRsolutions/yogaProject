@@ -1,7 +1,7 @@
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost:8080/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -28,7 +28,7 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
     );
     //print_r($data);
     # Create a connection
-    $url = 'http://localhost:8080/yogaproject/add_batch_api.php';
+    $url = 'http://localhost/yogaproject/add_batch_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');
