@@ -1,6 +1,6 @@
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
-<?php include 'sidebar.php'; ?>
+<?php $page=3;include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
 
     <div class="content">

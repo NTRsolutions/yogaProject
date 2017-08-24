@@ -1,6 +1,6 @@
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
-<?php include 'sidebar.php'; ?>
+<?php $page=2;include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
 <?php  
 if(isset($_POST['c_id'])){

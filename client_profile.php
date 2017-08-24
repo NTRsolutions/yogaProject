@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<?php include 'sidebar.php'; ?>
+<?php $page=2;include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
 
       <div class="content">
