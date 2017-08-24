@@ -32,7 +32,7 @@ $batch_view = $batch->batch_view;
 
 </style>
 
-  <?php include 'sidebar.php'; ?>
+  <?php $page=6;include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
 <?php 
 include 'config.php';
@@ -119,7 +119,7 @@ $result = $conn->query($sql);
                                <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
-	                                 <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+	                                 <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
                              <h4 class="title">Batch Details</h4>
 
@@ -135,7 +135,9 @@ $result = $conn->query($sql);
 	                                    	<th>Timings</th>
 	                                    	<th>Employees</th>
                                         </thead>
-	                                    <tbody><?php $i=1;foreach($batch_view as $value):?>
+
+	                                    <tbody id="myTable"><?php $i=1;foreach($batch_view as $value): ?>
+
 	                                        <tr>
 	                                        	<td><?php echo $i; $i++; ?></td>
 	                                        	<td><?php echo $value->batch_id; ?></td>
@@ -180,5 +182,31 @@ $result = $conn->query($sql);
                          
  
 	<?php include 'footer.php'; ?>
+
+<script>
+function searchTable() {
+    var input, filter, found, table, tr, td, i, j;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+            }
+        }
+        if (found) {
+            tr[i].style.display = "";
+            found = false;
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
 
 <?php include 'script_include.php'; ?>
