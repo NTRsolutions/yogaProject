@@ -101,8 +101,10 @@ $batch_view = $batch->batch_view;
 
 
                              <select name="batch"><?php foreach($batch_view as $value): ?>
+                                 <option>Select Batch</option>
+                                
                                  <li>
-                                            <option value="<?php echo $value->batch_id;?>"><?php echo $value-   >batch_name;?></option>
+                                            <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
                                  </li>
 									<?php endforeach; ?>
                              </select>

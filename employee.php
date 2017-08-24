@@ -31,7 +31,7 @@ $employee_view = $employe->employee_view;
 </style>
 
 
-  <?php include 'sidebar.php'; ?>
+  <?php $page=3;include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
 	   
            <div class="content">
@@ -67,7 +67,7 @@ $employee_view = $employe->employee_view;
 								</div>
 								<div class="card-footer">
 									<div class="stats">
-										 <a href="attendance.php">
+										 <a href="employee_attendance.php">
                                 <i class="material-icons">plus_one</i> Mark Attendance
                             </a>
 				
@@ -81,7 +81,7 @@ $employee_view = $employe->employee_view;
 									<i class="material-icons">info_outline</i>
 								</div>
 								<div class="card-content">
-									<p class="category">Performance</p>
+									<p class="category">Payment</p>
 <!--									<h3 class="title">75</h3>-->
 								</div>
 								<div class="card-footer">
@@ -98,7 +98,7 @@ $employee_view = $employe->employee_view;
 	                    <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
-	                                <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+	                                <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
                                      <h4 class="title">Employee Details</h4>
 
@@ -106,7 +106,7 @@ $employee_view = $employe->employee_view;
 					        	</div>
 	                        </div>
 	                            <div class="card-content table-responsive">
-	                                <table class="table table-hover">
+	                                <table class="table table-hover" >
 	                                    <thead class="text-primary">
 	                                        <th>Sr no.</th>
 	                                    	<th>ID</th>
@@ -116,11 +116,11 @@ $employee_view = $employe->employee_view;
                                             <th></th>
 	                                    	<th></th>
 	                                   </thead>
-	                                    <tbody><?php $i=1;foreach($employee_view as $value): ?>
+	                                    <tbody id="myTable"><?php $i=1;foreach($employee_view as $value): ?>
 	                                        <tr>
 	                                        	<td><?php echo $i;$i++; ?></td>
 	                                        	<td><?php echo $value->e_ID;?></td>
-	                                        	<td><?php echo $value->e_name;?></td>
+	                                        	<td><a href="employee_profile.php"><?php echo $value->e_name;?></a></td>
 	                                        	<td><?php echo $value->contact;?></td>
                                                 <?php if($value->status == 'unpaid'){ ?>
 	                                        	<td><font style="color:red"><?php echo $value->status;?></font></td>
@@ -130,14 +130,16 @@ $employee_view = $employe->employee_view;
                                                 <?php }?>
                                                 <td><a href="edit_employee.php" class="btn btn-sm btn-warning">Edit</a></td>
                                                 
-                                                <td>     <div class="dropdown">
-                                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
-                                                        <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">Yes</a></li>
-                                                        <li><a href="#">No</a></li>
-                                                    </ul>
+                                                <td> 
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+                                                            <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Yes</a></li>
+                                                            <li><a href="#">No</a></li>
+                                                        </ul>
                                                     </div>
+
                                                 </td>                  
                                        
                                             </tr><?php endforeach;?>
@@ -146,7 +148,7 @@ $employee_view = $employe->employee_view;
                             </div>
                         </div>
                     </div>
-                    
+                        
                </div>
 </div>
 	        
@@ -155,5 +157,29 @@ $employee_view = $employe->employee_view;
 
 					
 			<?php include 'footer.php'; ?>
+
+<script>
+function searchTable() {
+    var input, filter, found, table, tr, td, i, j;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+            }
+        }
+        if (found) {
+            tr[i].style.display = "";
+            found = false;
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 <?php include 'script_include.php'; ?>

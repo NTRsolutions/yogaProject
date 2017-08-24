@@ -21,7 +21,7 @@
 
 </style>
 
-<?php include 'sidebar.php'; ?>
+<?php $page=2;include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
 <?php  
 # Create a connection
@@ -62,11 +62,11 @@ $client_view = $client->client_view;
                     </div>
                     <div class="card-content">
                         <p class="category">Attendance</p>
-<!--					   				<h3 class="title">50</h3>-->
+
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="attendance.php">
+                            <a href="client_attendance.php">
                                 <i class="material-icons">plus_one</i> Mark Attendance
                             </a>
 				
@@ -80,8 +80,8 @@ $client_view = $client->client_view;
                         <i class="material-icons">info_outline</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">Performance</p>
-<!--					   				<h3 class="title">75</h3>-->
+                        <p class="category">Payment</p>
+
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -90,12 +90,13 @@ $client_view = $client->client_view;
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
                 
                         
-                          <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search..">
+                          <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
                                      <h4 class="title">Client Details</h4>
 
@@ -113,11 +114,11 @@ $client_view = $client->client_view;
                                 <th></th>
                                   <th></th>
                             </thead>
-                            <tbody><?php $i=1;foreach($client_view as $value): ?>
+                            <tbody id="myTable"><?php $i=1;foreach($client_view as $value): ?>
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $value->c_ID; ?></td>
-                                    <td><?php echo $value->c_name; ?></td>
+                                 <td><a href="client_profile.php"><?php echo $value->c_name; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
                                     <?php if($value->status_payment == 'unpaid'){ ?>
                                     <td><font style="color:red"><?php echo $value->status_payment;?></font></td>
@@ -127,8 +128,10 @@ $client_view = $client->client_view;
                                     <?php }?>
                                     
                                     <td><a href="edit_client.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                    
                                      
-                                    <td>     <div class="dropdown">
+                                    <td>     
+                                        <div class="dropdown">
                                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
@@ -150,5 +153,28 @@ $client_view = $client->client_view;
 
 					
 			<?php include 'footer.php'; ?>
+<script>
+function searchTable() {
+    var input, filter, found, table, tr, td, i, j;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                found = true;
+            }
+        }
+        if (found) {
+            tr[i].style.display = "";
+            found = false;
+        } else {
+            tr[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 <?php include 'script_include.php'; ?>
