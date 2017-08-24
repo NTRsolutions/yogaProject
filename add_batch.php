@@ -11,7 +11,6 @@ $batch_view = $batch->batch_view;
 //$batch_view = $batch->batch_view;
 ?>
 
-
 <?php include 'header.php'; ?>
 <style>
 

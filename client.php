@@ -1,3 +1,25 @@
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$batch = json_decode($content);
+$batch_view = $batch->batch_view;
+
+//$batch_view = $batch->batch_view;
+            if(isset($_POST['submit']))
+            { 
+                if(isset($_POST['batch']))
+                {
+                    $data =array('batch'=>$_POST['batch']);
+                }
+            }
+?>
+
+
+
 <?php include 'header.php'; ?>
 <style>
 
@@ -18,9 +40,7 @@
     }
     
     
-
 </style>
-
 <?php include 'sidebar.php'; ?>
 <?php include 'nav.php'; ?>
 <?php  
@@ -106,19 +126,21 @@ $client_view = $client->client_view;
                         <table class="table table-hover">
                             <thead class="text-primary">
                                 <th>Sr no.</th>
-                                <th>ID</th>
+                                <th>Client ID</th>
                                 <th>Name</th>
                                 <th>Contact</th>
+                                <th>Batch Name</th>
                                 <th>Status</th>
                                 <th></th>
                                   <th></th>
                             </thead>
-                            <tbody><?php $i=1;foreach($client_view as $value): ?>
+                            <tbody><?php $i=1;foreach($client_view as $value ):foreach($batch_view as $value1 ): if ($value->batch_id == $value1->batch_id){?>
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $value->c_ID; ?></td>
                                     <td><?php echo $value->c_name; ?></td>
                                     <td><?php echo $value->contact; ?></td>
+                                    <td><?php echo $value1->batch_name;  ?></td>
                                     <?php if($value->status_payment == 'unpaid'){ ?>
                                     <td><font style="color:red"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
@@ -126,19 +148,25 @@ $client_view = $client->client_view;
                                     <td><font style="color:green"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
                                     
-                                    <td><a href="edit_client.php" class="btn btn-sm btn-warning">Edit</a></td>
-                                     
-                                    <td>     <div class="dropdown">
+                                    <form action="edit_client.php" method="POST">
+                                     <td>
+                                         <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_id">
+                                        <input type="submit" class="btn btn-sm btn-warning"  value="Edit">
+                                        </td>
+                                       
+                                    </form>
+                                        <td>
+                                    <div class="dropdown">
                                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Yes</a></li>
+                                            <li><a href="#" name="Delete">Yes confirm</a></li>
                                             <li><a href="#">No</a></li>
                                         </ul>
                                         </div>
                                     </td>                              
                                   
-                                </tr><?php endforeach;?>
+                                </tr><?php } endforeach;?><?php endforeach;?>
                             </tbody>
                         </table>
 	                </div>   

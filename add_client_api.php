@@ -1,14 +1,15 @@
 <?php 
 include 'config.php';
-if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees']) && isset($_POST['c_contact']) && isset($_POST['c_address'])){
+if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees']) && isset($_POST['c_contact']) && isset($_POST['c_address']) && isset($_POST['batch'])){
 
      $c_name = $_POST['c_name'];
      $c_surname = $_POST['c_surname'];
      $c_fees = $_POST['c_fees'];
      $c_contact = $_POST['c_contact'];
      $c_address = $_POST['c_address'];
-    $sql = "INSERT INTO Client (c_name, c_surname, fees, contact, address, status_payment)
-    VALUES ('$c_name', '$c_surname', '$c_fees','$c_contact','$c_address','unpaid')";
+     $c_batch = $_POST['batch'];
+    $sql = "INSERT INTO Client (c_name, c_surname, fees, contact, address, status_payment,batch_id)
+    VALUES ('$c_name', '$c_surname', '$c_fees','$c_contact','$c_address','unpaid','$c_batch')";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">

@@ -1,13 +1,13 @@
 <?php 
 include 'config.php';
 if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees'])&& isset($_POST['c_contact'])&& isset($_POST['c_address'])){
-    $id = $_GET["c_id"];
+    $c_id = $_POST["c_id"];
      $c_name = $_POST['c_name'];
      $c_surname = $_POST['c_surname'];
      $c_fees = $_POST['c_fees'];
      $c_contact = $_POST['c_contact'];
      $c_address = $_POST['c_address'];
-    $sql = "UPDATE `client` SET `c_name` = '$c_name', `c_surname` = '$c_surname', `address` = '$c_address', `contact` = '$c_contact', `fees` = '$c_fees' WHERE `client`.`c_ID` = '$id'";
+    $sql = "UPDATE `client` SET `c_name` = '$c_name', `c_surname` = '$c_surname', `address` = '$c_address', `contact` = '$c_contact', `fees` = '$c_fees' WHERE `client`.`c_ID` = '$c_id'";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">
@@ -46,4 +46,5 @@ if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees
 else {
     echo "<script> alert('no Value Found while adding Client') </script>";
 }
+header('Location: client.php');
 ?>

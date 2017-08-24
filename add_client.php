@@ -19,13 +19,14 @@ $batch_view = $batch->batch_view;
         <div class="container-fluid">
             <?php 
             if(isset($_POST['submit'])){ 
-                if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees']) &&isset($_POST['c_contact']) &&isset($_POST['c_address'])){
+                if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees']) &&isset($_POST['c_contact']) &&isset($_POST['c_address']) &&isset($_POST['batch'])){
                     $data = array(
                         'c_name' => $_POST['c_name'],
                         'c_surname' => $_POST['c_surname'],
                         'c_fees' => $_POST['c_fees'],
                         'c_contact' => $_POST['c_contact'],
-                        'c_address' => $_POST['c_address']
+                        'c_address' => $_POST['c_address'],
+                        'batch' => $_POST['batch']
                     );
                     # Create a connection
                     $url = 'http://localhost/yogaProject/add_client_api.php';
@@ -98,18 +99,12 @@ $batch_view = $batch->batch_view;
                                  <p class="hidden-lg hidden-md">Notifications</p>
 								</a>
 
-								
-                                    <select name="batch"><?php foreach($batch_view as $value): ?>
-									<li>
-                                        <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
-                                        </li>
-
                              <label for="business">Select Batch:</label>
 
 
                              <select name="batch"><?php foreach($batch_view as $value): ?>
                                  <li>
-                                            <option value="<?php echo $value->batch_id;?>"><?php echo $value-   >batch_name;?></option>
+                                            <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
                                  </li>
 
 									<?php endforeach; ?>
