@@ -132,6 +132,7 @@ $client_view = $client->client_view;
                                 <th>Sr no.</th>
                                 <th>Client ID</th>
                                 <th>Name</th>
+                                <th>Surname</th>
                                 <th>Contact</th>
                                 <th>Batch Name</th>
                                 <th>Status</th>
@@ -146,6 +147,7 @@ $client_view = $client->client_view;
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $value->c_ID; ?></td>
                                  <td><a href="client_profile.php"><?php echo $value->c_name; ?></a></td> 
+                                 <td><a href="client_profile.php"><?php echo $value->c_surname; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
                                     <td><?php echo $value1->batch_name;  ?></td>
                                     <?php if($value->status_payment == 'unpaid'){ ?>
@@ -166,11 +168,17 @@ $client_view = $client->client_view;
                                         <td>
                                     <div class="dropdown">
 
-                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Delete
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#" name="Delete">Yes confirm</a></li>
-                                            <li><a href="#">No</a></li>
+                                            
+                                            <form action="delete_client_api.php" method="POST">
+                                            <li>
+                                            <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_id">
+                                               <a href="delete_client_api.php"><input type="submit" class="btn btn-sm btn-success " name="delete" value="Delete" ></a>    
+                                               </li>
+                                            <li><a href="#"  class="btn btn-sm btn-danger ">No</a></li>
+                                            </form>
                                         </ul>
                                         </div>
                                     </td>                              
