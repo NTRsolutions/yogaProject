@@ -55,7 +55,6 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $client = json_decode($content);
 $client_view = $client->client_view;
-//print_r($client_view);
 ?>	   
        
 <div class="content">
