@@ -1,14 +1,14 @@
 <?php 
 include 'config.php';
-if(isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['e_address']) && isset($_POST['e_contact']) && isset($_POST['salary'])){
-     $id = $_GET["e_ID"];
+if(isset($_POST['e_ID']) && isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['e_address']) && isset($_POST['e_contact']) && isset($_POST['salary'])){
+     $eid = $_POST['e_ID'];
      $e_name = $_POST['e_name'];
      $e_surname = $_POST['e_surname'];
      $e_address = $_POST['e_address'];
      $e_contact = $_POST['e_contact'];
      $salary = $_POST['salary'];
      
-    $sql = "UPDATE `employee` SET `e_name` = '$e_name', `e_surname` = '$e_surname', `address` = '$e_address',`contact` = '$e_contact', `salary` = '$salary'  WHERE `employee`.`e_ID` = '$id'";
+    $sql = "UPDATE `employee` SET `e_name` = '$e_name', `e_surname` = '$e_surname', `e_address` = '$e_address',`contact` = '$e_contact', `salary` = '$salary'  WHERE `employee`.`e_ID` = '$eid'";
     if ($conn->query($sql) === TRUE)
     {
         ?> 
