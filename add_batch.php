@@ -123,7 +123,7 @@ $result = $conn->query($sql);
 
 						         </div>
 	                        </div>
-	                            <div class="card-content table-responsive">
+	                            <div class="card-content">
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
 	                                        <th>Sr no.</th>
