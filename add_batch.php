@@ -7,8 +7,6 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
-
-//$batch_view = $batch->batch_view;
 ?>
 
 <?php include 'header.php'; ?>
@@ -57,7 +55,7 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $response = curl_exec($ch);
-    //print_r($response);
+    print_r($response);
     curl_close($ch);    
     }   
 
@@ -69,8 +67,7 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
     }*/
 
     
-}     $sql = "SELECT * FROM batch";
-$result = $conn->query($sql);
+}     
 ?>
      <div class="content">
 	            <div class="container-fluid">
@@ -138,7 +135,7 @@ $result = $conn->query($sql);
 
 	                                        <tr>
 	                                        	<td><?php echo $i; $i++; ?></td>
-	                                        	<td><?php echo $value->batch_id; ?></td>
+	                                        	<td><?php echo $id = $value->batch_id; ?></td>
 	                                        	<td><?php echo $value->batch_name; ?></td>
 	                                        	<td><?php echo $value->batch_timing; ?></td>
 	                                        	
@@ -147,7 +144,7 @@ $result = $conn->query($sql);
                                                     <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                         <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="#">Yes confirm</a></li>
+                                                        <li><a href="delete_batch_api.php/?b_id=<?= $id?>">Yes confirm</a></li>
                                                         <li><a href="#">No</a></li>
                                                     </ul>
                                                     </div>
