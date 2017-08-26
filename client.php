@@ -157,13 +157,13 @@ $client_view = $client->client_view;
                                     
 
                                     <form action="edit_client.php" method="POST">
-                                     <td>
+                                     <td style="width:20px!important;">
                                          <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_id">
-                                        <input type="submit" class="btn btn-sm btn-warning"  value="Edit">
+                                        <input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
                                         </td>
                                        
                                     </form>
-                                        <td>
+                                        <td style="width:20px!important;">
                                     <div class="dropdown">
 
                                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete

@@ -7,26 +7,26 @@
 		        Tip 2: you can also add an image using data-image tag
 		    -->
 
-			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text">
-					Yoga Site
+    <div class="logo">
+				<a href="#" class="simple-text">
+                    Yoga Site
 				</a>
 			</div>
 	    	<div class="sidebar-wrapper">
-	            <ul class="nav">
+                <ul class="nav">
 	                <li <?php if($page==1){echo "class='active'";} ?>>
-	                    <a href="home.php">
+                        <a href="home.php">
                             <i class="material-icons">home</i>
 	                        <p>Home</p>
 	                    </a>
-	                </li>
-	                <li  <?php if($page==2){echo "class='active'";} ?>>
-	                    <a href="client.php">
+                    </li>
+                    <li  <?php if($page==2){echo "class='active'";} ?>>
+                        <a href="client.php">
 	                        <i class="material-icons">person</i>
 	                        <p>Client</p>
 	                    </a>
 	                </li>
-	                <li  <?php if($page==3){echo "class='active'";} ?>>
+                    <li  <?php if($page==3){echo "class='active'";} ?>>
 	                    <a href="employee.php">
 	                        <i class="material-icons">people</i>
 	                        <p>Employees<p>
@@ -34,25 +34,25 @@
 	                </li>
                     
 	                <li  style="margin: 0px 50px 0px 28px;">
-	               
+	                   
                         <i class="material-icons">touch_app</i><div class="dropdown">
-                    
-                         <p class="dropdown-toggle" data-toggle="dropdown">Attendance<span class="caret"></span></p>
+                        
+                         <p class="dropdown-toggle" data-toggle="dropdown">Attendance<span  class="caret">  </span></p>
                                         
                             <ul class="dropdown-menu">
                                 <li  <?php if($page==4){echo "class='active'";} ?>><a href="client_attendance.php">Client Attendance</a></li>
                                 <li  <?php if($page==5){echo "class='active'";} ?>><a href="employee_attendance.php">Employee Attendance</a></li>
-                            </ul>
+                        </ul>
                              </div>
-	                   
-	                </li>
-	                <li  <?php if($page==6){echo "class='active'";} ?>>
-	                    <a href="add_batch.php">
+	                    
+                    </li>
+                    <li  <?php if($page==6){echo "class='active'";} ?>>
+                        <a href="add_batch.php">
 	                        <i class="material-icons">group_add</i>	                
                             <p>Add Batch</p>
 	                    </a>
 	                </li>
-	                <li  <?php if($page==7){echo "class='active'";} ?>>
+                    <li  <?php if($page==7){echo "class='active'";} ?>>
 	                    <a href="sms.php">
 	                       <i class="material-icons">sms</i>
 	                        <p>SMS</p>

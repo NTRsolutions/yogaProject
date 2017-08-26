@@ -29,8 +29,8 @@
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Attendance</h4>
-									<p class="category">Fill up the attendance form</p>
+	                                <h4 class="title"> Client Attendance</h4>
+<!--									<p class="category">Fill up the attendance form</p>-->
 	                            </div>
 	                            <div class="card-content">
 	                                <form action="add_batch.php" method="post">

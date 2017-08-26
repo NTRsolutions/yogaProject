@@ -133,7 +133,7 @@ $result = $conn->query($sql);
 	                                    	<th>Batch id</th>
 	                                    	<th>Name</th>
 	                                    	<th>Timings</th>
-	                                    	<th>Employees</th>
+	                                    	<th></th>
                                         </thead>
 
 	                                    <tbody id="myTable"><?php $i=1;foreach($batch_view as $value): ?>
@@ -144,8 +144,8 @@ $result = $conn->query($sql);
 	                                        	<td><?php echo $value->batch_name; ?></td>
 	                                        	<td><?php echo $value->batch_timing; ?></td>
 	                                        	
-                                                <td><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
-                                                <td>     <div class="dropdown">
+                                                <td style="width:20px!important;"><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                                <td style="width:20px!important;">     <div class="dropdown">
                                                     <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                         <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
