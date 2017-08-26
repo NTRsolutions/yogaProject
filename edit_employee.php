@@ -18,6 +18,7 @@ if(isset($_POST['e_ID'])){
     # Get the response
     $content = curl_exec($ch);
     $employee_detail = json_decode($content);
+    
     $e_view = $employee_detail->employee_view[0];
    // echo $c_view->c_name;
 }
@@ -43,7 +44,7 @@ $batch_view = $batch->batch_view;
                             <p class="category">Fill up the Employee Form</p>
                         </div>
                         <div class="card-content">
-                            <form action="add_client.php" method="post">
+                            <form action="edit_employee_api.php" method="post">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
@@ -69,7 +70,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Contact</label>
-                                            <input type="text" class="form-control" value="<?php echo $e_view->salary;?> " name="contact">
+                                            <input type="text" class="form-control" value="<?php echo $e_view->contact;?> " name="contact">
                                         </div>
                                     </div>
 	                            </div>
@@ -79,12 +80,12 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                     <textarea rows="3" cols="30" name="c_address" value="<?php echo $e_view->e_address;?> " class="form-control"></textarea> 
+                                     <textarea rows="3" cols="30" name="address"  class="form-control"><?php echo $e_view->address;?></textarea> 
                                         </div>
                                     </div>
                                 </div>
                                 
-                                
+                                <input type="hidden" value="<?php echo $eid; ?>" name="e_ID">
                                 <button type="submit" name="submit"class="btn btn-primary pull-right">Done</button>
                                 <div class="clearfix"></div>
                             </form>

@@ -5,7 +5,7 @@
 	            <div class="container-fluid">
 	                <?php 
                     if(isset($_POST['submit'])){
-                        if(isset($_POST['e_name']) && isset($_POST['e_surname']) &&isset($_POST['e_salary']) &&isset($_POST['e_contact']) &&isset($_POST['e_address'])){
+                        if(isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['e_salary']) && isset($_POST['e_contact']) && isset($_POST['e_address'])){
                         $data = array(
                             'e_name' => $_POST['e_name'],
                             'e_surname' => $_POST['e_surname'],
