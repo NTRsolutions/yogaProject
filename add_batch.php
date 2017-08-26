@@ -68,9 +68,6 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
         echo "<br> batch_name: ". $row["batch_name"]. " - batch_timing: ". $row["batch_timing"]. "<br>";
     }*/
 
-
-
-
     
 }     $sql = "SELECT * FROM batch";
 $result = $conn->query($sql);
@@ -132,6 +129,7 @@ $result = $conn->query($sql);
 	                                        <th>Sr no.</th>
 	                                    	<th>Batch id</th>
 	                                    	<th>Name</th>
+
 	                                    	<th>Timings</th>
 	                                    	<th></th>
                                         </thead>
@@ -149,7 +147,7 @@ $result = $conn->query($sql);
                                                     <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                         <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="#">Yes</a></li>
+                                                        <li><a href="#">Yes confirm</a></li>
                                                         <li><a href="#">No</a></li>
                                                     </ul>
                                                     </div>
