@@ -139,7 +139,16 @@ if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
 	                                        	<td><?php echo $value->batch_name; ?></td>
 	                                        	<td><?php echo $value->batch_timing; ?></td>
 	                                        	
-                                                <td style="width:20px!important;"><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                                <!--<td style="width:20px!important;"><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                                -->
+                                        <form action="edit_batch.php" method="POST">
+                                         <td style="width:20px!important;">
+                                            <input value="<?php echo $value->batch_id;?>" type="hidden" name="c_id">
+                                            <input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
+                                        </td>
+
+                                        </form>
+                                                
                                                 <td style="width:20px!important;">     <div class="dropdown">
                                                     <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                         <span class="caret"></span></button>
