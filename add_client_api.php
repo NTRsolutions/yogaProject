@@ -24,7 +24,7 @@ if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees
     }, 1000)
 </script>
     <?php
-        //echo "<script>alert('Client created successfully')</script>";
+       //echo "<script>alert('Client created successfully')</script>";
     } else {
          
         ?> 
