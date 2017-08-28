@@ -42,6 +42,6 @@ if(isset($_POST['e_id']) && isset($_POST['date']) && isset($_POST['time']) ){
     }
 }
 else {
-    echo "<script> alert('no Value Found while adding Client') </script>";
+    echo "<script> alert('no Value Found while adding Employee') </script>";
 }
 ?>

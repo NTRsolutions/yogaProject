@@ -1,6 +1,4 @@
 <?php include 'header.php';
-
-
 # Create a connection
 $ch = curl_init();
 curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_employee_api.php');
@@ -9,14 +7,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $employee = json_decode($content);
 $employee_view = $employee->employee_view;
-/*if(isset($_POST['submit'])){
-     $e_id = $_POST['e_ID'];
-     $e_name = $_POST['e_name'];
-     $date = $_POST['date'];
-     $time = $_POST['timing'];
-    
-    
-    }*/
+
  ?>.   
 <style>
 
@@ -70,7 +61,7 @@ $employee_view = $employee->employee_view;
                                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                                 # Get the response
                                 $response = curl_exec($ch);
-                                print_r($response);
+                                //print_r($response);
                                 curl_close($ch);
                             }
                                 ?>
@@ -83,21 +74,9 @@ $employee_view = $employee->employee_view;
 <!--									<p class="category">Fill up the attendance form</p>-->
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="employee_attendance.php" method="post">
-	                               
-	                                   
+	                                <form action="mark_employee_attendance.php" method="post">	                                   
 	                                
 
-<!--
-                                        <div class="col-md-4">
-												<div class="form-group label-floating">
-                                                    
-													<label class="control-label"><option value="<?php// echo $value->name;?>"></option></label>
-													<input type="text" class="form-control" name="name">
-												</div>
-	                                        </div>
--->
-                                        <?php //endforeach?>
                                         
                                         <div class="col-md-6">
 												<div class="form-group label-floating">
@@ -114,9 +93,6 @@ $employee_view = $employee->employee_view;
 	                                        </div>
 	                                    </div>
                                         
-                                       <!-- 
-                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Submit</button>
-	                                    <div class="clearfix"></div>-->
 	                                </form>
 	                            </div>
 	                        </div>
