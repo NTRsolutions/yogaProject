@@ -53,7 +53,7 @@
 	                    </a>
 	                </li>
                     <li  <?php if($page==7){echo "class='active'";} ?>>
-	                    <a href="sms.php">
+	                    <a href="enquiry.php">
 	                       <i class="material-icons">sms</i>
 	                        <p>Enquiry</p>
 	                    </a>
