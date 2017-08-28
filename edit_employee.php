@@ -1,7 +1,7 @@
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
-<?php include 'nav.php'; ?>
+<?php $nav=3;include 'nav.php'; ?>
 <?php  
 if(isset($_POST['e_ID'])){
      $eid = $_POST['e_ID'];

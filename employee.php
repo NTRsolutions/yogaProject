@@ -32,7 +32,7 @@ $employee_view = $employe->employee_view;
 
 
   <?php $page=3;include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
+   <?php $nav=3;include 'nav.php'; ?>
 	   
            <div class="content">
 				<div class="container-fluid">

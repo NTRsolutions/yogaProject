@@ -21,7 +21,7 @@
 
 
   <?php $page=4;include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
+   <?php $nav=4;include 'nav.php'; ?>
 
      <div class="content">
 	            <div class="container-fluid">

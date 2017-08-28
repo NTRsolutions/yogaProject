@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
+   <?php $nav=2;include 'nav.php'; ?>
 
       <div class="content">
 	            <div class="container-fluid">

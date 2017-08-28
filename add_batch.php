@@ -31,7 +31,7 @@ $batch_view = $batch->batch_view;
 </style>
 
   <?php $page=6;include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
+   <?php $nav=5;include 'nav.php'; ?>
 
      <div class="content">
 	            <div class="container-fluid">
