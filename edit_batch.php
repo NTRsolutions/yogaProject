@@ -3,7 +3,7 @@
    <?php include 'nav.php'; ?>
 <?php  
 if(isset($_POST['batch_id'])){
-     $id = $_POST['batch_id'];
+    $id = $_POST['batch_id'];
     $data = array('batch_id'=> $id);
     # Create a connection
     $url = 'http://localhost/yogaProject/view_edit_batch_api.php';
@@ -16,10 +16,9 @@ if(isset($_POST['batch_id'])){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $content = curl_exec($ch);
-   // print_r($content);
+    
     $batch_detail = json_decode($content);
     $batch_view = $batch_detail->batch_view[0];
-   
     
     
 
@@ -58,7 +57,7 @@ if(isset($_POST['batch_id'])){
 	                                        </div>
 	                                    </div>
                                         
-                                         <input type="hidden" value="<?php echo $batch_id; ?>" name="batch_id"> 
+                                         <input type="hidden" value="<?php echo $batch_view->batch_id; ?>" name="batch_id"> 
                                         <button type="submit" class="btn btn-primary pull-right" name="submit">Edit</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
