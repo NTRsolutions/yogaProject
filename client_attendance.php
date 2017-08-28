@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
 								</div>
 								<div class="card-footer">
 									<div class="stats">
-										<a href="view_client_attendance.php"><i class="material-icons">plus_one</i> View client attendance</a> 
+										<a href="view_attendance.php"><i class="material-icons">plus_one</i> View client attendance</a> 
 								
 									</div>
 								</div>
