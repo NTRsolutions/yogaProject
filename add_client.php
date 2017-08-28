@@ -57,7 +57,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name </label>
-                                            <input onkeyup="allLatters(c_name)" type="text" value="<?php if(isset($_POST['c_name'])){echo $_POST['c_name']; } ?>" class="form-control" name="c_name" required>
+                                            <input onkeydown="allLatters(c_name)" type="text" value="<?php if(isset($_POST['c_name'])){echo $_POST['c_name']; } ?>" class="form-control" name="c_name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
