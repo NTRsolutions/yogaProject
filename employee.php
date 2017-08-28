@@ -111,6 +111,7 @@ $employee_view = $employe->employee_view;
 	                                        <th>Sr no.</th>
 	                                    	<th>ID</th>
 	                                    	<th>Name</th>
+	                                    	<th>Surname</th>
 	                                    	<th>Contact</th>
 	                                    	<th>Status</th>
                                             <th></th>
@@ -119,8 +120,9 @@ $employee_view = $employe->employee_view;
 	                                    <tbody id="myTable"><?php $i=1;foreach($employee_view as $value): ?>
 	                                        <tr>
 	                                        	<td><?php echo $i;$i++; ?></td>
-	                                        	<td><?php echo $value->e_ID;?></td>
+	                                        	<td><?php echo $id = $value->e_ID;?></td>
 	                                        	<td><a href="employee_profile.php"><?php echo $value->e_name;?></a></td>
+	                                        	<td><a href="employee_profile.php"><?php echo $value->e_surname;?></a></td>
 	                                        	<td><?php echo $value->contact;?></td>
                                                 <?php if($value->status == 'unpaid'){ ?>
 	                                        	<td><font style="color:red"><?php echo $value->status;?></font></td>
@@ -128,14 +130,22 @@ $employee_view = $employe->employee_view;
                                                 <?php if($value->status == 'paid'){ ?>
 	                                        	<td><font style="color:green"><?php echo $value->status;?></font></td>
                                                 <?php }?>
-                                                <td style="width:20px!important;"><a href="edit_employee.php" class="btn btn-sm btn-warning">Edit</a></td>
                                                 
+                                     <form action="edit_employee.php" method="POST">
+                                        <input value="<?php echo $value->e_ID;?>" type="hidden" name="e_ID">
+                                        <td style="width:20px!important;"><input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
+                                            </td>
+                                    </form>
+                                                 
+                                    
+                                   
                                                 <td style="width:20px!important;"> 
                                                     <div class="dropdown">
                                                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="#">Yes</a></li>
+                                                            <li><a href='delete_employee_api.php/?e_ID=<?= $id;?>'>Yes</a></li>
+                                                            
                                                             <li><a href="#">No</a></li>
                                                         </ul>
                                                     </div>

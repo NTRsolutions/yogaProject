@@ -145,7 +145,7 @@ $client_view = $client->client_view;
 
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
-                                    <td><?php echo $value->c_ID; ?></td>
+                                    <td><?php echo $id = $value->c_ID; ?></td>
                                  <td><a href="client_profile.php"><?php echo $value->c_name; ?></a></td> 
                                  <td><a href="client_profile.php"><?php echo $value->c_surname; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
@@ -172,13 +172,10 @@ $client_view = $client->client_view;
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
                                             
-                                            <form action="delete_client_api.php" method="POST">
-                                            <li>
-                                            <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_id">
-                                               <a href="delete_client_api.php"><input type="submit" class="btn btn-sm btn-success " name="delete" value="Delete" ></a>    
-                                               </li>
-                                            <li><a href="#"  class="btn btn-sm btn-danger ">No</a></li>
-                                            </form>
+                                            
+                                            <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
+                                            <li><a href="#">No</a></li>
+                                            
                                         </ul>
                                         </div>
                                     </td>                              

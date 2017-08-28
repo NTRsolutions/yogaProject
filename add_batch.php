@@ -7,8 +7,6 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
-
-//$batch_view = $batch->batch_view;
 ?>
 
 <?php include 'header.php'; ?>
@@ -34,47 +32,38 @@ $batch_view = $batch->batch_view;
 
   <?php $page=6;include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
-<?php 
-include 'config.php';
-if(isset($_POST['submit'])){ 
-if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
-    
-     $batch_name = $_POST['batch_name'];
-     $batch_timing = $_POST['batch_timing'];
-     $data = array(
-        'batch_name' => $_POST['batch_name'],
-        'batch_timing' => $_POST['batch_timing'],
-    );
-    //print_r($data);
-    # Create a connection
-    $url = 'http://localhost/yogaproject/add_batch_api.php';
-    $ch = curl_init($url);
-    # Form data string
-    $postString = http_build_query($data, '', '&');
-    # Setting our options
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $response = curl_exec($ch);
-    //print_r($response);
-    curl_close($ch);    
-    }   
 
-
-
-    // output data of each row
-/*    while($row = $result->fetch_assoc()) {
-        echo "<br> batch_name: ". $row["batch_name"]. " - batch_timing: ". $row["batch_timing"]. "<br>";
-    }*/
-
-    
-}     $sql = "SELECT * FROM batch";
-$result = $conn->query($sql);
-?>
      <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
+                        <?php 
+                    include 'config.php';
+                    if(isset($_POST['submit'])){ 
+                    if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
+
+                         $batch_name = $_POST['batch_name'];
+                         $batch_timing = $_POST['batch_timing'];
+                         $data = array(
+                            'batch_name' => $_POST['batch_name'],
+                            'batch_timing' => $_POST['batch_timing'],
+                        );
+                        //print_r($data);
+                        # Create a connection
+                        $url = 'http://localhost/yogaproject/add_batch_api.php';
+                        $ch = curl_init($url);
+                        # Form data string
+                        $postString = http_build_query($data, '', '&');
+                        # Setting our options
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        # Get the response
+                        $response = curl_exec($ch);
+                        print_r($response);
+                        curl_close($ch);    
+                        }   
+                    }  
+                    ?>
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
@@ -138,16 +127,25 @@ $result = $conn->query($sql);
 
 	                                        <tr>
 	                                        	<td><?php echo $i; $i++; ?></td>
-	                                        	<td><?php echo $value->batch_id; ?></td>
+	                                        	<td><?php echo $id = $value->batch_id; ?></td>
 	                                        	<td><?php echo $value->batch_name; ?></td>
 	                                        	<td><?php echo $value->batch_timing; ?></td>
 	                                        	
-                                                <td style="width:20px!important;"><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                                <!--<td style="width:20px!important;"><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
+                                                -->
+                                        <form action="edit_batch.php" method="POST">
+                                         <td style="width:20px!important;">
+                                            <input value="<?php echo $value->batch_id;?>" type="hidden" name="c_id">
+                                            <input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
+                                        </td>
+
+                                        </form>
+                                                
                                                 <td style="width:20px!important;">     <div class="dropdown">
                                                     <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                         <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="#">Yes confirm</a></li>
+                                                        <li><a href="delete_batch_api.php/?b_id=<?= $id?>">Yes confirm</a></li>
                                                         <li><a href="#">No</a></li>
                                                     </ul>
                                                     </div>
