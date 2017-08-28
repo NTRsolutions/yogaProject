@@ -99,14 +99,14 @@ $employee_view = $employee->employee_view;
 -->
                                         <?php //endforeach?>
                                         
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
 												<div class="form-group label-floating">
                                                     <input type="date" class="form-control" value="<?php echo date("Y-m-d"); ?>"name="date">
 												</div>
 	                                        </div>
                                         
 	                                    <div class="row">
-	                                        <div class="col-md-4">
+	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Timing</label>
                                                <input type="text" class="form-control" name="timing">
@@ -114,9 +114,9 @@ $employee_view = $employee->employee_view;
 	                                        </div>
 	                                    </div>
                                         
-                                        
+                                       <!-- 
                                         <button type="submit" class="btn btn-primary pull-right" name="submit">Submit</button>
-	                                    <div class="clearfix"></div>
+	                                    <div class="clearfix"></div>-->
 	                                </form>
 	                            </div>
 	                        </div>
