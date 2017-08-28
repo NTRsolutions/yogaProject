@@ -63,7 +63,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input onkeyup="validation(c_surname)" type="text" value="<?php if(isset($_POST['c_surname'])){echo $_POST['c_surname']; } ?>" class="form-control" name="c_surname" required>
+                                            <input onkeyup="allLatters(c_surname)" type="text" value="<?php if(isset($_POST['c_surname'])){echo $_POST['c_surname']; } ?>" class="form-control" name="c_surname" required>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Contact</label>
-                                            <input onkeyup="contactnumeric(c_contact)" type="text" value="<?php if(isset($_POST['c_contact'])){echo $_POST['c_contact']; } ?>" class="form-control" name="c_contact" required>
+                                            <input onkeyup="allnumeric(c_contact)" type="text" value="<?php if(isset($_POST['c_contact'])){echo $_POST['c_contact']; } ?>" class="form-control" name="c_contact" required>
                                         </div>
                                     </div>
 	                            </div>
@@ -132,7 +132,7 @@ $batch_view = $batch->batch_view;
 
 <script>
 
-     function allLatters(c_name)  
+    function allLatters(c_name)  
   {  
    var letters = /^[A-Za-z ]+$/;  
    if(c_name.value.match(letters))  
@@ -140,23 +140,9 @@ $batch_view = $batch->batch_view;
       return true;  
      }  
    else  
-     {  
-     alert("wrong");
-     return false;  
-     }  
-  }  
-
-    function validation(c_surname)  
-  {  
-   var letter = /^[A-Za-z ]+$/;  
-   if(c_surname.value.match(letter))  
-     {  
-      return true;  
-     }  
-   else  
-     {  
-     alert("wrong");
-     return false;  
+     {  debugger;
+     alert("Enter only alphabets");
+     return 0;  
      }  
   }  
     
@@ -169,24 +155,12 @@ $batch_view = $batch->batch_view;
      }  
    else  
      {  
-     alert("wrong");
+     alert("Enter only Digits");
      return false;  
      }  
   }  
    
-     function contactnumeric(c_contact)  
-  {  
-   var number = /^[0-9]+$/;
-   if(c_contact.value.match(number))  
-     {  
-      return true;  
-     }  
-   else  
-     {  
-     alert("wrong");
-     return false;  
-     }  
-  }  
+     
    
 
 </script>
