@@ -57,13 +57,13 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name </label>
-                                            <input class="validName"  onkeyup="allLatters(c_name)" type="text" value="<?php if(isset($_POST['c_name'])){echo $_POST['c_name']; } ?>" class="form-control" name="c_name" required>
+                                            <input  onkeyup="allLatters(c_name)" type="text" class="form-control validName" name="c_name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input class="validName" onkeyup="allLatters(c_surname)" type="text" value="<?php if(isset($_POST['c_surname'])){echo $_POST['c_surname']; } ?>" class="form-control" name="c_surname" required>
+                                            <input onkeyup="Latters(c_surname)" type="text"  class="form-control validSurname" name="c_surname" required>
                                         </div>
                                     </div>
                                 </div>
@@ -71,13 +71,13 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Fees</label>
-                                            <input onkeyup="allnumeric(c_fees)"  type="text" value="<?php if(isset($_POST['c_fees'])){echo $_POST['c_fees']; } ?>" class="form-control" name="c_fees" required>
+                                            <input onkeyup="allnumeric(c_fees)"  type="text"  class="form-control validnumber" name="c_fees" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Contact</label>
-                                            <input onkeyup="allnumeric(c_contact)" type="text" value="<?php if(isset($_POST['c_contact'])){echo $_POST['c_contact']; } ?>" class="form-control" name="c_contact" required>
+                                            <input type="text"  class="form-control" name="c_contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
                                         </div>
                                     </div>
 	                            </div>
@@ -87,7 +87,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                            <textarea rows="3" cols="30" name="c_address"  class="form-control" required><?php if(isset($_POST['c_address'])){echo $_POST['c_address']; } ?></textarea> 
+                                            <textarea rows="3" cols="30" name="c_address"  class="form-control" required></textarea> 
                                         </div>
                                     </div>
                                     
@@ -129,42 +129,6 @@ $batch_view = $batch->batch_view;
         </div>
 </div>
 <?php include 'footer.php'; ?>
-
-<script>
-
-    function allLatters(c_name)  
-  {  
-   var letters = /^[A-Za-z ]+$/;  
-   if(c_name.value.match(letters))  
-     {  
-      return true;  
-     }  
-   else  
-     {  
-         
-         alert("Enter only alphabets");
-         $(".validName").val('');
-         return false;  
-     }  
-  }  
-    
-     function allnumeric(c_fees)  
-  {  
-   var numbers = /^[0-9]+$/; 
-   if(c_fees.value.match(numbers))  
-     {  
-      return true;  
-     }  
-   else  
-     {  
-     alert("Enter only Digits");
-     return false;  
-     }  
-  }  
-   
-     
-   
-
-</script>
+<?php include 'validation_script.php'; ?>
 
 <?php include 'script_include.php'; ?>

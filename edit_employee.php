@@ -49,14 +49,14 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name </label>
-                                            <input type="text" class="form-control" value="<?php echo $e_view->e_name;?> " name="e_name">
+                                            <input onkeyup="allLatters(e_name)" type="text" class="form-control validName" value="<?php echo $e_view->e_name;?> " name="e_name" required>
                                                                                         
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input type="text" class="form-control" value="<?php echo $e_view->e_surname;?> " name="e_surname">
+                                            <input onkeyup="Latters(e_surname)" type="text" class="form-control validSurname" value="<?php echo $e_view->e_surname;?> " name="e_surname" required>
                                         </div>
                                     </div>
                                 </div>
@@ -64,13 +64,13 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">salary</label>
-                                            <input type="text" class="form-control" value="<?php echo $e_view->salary;?> " name="salary">
+                                            <input onkeyup="allnumeric(salary)" type="text" class="form-control validnumber" value="<?php echo $e_view->salary;?> " name="salary" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Contact</label>
-                                            <input type="text" class="form-control" value="<?php echo $e_view->contact;?> " name="contact">
+                                            <input id="phone" onkeypress="phoneno()" maxlength="10"  type="text" class="form-control" value="<?php echo $e_view->contact;?> " name="contact" required>
                                         </div>
                                     </div>
 	                            </div>
@@ -80,7 +80,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                     <textarea rows="3" cols="30" name="address"  class="form-control"><?php echo $e_view->address;?></textarea> 
+                                     <textarea rows="3" cols="30" name="address"  class="form-control" required><?php echo $e_view->address;?></textarea> 
                                         </div>
                                     </div>
                                 </div>
@@ -96,4 +96,5 @@ $batch_view = $batch->batch_view;
         </div>
 </div>
 <?php include 'footer.php'; ?>
+<?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
