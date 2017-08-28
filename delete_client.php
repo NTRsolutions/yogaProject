@@ -4,7 +4,7 @@ include 'client.php';
 if(isset($_POST['delete'])){
     $c_id = $_POST["c_id"];
     //"DELETE FROM `client` WHERE `client`.`c_ID` = 28"?
-    $sql = "DELETE FROM `client` WHERE `client`.`c_ID` = '$c_id';
+    $sql = "DELETE FROM `client` WHERE `client`.`c_ID` = '$c_id'";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">

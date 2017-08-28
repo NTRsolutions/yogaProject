@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-  <?php $page=3;include 'sidebar.php'; ?>
+  <?php $page=7;include 'sidebar.php'; ?>
    <?php $nav=6;include 'nav.php'; ?>
 <div class="content">
 	            <div class="container-fluid">

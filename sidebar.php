@@ -47,7 +47,7 @@
 	                    
                     </li>
                     <li  <?php if($page==6){echo "class='active'";} ?>>
-                        <a href="add_batch.php">
+                        <a href="batch.php">
 	                        <i class="material-icons">group_add</i>	                
                             <p>Batch</p>
 	                    </a>

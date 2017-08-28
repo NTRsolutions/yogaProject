@@ -6,7 +6,7 @@ if(isset($_POST['batch_id']) && isset($_POST['batch_name']) && isset($_POST['bat
      $batch_timing = $_POST['batch_timing'];
     $sql = "UPDATE `batch` SET `batch_name` = '$batch_name', `batch_timing` = '$batch_timing' WHERE `batch`.`batch_id` = '$id'";
     if ($conn->query($sql) === TRUE) {
-        header('Location: add_batch.php');
+        header('Location: batch.php');
     }
     else{
       echo "Code Not Updated";

@@ -7,7 +7,7 @@ if(isset($_GET['b_id'])){
     $result = $conn->query($sql);
 
      if ($result) { 
-         echo "<script>alert('Record deleted successfully');location='../add_batch.php'</script>";
+         echo "<script>alert('Record deleted successfully');location='../batch.php'</script>";
      } else {
      echo "Error deleting record: " .$conn->query($sql);
      }

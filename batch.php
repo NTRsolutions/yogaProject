@@ -31,78 +31,31 @@ $batch_view = $batch->batch_view;
 </style>
 
   <?php $page=6;include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
+   <?php $nav=5;include 'nav.php'; ?>
 
      <div class="content">
-	            <div class="container-fluid">
-	                <div class="row">
-                        <?php 
-                    include 'config.php';
-                    if(isset($_POST['submit'])){ 
-                    if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
-
-                         $batch_name = $_POST['batch_name'];
-                         $batch_timing = $_POST['batch_timing'];
-                         $data = array(
-                            'batch_name' => $_POST['batch_name'],
-                            'batch_timing' => $_POST['batch_timing'],
-                        );
-                        //print_r($data);
-                        # Create a connection
-                        $url = 'http://localhost/yogaproject/add_batch_api.php';
-                        $ch = curl_init($url);
-                        # Form data string
-                        $postString = http_build_query($data, '', '&');
-                        # Setting our options
-                        curl_setopt($ch, CURLOPT_POST, 1);
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        # Get the response
-                        $response = curl_exec($ch);
-                        print_r($response);
-                        curl_close($ch);    
-                        }   
-                    }  
-                    ?>
-	                    <div class="col-md-12">
-	                        <div class="card">
-	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Batches</h4>
-									<p class="category">Fill up the Required Batch</p>
-	                            </div>
-	                            <div class="card-content">
-	                                <form action="add_batch.php" method="post">
-	                               
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<label class="control-label">Name</label>
-													<input type="text" class="form-control" name="batch_name">
-												</div>
-	                                        </div>
-	                               
-
-                                        
-	                                    <div class="row">
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<label class="control-label">Time</label>
-													<input type="text" class="form-control" name="batch_timing">
-												</div>
-	                                        </div>
-	                                    </div>
-                                        
-                                        
-                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Add Batch</button>
-	                                    <div class="clearfix"></div>
-	                                </form>
-	                            </div>
-	                        </div>
-	                    </div>
-                        
-                        
-                        
-                              
-                               <div class="col-md-12">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-3 col-md-6 col-sm-6">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="orange">
+								   <i class="material-icons">people</i>
+								</div>
+								<div class="card-content">
+									<p class="category">Batch<p>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										 <a href="add_batch.php">
+                                             <i class="material-icons">plus_one</i> Add New batch
+                                        </a>
+								
+								
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
 	                                 <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
