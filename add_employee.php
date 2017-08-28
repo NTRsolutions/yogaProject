@@ -44,14 +44,14 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Name </label>
-													<input type="text" class="form-control" name="e_name">
+													<input onkeyup="allLatters(e_name)" type="text" class="form-control validName" name="e_name" required>
 												</div>
 	                                        </div>
 	                                  
                                                   <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Surname </label>
-													<input type="text" class="form-control" name="e_surname">
+													<input onkeyup="allLatters(e_surname)" type="text" class="form-control validName" name="e_surname" required>
 												</div>
 	                                        </div>
                                         </div>
@@ -62,7 +62,7 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Salary</label>
-													<input type="text" class="form-control" name="e_salary">
+													<input onkeyup="allnumeric(e_salary)"  type="text" class="form-control validnumber" name="e_salary" required>
 												</div>
 	                                        </div>
 	                                    
@@ -72,7 +72,7 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Contact</label>
-													<input type="text" class="form-control" name="e_contact">
+													<input type="text" class="form-control" name="e_contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
 												</div>
 	                                        </div>
 	                                    
@@ -83,7 +83,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                    <textarea rows="3" cols="30" name="e_address"  class="form-control"></textarea> 
+                                    <textarea rows="3" cols="30" name="e_address"  class="form-control" required></textarea> 
                                         </div>
                                     </div>
                                            
@@ -101,5 +101,5 @@
 	            </div>
 	        </div>
      <?php include 'footer.php'; ?>
-
+     <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>

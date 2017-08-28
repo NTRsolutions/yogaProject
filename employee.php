@@ -78,7 +78,7 @@ $employee_view = $employe->employee_view;
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="red">
-									<i class="material-icons">info_outline</i>
+									<i class="material-icons">payment</i>
 								</div>
 								<div class="card-content">
 									<p class="category">Payment</p>
@@ -86,7 +86,7 @@ $employee_view = $employe->employee_view;
 								</div>
 								<div class="card-footer">
 									<div class="stats">
-										<i class="material-icons">plus_one</i> Add Payment
+										<a href="employee_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
 									</div>
 								</div>
 							</div>
@@ -168,28 +168,5 @@ $employee_view = $employe->employee_view;
 					
 			<?php include 'footer.php'; ?>
 
-<script>
-function searchTable() {
-    var input, filter, found, table, tr, td, i, j;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                found = true;
-            }
-        }
-        if (found) {
-            tr[i].style.display = "";
-            found = false;
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}
-</script>
-
+<?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>

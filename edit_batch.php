@@ -42,7 +42,7 @@ if(isset($_POST['batch_id'])){
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Name</label>
-                                                    <input type="text" class="form-control" value="<?php echo $batch_view->batch_name;?> " name="batch_name">
+                                                    <input type="text" class="form-control" value="<?php echo $batch_view->batch_name;?> " name="batch_name" required>
 												</div>
 	                                        </div>
 	                               
@@ -52,7 +52,7 @@ if(isset($_POST['batch_id'])){
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Time</label>
-                                                    <input type="text" class="form-control" value="<?php echo $batch_view->batch_timing;?> " name="batch_timing">
+                                                    <input type="text" class="form-control" value="<?php echo $batch_view->batch_timing;?> " name="batch_timing" required>
 												</div>
 	                                        </div>
 	                                    </div>

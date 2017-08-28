@@ -67,7 +67,7 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Name</label>
-													<input type="text" class="form-control" name="batch_name">
+													<input type="text" class="form-control" name="batch_name" required>
 												</div>
 	                                        </div>
 	                               
@@ -77,7 +77,7 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Time</label>
-													<input type="text" class="form-control" name="batch_timing">
+													<input type="text" class="form-control" name="batch_timing" required>
 												</div>
 	                                        </div>
 	                                    </div>
@@ -102,30 +102,7 @@
  
 	<?php include 'footer.php'; ?>
 
-<script>
-function searchTable() {
-    var input, filter, found, table, tr, td, i, j;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                found = true;
-            }
-        }
-        if (found) {
-            tr[i].style.display = "";
-            found = false;
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}
-</script>
-
+<?php include 'tablesearch_script.php'; ?>
 
 
 <?php include 'script_include.php'; ?>
