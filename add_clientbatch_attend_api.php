@@ -7,11 +7,15 @@ if(isset($_POST['batch_id']) && isset($_POST['date']) && isset($_POST['timing'])
     $timing = $_POST['timing'];
     $sql = "INSERT INTO c_attend (batch_id, date, timing)
         VALUES ('$batch_id', '$date', '$timing')";
-     if ($conn->query($sql) === TRUE) {
+    
+     if ($conn->query($sql) === TRUE) {  
+         $last_id = $conn->insert_id;
+         //$last_id = array('last_id'=>$last_id);
+          
         ?> 
 <div class="alert alert-success" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria- hidden="true">&times;</span></button>
-        <strong>Success!</strong> You have been signed in successfully!
+        <strong>Success!</strong> <?php echo "Last inserted Id is ".$last_id;  ?>
 </div>
 <script>
     window.setTimeout(function() {
