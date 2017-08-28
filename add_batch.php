@@ -1,13 +1,4 @@
-<?php  
-# Create a connection
-$ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-# Get the response
-$content = curl_exec($ch);
-$batch = json_decode($content);
-$batch_view = $batch->batch_view;
-?>
+
 
 <?php include 'header.php'; ?>
 <style>
@@ -98,77 +89,9 @@ $batch_view = $batch->batch_view;
 	                            </div>
 	                        </div>
 	                    </div>
-                        
-                        
-                        
-                              
-                               <div class="col-md-12">
-	                        <div class="card card-plain">
-	                            <div class="card-header" data-background-color="purple">
-	                                 <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
-                                     <i class="material-icons icon">search</i> 
-                             <h4 class="title">Batch Details</h4>
-
-
-						         </div>
-	                        </div>
-	                            <div class="card-content">
-	                                <table class="table table-hover">
-	                                    <thead class="text-primary">
-	                                        <th>Sr no.</th>
-	                                    	<th>Batch id</th>
-	                                    	<th>Name</th>
-
-	                                    	<th>Timings</th>
-	                                    	<th></th>
-                                        </thead>
-
-	                                    <tbody id="myTable"><?php $i=1;foreach($batch_view as $value): ?>
-
-	                                        <tr>
-	                                        	<td><?php echo $i; $i++; ?></td>
-	                                        	<td><?php echo $id = $value->batch_id; ?></td>
-	                                        	<td><?php echo $value->batch_name; ?></td>
-	                                        	<td><?php echo $value->batch_timing; ?></td>
-	                                        	
-                                                <!--<td style="width:20px!important;"><a href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
-                                                -->
-                                        <form action="edit_batch.php" method="POST">
-                                         <td style="width:20px!important;">
-                                            <input value="<?php echo $value->batch_id;?>" type="hidden" name="batch_id">
-                                            <input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
-                                        </td>
-
-                                        </form>
-                                                
-                                                <td style="width:20px!important;">     <div class="dropdown">
-                                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
-                                                        <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="delete_batch_api.php/?b_id=<?= $id?>">Yes confirm</a></li>
-                                                        <li><a href="#">No</a></li>
-                                                    </ul>
-                                                    </div>
-                                                </td>                                       
-	                                       </tr>
-                                            <?php endforeach; ?>
-	                                        
-	                                    </tbody>
-	                                </table>
-	                   
-
-	                        </div>
-	                    </div>
-
-                        
-                    
-                        
-                        
-                        
-                        
-                  </div>
-	            </div>
-	        </div>
+                    </div>
+         </div>
+</div>
                         
                         
                         
