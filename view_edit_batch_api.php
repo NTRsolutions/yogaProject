@@ -14,7 +14,7 @@ if(isset($_POST["batch_id"])){
      array_push($batch,array('batch_id'=>$row['batch_id'],'batch_name'=>$row['batch_name'],'batch_timing'=>$row['batch_timing']));
         
         $batch_view = array('batch_view'=>$batch);
-         json_encode($batch_view);
+        echo json_encode($batch_view);
     } else {
         echo "0 results";
     }

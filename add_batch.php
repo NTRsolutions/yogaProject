@@ -135,7 +135,7 @@ $batch_view = $batch->batch_view;
                                                 -->
                                         <form action="edit_batch.php" method="POST">
                                          <td style="width:20px!important;">
-                                            <input value="<?php echo $value->batch_id;?>" type="hidden" name="c_id">
+                                            <input value="<?php echo $value->batch_id;?>" type="hidden" name="batch_id">
                                             <input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
                                         </td>
 
