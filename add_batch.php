@@ -32,46 +32,38 @@ $batch_view = $batch->batch_view;
 
   <?php $page=6;include 'sidebar.php'; ?>
    <?php include 'nav.php'; ?>
-<?php 
-include 'config.php';
-if(isset($_POST['submit'])){ 
-if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
-    
-     $batch_name = $_POST['batch_name'];
-     $batch_timing = $_POST['batch_timing'];
-     $data = array(
-        'batch_name' => $_POST['batch_name'],
-        'batch_timing' => $_POST['batch_timing'],
-    );
-    //print_r($data);
-    # Create a connection
-    $url = 'http://localhost/yogaproject/add_batch_api.php';
-    $ch = curl_init($url);
-    # Form data string
-    $postString = http_build_query($data, '', '&');
-    # Setting our options
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $response = curl_exec($ch);
-    print_r($response);
-    curl_close($ch);    
-    }   
 
-
-
-    // output data of each row
-/*    while($row = $result->fetch_assoc()) {
-        echo "<br> batch_name: ". $row["batch_name"]. " - batch_timing: ". $row["batch_timing"]. "<br>";
-    }*/
-
-    
-}     
-?>
      <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
+                        <?php 
+                    include 'config.php';
+                    if(isset($_POST['submit'])){ 
+                    if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
+
+                         $batch_name = $_POST['batch_name'];
+                         $batch_timing = $_POST['batch_timing'];
+                         $data = array(
+                            'batch_name' => $_POST['batch_name'],
+                            'batch_timing' => $_POST['batch_timing'],
+                        );
+                        //print_r($data);
+                        # Create a connection
+                        $url = 'http://localhost/yogaproject/add_batch_api.php';
+                        $ch = curl_init($url);
+                        # Form data string
+                        $postString = http_build_query($data, '', '&');
+                        # Setting our options
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        # Get the response
+                        $response = curl_exec($ch);
+                        print_r($response);
+                        curl_close($ch);    
+                        }   
+                    }  
+                    ?>
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
