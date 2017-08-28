@@ -49,7 +49,7 @@
                     <li  <?php if($page==6){echo "class='active'";} ?>>
                         <a href="add_batch.php">
 	                        <i class="material-icons">group_add</i>	                
-                            <p>Add Batch</p>
+                            <p>Batch</p>
 	                    </a>
 	                </li>
                     <li  <?php if($page==7){echo "class='active'";} ?>>
