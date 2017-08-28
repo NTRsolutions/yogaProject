@@ -57,13 +57,13 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name </label>
-                                            <input onkeyup="allLatters(c_name)" type="text" value="<?php if(isset($_POST['c_name'])){echo $_POST['c_name']; } ?>" class="form-control" name="c_name" required>
+                                            <input class="validName"  onkeyup="allLatters(c_name)" type="text" value="<?php if(isset($_POST['c_name'])){echo $_POST['c_name']; } ?>" class="form-control" name="c_name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input onkeyup="allLatters(c_surname)" type="text" value="<?php if(isset($_POST['c_surname'])){echo $_POST['c_surname']; } ?>" class="form-control" name="c_surname" required>
+                                            <input class="validName" onkeyup="allLatters(c_surname)" type="text" value="<?php if(isset($_POST['c_surname'])){echo $_POST['c_surname']; } ?>" class="form-control" name="c_surname" required>
                                         </div>
                                     </div>
                                 </div>
@@ -140,9 +140,11 @@ $batch_view = $batch->batch_view;
       return true;  
      }  
    else  
-     {  debugger;
-     alert("Enter only alphabets");
-     return 0;  
+     {  
+         
+         alert("Enter only alphabets");
+         $(".validName").val('');
+         return false;  
      }  
   }  
     
