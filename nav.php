@@ -8,8 +8,28 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Yoga Classes</a>
-					</div>
+						<?php if($nav==1):?>
+                            <a class="navbar-brand" href="#"><?php echo "Home"; ?></a>
+					    <?php endif;?>
+                        <?php if($nav==2):?>
+                            <a class="navbar-brand" href="#">Client</a>
+					    <?php endif;?>
+                        <?php if($nav==3):?>
+                            <a class="navbar-brand" href="#">Employee</a>
+					    <?php endif;?>
+                        <?php if($nav==4):?>
+                            <a class="navbar-brand" href="#">Client Attendance</a>
+					    <?php endif;?>
+                        <?php if($nav==7):?>
+                            <a class="navbar-brand" href="#">Employee Attendance</a>
+					    <?php endif;?>
+                        <?php if($nav==5):?>
+                            <a class="navbar-brand" href="#">Batch</a>
+					    <?php endif;?>
+                        <?php if($nav==6):?>
+                            <a class="navbar-brand" href="#">Enquiry</a>
+					    <?php endif;?>
+                    </div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown">

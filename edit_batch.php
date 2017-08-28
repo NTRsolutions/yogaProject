@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <?php $page=6;include 'sidebar.php'; ?>
-   <?php include 'nav.php'; ?>
+   <?php $nav=5;include 'nav.php'; ?>
 <?php  
 if(isset($_POST['batch_id'])){
     $id = $_POST['batch_id'];

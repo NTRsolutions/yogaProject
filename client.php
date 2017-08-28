@@ -45,7 +45,7 @@ $batch_view = $batch->batch_view;
 
 <?php $page=2;include 'sidebar.php'; ?>
 
-<?php include 'nav.php'; ?>
+<?php $nav=2;include 'nav.php'; ?>
 <?php  
 # Create a connection
 $ch = curl_init();
