@@ -139,7 +139,7 @@ $batch_view = $batch->batch_view;
                                     
                                 </div>
                                 <input type="hidden" value="<?php echo $cid; ?>" name="c_id"> 
-                                <button type="submit" name="edit"class="btn btn-primary pull-right">Edit</button>
+                                <button type="submit" name="edit"class="btn btn-primary pull-right">Done</button>
                                 <div class="clearfix"></div>
                             </form>
                         </div>
