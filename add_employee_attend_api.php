@@ -1,12 +1,11 @@
 <?php 
 include 'config.php';
 
-if(isset($_POST['batch_id']) && isset($_POST['date']) && isset($_POST['timing']) ){ 
-    $batch_id = $_POST['batch_id'];
+if(isset($_POST['e_id']) && isset($_POST['date']) && isset($_POST['time']) ){ 
+    $e_id = $_POST['e_id'];
     $date = $_POST['date'];
-    $timing = $_POST['timing'];
-    $sql = "INSERT INTO c_attend (batch_id, date, timing)
-        VALUES ('$batch_id', '$date', '$timing')";
+    $time = $_POST['time'];
+    $sql = "INSERT INTO `e_attend` ( `e_id`, `date`, `time`) VALUES ('$e_id', '$date', '$time')";
      if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">
