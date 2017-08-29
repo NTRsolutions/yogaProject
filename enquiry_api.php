@@ -1,14 +1,15 @@
 <?php 
 include 'config.php';
-if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['message'])){
+if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['message']) && isset($_POST['date'])){
 
      $token_no = $_POST['token_no'];
      $name = $_POST['name'];
      $email = $_POST['email'];
      $contact = $_POST['contact'];
      $message = $_POST['message'];
+     $date = $_POST['date'];
     
-    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `message`) VALUES ('$token_no', '$name', '$email', '$contact', '$message');";
+    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `date`, `message`) VALUES ('$token_no', '$name', '$email', '$contact', '$date', '$message');";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">
@@ -41,7 +42,7 @@ if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) 
     <?php
 
         
-//        echo "While adding Client <br> Error: " . $sql . "<br>" . $conn->error;
+        echo "While adding Client <br> Error: " . $sql . "<br>" . $conn->error;
     }
 }
 else {

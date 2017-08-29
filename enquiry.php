@@ -4,17 +4,13 @@
     <div class="content">
         
         
-        <?php  
-//# Create a connection
-//$ch = curl_init();
-//curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
-//curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-//# Get the response
-//$content = curl_exec($ch);
-//$enquiry = json_decode($content);
-//$enquiry_view = $enquiry->enquiry_view;
-
-//$batch_view = $batch->batch_view;
+<?php  
+    include 'config.php';
+    $sql = "SELECT max(`token_no`) FROM enquiry";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $lasttoken = $row['max(`token_no`)'];
+    $newtoken = $lasttoken+1;
 ?>
 
 <?php include 'config.php'; ?>
@@ -30,7 +26,8 @@
                         'name' => $_POST['e_name'],
                         'email' => $_POST['e_mail'],
                         'contact' => $_POST['e_contact'],
-                        'message' => $_POST['e_message']                        
+                        'message' => $_POST['e_message'],                        
+                        'date' => $_POST['e_date']                        
                     );
                     # Create a connection
                     $url = 'http://localhost/yogaProject/enquiry_api.php';
@@ -83,7 +80,7 @@
 	                                        <div class="col-md-6">
                                                 <div class="form-group label-floating">
 													<label class="control-label">Token Number</label>
-													<input onkeyup="allnumeric(e_token)" type="text" class="form-control validnumber" name="e_token" required>
+													<input type="text" class="form-control validnumber" value="<?php echo $newtoken; ?>" name="e_token" required readonly>
 												</div>
 	                                        </div>
 	                                  
