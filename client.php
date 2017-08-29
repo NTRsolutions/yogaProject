@@ -71,7 +71,7 @@ $client_view = $client->client_view;
                     <div class="card-footer">
                         <div class="stats">
                             <a href="add_client.php">
-                                <i class="material-icons">plus_one</i> Add New Client
+                                <i class="material-icons">plus_one</i> Add new Client
                             </a>
 							 	
                         </div>

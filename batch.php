@@ -36,7 +36,7 @@ $batch_view = $batch->batch_view;
      <div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
 								   <i class="material-icons">people</i>
