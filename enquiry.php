@@ -101,7 +101,7 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Email</label>
-													<input id="txtEmail" onclick="checkEmail();" type="text" class="form-control validEmail"   name="e_mail" required>
+													<input id="txtEmail"  type="email" class="form-control" name="e_mail" required>
                                                 </div>
                                              </div>
 	                                    

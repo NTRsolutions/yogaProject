@@ -66,7 +66,7 @@ $enquiry_view = $enquiry->enquiry_view;
                                                 <td><?php echo $value->email;?></td>
                                                 <td><?php echo $value->contact;?></td>
                                                 
-                                     <form action="#" method="POST">
+                                     <form action="edit_enquiry.php" method="POST">
                                         <input value="" type="hidden" name="tokenid">
                                         <td style="width:20px!important;"><input  type="submit" class="btn btn-sm btn-warning" value="Edit">
                                          </td>
