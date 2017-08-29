@@ -2,6 +2,66 @@
   <?php $page=7;include 'sidebar.php'; ?>
    <?php $nav=6;include 'nav.php'; ?>
     <div class="content">
+        
+        
+        <?php  
+//# Create a connection
+//$ch = curl_init();
+//curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
+//curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+//# Get the response
+//$content = curl_exec($ch);
+//$enquiry = json_decode($content);
+//$enquiry_view = $enquiry->enquiry_view;
+
+//$batch_view = $batch->batch_view;
+?>
+
+<?php include 'config.php'; ?>
+
+
+    <div class="content">
+        <div class="container-fluid">
+            <?php 
+            if(isset($_POST['submit'])){ 
+                if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) &&isset($_POST['message'])){
+                    $data = array(
+                        'token_no' => $_POST['token_no'],
+                        'name' => $_POST['name'],
+                        'email' => $_POST['email'],
+                        'contact' => $_POST['contact'],
+                        'message' => $_POST['message']                        
+                    );
+                    # Create a connection
+                    $url = 'http://localhost/yogaProject/enquiry_api.php';
+                    $ch = curl_init($url);
+                    # Form data string
+                    $postString = http_build_query($data, '', '&');
+                    # Setting our options
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    # Get the response
+                    $response = curl_exec($ch);
+                        print_r($response);
+                    curl_close($ch);  
+                    }
+                    }
+                     ?>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 	            <div class="container-fluid">
                     
                          <div class="row">
