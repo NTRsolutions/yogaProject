@@ -1,5 +1,5 @@
 <?php 
-if(isset($_POST['submit'])){
+if(isset($e_POST['submit'])){
       $e_attend_ID = $_POST['e_attend_ID'];
     # Create a connection
     $ch = curl_init();
@@ -10,8 +10,9 @@ if(isset($_POST['submit'])){
     $employee_attend = json_decode($content);
     $attend_view = $employee_attend->attendance_view;
     $attendance = $attend_view[0];
-    $e_ID = explode(",",$attendance->e_ID);
+    $e_id = explode(",",$attendance->e_id);
     $attendance = explode(",",$attendance->attendance);
+    print_r($e_id);
     }
 ?>
 
@@ -24,6 +25,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $employee = json_decode($content);
 $employee_view = $employee->employee_view;
+print_r($employee_view);
 
 ?>
 <?php include 'header.php'; ?>
@@ -49,7 +51,7 @@ $employee_view = $employee->employee_view;
 
 
   <?php $page=4;include 'sidebar.php'; ?>
-   <?php $nav=4;include 'nav.php'; ?>
+   <?php $nav=7;include 'nav.php'; ?>
 
      <div class="content">
 	            <div class="container-fluid">
@@ -70,20 +72,22 @@ $employee_view = $employee->employee_view;
                                         <table class="table table-hover">
                                             <thead class="text-primary">
                                                 <th>Sr no.</th>
-                                                <th>Employee Id</th>
+                                                <th>Employee ID</th>
                                                 <th>Employee name</th>
-                                                <th>Attendance </th>
+                                                <th>Date</th>
+                                                <th>Time </th>
                                             </thead>
-                                           
-                                            <tbody id="myTable"><?php        $i=1;foreach($e_ID as $value):    
+                                           <?php print_r($employee_view);?>
+                                            <tbody id="myTable"><?php        $i=1;foreach($e_attend_id as $value):    
                                                 foreach($employee_view as $employeevalue):
-                                                if($employeevalue->e_ID == $value){
+                                                if($employeevalue->e_attend_ID == $value){ 
                                                 ?> 
                                                 <tr>
                                                     <td><?php echo $i;$i++; ?></td>
-                                                    <td><?php echo $value;?></td>
+                                                    <td><?php echo $employeevalue->e_ID;?></td>
                                                     <td><?php echo $employeevalue->e_name." ".$employeevalue->e_surname;?></td>
                                                     <td><?php $ab = in_array($value,$attendance); 
+                                                   
                                                     if($ab >0){ echo "<font color='red'>absent</font>";}
                                                         else {echo "<font color='green'>present</font";}?></td>
                                                 </tr><?php }endforeach;endforeach; ?>
