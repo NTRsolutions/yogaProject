@@ -81,7 +81,7 @@ $client_view = $client->client_view;
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="green">
-                        <i class="material-icons">people</i>
+                        <i class="material-icons">touch_app</i>
                     </div>
                     <div class="card-content">
                         <p class="category">Attendance</p>
