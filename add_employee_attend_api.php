@@ -26,7 +26,7 @@ if(isset($_POST['date']) && isset($_POST['timing']) && isset($_POST['eid'] )&& i
     }, 1000)
 </script>
     <?php
-        //echo "<script>alert('Client created successfully')</script>";
+        //echo "<script>alert('employee created successfully')</script>";
     } else {
          
         ?> 
@@ -44,7 +44,7 @@ if(isset($_POST['date']) && isset($_POST['timing']) && isset($_POST['eid'] )&& i
     <?php
 
         
-//        echo "While adding Client <br> Error: " . $sql . "<br>" . $conn->error;
+//        echo "While adding employee <br> Error: " . $sql . "<br>" . $conn->error;
     }
 }
 else {
