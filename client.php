@@ -146,8 +146,8 @@ $client_view = $client->client_view;
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $id = $value->c_ID; ?></td>
-                                 <td><a href="client_profile.php"><?php echo $value->c_name; ?></a></td> 
-                                 <td><a href="client_profile.php"><?php echo $value->c_surname; ?></a></td> 
+                                 <td><a href='view_client_profile.php/?c_id=<?=$id?>'><?php echo $value->c_name; ?></a></td> 
+                                 <td><a href='view_client_profile.php/?c_id=<?=$id?>'><?php echo $value->c_surname; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
                                     <td><?php echo $value1->batch_name;  ?></td>
                                     <?php if($value->status_payment == 'unpaid'){ ?>

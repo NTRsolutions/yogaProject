@@ -33,7 +33,7 @@ if(isset($_POST['batch_id'])){
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Batches</h4>
+	                                <h4 class="title">Batche</h4>
 									<p class="category">Fill up the Required Batch</p>
 	                            </div>
 	                            <div class="card-content">
@@ -58,7 +58,7 @@ if(isset($_POST['batch_id'])){
 	                                    </div>
                                         
                                          <input type="hidden" value="<?php echo $batch_view->batch_id; ?>" name="batch_id"> 
-                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Edit</button>
+                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Done</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>

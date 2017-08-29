@@ -134,7 +134,7 @@ if ($conn->query($sql6) === TRUE) {
 $sql7 = "CREATE TABLE c_attend_PA (
 c_pa_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 c_attend_id  INT(11) ,
-c_id INT(11) ,
+c_id VARCHAR(50) ,
 attendance VARCHAR(50)
 )";
 
@@ -148,9 +148,9 @@ if ($conn->query($sql7) === TRUE) {
 
 $sql8 = "CREATE TABLE c_attend (
 c_attend_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
-c_id INT(11) ,
-date DATE ,
-time TIME
+batch_id INT(11) ,
+date VARCHAR(50) ,
+timing VARCHAR(50)
 )";
 
 if ($conn->query($sql8) === TRUE) {
