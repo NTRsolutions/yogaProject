@@ -10,6 +10,7 @@ if(isset($e_POST['submit'])){
     $employee_attend = json_decode($content);
     $attend_view = $employee_attend->attendance_view;
     $attendance = $attend_view[0];
+    print_r($content);
     $e_id = explode(",",$attendance->e_id);
     $attendance = explode(",",$attendance->attendance);
     }
@@ -24,7 +25,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $employee = json_decode($content);
 $employee_view = $employee->employee_view;
-
+print_r($employee_view);
 
 ?>
 <?php include 'header.php'; ?>
