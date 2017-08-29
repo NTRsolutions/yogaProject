@@ -34,6 +34,27 @@ $employee_view = $employee->employee_view;
      <div class="content">
 	            <div class="container-fluid">
 	                <div class="row">
+                        
+                         <div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="orange">
+								  <i class="material-icons">people</i>
+								</div>
+								<div class="card-content">
+									<p class="category">Employee</p>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<a href="view_employee_attendance.php"><i class="material-icons">plus_one</i> View employee attendance</a> 
+								
+									</div>
+								</div>
+							</div>
+						</div>
+
+                        
+                        
+                        
                         <?php 
                             if(isset($_POST['submit'])){
                                 $date = $_POST['date'];
