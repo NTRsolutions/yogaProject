@@ -245,6 +245,20 @@ if ($conn->query($sql14) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+$sql15 = "CREATE TABLE enquiry (
+token_no INT(11) AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(50),
+email VARCHAR(50),
+contact VARCHAR(50),
+message VARCHAR(100)
+)";
+
+if ($conn->query($sql15) === TRUE) {
+    echo "Table enquiry created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
 
 $conn->close();
 ?>
