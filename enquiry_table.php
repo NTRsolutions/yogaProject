@@ -36,6 +36,54 @@ $enquiry_view = $enquiry->enquiry_view;
            <div class="content">
 				<div class="container-fluid">
 					<div class="row">
+                         <?php 
+                        if(isset($_POST['submit'])){ 
+                if(isset($_POST['e_token']) && isset($_POST['e_name']) && isset($_POST['e_mail']) && isset($_POST['e_contact']) &&isset($_POST['e_message'])){
+                    $data = array(
+                        'token_no' => $_POST['e_token'],
+                        'name' => $_POST['e_name'],
+                        'email' => $_POST['e_mail'],
+                        'contact' => $_POST['e_contact'],
+                        'message' => $_POST['e_message'],                        
+                        'date' => $_POST['e_date']                        
+                    );
+                    # Create a connection
+                    $url = 'http://localhost/yogaProject/enquiry_api.php';
+                    $ch = curl_init($url);
+                    # Form data string
+                    $postString = http_build_query($data, '', '&');
+                    # Setting our options
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    # Get the response
+                    $response = curl_exec($ch);
+                        print_r($response);
+                    if(isset($response)){
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    }
+                    curl_close($ch);  
+                    }
+                    }
+                     ?>
+                         <div class="row">
+                              <div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="orange">
+                                    <i class="material-icons">sms</i>								
+                                </div>
+                                <div class="card-content">
+									<p class="category">Enquiry</p>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<a href="enquiry.php"><i class="material-icons">plus_one</i> Enquiry Information</a> 
+								
+									</div>
+								</div>
+							</div>
+						</div>
+                          </div>
                         <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
@@ -67,7 +115,7 @@ $enquiry_view = $enquiry->enquiry_view;
                                                 <td><?php echo $value->contact;?></td>
                                                 
                                      <form action="edit_enquiry.php" method="POST">
-                                        <input value="" type="hidden" name="tokenid">
+                                        <input value="<?php echo $id; ?>" type="hidden" name="tokenid">
                                         <td style="width:20px!important;"><input  type="submit" class="btn btn-sm btn-warning" value="Edit">
                                          </td>
                                     </form>

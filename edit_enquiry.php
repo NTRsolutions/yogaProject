@@ -1,9 +1,28 @@
 <?php include 'header.php'; ?>
-  <?php $page=7;include 'sidebar.php'; ?>
-   <?php $nav=6;include 'nav.php'; ?>
-    <div class="content">
-
-    <div class="content">
+<?php $page=7;include 'sidebar.php'; ?>
+<?php $nav=6;include 'nav.php'; ?>
+<?php
+if(isset($_POST['tokenid'])){
+    $id = $_POST['tokenid'];
+    $data = array('tokenid'=> $id);
+    # Create a connection
+    $url = 'http://localhost/yogaProject/view_edit_enquiry_api.php';
+    $ch = curl_init($url);
+    # Form data string
+    $postString = http_build_query($data, '', '&');
+    # Setting our options
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    # Get the response
+    $content = curl_exec($ch);
+    
+    $enquiry_detail = json_decode($content);
+    $enquiry_view = $enquiry_detail->enquiry_view[0];
+    
+}
+?>
+<div class="content">
         <div class="container-fluid">
                        
                     
@@ -16,20 +35,20 @@
 									<p class="category">Fill up the enquiry Form</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="enquiry.php" method="post">
+	                                <form action="enquiry_edit_api.php" method="post">
 	                                        <div class="row">
 	
 	                                        <div class="col-md-6">
                                                 <div class="form-group label-floating">
 													<label class="control-label">Token Number</label>
-													<input onkeyup="allnumeric(e_token)" type="text" class="form-control validnumber" name="e_token" required>
+													<input type="text" class="form-control validnumber" value="<?php echo $_POST['tokenid'];?>" name="e_token" required readonly>
 												</div>
 	                                        </div>
 	                                  
                                                 <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Name</label>
-													<input onkeyup="allLatters(e_name)" type="text" class="form-control validName" name="e_name" required>
+													<input type="text" class="form-control" value="<?php echo $enquiry_view->name; ?>" name="e_name" required>
 												</div>
 	                                        </div>
                                         </div>
@@ -40,7 +59,8 @@
 	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Email</label>
-													<input id="txtEmail"  type="email" class="form-control" name="e_mail" required>
+													<input id="txtEmail"  type="email" class="form-control" name="e_mail"
+                                                           value="<?php echo $enquiry_view->email; ?>"required>
                                                 </div>
                                              </div>
 	                                    
@@ -50,7 +70,7 @@
                                              <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Contact</label>
-													<input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control"   name="e_contact" required>
+													<input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control"  value="<?php echo $enquiry_view->contact; ?>"   name="e_contact" required>
                                                 </div>
                                              </div>
 	                                       
@@ -61,14 +81,14 @@
                                            <div class="col-md-6">
                                                <div class="form-group label-floating">
                                             <label class="control-label">Message</label>
-                                            <textarea rows="3" cols="30" name="e_message"  class="form-control"     required></textarea> 
+                                            <textarea rows="3" cols="30" name="e_message"  class="form-control"     required><?php echo $enquiry_view->message; ?></textarea> 
                                                </div>
                                             </div>
                                            
                                              <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label"></label>
-													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="e_date" required>
+													<input type="date" value="<?php echo $enquiry_view->date;?>" class="form-control"   name="e_date" required>
                                                 </div>
                                              </div>
                                           
