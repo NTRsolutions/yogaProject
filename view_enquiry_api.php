@@ -1,15 +1,15 @@
 <?php 
 include 'config.php';
-$sql = "SELECT * FROM client ORDER BY c_ID DESC";
+$sql = "SELECT * FROM enquiry ORDER BY token_no DESC";
 $result = $conn->query($sql);
-$client = array();
+$enquiry = array();
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        array_push($client,array('c_ID'=>$row['c_ID'],'c_name'=>$row['c_name'],'c_surname'=>$row['c_surname'],'address'=>$row['address'],'contact'=>$row['contact'],'fees'=>$row['fees'],'status_payment'=>$row['status_payment'],'batch_id'=>$row['batch_id']));
+        array_push($enquiry,array('token_no'=>$row['token_no'],'name'=>$row['name'],'email'=>$row['email'],'contact'=>$row['contact'],'message'=>$row['message']));
     }
-    $client_view = array('client_view'=>$client);
-    echo json_encode($client_view);
+    $enquiry_view = array('enquiry_view'=>$enquiry);
+    echo json_encode($enquiry_view);
 } else {
     echo "0 results";
 }
