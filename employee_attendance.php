@@ -128,7 +128,7 @@ $employee_view = $employee->employee_view;
                                                     <td><?php echo $value->e_ID; ?></td>
                                                     <td><?php echo $value->e_name." ".$value->e_surname; ?></td>
 
-                                                    <td><input type="checkbox" value="<?php echo $value->e_id; ?>" ></td>
+                                                    <td><input type="checkbox" value="<?php echo $value->e_ID; ?>" ></td>
                                                 </tr><?php endforeach; ?>
                                             </tbody>
                                             
