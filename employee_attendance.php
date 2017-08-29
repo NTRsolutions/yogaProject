@@ -63,12 +63,13 @@ $employee_view = $employee->employee_view;
                                 curl_close($ch);
                             }
                         ?>
-                        <form action="employee_attendance.php" method="post">
+                        <form action="view_employee_attend.php" method="post">
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
 	                                <h4 class="title">Employee Attendance</h4>
-<!--									<p class="category">Fill up the attendance form</p>-->                     </div>
+<!--									<p class="category">Fill up the attendance form</p>-->       
+                                </div>
                                 <div class="card-content">
                                     <div class="col-md-6">
                                         <div class="form-group label-   floating">

@@ -49,7 +49,7 @@ if ($conn->query($sql1) === TRUE) {
 $sql2 = "CREATE TABLE e_attend_PA (
 e_pa_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 e_attend_id INT(11) ,
-e_id INT(11) ,
+e_id VARCHAR(50) ,
 attendance VARCHAR(50)
 )";
 
