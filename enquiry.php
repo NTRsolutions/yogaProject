@@ -24,13 +24,13 @@
         <div class="container-fluid">
             <?php 
             if(isset($_POST['submit'])){ 
-                if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) &&isset($_POST['message'])){
+                if(isset($_POST['e_token']) && isset($_POST['e_name']) && isset($_POST['e_mail']) && isset($_POST['e_contact']) &&isset($_POST['e_message'])){
                     $data = array(
-                        'token_no' => $_POST['token_no'],
-                        'name' => $_POST['name'],
-                        'email' => $_POST['email'],
-                        'contact' => $_POST['contact'],
-                        'message' => $_POST['message']                        
+                        'token_no' => $_POST['e_token'],
+                        'name' => $_POST['e_name'],
+                        'email' => $_POST['e_mail'],
+                        'contact' => $_POST['e_contact'],
+                        'message' => $_POST['e_message']                        
                     );
                     # Create a connection
                     $url = 'http://localhost/yogaProject/enquiry_api.php';
@@ -48,21 +48,7 @@
                     }
                     }
                      ?>
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-	            <div class="container-fluid">
+            <div class="container-fluid">
                     
                          <div class="row">
                               <div class="col-lg-4 col-md-6 col-sm-6">
@@ -91,7 +77,7 @@
 									<p class="category">Fill up the enquiry Form</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="enquiry_table.php" method="post">
+	                                <form action="enquiry.php" method="post">
 	                                        <div class="row">
 	
 	                                        <div class="col-md-6">
@@ -134,12 +120,18 @@
                                         
                                         <div class="row">
                                            <div class="col-md-6">
-                                        <div class="form-group label-floating">
+                                               <div class="form-group label-floating">
                                             <label class="control-label">Message</label>
                                             <textarea rows="3" cols="30" name="e_message"  class="form-control"     required></textarea> 
-                                        </div>
-                                           </div>
+                                               </div>
+                                            </div>
                                            
+                                             <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label"></label>
+													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="e_date" required>
+                                                </div>
+                                             </div>
                                           
                                            
                                         </div>
