@@ -121,8 +121,8 @@ $employee_view = $employe->employee_view;
 	                                        <tr>
 	                                        	<td><?php echo $i;$i++; ?></td>
 	                                        	<td><?php echo $id = $value->e_ID;?></td>
-	                                        	<td><a href="employee_profile.php"><?php echo $value->e_name;?></a></td>
-	                                        	<td><a href="employee_profile.php"><?php echo $value->e_surname;?></a></td>
+	                                        	<td><a href='view_employee_profile.php?e_id=<?php echo $id;?>'><?php echo $value->e_name; ?></a></td>
+	                                        	<td><a href='view_employee_profile.php?e_id=<?php echo $id;?>'><?php echo $value->e_surname; ?></a></td>
 	                                        	<td><?php echo $value->contact;?></td>
                                                 <?php if($value->status == 'unpaid'){ ?>
 	                                        	<td><font style="color:red"><?php echo $value->status;?></font></td>
