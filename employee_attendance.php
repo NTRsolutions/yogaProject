@@ -74,7 +74,7 @@ $employee_view = $employee->employee_view;
 <!--									<p class="category">Fill up the attendance form</p>-->
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="mark_employee_attendance.php" method="post">	                                   
+	                                	                                   
 	                                
 
                                         
@@ -93,13 +93,13 @@ $employee_view = $employee->employee_view;
 	                                        </div>
 	                                    </div>
                                         
-	                                </form>
+	                                
 	                            </div>
 	                        </div>
 	                    </div>
                         
                         
-                        
+                        <form action="mark_employee_attendance.php" method="post">
                       
                         <div class="col-md-12">
                             <div class="card card-plain">
@@ -111,7 +111,7 @@ $employee_view = $employee->employee_view;
 
                                 </div>
 	                            </div>
-	                            <div class="card-content"><form>
+	                            <div class="card-content">
 	                                <table class="table table-hover">
 	                                    <thead class="text-primary">
 	                                        <th>Sr no.</th>
@@ -128,7 +128,7 @@ $employee_view = $employee->employee_view;
                                                     <td><?php echo $value->e_ID; ?></td>
                                                     <td><?php echo $value->e_name." ".$value->e_surname; ?></td>
 
-                                                    <td><input type="checkbox" value="<?php echo $value->e_id; ?>" ></td>
+                                                    <td><input type="checkbox" value="<?php echo $value->e_ID; ?>" ></td>
                                                 </tr><?php endforeach; ?>
                                             </tbody>
                                             
@@ -138,11 +138,11 @@ $employee_view = $employee->employee_view;
                                         <button type="submit" class="btn btn-primary pull-right" name="submit">Mark Attend</button>
                                         <div class="clearfix"></div>
                                     </div>
-                                    </form>
+                                   
 
 	                        </div>
                         </div>
-                       
+                        </form>
 
 
 	                        
@@ -153,7 +153,7 @@ $employee_view = $employee->employee_view;
     </div>
 	           
                         
-                        
+                      
                         
                         
                         
