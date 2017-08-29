@@ -79,7 +79,7 @@ $enquiry_view = $enquiry->enquiry_view;
                                                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="delete_enquiry_api.php?token_no=<?= $id;?>">Yes</a></li>
+                                                            <li><a href="delete_enquiry_api.php?token_no=<?php echo $id;?>">Yes</a></li>
                                                             
                                                             <li><a href="#">No</a></li>
                                                         </ul>
