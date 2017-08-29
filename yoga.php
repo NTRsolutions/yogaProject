@@ -34,7 +34,6 @@ if ($conn->connect_error) {
 
 $sql1 = "CREATE TABLE e_attend (
 e_attend_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-e_id INT(10) NOT NULL,
 date date,
 time VARCHAR(50)
 )";

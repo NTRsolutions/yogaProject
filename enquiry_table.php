@@ -1,3 +1,13 @@
+<?php 
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$enquiry = json_decode($content);
+$enquiry_view = $enquiry->enquiry_view;
+?>
 <?php include 'header.php'; ?>
 <style>
 
@@ -26,11 +36,6 @@
            <div class="content">
 				<div class="container-fluid">
 					<div class="row">
-
-
-
-
-
                         <div class="col-md-12">
 	                        <div class="card card-plain">
 	                            <div class="card-header" data-background-color="purple">
@@ -54,15 +59,15 @@
 	                                    	<th></th>
 	                                   </thead>
 	                                    <tbody id="myTable">
-	                                        <tr>
-	                                        	<td>dfbmk</td>
-	                                        	<td>dfbmk</td>
-                                                <td>dfbmk</td>
-                                                <td>dfbmk</td>
-                                                <td>dfbmk</td>
+	                                        <?php $i=1;foreach($enquiry_view as $value): ?><tr>
+	                                        	<td><?php echo $i;$i++; ?></td>
+	                                        	<td><?php echo $id=$value->token_no;?></td>
+                                                <td><?php echo $value->name;?></td>
+                                                <td><?php echo $value->email;?></td>
+                                                <td><?php echo $value->contact;?></td>
                                                 
                                      <form action="#" method="POST">
-                                        <input value="" type="hidden" name="e_ID">
+                                        <input value="" type="hidden" name="tokenid">
                                         <td style="width:20px!important;"><input  type="submit" class="btn btn-sm btn-warning" value="Edit">
                                          </td>
                                     </form>
@@ -74,7 +79,7 @@
                                                         <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="#">Yes</a></li>
+                                                            <li><a href="delete_enquiry_api.php?token_no=<?= $id;?>">Yes</a></li>
                                                             
                                                             <li><a href="#">No</a></li>
                                                         </ul>
@@ -82,7 +87,7 @@
 
                                                 </td>                  
                                        
-                                            </tr>
+                                            </tr><?php endforeach; ?>
                                         </tbody>
                                     </table>
                             </div>

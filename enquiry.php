@@ -2,7 +2,53 @@
   <?php $page=7;include 'sidebar.php'; ?>
    <?php $nav=6;include 'nav.php'; ?>
     <div class="content">
-	            <div class="container-fluid">
+        
+        
+        <?php  
+//# Create a connection
+//$ch = curl_init();
+//curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
+//curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+//# Get the response
+//$content = curl_exec($ch);
+//$enquiry = json_decode($content);
+//$enquiry_view = $enquiry->enquiry_view;
+
+//$batch_view = $batch->batch_view;
+?>
+
+<?php include 'config.php'; ?>
+
+
+    <div class="content">
+        <div class="container-fluid">
+            <?php 
+            if(isset($_POST['submit'])){ 
+                if(isset($_POST['e_token']) && isset($_POST['e_name']) && isset($_POST['e_mail']) && isset($_POST['e_contact']) &&isset($_POST['e_message'])){
+                    $data = array(
+                        'token_no' => $_POST['e_token'],
+                        'name' => $_POST['e_name'],
+                        'email' => $_POST['e_mail'],
+                        'contact' => $_POST['e_contact'],
+                        'message' => $_POST['e_message']                        
+                    );
+                    # Create a connection
+                    $url = 'http://localhost/yogaProject/enquiry_api.php';
+                    $ch = curl_init($url);
+                    # Form data string
+                    $postString = http_build_query($data, '', '&');
+                    # Setting our options
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    # Get the response
+                    $response = curl_exec($ch);
+                        print_r($response);
+                    curl_close($ch);  
+                    }
+                    }
+                     ?>
+            <div class="container-fluid">
                     
                          <div class="row">
                               <div class="col-lg-4 col-md-6 col-sm-6">
@@ -31,7 +77,7 @@
 									<p class="category">Fill up the enquiry Form</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="enquiry_table.php" method="post">
+	                                <form action="enquiry.php" method="post">
 	                                        <div class="row">
 	
 	                                        <div class="col-md-6">
