@@ -1,11 +1,17 @@
 <?php 
 include 'config.php';
-
-if(isset($_POST['e_id']) && isset($_POST['date']) && isset($_POST['time']) ){ 
-    $e_id = $_POST['e_id'];
+if(isset($_POST['date']) && isset($_POST['timing']) && isset($_POST['eid'] )&& isset($_POST['checkbox']) ){ 
     $date = $_POST['date'];
-    $time = $_POST['time'];
-    $sql = "INSERT INTO `e_attend` ( `e_id`, `date`, `time`) VALUES ('$e_id', '$date', '$time')";
+    $timing = $_POST['timing'];
+    $eid = $_POST['eid'];
+    $eid = implode(",",$eid);
+    $checkbox = $_POST['checkbox'];
+    $absent_id = implode(",",$checkbox);
+    $sql = "INSERT INTO `e_attend` (`date`, `time`) VALUES ('$date', '$timing')";
+     if ($conn->query($sql) === TRUE) {
+         $last_id = $conn->insert_id;
+     }
+         $sql = "INSERT INTO `e_attend_pa`(`e_attend_id`, `e_id`, `attendance`) VALUES ('$last_id','$eid','$absent_id')";
      if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">
