@@ -3,7 +3,25 @@
    <?php $nav=6;include 'nav.php'; ?>
     <div class="content">
 	            <div class="container-fluid">
- 
+                    
+                         <div class="row">
+                              <div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="orange">
+                                    <i class="material-icons">sms</i>								
+                                </div>
+                                <div class="card-content">
+									<p class="category">Enquiry</p>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<a href="enquiry_table.php"><i class="material-icons">plus_one</i> Enquiry Information</a> 
+								
+									</div>
+								</div>
+							</div>
+						</div>
+                          </div>
 
                     <div class="row">
 	                    <div class="col-md-8">
