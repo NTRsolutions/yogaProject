@@ -1,33 +1,29 @@
-<?php 
-if(isset($e_POST['submit'])){
-      $e_attend_ID = $_POST['e_attend_ID'];
-    # Create a connection
-    $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaProject/view_employee_attendance_api.php/?e_attend_ID=$e_attend_ID");
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $content = curl_exec($ch);
-    $employee_attend = json_decode($content);
-    $attend_view = $employee_attend->attendance_view;
-    $attendance = $attend_view[0];
-    $e_id = explode(",",$attendance->e_id);
-    $attendance = explode(",",$attendance->attendance);
-    print_r($e_id);
-    }
+<?php  
+
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_e_attend_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$employee = json_decode($content);
+$attend_view = $employee->e_attend_view;
+//print_r($attend_view);
 ?>
 
-<?php  
-# Create a connection
+<?php 
+ # Create a connection
 $ch = curl_init();
 curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_employee_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
-$employee = json_decode($content);
-$employee_view = $employee->employee_view;
-print_r($employee_view);
-
+$employe = json_decode($content);
+$e_name = $employe->employee_view;
+//print_r($e_name);
 ?>
+
+
 <?php include 'header.php'; ?>
 <style>
 
@@ -50,7 +46,7 @@ print_r($employee_view);
 </style>
 
 
-  <?php $page=4;include 'sidebar.php'; ?>
+  <?php $page=5;include 'sidebar.php'; ?>
    <?php $nav=7;include 'nav.php'; ?>
 
      <div class="content">
@@ -73,24 +69,42 @@ print_r($employee_view);
                                             <thead class="text-primary">
                                                 <th>Sr no.</th>
                                                 <th>Employee ID</th>
-                                                <th>Employee name</th>
                                                 <th>Date</th>
                                                 <th>Time </th>
                                             </thead>
-                                           <?php print_r($employee_view);?>
-                                            <tbody id="myTable"><?php        $i=1;foreach($e_attend_id as $value):    
+                                           
+                                            <tbody id="myTable">
+                                                
+                                                <?php        $i=1;foreach($attend_view as $value):     ?>
+                                                <tr>
+                                                    <td><?php echo $i;$i++; ?></td>
+                                                    <td><?php echo $value->e_attend_ID; ?> </td>
+                                                    
+                                                        <td><?php $e_attend_ID=$value->e_attend_ID ?>
+                                                        <form action="view_attendance_employee.php" method="post">
+                                                        <input type="hidden" value="<?php echo $e_attend_ID; ?>" name="e_attend_ID" >
+                                                    <input type="submit" value="<?php echo $value->date; ?>" name="submit">
+                                                        </form>
+                                                    </td>
+                                                    <td><?php echo $value->time; ?></td>
+                                                </tr><?php endforeach; ?>
+                                                
+                                                
+                                                
+                                                <?php   /*     $i=1;foreach($employee as $value):    
                                                 foreach($employee_view as $employeevalue):
                                                 if($employeevalue->e_attend_ID == $value){ 
                                                 ?> 
                                                 <tr>
                                                     <td><?php echo $i;$i++; ?></td>
                                                     <td><?php echo $employeevalue->e_ID;?></td>
+                                                    <td><?php echo $employeevalue->date;?></td>
+                                                    <td><?php echo $employeevalue->time;?></td>
                                                     <td><?php echo $employeevalue->e_name." ".$employeevalue->e_surname;?></td>
-                                                    <td><?php $ab = in_array($value,$attendance); 
+                                                    <td><?php $ab = in_array($value,$attendance); */
                                                    
-                                                    if($ab >0){ echo "<font color='red'>absent</font>";}
-                                                        else {echo "<font color='green'>present</font";}?></td>
-                                                </tr><?php }endforeach;endforeach; ?>
+                                                   
+                                               /* </tr><?php }endforeach;endforeach; */?>
                                             </tbody>
                                     </table>
                             </div>

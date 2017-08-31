@@ -7,7 +7,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $attend = json_decode($content);
 $attend_view = $attend->attend_view;
-
+//print_r($attend_view);
 ?>
 <?php include 'header.php'; ?>
 <style>

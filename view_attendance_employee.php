@@ -1,18 +1,18 @@
 <?php 
-if(isset($e_POST['submit'])){
-      $e_attend_ID = $_POST['e_attend_ID'];
+if(isset($_POST['submit'])){
+      $e_attend_id = $_POST['e_attend_ID'];
     # Create a connection
     $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaProject/view_employee_attendance_api.php/?e_attend_ID=$e_attend_ID");
+    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaProject/view_employee_attendance_api.php/?e_attend_id=$e_attend_id");
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $content = curl_exec($ch);
     $employee_attend = json_decode($content);
     $attend_view = $employee_attend->attendance_view;
     $attendance = $attend_view[0];
-    print_r($content);
     $e_id = explode(",",$attendance->e_id);
     $attendance = explode(",",$attendance->attendance);
+    //print_r($attendance);
     }
 ?>
 
@@ -25,7 +25,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $employee = json_decode($content);
 $employee_view = $employee->employee_view;
-print_r($employee_view);
+//print_r($employee_view);
 
 ?>
 <?php include 'header.php'; ?>
@@ -50,7 +50,7 @@ print_r($employee_view);
 </style>
 
 
-  <?php $page=4;include 'sidebar.php'; ?>
+  <?php $page=5;include 'sidebar.php'; ?>
    <?php $nav=7;include 'nav.php'; ?>
 
      <div class="content">
@@ -72,22 +72,20 @@ print_r($employee_view);
                                         <table class="table table-hover">
                                             <thead class="text-primary">
                                                 <th>Sr no.</th>
-                                                <th>Employee ID</th>
+                                                <th>Employee Id</th>
                                                 <th>Employee name</th>
-                                                <th>Date</th>
-                                                <th>Time </th>
+                                                <th>Attendance </th>
                                             </thead>
-                                           <?php print_r($employee_view);?>
+                                           
                                             <tbody id="myTable"><?php        $i=1;foreach($e_id as $value):    
-                                                foreach($employee_view as $employeevalue):
-                                                if($employeevalue->e_ID == $value){ 
+                                                foreach($employee_view as $employeetvalue):
+                                                if($employeetvalue->e_ID == $value){
                                                 ?> 
                                                 <tr>
                                                     <td><?php echo $i;$i++; ?></td>
-                                                    <td><?php echo $employeevalue->e_ID;?></td>
-                                                    <td><?php echo $employeevalue->e_name." ".$employeevalue->e_surname;?></td>
+                                                    <td><?php echo $value;?></td>
+                                                    <td><?php echo $employeetvalue->e_name." ".$employeetvalue->e_surname;?></td>
                                                     <td><?php $ab = in_array($value,$attendance); 
-                                                   
                                                     if($ab >0){ echo "<font color='red'>absent</font>";}
                                                         else {echo "<font color='green'>present</font";}?></td>
                                                 </tr><?php }endforeach;endforeach; ?>
@@ -100,29 +98,5 @@ print_r($employee_view);
 </div>
 <?php include 'footer.php'; ?>
 
-<script>
-function searchTable() {
-    var input, filter, found, table, tr, td, i, j;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                found = true;
-            }
-        }
-        if (found) {
-            tr[i].style.display = "";
-            found = false;
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}
-</script>
-
-
+<?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
