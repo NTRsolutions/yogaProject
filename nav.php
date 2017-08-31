@@ -1,3 +1,5 @@
+
+
 <?php
 # Create a connection
 $ch = curl_init();
@@ -99,7 +101,7 @@ foreach($enquiry_view as $value){
 	 							   <p class="hidden-lg hidden-md">Profile</p>
 		 						</a>
                                 <ul class="dropdown-menu">
-									<li><a href="#">Username</a></li>
+									<li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
 									<li><a href="login.php">Sign Out</a></li>
 									
 								</ul>
