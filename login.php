@@ -13,7 +13,7 @@ session_unset();
         }
       h1{
           text-align: center;
-          color:purple;
+          color:#8e24aa;
           font-weight: 200;
       }
      </style>
