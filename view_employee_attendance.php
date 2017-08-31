@@ -1,3 +1,29 @@
+
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
+<?php 
+/*
+if(isset($_POST['submit'])){
+      $e_attend_ID = $_POST['e_attend_ID'];
+    # Create a connection
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaProject/view_employee_attendance_api.php/?e_attend_ID=$e_attend_ID");
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+    # Get the response
+    $content = curl_exec($ch);
+    $employee_attend = json_decode($content);
+    $attend_view = $employee_attend->attendance_view;
+    $attendance = $attend_view[0];
+    $e_ID = explode(",",$attendance->e_ID);
+    $attendance = explode(",",$attendance->attendance);
+
+    }*/
+?>
+
 <?php  
 
 # Create a connection
@@ -114,29 +140,9 @@ $e_name = $employe->employee_view;
 </div>
 <?php include 'footer.php'; ?>
 
-<script>
-function searchTable() {
-    var input, filter, found, table, tr, td, i, j;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td");
-        for (j = 0; j < td.length; j++) {
-            if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                found = true;
-            }
-        }
-        if (found) {
-            tr[i].style.display = "";
-            found = false;
-        } else {
-            tr[i].style.display = "none";
-        }
-    }
-}
-</script>
-
-
+<?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

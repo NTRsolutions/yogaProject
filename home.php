@@ -1,5 +1,13 @@
+<?php
+// Start the session
+session_start();
+?>
 <?php 
 if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
+    $username = $_POST['username']; 
+    $password = $_POST['password'];
+    $_SESSION["username"] = $username;
+    $_SESSION["password"] = $password;
 ?>
 <?php include 'header.php'; ?>
 <?php $page=1;include 'sidebar.php'; ?>

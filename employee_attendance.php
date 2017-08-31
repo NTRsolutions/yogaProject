@@ -1,3 +1,10 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
+
 <?php include 'header.php';
 # Create a connection
 $ch = curl_init();
@@ -33,8 +40,10 @@ $employee_view = $employee->employee_view;
 
      <div class="content">
 	            <div class="container-fluid">
-	                <div class="row">
-                         <?php 
+
+                    
+                      <?php 
+
                             if(isset($_POST['submit'])){
                                 $date = $_POST['date'];
                                 $timing = $_POST['timing'];
@@ -67,6 +76,11 @@ $employee_view = $employee->employee_view;
                                 curl_close($ch);
                             }
                         ?>
+
+
+	                <div class="row">
+                        
+
                          <div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
@@ -84,6 +98,7 @@ $employee_view = $employee->employee_view;
 							</div>
 						</div>
                         <form action="employee_attendance.php" method="post">
+
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
@@ -149,3 +164,7 @@ $employee_view = $employee->employee_view;
 <?php include 'tablesearch_script.php'; ?>
 
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

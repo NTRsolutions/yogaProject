@@ -1,4 +1,10 @@
 <?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
+<?php 
 if(isset($_GET['enq_id'])){
     $enq_id = $_GET['enq_id'];
     $data = array(
@@ -55,80 +61,69 @@ if(isset($_GET['enq_id'])){
 	                            <div class="card-content">
 	                                <form>
 	                                    <div class="row">
-	                                        <div class="col-md-4">
+	                                        <div class="col-md-6">
                                             
 												<div class="form-group label-floating">
-													ID:
+													<strong class="text-primary">Token No:&nbsp&nbsp&nbsp&nbsp</strong>
 													<?php echo $detail_enquiry->token_no; ?>
 												</div>
 	                                        </div>
                                         
-	                                        <div class="col-md-4">
+	                                        <div class="col-md-6">
                                             
 												<div class="form-group label-floating">
-													Date:
+													<strong class="text-primary">Date:&nbsp&nbsp&nbsp&nbsp</strong>
 													<?php echo $detail_enquiry->date; ?>
 												</div>
 	                                        </div>
                                         </div>
-                                         
+                                         <hr>
                                         
                                              <div class="row">
 
-	                                        <div class="col-md-4">
+	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
-													Name:
+													<strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>
 												    <?php echo $detail_enquiry->name; ?>
 												</div>
 	                                        </div>
-                                        
-
-	                                    
-	                                        
-                                                 
-                                        </div> 
-                                        
-                                        
-                                         <div class="row">
-
-	                                     <div class="col-md-4">
+                                         <div class="col-md-6">
 												<div class="form-group label-floating">
-													Email Address:
+													<strong class="text-primary">Email Address:&nbsp&nbsp&nbsp&nbsp</strong>
 													<?php echo $detail_enquiry->email; ?>
 												</div>
 	                                        </div>
-                                                 
+                                             
                                         </div> 
+                                        
+                                        <hr>
+                                         
+
+	                                             
+                                     
                                          
                                         
                                                  
 	                                        <div class="row">
 
-	                                        <div class="col-md-12">
+	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
-													Contact:
+													<strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong>
 												    <?php echo $detail_enquiry->contact; ?>
 												</div>
 	                                        </div>
                                         
-
-	                                    
-	                                        <div class="col-md-4">
+                                            
+	                                         
+	                                        <div class="col-md-6">
 												<div class="form-group label-floating">
-													Message:
+													<strong class="text-primary">Message:&nbsp&nbsp&nbsp&nbsp</strong>
 													<?php echo $detail_enquiry->message; ?>
 												</div>
 	                                        </div>
-                                                
-                                                
-	                                        
-                                            
-                                                 
+                                                   
                                         </div>    
-                                            
-	                                  
-	                                   
-
+                                      <hr>
 	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
@@ -146,3 +141,7 @@ if(isset($_GET['enq_id'])){
 
 <?php include 'footer.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

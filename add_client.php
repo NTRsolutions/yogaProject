@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php  
 # Create a connection
 $ch = curl_init();
@@ -19,11 +25,12 @@ $batch_view = $batch->batch_view;
         <div class="container-fluid">
             <?php 
             if(isset($_POST['submit'])){ 
-                if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees']) &&isset($_POST['c_contact']) &&isset($_POST['c_address']) &&isset($_POST['batch'])){
+                if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees'])&&isset($_POST['balance']) &&isset($_POST['c_contact']) &&isset($_POST['c_address']) &&isset($_POST['batch'])){
                     $data = array(
                         'c_name' => $_POST['c_name'],
                         'c_surname' => $_POST['c_surname'],
                         'c_fees' => $_POST['c_fees'],
+                        'balance' => $_POST['balance'],
                         'c_contact' => $_POST['c_contact'],
                         'c_address' => $_POST['c_address'],
                         'batch' => $_POST['batch']
@@ -68,13 +75,19 @@ $batch_view = $batch->batch_view;
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Fees</label>
                                             <input onkeyup="allnumeric(c_fees)"  type="text"  class="form-control validnumber" name="c_fees" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Balance</label>
+                                            <input onkeyup="allnumeric(balance)"  type="text"  class="form-control validnumber" name="balance" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Contact</label>
                                             <input type="text"  class="form-control" name="c_contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
@@ -102,7 +115,7 @@ $batch_view = $batch->batch_view;
                              <label for="business">Select Batch:</label>
 
                              
-                             <select name="batch" required><option value="">Select Batch</option>
+                             <select style="width:250px;" name="batch" required><option value="">Select Batch</option>
 
                                  <?php foreach($batch_view as $value): ?>
                                                                  
@@ -132,3 +145,7 @@ $batch_view = $batch->batch_view;
 <?php include 'validation_script.php'; ?>
 
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

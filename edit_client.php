@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
@@ -122,7 +128,7 @@ $batch_view = $batch->batch_view;
 								</a>
                                          <?php foreach($batch_view as $value){if($c_view->batch_name == $value->batch_name){ $id = $value->batch_id;}}?>
                              <label for="business">Select Batch:</label>
-                             <select name="batch" required>
+                             <select style="width:250px;" name="batch" required>
                                  <li>
                                             <option value="<?php echo $id;?>"><?php echo $c_view->batch_name;?></option>
                                  </li>
@@ -151,3 +157,7 @@ $batch_view = $batch->batch_view;
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

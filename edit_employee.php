@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
@@ -98,3 +104,7 @@ $batch_view = $batch->batch_view;
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

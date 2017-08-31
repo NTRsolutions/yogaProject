@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php 
 if(isset($_POST['submit'])){
       $e_attend_id = $_POST['e_attend_ID'];
@@ -100,3 +106,7 @@ $employee_view = $employee->employee_view;
 
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>
