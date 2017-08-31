@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php include 'header.php'; ?>
 <?php $page=6;include 'sidebar.php'; ?>
    <?php $nav=5;include 'nav.php'; ?>
@@ -86,3 +92,7 @@ if(isset($_POST['batch_id'])){
 	<?php include 'footer.php'; ?>
 
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

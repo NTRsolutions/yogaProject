@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+session_unset(); 
+?>
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 
@@ -35,7 +40,7 @@
 	                                        </div>
 	                                        
 	                                    </div>
-
+                                        
 	                                    
 
 	                                    <div class="row">
@@ -48,7 +53,7 @@
 	                                    </div>
                                         <button type="submit" class="btn btn-primary pull-right" name="login">Login</button>
 	                                    <div class="clearfix"></div>
-	                                </form>
+                                    </form>
 	                            </div>
 	                        </div>
 	                    </div>

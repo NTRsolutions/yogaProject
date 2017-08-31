@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
    <?php $nav=3;include 'nav.php'; ?>
@@ -105,3 +111,7 @@
 
 <?php include 'footer.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

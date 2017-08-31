@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php include 'header.php'; ?>
 <?php $page=7;include 'sidebar.php'; ?>
 <?php $nav=6;include 'nav.php'; ?>
@@ -108,3 +114,7 @@ if(isset($_POST['tokenid'])){
 <?php include 'validation_script.php'; ?>
 
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

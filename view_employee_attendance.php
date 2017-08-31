@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php 
 if(isset($_POST['submit'])){
       $e_attend_ID = $_POST['e_attend_ID'];
@@ -122,3 +128,7 @@ function searchTable() {
 
 
 <?php include 'script_include.php'; ?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
+?>

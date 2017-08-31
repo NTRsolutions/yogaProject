@@ -1,3 +1,9 @@
+<?php
+// Start the session
+session_start();
+if(!empty($_SESSION)){
+?>
+
 <?php 
 include 'config.php';
 include 'client.php';
@@ -44,4 +50,8 @@ else {
     echo "<script> alert('no Value Found while adding Client') </script>";
 }
 header('Location: client.php');
+?>
+<?php
+}
+else echo "<h1>No User Logged In</h1>";
 ?>
