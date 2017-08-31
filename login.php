@@ -1,6 +1,4 @@
-
 <?php include 'config.php'; ?>
-
 <?php include 'header.php'; ?>
 
      <style>
@@ -27,7 +25,7 @@
 									<p class="category">Please Enter Your Username and Password</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="login.php" method="post">
+	                                <form action="home.php" method="post">
 	                                    <div class="row">
 	                                        <div class="col-md-12">
 												<div class="form-group label-floating">
@@ -48,7 +46,7 @@
 												</div>
 	                                        </div>
 	                                    </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Login</button>
+                                        <button type="submit" class="btn btn-primary pull-right" name="login">Login</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>

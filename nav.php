@@ -1,3 +1,23 @@
+<?php
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$enquiry = json_decode($content);
+$date1 = date('Y-m-d', strtotime("-10 days"))."<br>";
+$date2 = date('Y-m-d', strtotime("+10 days"));
+$enquiry_view = $enquiry->enquiry_view;
+$i=0;
+foreach($enquiry_view as $value){
+     $eurydate = $value->date;
+    if($eurydate >= $date1 && $eurydate <= $date2){
+        $i++;
+    }
+}
+?>
+
 <div class="main-panel">
 <nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
@@ -32,18 +52,44 @@
                     </div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown">
+							<li class="dropdown" >
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="material-icons">notifications</i>
-									<span class="notification">5</span>
+									<span class="notification"><?php echo $i; ?></span>
 									<p class="hidden-lg hidden-md">Notifications</p>
 								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Mike John responded to your email</a></li>
-									<li><a href="#">You have 5 new tasks</a></li>
-									<li><a href="#">You're now friend with Andrew</a></li>
-									<li><a href="#">Another Notification</a></li>
-									<li><a href="#">Another One</a></li>
+								<ul class="dropdown-menu" style="width:200px">
+                                    
+                                    <table class="table table-borderless">
+                                        <thead>
+                                           <th> <strong>Token_no</strong> </th>
+                                         <th>   <strong>Name</strong> </th>
+                                           <th> <strong> Date </strong></th>
+	                                    </thead>
+	                                    <tbody>
+                                                <?php foreach($enquiry_view as $value){ ?>
+
+	                                        <tr>
+                                                <?php 
+                                                $eurydate = $value->date;
+                                                if($eurydate >= $date1 && $eurydate <= $date2){
+                                                ?>
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->token_no; ?></a></td>
+                                                
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->name;?></a></td>
+                                                
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php $dm = explode("-",$value->date); echo $dm[1]."-".$dm[2];?></a></td>
+                                                <?php
+                                                }
+                                                ?> 
+	                                        	
+	                                        </tr><?php }?>
+                                        </tbody>
+                                    </table>
+                                    
+                                    
+                                    
+                                    
 								</ul>
 							</li>
 
@@ -54,7 +100,7 @@
 		 						</a>
                                 <ul class="dropdown-menu">
 									<li><a href="#">Username</a></li>
-									<li><a href="#">Sign Out</a></li>
+									<li><a href="login.php">Sign Out</a></li>
 									
 								</ul>
 							</li>

@@ -1,6 +1,7 @@
 <?php 
 include 'config.php';
-$sql = "SELECT * FROM enquiry ORDER BY token_no DESC";
+$enq_id = $_POST['enq_id'];
+$sql = "SELECT * FROM enquiry WHERE token_no = '$enq_id';";
 $result = $conn->query($sql);
 $enquiry = array();
 if ($result->num_rows > 0) {

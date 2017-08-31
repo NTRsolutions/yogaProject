@@ -1,9 +1,5 @@
 <?php 
 include 'config.php';
-
-
-
-
 if(isset($_POST['e_token']) && isset($_POST['e_name']) && isset($_POST['e_mail'])&& isset($_POST['e_contact'])&& isset($_POST['e_message'])&& isset($_POST['e_date'])){
     $e_token= $_POST["e_token"];
      $e_name = $_POST['e_name'];
