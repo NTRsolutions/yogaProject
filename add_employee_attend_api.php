@@ -1,12 +1,19 @@
 <?php 
 include 'config.php';
-if(isset($_POST['date']) && isset($_POST['timing']) && isset($_POST['eid'] )&& isset($_POST['checkbox']) ){ 
+if(isset($_POST['date']) && isset($_POST['timing']) && isset($_POST['eid']) ){ 
     $date = $_POST['date'];
     $timing = $_POST['timing'];
     $eid = $_POST['eid'];
     $eid = implode(",",$eid);
-    $checkbox = $_POST['checkbox'];
-    $absent_id = implode(",",$checkbox);
+    if(!isset($_POST['checkbox'])){
+        $checkbox=NULL;
+        $absent_id=NULL;
+    }else{
+        $checkbox = $_POST['checkbox'];
+        $absent_id = implode(",",$checkbox);
+    }
+    
+    
     $sql = "INSERT INTO `e_attend` (`date`, `time`) VALUES ('$date', '$timing')";
      if ($conn->query($sql) === TRUE) {
          $last_id = $conn->insert_id;
