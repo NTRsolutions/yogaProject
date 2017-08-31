@@ -44,7 +44,8 @@ if(isset($_POST['submit'])){
     
         float:right;
     }
-
+    
+    
 </style>
 
 
@@ -114,9 +115,9 @@ if(isset($_POST['submit'])){
 	                            <div class="card-content">
 	                                <form action="client_attendance.php" method="post">
                                         <div class="col-md-4">
-                                            <div class="form-group label-   floating">
-                                                <label for="business">Select        Batch:</label>
-                                                <select name="batch_id" required>
+                                            <div style="width:200px;" class="form-group label-floating">
+                                                <label for="business">Select Batch:</label>
+                                                <select style="width:250px;" name="batch_id" required>
                                                     <option value="">Name ---   Timing</option>
                                                     <?php foreach($batch_view   as $value): ?>
                                                     <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name." --- ".$value->batch_timing; ?></option>

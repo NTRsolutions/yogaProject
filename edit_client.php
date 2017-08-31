@@ -128,7 +128,7 @@ $batch_view = $batch->batch_view;
 								</a>
                                          <?php foreach($batch_view as $value){if($c_view->batch_name == $value->batch_name){ $id = $value->batch_id;}}?>
                              <label for="business">Select Batch:</label>
-                             <select name="batch" required>
+                             <select style="width:250px;" name="batch" required>
                                  <li>
                                             <option value="<?php echo $id;?>"><?php echo $c_view->batch_name;?></option>
                                  </li>

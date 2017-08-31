@@ -37,13 +37,12 @@ if(isset($_POST['id'])){
 									<p class="category">Fill up the payment Form</p>
 	                            </div>
 	                            <div class="card-content">
-	                                
-	                                        <div class="row">
-                                                <form action="client_payment.php" method="post">            
-	                                        <div class="col-md-4">
+                                    <div class="row">
+                                        <form action="client_payment.php" method="post">            
+                                            <div class="col-md-4">
 												<div class="form-group label-floating">
 													
-                                                    <select name="c_id" required>
+                                                    <select style="width:250px;" name="c_id" required>
                                                         <option value="<?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "" ?>"> <?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "Select ID"; ?>
                                                         </option>
                                                         <?php foreach($client_view as $value){?>
@@ -73,7 +72,7 @@ if(isset($_POST['id'])){
                                            <div class="col-md-4">
 												<div class="form-group label-floating">
 													
-                                                    <select name="paymode" required >
+                                                    <select style="width:250px;" name="paymode" required >
                                                     <option value="">-- SELECT PAY MODE --</option>
                                                     <option value="Cash">Cash</option>
                                                     <option value="Cheque">Cheque</option>
@@ -122,6 +121,7 @@ if(isset($_POST['id'])){
                     </div>
 	            </div>
 	        </div>
+
      <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 
