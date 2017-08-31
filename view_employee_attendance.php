@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?php
 // Start the session
 session_start();
@@ -6,6 +6,7 @@ if(!empty($_SESSION)){
 ?>
 
 <?php 
+/*
 if(isset($_POST['submit'])){
       $e_attend_ID = $_POST['e_attend_ID'];
     # Create a connection
@@ -19,11 +20,10 @@ if(isset($_POST['submit'])){
     $attendance = $attend_view[0];
     $e_ID = explode(",",$attendance->e_ID);
     $attendance = explode(",",$attendance->attendance);
-    }
+
+    }*/
 ?>
 
-=======
->>>>>>> d90ba6cd4419f93394ef506901124cff255af8dd
 <?php  
 
 # Create a connection
