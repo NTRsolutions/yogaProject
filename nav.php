@@ -74,11 +74,11 @@ foreach($enquiry_view as $value){
                                                 $eurydate = $value->date;
                                                 if($eurydate >= $date1 && $eurydate <= $date2){
                                                 ?>
-                                                <td><a href="#"><?php echo $value->token_no; ?></a></td>
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->token_no; ?></a></td>
                                                 
-                                                <td><a href="#"><?php echo $value->name;?></a></td>
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->name;?></a></td>
                                                 
-                                                <td><a href="#"><?php $dm = explode("-",$value->date); echo $dm[1]."-".$dm[2];?></a></td>
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php $dm = explode("-",$value->date); echo $dm[1]."-".$dm[2];?></a></td>
                                                 <?php
                                                 }
                                                 ?> 

@@ -114,8 +114,12 @@ $enquiry_view = $enquiry->enquiry_view;
 	                                   </thead>
 	                                    <tbody id="myTable">
 	                                        <?php $i=1;foreach($enquiry_view as $value): ?><tr>
-	                                        	<td><?php echo $i;$i++; ?></td>
-	                                        	<td><?php echo $id=$value->token_no;?></td>
+                                            <td><?php echo $i;$i++; ?></td>
+                                            <td><?php $id=$value->token_no; ?>
+                                                <a href="enquiry_profile.php?enq_id=<?php echo $id; ?>">
+                                                    <?php echo $id;?>
+                                                </a>
+                                            </td>
                                                 <td><?php echo $value->name;?></td>
                                                 <td><?php echo $value->email;?></td>
                                                 <td><?php echo $value->contact;?></td>

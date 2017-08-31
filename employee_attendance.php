@@ -91,7 +91,7 @@ $employee_view = $employee->employee_view;
                                 curl_close($ch);
                             }
                         ?>
-                        <form action="view_employee_attend.php" method="post">
+                        <form action="employee_attendance.php" method="post">
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
@@ -143,8 +143,8 @@ $employee_view = $employee->employee_view;
                                         </tbody>
                                     </table>
                                     <div class="row">
-                                        <button type="submit" class="btn btn-   primary pull-right" name="submit">Mark  Attend</button>
-                                        <div class="clearfix"></div>
+                                        <button type="submit" class="btn btn-   primary pull-right" name="submit">Mark Attend</button>
+                                    <div class="clearfix"></div>
                                     </div>
                                 </div>
                             </div>

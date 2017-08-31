@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
-if(isset($_POST['e_attend_id'])){
-     $id = $_POST['e_attend_id'];
+if(isset($_GET['e_attend_id'])){
+     $id = $_GET['e_attend_id'];
     $sql = "SELECT * FROM `e_attend_pa` WHERE e_attend_id = '$id'";
     $result = $conn->query($sql);
     $attend = array();
