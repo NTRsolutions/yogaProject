@@ -17,6 +17,7 @@ foreach($enquiry_view as $value){
     }
 }
 ?>
+
 <div class="main-panel">
 <nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
@@ -51,22 +52,43 @@ foreach($enquiry_view as $value){
                     </div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown">
+							<li class="dropdown" >
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<i class="material-icons">notifications</i>
 									<span class="notification"><?php echo $i; ?></span>
 									<p class="hidden-lg hidden-md">Notifications</p>
 								</a>
-								<ul class="dropdown-menu">
-                                    <li><strong><?php echo "Token_no  Name  Date" ?></strong></li>
-                                    <?php 
-                                    foreach($enquiry_view as $value){
-                                         $eurydate = $value->date;
-                                        if($eurydate >= $date1 && $eurydate <= $date2){?>
-                                            <li><a href="#"><?php echo $value->token_no." ".$value->name." ".$value->date;?></a></li><?php
-                                        }
-                                    }
-                                    ?>
+								<ul class="dropdown-menu" style="width:200px">
+                                    
+                                    <table class="table table-borderless">
+                                        <thead>
+                                           <th> <strong>Token_no</strong> </th>
+                                         <th>   <strong>Name</strong> </th>
+                                           <th> <strong> Date </strong></th>
+	                                    </thead>
+	                                    <tbody>
+                                                <?php foreach($enquiry_view as $value){ ?>
+
+	                                        <tr>
+                                                <?php 
+                                                $eurydate = $value->date;
+                                                if($eurydate >= $date1 && $eurydate <= $date2){
+                                                ?>
+                                                <td><a href="#"><?php echo $value->token_no; ?></a></td>
+                                                
+                                                <td><a href="#"><?php echo $value->name;?></a></td>
+                                                
+                                                <td><a href="#"><?php $dm = explode("-",$value->date); echo $dm[1]."-".$dm[2];?></a></td>
+                                                <?php
+                                                }
+                                                ?> 
+	                                        	
+	                                        </tr><?php }?>
+                                        </tbody>
+                                    </table>
+                                    
+                                    
+                                    
                                     
 								</ul>
 							</li>
