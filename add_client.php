@@ -115,7 +115,7 @@ $batch_view = $batch->batch_view;
                              <label for="business">Select Batch:</label>
 
                              
-                             <select name="batch" required><option value="">Select Batch</option>
+                             <select style="width:250px;" name="batch" required><option value="">Select Batch</option>
 
                                  <?php foreach($batch_view as $value): ?>
                                                                  
