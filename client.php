@@ -60,7 +60,7 @@ $client_view = $client->client_view;
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="orange">
                         <i class="material-icons">people</i>
@@ -71,17 +71,17 @@ $client_view = $client->client_view;
                     <div class="card-footer">
                         <div class="stats">
                             <a href="add_client.php">
-                                <i class="material-icons">plus_one</i> Add New Client
+                                <i class="material-icons">plus_one</i> Add new Client
                             </a>
 							 	
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="green">
-                        <i class="material-icons">people</i>
+                        <i class="material-icons">touch_app</i>
                     </div>
                     <div class="card-content">
                         <p class="category">Attendance</p>
@@ -97,7 +97,7 @@ $client_view = $client->client_view;
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="red">
                         <i class="material-icons">payment</i>
@@ -146,8 +146,8 @@ $client_view = $client->client_view;
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $id = $value->c_ID; ?></td>
-                                 <td><a href='view_client_profile.php/?c_id=<?=$id?>'><?php echo $value->c_name; ?></a></td> 
-                                 <td><a href='view_client_profile.php/?c_id=<?=$id?>'><?php echo $value->c_surname; ?></a></td> 
+                                 <td><a href='view_client_profile.php?c_id=<?php echo $id;?>'><?php echo $value->c_name; ?></a></td> 
+                                 <td><a href='view_client_profile.php?c_id=<?php echo $id;?>'><?php echo $value->c_surname; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
                                     <td><?php echo $value1->batch_name;  ?></td>
                                     <?php if($value->status_payment == 'unpaid'){ ?>

@@ -34,7 +34,6 @@ if ($conn->connect_error) {
 
 $sql1 = "CREATE TABLE e_attend (
 e_attend_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-e_id INT(10) NOT NULL,
 date date,
 time VARCHAR(50)
 )";
@@ -50,7 +49,7 @@ if ($conn->query($sql1) === TRUE) {
 $sql2 = "CREATE TABLE e_attend_PA (
 e_pa_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 e_attend_id INT(11) ,
-e_id INT(11) ,
+e_id VARCHAR(50) ,
 attendance VARCHAR(50)
 )";
 
@@ -241,6 +240,21 @@ client_id INT(11)
 
 if ($conn->query($sql14) === TRUE) {
     echo "Table batch_client_mapping created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+$sql15 = "CREATE TABLE enquiry (
+token_no INT(11) AUTO_INCREMENT PRIMARY KEY, 
+name VARCHAR(50),
+email VARCHAR(50),
+contact VARCHAR(50),
+date VARCHAR(50),
+message VARCHAR(100)
+)";
+
+if ($conn->query($sql15) === TRUE) {
+    echo "Table enquiry created successfully <br> ";
 } else {
     echo "Error creating table: " . $conn->error;
 }

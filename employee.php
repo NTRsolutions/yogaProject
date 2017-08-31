@@ -37,7 +37,7 @@ $employee_view = $employe->employee_view;
            <div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
 								   <i class="material-icons">people</i>
@@ -56,10 +56,10 @@ $employee_view = $employe->employee_view;
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="green">
-                                      <i class="material-icons">people</i>
+                                      <i class="material-icons">touch_app</i>
 								</div>
 								<div class="card-content">
 									<p class="category">Attendance</p>
@@ -75,7 +75,7 @@ $employee_view = $employe->employee_view;
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="red">
 									<i class="material-icons">payment</i>
@@ -121,8 +121,8 @@ $employee_view = $employe->employee_view;
 	                                        <tr>
 	                                        	<td><?php echo $i;$i++; ?></td>
 	                                        	<td><?php echo $id = $value->e_ID;?></td>
-	                                        	<td><a href="employee_profile.php"><?php echo $value->e_name;?></a></td>
-	                                        	<td><a href="employee_profile.php"><?php echo $value->e_surname;?></a></td>
+	                                        	<td><a href='view_employee_profile.php?e_id=<?php echo $id;?>'><?php echo $value->e_name; ?></a></td>
+	                                        	<td><a href='view_employee_profile.php?e_id=<?php echo $id;?>'><?php echo $value->e_surname; ?></a></td>
 	                                        	<td><?php echo $value->contact;?></td>
                                                 <?php if($value->status == 'unpaid'){ ?>
 	                                        	<td><font style="color:red"><?php echo $value->status;?></font></td>

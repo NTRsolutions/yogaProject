@@ -19,7 +19,7 @@
 	                                        <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Client ID</label>
-													<input onkeyup="allnumeric(e_token)" type="text" class="form-control validnumber" name="e_token" required>
+													<input onkeyup="allnumeric(c_id)" type="text" class="form-control validnumber" name="c_id" required>
 												</div>
 	                                        </div>
 	                                  
@@ -38,6 +38,26 @@
 												</div>
 	                                        </div>
                                         </div>
+                                        
+                                         <div class="row">
+	
+	                                        <div class="col-md-4">
+												<div class="form-group label-floating">
+													<label class="control-label">Final Amount</label>
+													<input type="text" class="form-control" name="c_amount" required readonly>
+												</div>
+	                                        </div>
+	                                  
+                                                 
+                                               
+                                           <div class="col-md-4">
+												<div class="form-group label-floating">
+													<label class="control-label">Balance</label>
+													<input type="text" class="form-control" name="c_balance" required readonly>
+												</div>
+	                                        </div>
+                                        </div>
+                                        
                                         
 	                                     
                                       <button type="submit" class="btn btn-primary pull-right" name="submit">Add</button>

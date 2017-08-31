@@ -27,7 +27,7 @@
 									<p class="category">Please Enter Your Username and Password</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form action="login.php" method="post">
+	                                <form action="home.php" method="post">
 	                                    <div class="row">
 	                                        <div class="col-md-12">
 												<div class="form-group label-floating">
