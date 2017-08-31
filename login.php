@@ -1,6 +1,4 @@
-
 <?php include 'config.php'; ?>
-
 <?php include 'header.php'; ?>
 
      <style>
@@ -48,7 +46,7 @@
 												</div>
 	                                        </div>
 	                                    </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Login</button>
+                                        <button type="submit" class="btn btn-primary pull-right" name="login">Login</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>
