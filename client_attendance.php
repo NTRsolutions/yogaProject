@@ -152,7 +152,7 @@ if(isset($_POST['submit'])){
                             <tbody id="myTable"><?php $i=1;foreach($client_view as   $value): ?>
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
-                                    <td><input type="hidden" name="client_id[]" value="<?   php echo $value->c_ID; ?>"><?php echo $value->c_ID; ?>     </td>
+                                    <td><input type="hidden" name="client_id[]" value="<?php echo $value->c_ID; ?>"><?php echo $value->c_ID; ?>     </td>
                                     <td><?php echo $value->c_name." ".$value->c_surname; ?></td>
 
                                     <td><input type="checkbox" value="<?php echo $value->c_ID;  ?>" name="absent_client[]"></td>

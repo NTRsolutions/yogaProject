@@ -101,7 +101,7 @@ if(isset($_POST['tokenid'])){
                                            
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Edit</button>                               
+                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Done</button>                               
                                         <div class="clearfix"></div>
 	                                </form>
 	                            </div>

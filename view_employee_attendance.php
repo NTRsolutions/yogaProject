@@ -84,7 +84,7 @@ $e_name = $employe->employee_view;
                                 <div class="card-header" data-background-color="purple">
 	                               <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
-                                     <h4 class="title">Employee Details</h4>
+                                     <h4 class="title">Employee Attendance Details</h4>
 
 
                                 </div>

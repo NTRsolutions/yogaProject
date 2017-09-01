@@ -68,7 +68,7 @@ $employee_view = $employee->employee_view;
                                                
                                             <div class="col-md-2">
 												<div class="form-group label-floating">
-													<label class="control-label"></label>
+													<label class="control-label">payment date</label>
 													<input type="date" class="form-control" name="payment_date[]" value="<?php echo date('Y-m-d');?>" required>
 												</div>
 	                                        </div>
