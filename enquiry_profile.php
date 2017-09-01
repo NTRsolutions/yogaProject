@@ -124,7 +124,7 @@ if(isset($_GET['enq_id'])){
                                                    
                                         </div>    
                                       <hr>
-	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+	                                    <button type="submit" class="btn btn-primary pull-right">Update Enquiry</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>

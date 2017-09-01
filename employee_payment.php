@@ -99,11 +99,11 @@ $employee_view = $employee->employee_view;
 													<select name ="paymentmode[]" >
                                                     <option value=""> -- Select Payment Mode -- </option>
                                                     <option value="Cash" >Cash</option>
-                                                    <option value="Cheque" >Cheque</option>
+                                                        <option value="Cheque" >Cheque</option>
                                                     <option value="Card" >Card</option>
                                                     <option value="NetBanking" >NetBanking</option>
                                                     </select>
-												</div>
+												</div>  
 	                                        </div>
                                                 <div class="col-md-2">
 												<div class="form-group label-floating">
