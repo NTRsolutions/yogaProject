@@ -25,18 +25,18 @@ $row = $result->fetch_assoc();
 									<p class="category">Here goes Details of client</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form>
+	                                <form action="edit_client.php" method="post">
 	                                    <div class="row">
 	                                        <div class="col-md-4">
                                             
 												<div class="form-group label-floating">
-												  <strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['c_ID']; ?>
+												  <strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $cid = $row['c_ID']; ?>
 													
 												</div>
 	                                        </div>
                                             
                                         </div>
-                                       
+                                       <input type="hidden" name="c_id" value="<?php echo $cid; ?>" >
                                          <hr>
                                              <div class="row">
 

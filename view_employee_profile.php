@@ -28,16 +28,17 @@ $row = $result->fetch_assoc();
 									<p class="category">Here goes Details of Employee</p>
 	                            </div>
 	                            <div class="card-content">
-                                    <form>
+                                    <form action="edit_employee.php" method="post">
 	                                    <div class="row">
                                             <div class="col-md-4">
                                             
                                                 <div class="form-group label-floating">
-													<strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $row['e_ID']; ?>
+													<strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $eid = $row['e_ID']; ?>
 		  											
 												</div>
 	                                        </div>
                                         </div>
+                                        <input type="hidden" name="e_ID" value="<?php echo $eid; ?>">
                                         <hr>
                                         <div class="row">
                                                  
