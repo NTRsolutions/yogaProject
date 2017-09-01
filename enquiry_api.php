@@ -1,4 +1,12 @@
 <?php 
+/*
+loc no 10-- //connect to database
+loc no 22-- // query to database for insert data in enquiry table
+loc no 31--// checked does query connect ? if it connected then execute                                                             next loop and print successfull
+loc no 37--  // if query is not connected to databse then execute next loop and print as                                             unsuccessfull
+loc no 58--   // if Query is empty then print as no value Found
+*/
+
 include 'config.php';
 if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['message']) && isset($_POST['date']) && isset($_POST['followupdate'])){
 

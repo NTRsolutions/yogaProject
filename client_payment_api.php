@@ -1,4 +1,14 @@
 <?php 
+
+/*
+loc no 13-- //connect to database
+loc no 23-- // query to database for UPDATE data in client table
+loc no 24-- // query to database for insert data in client_payment table
+loc no 26--//  connect query ? if it connected then execute                                                             next loop to client.php
+loc no 31---  // else client is not update
+*/
+
+
                       
 include 'config.php';
 if(isset($_POST['c_id']) && isset($_POST['date']) && isset($_POST['paymode']) && isset($_POST['c_amount']) && isset($_POST['c_balance'])&& isset($_POST['pay'])){

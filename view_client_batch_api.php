@@ -1,4 +1,9 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 9-- // query to database for SELECT in batch_id table
+loc no 19--//  0 result
+*/
 include 'config.php';
 $id = $_GET['batch_id'];
 $sql = "SELECT * FROM client WHERE batch_id = '$id'";

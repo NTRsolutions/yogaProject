@@ -1,4 +1,9 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 8- // query to database for SELECT in enquiry table
+loc no 18--//  0 result
+*/
 include 'config.php';
 $sql = "SELECT * FROM enquiry ORDER BY token_no DESC";
 $result = $conn->query($sql);

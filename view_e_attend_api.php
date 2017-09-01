@@ -1,6 +1,10 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 8-- // query to database for SELECT in e_attend table
+loc no 18--//  0 result
+*/
 include 'config.php';
-
 $sql = "SELECT * FROM `e_attend` ORDER BY `e_attend`.`date` DESC";
 $result = $conn->query($sql);
 $e_attend = array();

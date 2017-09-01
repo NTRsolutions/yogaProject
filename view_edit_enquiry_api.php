@@ -1,4 +1,9 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 10-- // query to database for SELECT in enquiry table
+loc no 22--//  0 result
+*/
 include 'config.php';
 if(isset($_POST["tokenid"])){
     $id = $_POST["tokenid"];
