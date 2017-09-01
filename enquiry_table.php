@@ -51,7 +51,7 @@ $enquiry_view = $enquiry->enquiry_view;
                         'email' => $_POST['e_mail'],
                         'contact' => $_POST['e_contact'],
                         'message' => $_POST['e_message'],                        
-                        'date' => $_POST['e_date']                        
+                        'followupdate' => $_POST['followupdate'],                   'date' => $_POST['e_date']                        
                     );
                     # Create a connection
                     $url = 'http://localhost/yogaProject/enquiry_api.php';
@@ -108,6 +108,7 @@ $enquiry_view = $enquiry->enquiry_view;
 	                                    	<th>Name</th>
 	                                    	<th>Email</th>
 	                                    	<th>Contact</th>
+	                                    	<th>Follow Up</th>
 	                                    	
                                             <th></th>
 	                                    	<th></th>
@@ -123,6 +124,7 @@ $enquiry_view = $enquiry->enquiry_view;
                                                 <td><?php echo $value->name;?></td>
                                                 <td><?php echo $value->email;?></td>
                                                 <td><?php echo $value->contact;?></td>
+                                                <td><?php echo $value->followupdate;?></td>
                                                 
                                      <form action="edit_enquiry.php" method="POST">
                                         <input value="<?php echo $id; ?>" type="hidden" name="tokenid">
