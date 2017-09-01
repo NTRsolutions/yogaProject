@@ -59,13 +59,13 @@ if(isset($_GET['enq_id'])){
 									<p class="category">Here goes Details of Enquiry</p>
 	                            </div>
 	                            <div class="card-content">
-	                                <form>
+	                                <form action="edit_enquiry.php" method="post">
 	                                    <div class="row">
 	                                        <div class="col-md-4">
                                             
 												<div class="form-group label-floating">
 													<strong class="text-primary">Token No:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->token_no; ?>
+													<?php echo $tokenid = $detail_enquiry->token_no; ?>
 												</div>
 	                                        </div>
                                         
@@ -131,6 +131,7 @@ if(isset($_GET['enq_id'])){
                                                    
                                         </div>    
                                       <hr>
+                                        <input type="hidden" name="tokenid" value="<?php echo $tokenid;?>" >
 	                                    <button type="submit" class="btn btn-primary pull-right">Update Enquiry</button>
 	                                    <div class="clearfix"></div>
 	                                </form>
