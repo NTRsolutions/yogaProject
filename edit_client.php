@@ -115,13 +115,13 @@ $batch_view = $batch->batch_view;
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="dropdown">
+                                        <div style="margin:35px 0 0 0" class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                 <p class="hidden-lg hidden-md">Notifications</p>
                                             </a>
                                             <?php foreach($batch_view as $value){if($c_view->batch_name == $value->batch_name){ $id = $value->batch_id;}}?>
                                             <label for="business">Select Batch:</label>
-                                            <select style="width:250px;" name="batch" required>
+                                            <select style="width:300px; height:38px;" name="batch" required>
                                                 <li>
                                                     <option value="<?php echo $id;?>"><?php echo $c_view->batch_name;?></option>
                                                     </li>

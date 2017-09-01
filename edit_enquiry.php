@@ -44,7 +44,7 @@ if(isset($_POST['tokenid'])){
                                         <div class="row">
                                            <div class="col-md-12">
                                                 <div class="form-group label-floating" align="center">
-                                                    <label style="left:150px!important;" class="control-label"><strong>Enquiry Status</strong></label>
+                                                    <label style="left:200px!important;" class="control-label"><strong>Enquiry Status</strong></label>
 													<select name="status" required>
                                                         <option value="<?php echo $enquiry_view->status;?>"><?php echo $enquiry_view->status;?></option>
                                                         <option value="">-- Select Status --</option>

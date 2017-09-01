@@ -68,7 +68,7 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input onkeyup="Latters(c_surname)" type="text" 
+                                            <input  onkeyup="Latters(c_surname)" type="text" 
                                              class="form-control validSurname" name="c_surname" required>
                                         </div>
                                     </div>
@@ -77,13 +77,13 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Fees</label>
-                                            <input onkeyup="allnumeric(c_fees)"  type="text"  class="form-control validnumber" name="c_fees" required>
+                                            <input  onkeyup="allnumeric(c_fees)"  type="text"  class="form-control validnumber" name="c_fees" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Balance</label>
-                                            <input onkeyup="allnumeric(balance)"  type="text"  class="form-control validnumber" name="balance" required>
+                                            <input  onkeyup="allnumeric(balance)"  type="text"  class="form-control validnumber" name="balance" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -100,13 +100,13 @@ $batch_view = $batch->batch_view;
                                             <textarea rows="3" cols="30" name="c_address"  class="form-control" required></textarea> 
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div style="margin:35px 0 0 0" class="col-md-6">
                                         <div class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                                 <p class="hidden-lg hidden-md">Notifications</p>
                                             </a>
                                             <label for="business">Select Batch:</label>
-                                            <select style="width:250px;" name="batch" required><option value="">Select Batch</option>
+                                            <select style="width:300px; height:38px;" name="batch" required><option value="">Select Batch</option>
                                                 <?php foreach($batch_view as $value): ?>
                                                 <li>
                                                     <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
