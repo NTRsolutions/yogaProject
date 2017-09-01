@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php 
 # Create a connection
 $ch = curl_init();
@@ -16,23 +15,18 @@ $enquiry_view = $enquiry->enquiry_view;
 ?>
 <?php include 'header.php'; ?>
 <style>
-
     #myInput{
         width:20%;
         float:right;
         color:white;
     }
-    
     .form-group{
         padding-bottom: 0px!important;
         margin: 0 0 0 0!important;
     }
-    
     .icon{
-    
         float:right;
     }
-
 </style>
 
 
@@ -153,16 +147,12 @@ $enquiry_view = $enquiry->enquiry_view;
                             </div>
                         </div>
                     </div>
-                        
                </div>
 </div>
-	        
 
+                            
 
-
-					
-			<?php include 'footer.php'; ?>
-
+<?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php

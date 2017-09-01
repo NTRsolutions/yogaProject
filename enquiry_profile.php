@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php 
 if(isset($_GET['enq_id'])){
     $enq_id = $_GET['enq_id'];
@@ -24,8 +23,6 @@ if(isset($_GET['enq_id'])){
     $enquiry = json_decode($content);
     $enquiry_view = $enquiry->enquiry_view;
     $detail_enquiry = $enquiry_view[0];
-    
-    
     /*# Create a connection
     $url = 'http://localhost/yogaProject/add_client_api.php';
     $ch = curl_init($url);
@@ -35,19 +32,12 @@ if(isset($_GET['enq_id'])){
     $response = curl_exec($ch);
         print_r($response);
     curl_close($ch); */
-    
-    
-    
-    
-    
-    
-    
-    
 } 
 ?>
 <?php include 'header.php'; ?>
 <?php $page=7;include 'sidebar.php'; ?>
 <?php $nav=6;include 'nav.php'; ?>
+
 
       <div class="content">
 	            <div class="container-fluid">
@@ -144,6 +134,7 @@ if(isset($_GET['enq_id'])){
 	            </div>
 	        </div>
       
+
 
 
 

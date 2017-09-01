@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php  
 # Create a connection
 $ch = curl_init();
@@ -13,10 +12,8 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
-
 //$batch_view = $batch->batch_view;
 ?>
-
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
@@ -64,13 +61,15 @@ $batch_view = $batch->batch_view;
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name </label>
-                                            <input  onkeyup="allLatters(c_name)" type="text" class="form-  control validName" name="c_name" required>
+                                            <input  onkeyup="allLatters(c_name)" type="text" 
+                                            class="form-control validName" name="c_name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input onkeyup="Latters(c_surname)" type="text"  class="form-  control validSurname" name="c_surname" required>
+                                            <input onkeyup="Latters(c_surname)" type="text" 
+                                             class="form-control validSurname" name="c_surname" required>
                                         </div>
                                     </div>
                                 </div>
@@ -128,7 +127,6 @@ $batch_view = $batch->batch_view;
     </div>
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
-
 <?php include 'script_include.php'; ?>
 <?php
 }

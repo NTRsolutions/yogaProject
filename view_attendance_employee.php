@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php 
 if(isset($_POST['submit'])){
       $e_attend_id = $_POST['e_attend_ID'];
@@ -21,7 +20,6 @@ if(isset($_POST['submit'])){
     //print_r($attendance);
     }
 ?>
-
 <?php  
 # Create a connection
 $ch = curl_init();
@@ -32,30 +30,23 @@ $content = curl_exec($ch);
 $employee = json_decode($content);
 $employee_view = $employee->employee_view;
 //print_r($employee_view);
-
 ?>
 <?php include 'header.php'; ?>
 <style>
-
     #myInput{
         width:20%;
         float:right;
          color:white;
     }
-    
     .form-group{
         padding-bottom: 0px!important;
         margin: 0 0 0 0!important;
     }
-    
     .icon{
     
         float:right;
     }
-
 </style>
-
-
   <?php $page=5;include 'sidebar.php'; ?>
    <?php $nav=7;include 'nav.php'; ?>
 
@@ -84,6 +75,7 @@ $employee_view = $employee->employee_view;
                                             </thead>
                                            
                                             <tbody id="myTable"><?php        $i=1;foreach($e_id as $value):    
+
                                                 foreach($employee_view as $employeetvalue):
                                                 if($employeetvalue->e_ID == $value){
                                                 ?> 
@@ -93,17 +85,16 @@ $employee_view = $employee->employee_view;
                                                     <td><?php echo $employeetvalue->e_name." ".$employeetvalue->e_surname;?></td>
                                                     <td><?php $ab = in_array($value,$attendance); 
                                                     if($ab >0){ echo "<font color='red'>absent</font>";}
-                                                        else {echo "<font color='green'>present</font";}?></td>
-                                                </tr><?php }endforeach;endforeach; ?>
-                                            </tbody>
-                                    </table>
-                            </div>
-                        </div>
-                    </div>
-         </div>
+                                                    else {echo "<font color='green'>present</font";}?></td>
+                                                    </tr><?php }endforeach;endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php include 'footer.php'; ?>
-
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php include 'tablesearch_script.php'; ?>

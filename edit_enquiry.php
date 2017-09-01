@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php include 'header.php'; ?>
 <?php $page=7;include 'sidebar.php'; ?>
 <?php $nav=6;include 'nav.php'; ?>
@@ -25,10 +24,10 @@ if(isset($_POST['tokenid'])){
     
     $enquiry_detail = json_decode($content);
     $enquiry_view = $enquiry_detail->enquiry_view[0];
-    
 }
 ?>
 <div class="content">
+
         <div class="container-fluid">
                        
                     
@@ -114,12 +113,12 @@ if(isset($_POST['tokenid'])){
 	                            </div>
 	                        </div>
 	                    </div>
-                    </div>
-	            
-	        </div>
-     <?php include 'footer.php'; ?>
-<?php include 'validation_script.php'; ?>
+            </div>
+    </div>
+</div>
 
+<?php include 'footer.php'; ?>
+<?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
 }

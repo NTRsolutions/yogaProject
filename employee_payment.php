@@ -3,12 +3,10 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php include 'header.php'; ?>
   <?php $page=3;include 'sidebar.php'; ?>
    <?php $nav=3;include 'nav.php'; ?>
 <?php include 'config.php'; ?>
-
 <?php  
 # Create a connection
 $ch = curl_init();
@@ -20,16 +18,14 @@ $employee = json_decode($content);
 $employee_view = $employee->employee_view;
 //print_r($employee_view);
 ?>
-
 <?php 
-                    if(isset($_POST['submit'])){
+                      if(isset($_POST['submit'])){
                         if(isset($_POST['e_id']) && isset($_POST['payment_date']) && isset($_POST['paymentmode'])){
                         $data = array(
                             'e_id' => $_POST['e_id'],
                             'payment_date' => $_POST['payment_date'],
                             'paymentmode' => $_POST['paymentmode'],
                             'checkbox' => $_POST['checkbox']
-                           
                         );
                         # Create a connection
                         $url = 'http://localhost/yogaProject/add_employee_payment_api.php';
@@ -46,8 +42,8 @@ $employee_view = $employee->employee_view;
                         curl_close($ch);    
                         }
                     }
-
                     ?>
+
 
 
     <div class="content">
@@ -122,11 +118,12 @@ $employee_view = $employee->employee_view;
 	                        </div>
 	                    </div>
                     </div>
-	            </div>
-	        </div>
-     <?php include 'footer.php'; ?>
-<?php include 'validation_script.php'; ?>
+        </div>
+</div>
 
+
+<?php include 'footer.php'; ?>
+<?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
 }

@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php 
 include 'config.php';
 $id = $_GET['e_id'];
@@ -11,12 +10,9 @@ $sql = "SELECT * FROM employee WHERE e_ID = '$id'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 ?>
-
-
-
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
-   <?php $nav=3;include 'nav.php'; ?>
+<?php $nav=3;include 'nav.php'; ?>
 
       <div class="content">
 	            <div class="container-fluid">
@@ -123,10 +119,6 @@ $row = $result->fetch_assoc();
 	                </div>
 	            </div>
 	        </div>
-      
-
-
-
 <?php include 'footer.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php

@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
@@ -26,8 +25,6 @@ if(isset($_POST['c_id'])){
     $client_detail = json_decode($content);
     $c_view = $client_detail->client_view[0];
    // echo $c_view->c_name;
-    
-    
    # Create a connection
 $ch = curl_init();
 curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
@@ -71,8 +68,8 @@ $batch_view = $batch->batch_view;
     
 }*/
 ?>
-    <div class="content">
-        <div class="container-fluid">
+<div class="content">
+    <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -109,40 +106,33 @@ $batch_view = $batch->batch_view;
                                             <input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control" value="<?php echo $c_view->contact;?>" name="c_contact" required>
                                         </div>
                                     </div>
-	                            </div>
-                                
-                                
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
-                                     <textarea rows="3" cols="30" name="c_address"  class="form-control" required><?php echo $c_view->address;?></textarea> 
+                                            <textarea rows="3" cols="30" name="c_address"  class="form-control" required><?php echo $c_view->address;?></textarea> 
                                         </div>
                                     </div>
-                                    
-                                      <div class="col-md-6">
-                                     <div class="dropdown">
-                                        
-                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                 <p class="hidden-lg hidden-md">Notifications</p>
-								</a>
-                                         <?php foreach($batch_view as $value){if($c_view->batch_name == $value->batch_name){ $id = $value->batch_id;}}?>
-                             <label for="business">Select Batch:</label>
-                             <select style="width:250px;" name="batch" required>
-                                 <li>
-                                            <option value="<?php echo $id;?>"><?php echo $c_view->batch_name;?></option>
-                                 </li>
-                                 <?php foreach($batch_view as $value): ?>
-                                 <li>
-                                            <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
-                                 </li>
-
-									<?php endforeach; ?>
-                             </select>
-                                    
-								                                        
-                         </div>                                  </div> 
-                                    
+                                    <div class="col-md-6">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <p class="hidden-lg hidden-md">Notifications</p>
+                                            </a>
+                                            <?php foreach($batch_view as $value){if($c_view->batch_name == $value->batch_name){ $id = $value->batch_id;}}?>
+                                            <label for="business">Select Batch:</label>
+                                            <select style="width:250px;" name="batch" required>
+                                                <li>
+                                                    <option value="<?php echo $id;?>"><?php echo $c_view-   >batch_name;?></option>
+                                                    </li>
+                                                <?php foreach($batch_view as $value): ?>
+                                                <li>
+                                                    <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
+                                                </li>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>                             
+                                    </div> 
                                 </div>
                                 <input type="hidden" value="<?php echo $cid; ?>" name="c_id"> 
                                 <button type="submit" name="edit"class="btn btn-primary pull-right">Done</button>
@@ -151,8 +141,8 @@ $batch_view = $batch->batch_view;
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
+    </div>
 </div>
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>

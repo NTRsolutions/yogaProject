@@ -1,5 +1,3 @@
-
-
 <?php
 # Create a connection
 $ch = curl_init();
@@ -20,7 +18,6 @@ foreach($enquiry_view as $value){
     
 }
 ?>
-
 <div class="main-panel">
 <nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
@@ -111,4 +108,5 @@ foreach($enquiry_view as $value){
 
 				</div>
 			</nav>
+
     

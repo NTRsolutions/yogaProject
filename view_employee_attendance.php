@@ -1,4 +1,3 @@
-
 <?php
 // Start the session
 session_start();
@@ -6,7 +5,6 @@ if(!empty($_SESSION)){
 ?>
 
 <?php  
-
 # Create a connection
 $ch = curl_init();
 curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_e_attend_api.php');
@@ -17,7 +15,6 @@ $employee = json_decode($content);
 $attend_view = $employee->e_attend_view;
 //print_r($attend_view);
 ?>
-
 <?php 
  # Create a connection
 $ch = curl_init();
@@ -29,28 +26,22 @@ $employe = json_decode($content);
 $e_name = $employe->employee_view;
 //print_r($e_name);
 ?>
-
-
 <?php include 'header.php'; ?>
 <style>
-
     #myInput{
         width:20%;
         float:right;
          color:white;
     }
-    
     .form-group{
         padding-bottom: 0px!important;
         margin: 0 0 0 0!important;
     }
-    
     .icon{
-    
         float:right;
     }
-
 </style>
+
 
 
   <?php $page=5;include 'sidebar.php'; ?>
@@ -103,8 +94,8 @@ $e_name = $employe->employee_view;
                     </div>
          </div>
 </div>
-<?php include 'footer.php'; ?>
 
+<?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
