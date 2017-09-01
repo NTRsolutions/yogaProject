@@ -48,10 +48,10 @@ if(isset($_POST['tokenid'])){
 													<select name="status" required>
                                                         <option value="<?php echo $enquiry_view->status;?>"><?php echo $enquiry_view->status;?></option>
                                                         <option value="">-- Select Status --</option>
-                                                        <option value="Pending">Pending</option>
-                                                        <option value="Done">Done</option>
-                                                        <option value="Postponed">Postponed</option>
-                                                        <option value="Missed">Missed</option>
+                                                        <option value="pending">Pending</option>
+                                                        <option value="done">Done</option>
+                                                        <option value="postponed">Postponed</option>
+                                                        <option value="missed">Missed</option>
                                                     </select>
 												</div>
 	                                        </div> 
