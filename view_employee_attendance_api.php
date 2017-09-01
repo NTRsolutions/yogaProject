@@ -1,4 +1,9 @@
-<?php
+<?php 
+/*
+loc no 7-- //connect to database
+loc no 10-- // query to database for SELECT in e_attend_pa table
+loc no 20--//  0 result
+*/
 include 'config.php';
 if(isset($_GET['e_attend_id'])){
      $id = $_GET['e_attend_id'];

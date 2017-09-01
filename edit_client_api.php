@@ -1,4 +1,12 @@
 <?php 
+/*
+loc no 10-- //connect to database
+loc no 21-- // query to database for UPDATE in client table
+loc no 18--//  connect query ? if it connected then execute alert record UPDATE successfully go to client.php                                                       
+loc no 20---  // else record not UPDATE
+*/
+
+
 include 'config.php';
 if(isset($_POST['c_name']) && isset($_POST['c_surname']) && isset($_POST['c_fees']) && isset($_POST['c_contact']) && isset($_POST['c_address']) && isset($_POST['batch'])){
 
