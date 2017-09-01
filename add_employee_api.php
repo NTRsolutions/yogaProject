@@ -1,5 +1,12 @@
 <?php 
 include 'config.php';
+/*
+line no 2-- //connect to database
+ line no 17-- // query to database for insert data in Employee table
+  line no 20--// checked does query connect ? if it connected then execute                                                        next loop and print successfull
+ line no 35--  // if query is not connected to databse then execute next loop and print as                                             unsuccessfull
+ line no 55--   // if Query is empty then print as no value fount
+*/
 if(isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['e_salary'])&& isset($_POST['e_address'])&& isset($_POST['e_contact'])){
     
      $e_name = $_POST['e_name'];

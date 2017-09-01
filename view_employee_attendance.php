@@ -5,25 +5,6 @@ session_start();
 if(!empty($_SESSION)){
 ?>
 
-<?php 
-/*
-if(isset($_POST['submit'])){
-      $e_attend_ID = $_POST['e_attend_ID'];
-    # Create a connection
-    $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaProject/view_employee_attendance_api.php/?e_attend_ID=$e_attend_ID");
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $content = curl_exec($ch);
-    $employee_attend = json_decode($content);
-    $attend_view = $employee_attend->attendance_view;
-    $attendance = $attend_view[0];
-    $e_ID = explode(",",$attendance->e_ID);
-    $attendance = explode(",",$attendance->attendance);
-
-    }*/
-?>
-
 <?php  
 
 # Create a connection
@@ -114,23 +95,7 @@ $e_name = $employe->employee_view;
                                                     </td>
                                                     <td><?php echo $value->time; ?></td>
                                                 </tr><?php endforeach; ?>
-                                                
-                                                
-                                                
-                                                <?php   /*     $i=1;foreach($employee as $value):    
-                                                foreach($employee_view as $employeevalue):
-                                                if($employeevalue->e_attend_ID == $value){ 
-                                                ?> 
-                                                <tr>
-                                                    <td><?php echo $i;$i++; ?></td>
-                                                    <td><?php echo $employeevalue->e_ID;?></td>
-                                                    <td><?php echo $employeevalue->date;?></td>
-                                                    <td><?php echo $employeevalue->time;?></td>
-                                                    <td><?php echo $employeevalue->e_name." ".$employeevalue->e_surname;?></td>
-                                                    <td><?php $ab = in_array($value,$attendance); */
-                                                   
-                                                   
-                                               /* </tr><?php }endforeach;endforeach; */?>
+                                               
                                             </tbody>
                                     </table>
                             </div>

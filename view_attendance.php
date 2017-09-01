@@ -87,6 +87,7 @@ $attend_view = $attend->attend_view;
 
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php include 'tablesearch_script.php'; ?>
 <?php
 }
 else echo "<h1>No User Logged In</h1>";
