@@ -40,13 +40,19 @@ $employee_view = $employee->employee_view;
 
      <div class="content">
 	            <div class="container-fluid">
+
                     
                       <?php 
+
                             if(isset($_POST['submit'])){
                                 $date = $_POST['date'];
                                 $timing = $_POST['timing'];
                                 $eid = $_POST['eid'];
-                                $checkbox = $_POST['checkbox'];
+                                if(!isset($_POST['checkbox'])){
+                                    $checkbox=NULL;
+                                }else{
+                                    $checkbox = $_POST['checkbox'];
+                                }
                                 $data = array(
                                     'date' => $date,
                                     'timing' => $timing,
@@ -71,8 +77,10 @@ $employee_view = $employee->employee_view;
                             }
                         ?>
 
+
 	                <div class="row">
                         
+
                          <div class="col-lg-4 col-md-6 col-sm-6">
 							<div class="card card-stats">
 								<div class="card-header" data-background-color="orange">
@@ -89,11 +97,8 @@ $employee_view = $employee->employee_view;
 								</div>
 							</div>
 						</div>
+                        <form action="employee_attendance.php" method="post">
 
-                        
-                        
-                        
-                                              <form action="employee_attendance.php" method="post">
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="purple">
