@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 # Create a connection
 $ch = curl_init();
 curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
@@ -10,12 +11,22 @@ $date1 = date('Y-m-d', strtotime("-1 days"));
 $date2 = date('Y-m-d', strtotime("+2 days"));
 $enquiry_view = $enquiry->enquiry_view;
 $i=0;
+$currentdate = date('Y-m-d');
 foreach($enquiry_view as $value){
      $eurydate = $value->followupdate;
     if($eurydate >= $date1 && $eurydate <= $date2){
+        if($value->status == "pending"){
+            $tokenid = $value->token_no; 
+            mysqli_query($conn, "UPDATE `enquiry` SET `status`='missed' WHERE `token_no`= '$tokenid'");
+        }
         $i++;
     }
-    
+    else if($eurydate < $currentdate){
+        if($value->status == "pending"){
+            $tokenid = $value->token_no; 
+            mysqli_query($conn, "UPDATE `enquiry` SET `status`='missed' WHERE `token_no`= '$tokenid'");
+        }
+    }
 }
 ?>
 <div class="main-panel">
@@ -58,13 +69,14 @@ foreach($enquiry_view as $value){
 									<span class="notification"><?php echo $i; ?></span>
 									<p class="hidden-lg hidden-md">Notifications</p>
 								</a>
-								<ul class="dropdown-menu" style="width:200px">
+								<ul class="dropdown-menu" style="width:250px">
                                     
                                     <table class="table table-borderless">
                                         <thead>
                                            <th> <strong>Token_no</strong> </th>
                                          <th>   <strong>Name</strong> </th>
                                            <th> <strong> Date </strong></th>
+                                           <th> <strong> Status </strong></th>
 	                                    </thead>
 	                                    <tbody>
                                                 <?php foreach($enquiry_view as $value){ ?>
@@ -79,6 +91,7 @@ foreach($enquiry_view as $value){
                                                 <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->name;?></a></td>
                                                 
                                                 <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php $dm = explode("-",$value->followupdate); echo $dm[2]."-".$dm[1];?></a></td>
+                                                <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->status; ?></a></td>
                                                 <?php
                                                 }
                                                 ?> 
