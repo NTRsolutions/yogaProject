@@ -103,6 +103,7 @@ $enquiry_view = $enquiry->enquiry_view;
 	                                    	<th>Email</th>
 	                                    	<th>Contact</th>
 	                                    	<th>Follow Up</th>
+	                                    	<th>Status</th>
 	                                    	
                                             <th></th>
 	                                    	<th></th>
@@ -119,6 +120,7 @@ $enquiry_view = $enquiry->enquiry_view;
                                                 <td><?php echo $value->email;?></td>
                                                 <td><?php echo $value->contact;?></td>
                                                 <td><?php echo $value->followupdate;?></td>
+                                                <td><?php echo $value->status;?></td>
                                                 
                                      <form action="edit_enquiry.php" method="POST">
                                         <input value="<?php echo $id; ?>" type="hidden" name="tokenid">

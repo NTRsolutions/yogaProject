@@ -41,6 +41,21 @@ if(isset($_POST['tokenid'])){
 	                            </div>
 	                            <div class="card-content">
 	                                <form action="enquiry_edit_api.php" method="post">
+                                        <div class="row">
+                                           <div class="col-md-12">
+                                                <div class="form-group label-floating" align="center">
+                                                    <label style="left:150px!important;" class="control-label"><strong>Enquiry Status</strong></label>
+													<select name="status" required>
+                                                        <option value="<?php echo $enquiry_view->status;?>"><?php echo $enquiry_view->status;?></option>
+                                                        <option value="">-- Select Status --</option>
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Done">Done</option>
+                                                        <option value="Postponed">Postponed</option>
+                                                        <option value="Missed">Missed</option>
+                                                    </select>
+												</div>
+	                                        </div> 
+                                        </div>
 	                                        <div class="row">
 	
 	                                        <div class="col-md-6">
