@@ -3,11 +3,14 @@
 session_start();
 ?>
 <?php 
+
 if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
     $username = $_POST['username']; 
     $password = $_POST['password'];
     $_SESSION["username"] = $username;
     $_SESSION["password"] = $password;
+}
+if(isset($_SESSION["username"])){
 ?>
 <?php include 'header.php'; ?>
 <?php $page=1;include 'sidebar.php'; ?>
@@ -15,6 +18,7 @@ if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password']
 <div class="content">
     <div class="container-fluid">
         <?php
+        if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     $data = array(
@@ -37,6 +41,7 @@ if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password']
         echo "<script>debugger;window.location = 'login.php';</script>";
     }                                                       
     curl_close($ch);
+        }
         ?>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
