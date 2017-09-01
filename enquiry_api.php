@@ -10,7 +10,7 @@ if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) 
      $date = $_POST['date'];
      $followupdate = $_POST['followupdate'];
     
-    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `date`, `followupdate`, `message`) VALUES ('$token_no', '$name', '$email', '$contact', '$date', '$followupdate', '$message');";
+    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `date`, `followupdate`, `message`, `status`) VALUES ('$token_no', '$name', '$email', '$contact', '$date', '$followupdate', '$message', 'pending');";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">
