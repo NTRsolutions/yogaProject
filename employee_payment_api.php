@@ -1,4 +1,10 @@
 <?php 
+/*
+loc no 8-- //connect to database
+loc no 9-- // query to database for SELECT in employee table
+loc no 12--//  connect query ? if it connected then execute alert record SELECT successfully 
+loc no 19---  // else record not SELECT
+*/
 include 'config.php';
 $sql = "SELECT * FROM Employee ORDER BY e_ID DESC";
 $result = $conn->query($sql);

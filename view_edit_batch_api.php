@@ -1,4 +1,9 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 12-- // query to database for SELECT in batch_id table
+loc no 24--//  0 result
+*/
 include 'config.php';
 if(isset($_POST["batch_id"])){
   $id = $_POST["batch_id"];

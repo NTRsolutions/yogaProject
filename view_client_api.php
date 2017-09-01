@@ -1,4 +1,9 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 11-- // query to database for SELECT in client table
+loc no 18--//  0 result
+*/
 include 'config.php';
 $sql = "SELECT * FROM client ORDER BY c_ID DESC";
 $result = $conn->query($sql);

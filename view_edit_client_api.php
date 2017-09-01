@@ -1,4 +1,10 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 12-- // query to database for SELECT in client table
+loc no 21-- // query to database for SELECT in batch table
+loc no 27--//  0 result
+*/
 include 'config.php';
 if(isset($_POST["c_id"]) ){
   $id = $_POST["c_id"];

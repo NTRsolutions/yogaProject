@@ -1,4 +1,12 @@
 <?php 
+
+/*
+loc no 10-- //connect to database
+loc no 19-- // query to database for UPDATE in employee table
+loc no 20--//  connect query ? if it connected then execute alert record UPDATE successfully go to employee.php                                                       
+loc no 24---  // else record not UPDATE
+*/
+
 include 'config.php';
 if(/*isset($_POST['e_ID']) &&*/ isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['address']) && isset($_POST['contact']) ){
      $eid = $_POST['e_ID'];

@@ -1,4 +1,9 @@
 <?php 
+/*
+loc no 7-- //connect to database
+loc no 9- // query to database for SELECT in enquiry table
+loc no 19--//  0 result
+*/
 include 'config.php';
 $enq_id = $_POST['enq_id'];
 $sql = "SELECT * FROM enquiry WHERE token_no = '$enq_id';";
