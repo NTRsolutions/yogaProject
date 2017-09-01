@@ -102,7 +102,7 @@ if(isset($_POST['submit'])){
                             <div class="col-md-4">
                                 <div style="width:200px;" class="form-group label-floating">
                                         <label for="business">Select Batch:</label>
-                                    <select style="width:250px;" name="batch_id" required>
+                                    <select style="width:300px; height:38px;" name="batch_id" required>
                                         <option value="">Name ---  Timing</option>
                                         <?php foreach($batch_view   as $value): ?>
                                         <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name." --- ".$value->batch_timing; ?></option>
@@ -113,17 +113,17 @@ if(isset($_POST['submit'])){
                             <div class="col-md-4">
                                 <div class="form-group label-floating">
                                     <!--<label class="control-label">date</label>-->
-                                    <input type="date" class="form-control" value="<?php echo date("Y-m-d"); ?>"name="date">
+                                    <input style="margin-top:28px;" type="date" class="form-control" value="<?php echo date("Y-m-d"); ?>"name="date">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Timing</label>
-                                    <input type="text" class="form-control" name="timing">
+                                    <input style="margin-top:28px;" type="text" class="form-control" name="timing">
                                 </div>
                             </div>
                             <div class="row">
-                                <button type="submit" class="btn btn-primary pull-right" name="submit">Submit</button>
+                                <button style="margin-right:20px;" type="submit" class="btn btn-primary pull-right" name="submit">Submit</button>
                                 <div class="clearfix"></div>
                             </div>
                         </form>

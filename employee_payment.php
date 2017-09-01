@@ -18,7 +18,10 @@ $employee = json_decode($content);
 $employee_view = $employee->employee_view;
 //print_r($employee_view);
 ?>
-<?php 
+
+    <div class="content">
+	            <div class="container-fluid">
+ <?php 
                       if(isset($_POST['submit'])){
                         if(isset($_POST['e_id']) && isset($_POST['payment_date']) && isset($_POST['paymentmode'])){
                         $data = array(
@@ -46,9 +49,6 @@ $employee_view = $employee->employee_view;
 
 
 
-    <div class="content">
-	            <div class="container-fluid">
- 
 
                     <div class="row">
 	                    <div class="col-md-12">
@@ -90,9 +90,9 @@ $employee_view = $employee->employee_view;
                                         
                                                
                                            <div class="col-md-2">
-												<div class="form-group label-floating">
+												<div style="margin:26px 0 0 0" class="form-group label-floating">
 													<label class="control-label">Payment Mode</label>
-													<select name ="paymentmode[]" >
+													<select style="width:200px; height:38px;" name ="paymentmode[]" >
                                                     <option value=""> -- Select Payment Mode -- </option>
                                                     <option value="Cash" >Cash</option>
                                                         <option value="Cheque" >Cheque</option>
