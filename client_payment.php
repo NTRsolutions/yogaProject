@@ -59,7 +59,7 @@ if(isset($_POST['id'])){
                                 <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <label class="control-label"></label>
-                                        <input type="date" class="form-control" value="<?php echo date("Y-m-d")?>" name="date" required>
+                                        <input style="margin-top:46px;" type="date" class="form-control" value="<?php echo date("Y-m-d")?>" name="date" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
