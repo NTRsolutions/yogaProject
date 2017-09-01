@@ -5,7 +5,10 @@
         if(c_name.value.match(letters))  
         {  
             return true;  
-        }  
+        }
+        else if(c_name.which!=9){
+            return true;
+        }
         else  
         {  
             alert("Enter only alphabets");
@@ -19,7 +22,10 @@
         if(c_surname.value.match(letters))  
         {  
             return true;  
-        }  
+        }
+        else if(c_surname.which!=9){
+            return true;
+        }
         else  
         {  
             alert("Enter only alphabets");
@@ -33,7 +39,10 @@
         if(c_fees.value.match(numbers))  
         {  
             return true;  
-        }  
+        }
+        else if(c_fees.which!=9){
+            return true;
+        } 
         else  
         {  
             alert("Enter only Digits");

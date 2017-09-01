@@ -32,7 +32,7 @@ if(isset($_POST['date']) && isset($_POST['timing']) && isset($_POST['eid']) ){
         ?> 
 <div class="alert alert-success" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria- hidden="true">&times;</span></button>
-        <strong>Success!</strong> You have been signed in successfully!
+        <strong>Success!</strong> Employee attendance added successfully!
 </div>
 <script>
     window.setTimeout(function() {
