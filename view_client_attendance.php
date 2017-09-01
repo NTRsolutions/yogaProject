@@ -66,7 +66,7 @@ $client_view = $client->client_view;
                                 <div class="card-header" data-background-color="purple">
 	                               <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
                                      <i class="material-icons icon">search</i> 
-                                     <h4 class="title">Client Details</h4>
+                                     <h4 class="title">Client Attendance Details</h4>
 
 
                                 </div>
@@ -104,6 +104,7 @@ $client_view = $client->client_view;
 
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php include 'tablesearch_script.php'; ?>
 <?php
 }
 else echo "<h1>No User Logged In</h1>";
