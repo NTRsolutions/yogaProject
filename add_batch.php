@@ -18,7 +18,6 @@ if(!empty($_SESSION)){
         float:right;
     }
 </style>
-
 <?php $page=6;include 'sidebar.php'; ?>
 <?php $nav=5;include 'nav.php'; ?>
 <div class="content">
@@ -63,7 +62,7 @@ if(!empty($_SESSION)){
                             <div class="col-md-6">
                                 <div class="form-group label-floating">
                                     <label class="control-label">Name</label>
-                                    <input type="text" class="form-control"     name="batch_name" required>
+                                    <input type="text" class="form-control" name="batch_name" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -83,12 +82,11 @@ if(!empty($_SESSION)){
         </div>
     </div>
 </div>
-        
 <?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
-                     }
+}
 else echo "<h1>No User Logged In</h1>";
 ?>
 

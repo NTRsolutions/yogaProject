@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php 
 if(isset($_GET['enq_id'])){
     $enq_id = $_GET['enq_id'];
@@ -24,8 +23,6 @@ if(isset($_GET['enq_id'])){
     $enquiry = json_decode($content);
     $enquiry_view = $enquiry->enquiry_view;
     $detail_enquiry = $enquiry_view[0];
-    
-    
     /*# Create a connection
     $url = 'http://localhost/yogaProject/add_client_api.php';
     $ch = curl_init($url);
@@ -35,110 +32,76 @@ if(isset($_GET['enq_id'])){
     $response = curl_exec($ch);
         print_r($response);
     curl_close($ch); */
-    
-    
-    
-    
-    
-    
-    
-    
 } 
 ?>
 <?php include 'header.php'; ?>
 <?php $page=7;include 'sidebar.php'; ?>
 <?php $nav=6;include 'nav.php'; ?>
-
-      <div class="content">
-	            <div class="container-fluid">
-	                <div class="row">
-	                    <div class="col-md-8">
-	                        <div class="card">
-	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Enquiry</h4>
-									<p class="category">Here goes Details of Enquiry</p>
-	                            </div>
-	                            <div class="card-content">
-	                                <form>
-	                                    <div class="row">
-	                                        <div class="col-md-6">
-                                            
-												<div class="form-group label-floating">
-													<strong class="text-primary">Token No:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->token_no; ?>
-												</div>
-	                                        </div>
-                                        
-	                                        <div class="col-md-6">
-                                            
-												<div class="form-group label-floating">
-													<strong class="text-primary">Date:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->date; ?>
-												</div>
-	                                        </div>
-                                        </div>
-                                         <hr>
-                                        
-                                             <div class="row">
-
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>
-												    <?php echo $detail_enquiry->name; ?>
-												</div>
-	                                        </div>
-                                         <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Email Address:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->email; ?>
-												</div>
-	                                        </div>
-                                             
-                                        </div> 
-                                        
-                                        <hr>
-                                         
-
-	                                             
-                                     
-                                         
-                                        
-                                                 
-	                                        <div class="row">
-
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong>
-												    <?php echo $detail_enquiry->contact; ?>
-												</div>
-	                                        </div>
-                                        
-                                            
-	                                         
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Message:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->message; ?>
-												</div>
-	                                        </div>
-                                                   
-                                        </div>    
-                                      <hr>
-	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-	                                    <div class="clearfix"></div>
-	                                </form>
-	                            </div>
-	                        </div>
-	                    </div>
-                        
-						                        
-	                </div>
-	            </div>
-	        </div>
-      
-
-
-
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title">Enquiry</h4>
+                        <p class="category">Here goes Details of Enquiry</p>
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Token     No:&nbsp&nbsp&nbsp&nbsp</strong>
+                                        <?php echo $detail_enquiry->token_no; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Date:&nbsp&nbsp&nbsp&nbsp</strong>
+                                        <?php echo $detail_enquiry->date; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>
+                                        <?php echo $detail_enquiry->name; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Email Address:&nbsp&nbsp&nbsp&nbsp</strong>
+                                        <?php echo $detail_enquiry->email; ?>
+                                    </div>
+                                </div>
+                            </div> 
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong>
+                                        <?php echo $detail_enquiry->contact; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Message:&nbsp&nbsp&nbsp&nbsp</strong>
+                                        <?php echo $detail_enquiry->message; ?>
+                                    </div>
+                                </div>
+                            </div>    
+                            <hr>
+                            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include 'footer.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php

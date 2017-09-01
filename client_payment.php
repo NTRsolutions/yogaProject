@@ -36,8 +36,9 @@ if(isset($_POST['id'])){
                         <div class="row">
                             <form action="client_payment.php" method="post">            
                                 <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <select style="width:250px;" name="c_id" required>
+                                    <div style="margin:18px 0 0 0" class="form-group label-floating">
+                                        <label for="business">Select ID:</label>
+                                        <select style="width:300px; height:38px;" name="c_id" required>
                                             <option value="<?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "" ?>"> <?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "Select ID"; ?>
                                             </option>
                                             <?php foreach($client_view as $value){?>
@@ -47,7 +48,7 @@ if(isset($_POST['id'])){
                                     </div>
                                 </div>
                                 <?php if(!isset($_POST["id"])){ ?>
-                                <button type="submit" class="btn btn-primary" name="id">Add</button>
+                                <button style="margin-top:46px;" type="submit" class="btn btn-primary" name="id">Add</button>
                                 <div class="clearfix"></div>
                                 <?php } ?>
                             </form>
@@ -62,9 +63,10 @@ if(isset($_POST['id'])){
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <select style="width:250px;" name="paymode" required >
-                                            <option value="">-- SELECT PAY MODE --</option>
+                                    <div  style="margin:18px 0 0 0"  class="form-group label-floating">
+                                        <label for="business">Select Payment Mode:</label>
+                                     <select style="width:300px; height:38px;" name="paymode" required >
+                                            <option value="">------ SELECT PAYMENT MODE ------</option>
                                             <option value="Cash">Cash</option>
                                             <option value="Cheque">Cheque</option>
                                             <option value="Card">Card</option>
