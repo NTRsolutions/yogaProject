@@ -61,7 +61,7 @@ if(isset($_GET['enq_id'])){
 	                            <div class="card-content">
 	                                <form>
 	                                    <div class="row">
-	                                        <div class="col-md-6">
+	                                        <div class="col-md-4">
                                             
 												<div class="form-group label-floating">
 													<strong class="text-primary">Token No:&nbsp&nbsp&nbsp&nbsp</strong>
@@ -69,11 +69,18 @@ if(isset($_GET['enq_id'])){
 												</div>
 	                                        </div>
                                         
-	                                        <div class="col-md-6">
+	                                        <div class="col-md-4">
                                             
 												<div class="form-group label-floating">
 													<strong class="text-primary">Date:&nbsp&nbsp&nbsp&nbsp</strong>
 													<?php echo $detail_enquiry->date; ?>
+												</div>
+	                                        </div>
+                                            <div class="col-md-4">
+                                            
+												<div class="form-group label-floating">
+													<strong class="text-primary">FollowUp Date:&nbsp&nbsp&nbsp&nbsp</strong>
+													<?php echo $detail_enquiry->followupdate; ?>
 												</div>
 	                                        </div>
                                         </div>

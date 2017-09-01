@@ -8,22 +8,23 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
 $enquiry = json_decode($content);
-$date1 = date('Y-m-d', strtotime("-10 days"))."<br>";
-$date2 = date('Y-m-d', strtotime("+10 days"));
+//$date1 = date('Y-m-d', strtotime("-1 days"))."<br>";
+$date2 = date('Y-m-d', strtotime("+2 days"));
 $enquiry_view = $enquiry->enquiry_view;
 $i=0;
 foreach($enquiry_view as $value){
-     $eurydate = $value->date;
-    if($eurydate >= $date1 && $eurydate <= $date2){
+     $eurydate = $value->followupdate;
+    if($eurydate >= $date2){
         $i++;
     }
+    
 }
 ?>
 
 <div class="main-panel">
 <nav class="navbar navbar-transparent navbar-absolute">
 				<div class="container-fluid">
-					<div class="navbar-header">
+                    <div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
@@ -73,8 +74,8 @@ foreach($enquiry_view as $value){
 
 	                                        <tr>
                                                 <?php 
-                                                $eurydate = $value->date;
-                                                if($eurydate >= $date1 && $eurydate <= $date2){
+                                                $eurydate = $value->followupdate;
+                                                if($eurydate >= $date2){
                                                 ?>
                                                 <td><a href="enquiry_profile.php?enq_id=<?php echo $value->token_no; ?>"><?php echo $value->token_no; ?></a></td>
                                                 

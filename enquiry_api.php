@@ -1,6 +1,6 @@
 <?php 
 include 'config.php';
-if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['message']) && isset($_POST['date'])){
+if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['message']) && isset($_POST['date']) && isset($_POST['followupdate'])){
 
      $token_no = $_POST['token_no'];
      $name = $_POST['name'];
@@ -8,8 +8,9 @@ if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) 
      $contact = $_POST['contact'];
      $message = $_POST['message'];
      $date = $_POST['date'];
+     $followupdate = $_POST['followupdate'];
     
-    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `date`, `message`) VALUES ('$token_no', '$name', '$email', '$contact', '$date', '$message');";
+    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `date`, `followupdate`, `message`) VALUES ('$token_no', '$name', '$email', '$contact', '$date', '$followupdate', '$message');";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">

@@ -84,24 +84,31 @@ if(isset($_POST['tokenid'])){
 
                                         
                                         <div class="row">
-                                           <div class="col-md-6">
-                                               <div class="form-group label-floating">
-                                            <label class="control-label">Message</label>
-                                            <textarea rows="3" cols="30" name="e_message"  class="form-control"     required><?php echo $enquiry_view->message; ?></textarea> 
-                                               </div>
-                                            </div>
+                                           
                                            
                                              <div class="col-md-6">
 												<div class="form-group label-floating">
-													<label class="control-label"></label>
-													<input type="date" value="<?php echo $enquiry_view->date;?>" class="form-control"   name="e_date" required>
+													<label class="control-label">Form Date</label>
+													<input type="date" value="<?php echo $enquiry_view->date;?>" class="form-control"   name="e_date" required readonly>
+                                                </div>
+                                             </div>
+                                            <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">FollowUp Date</label>
+													<input type="date" value="<?php echo $enquiry_view->followupdate;?>" class="form-control"   name="followupdate" required>
                                                 </div>
                                              </div>
                                           
                                            
                                         </div>
-                                        
-                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Done</button>                               
+                                        <div class="col-md-12">
+                                               <div class="form-group label-floating">
+                                            <label class="control-label">Message</label>
+                                            <textarea rows="3" cols="30" name="e_message"  class="form-control"     required><?php echo $enquiry_view->message; ?></textarea> 
+                                               </div>
+                                            </div>
+                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Edit</button>                               
+
                                         <div class="clearfix"></div>
 	                                </form>
 	                            </div>
