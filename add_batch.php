@@ -24,7 +24,7 @@ if(!empty($_SESSION)){
     <div class="container-fluid">
         <div class="row">
                         <?php 
-                    include 'config.php';
+                    include 'config.php';                    //connect to database
                     if(isset($_POST['submit'])){ 
                     if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
 

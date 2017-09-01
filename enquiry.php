@@ -57,19 +57,31 @@ if(!empty($_SESSION)){
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Message</label>
-                                                    <textarea rows="3" cols="30" name="e_message"  class="form-control"     required></textarea> 
+
+                                           
+                                           
+                                             <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">Enquiry Date</label>
+													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="e_date" required>
                                                 </div>
-                                            </div>
+                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label"></label>
-                                                    <input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="e_date" required>
+												<div class="form-group label-floating">
+													<label class="control-label">Followup Date</label>
+													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="followupdate" required>
                                                 </div>
-                                            </div>
+                                             </div>
+                                          
+                                           
                                         </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Message</label>
+                                                <textarea rows="3" cols="30" name="e_message"  class="form-control"     required></textarea> 
+                                            </div>
+                                        </div><br><br><br>
+
                                         <button  id="refresh" type="submit" class="btn btn-primary pull-right" name="submit">Add</button>                               
                                         <div class="clearfix"></div>
                                     </form>

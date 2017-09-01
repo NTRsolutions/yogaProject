@@ -27,66 +27,96 @@ if(isset($_POST['tokenid'])){
 }
 ?>
 <div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header" data-background-color="purple">
-                        <h4 class="title"> Edit Enquiry</h4>
-                        <p class="category">Fill up the enquiry Form</p>
-                    </div>
-                    <div class="card-content">
-                        <form action="enquiry_edit_api.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Token Number</label>
-                                        <input type="text" class="form-control validnumber"    value="<?php echo $_POST['tokenid'];?>" name="e_token" required readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Name</label>
-                                        <input type="text" class="form-control" value="<?php echo $enquiry_view->name; ?>" name="e_name" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Email</label>
-                                        <input id="txtEmail"  type="email" class="form-control"         name="e_mail" value="<?php echo $enquiry_view->email; ?>" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Contact</label>
-                                        <input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control"  value="<?php echo $enquiry_view->contact; ?>"   name="e_contact" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Message</label>
-                                        <textarea rows="3" cols="30" name="e_message"  class="form-control"     required><?php echo $enquiry_view->message; ?></textarea> 
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label"></label>
-                                        <input type="date" value="<?php echo $enquiry_view->date;?>" class="form-control"   name="e_date" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary pull-right" name="submit">Edit</button>                               
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
+
+        <div class="container-fluid">
+                       
+                    
+                         
+                    <div class="row">
+	                    <div class="col-md-8">
+	                        <div class="card">
+                                <div class="card-header" data-background-color="purple">
+	                                <h4 class="title"> Edit Enquiry</h4>
+									<p class="category">Fill up the enquiry Form</p>
+	                            </div>
+	                            <div class="card-content">
+	                                <form action="enquiry_edit_api.php" method="post">
+	                                        <div class="row">
+	
+	                                        <div class="col-md-6">
+                                                <div class="form-group label-floating">
+													<label class="control-label">Token Number</label>
+													<input type="text" class="form-control validnumber" value="<?php echo $_POST['tokenid'];?>" name="e_token" required readonly>
+												</div>
+	                                        </div>
+	                                  
+                                                <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">Name</label>
+													<input type="text" class="form-control" value="<?php echo $enquiry_view->name; ?>" name="e_name" required>
+												</div>
+	                                        </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="row">
+	   
+	                                        <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">Email</label>
+													<input id="txtEmail"  type="email" class="form-control" name="e_mail"
+                                                           value="<?php echo $enquiry_view->email; ?>"required>
+                                                </div>
+                                             </div>
+	                                    
+                                        
+                                        
+                                         
+                                             <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">Contact</label>
+													<input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control"  value="<?php echo $enquiry_view->contact; ?>"   name="e_contact" required>
+                                                </div>
+                                             </div>
+	                                       
+                                        </div>
+
+                                        
+                                        <div class="row">
+                                           
+                                           
+                                             <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">Form Date</label>
+													<input type="date" value="<?php echo $enquiry_view->date;?>" class="form-control"   name="e_date" required readonly>
+                                                </div>
+                                             </div>
+                                            <div class="col-md-6">
+												<div class="form-group label-floating">
+													<label class="control-label">FollowUp Date</label>
+													<input type="date" value="<?php echo $enquiry_view->followupdate;?>" class="form-control"   name="followupdate" required>
+                                                </div>
+                                             </div>
+                                          
+                                           
+                                        </div>
+                                        <div class="col-md-12">
+                                               <div class="form-group label-floating">
+                                            <label class="control-label">Message</label>
+                                            <textarea rows="3" cols="30" name="e_message"  class="form-control"     required><?php echo $enquiry_view->message; ?></textarea> 
+                                               </div>
+                                            </div>
+                                        <button type="submit" class="btn btn-primary pull-right" name="submit">Edit</button>                               
+
+                                        <div class="clearfix"></div>
+	                                </form>
+	                            </div>
+	                        </div>
+	                    </div>
             </div>
-        </div>
     </div>
+</div>
+
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>

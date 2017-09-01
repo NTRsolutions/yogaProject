@@ -47,28 +47,35 @@ $employee_view = $employee->employee_view;
         float:right;
     }
 </style>
-<?php $page=5;include 'sidebar.php'; ?>
-<?php $nav=7;include 'nav.php'; ?>
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-plain">
-                    <div class="card-header" data-background-color="purple">
-                        <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
-                        <i class="material-icons icon">search</i> 
-                        <h4 class="title">Employee Details</h4>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <table class="table table-hover">
-                        <thead class="text-primary">
-                            <th>Sr no.</th>
-                            <th>Employee Id</th>
-                            <th>Employee name</th>
-                            <th>Attendance </th>
-                        </thead>
-                        <tbody id="myTable"><?php  $i=1;foreach($e_id as $value):    
+  <?php $page=5;include 'sidebar.php'; ?>
+   <?php $nav=7;include 'nav.php'; ?>
+
+     <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="card card-plain">
+                                <div class="card-header" data-background-color="purple">
+	                               <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
+                                     <i class="material-icons icon">search</i> 
+                                     <h4 class="title">Employee Attendance Details</h4>
+
+
+                                </div>
+	                            </div>
+	                            <div class="card-content">
+                                    
+                                        <table class="table table-hover">
+                                            <thead class="text-primary">
+                                                <th>Sr no.</th>
+                                                <th>Employee Id</th>
+                                                <th>Employee name</th>
+                                                <th>Attendance </th>
+                                            </thead>
+                                           
+                                            <tbody id="myTable"><?php        $i=1;foreach($e_id as $value):    
+
                                                 foreach($employee_view as $employeetvalue):
                                                 if($employeetvalue->e_ID == $value){
                                                 ?> 
@@ -90,6 +97,7 @@ $employee_view = $employee->employee_view;
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
+<?php include 'tablesearch_script.php'; ?>
 <?php
 }
 else echo "<h1>No User Logged In</h1>";

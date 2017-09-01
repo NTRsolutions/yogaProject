@@ -251,6 +251,8 @@ name VARCHAR(50),
 email VARCHAR(50),
 contact VARCHAR(50),
 date VARCHAR(50),
+followupdate VARCHAR(50),
+status VARCHAR(50),
 message VARCHAR(100)
 )";
 
