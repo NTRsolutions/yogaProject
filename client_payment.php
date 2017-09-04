@@ -7,7 +7,7 @@ if(!empty($_SESSION)){
 include 'config.php';
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_client_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_client_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -55,7 +55,7 @@ if(isset($_POST['id'])){
                             <form action="client_payment_api.php" method="post">
                                 <?php if(isset($_POST["id"])){
                                   $c_id = $_POST["c_id"];?>
-                                <input type="hidden" name="c_id" value="<?php echo  $c_id;?>">
+                                <input type="hidden" name="c_id" value="<?php echo  $c_id;?>" >
                                 <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <label class="control-label"></label>
@@ -85,7 +85,8 @@ if(isset($_POST['id'])){
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Balance</label>
-                                            <input type="text" value="<?php echo $row['balance'] ?>"    class="form-control" name="c_balance" required readonly>
+
+                                                    <input type="text" value="<?php   if ($row['balance'] < 1000) {  echo 0000; } else { echo $row['balance'];}   ?>" class="form-control" name="c_balance" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

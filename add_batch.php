@@ -36,7 +36,7 @@ if(!empty($_SESSION)){
                         );
                         //print_r($data);
                         # Create a connection
-                        $url = 'http://localhost/yogaproject/add_batch_api.php';
+                        $url = 'http://yoga.classguru.in/add_batch_api.php';
                         $ch = curl_init($url);
                         # Form data string
                         $postString = http_build_query($data, '', '&');

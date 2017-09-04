@@ -6,7 +6,7 @@ if(!empty($_SESSION)){
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_batch_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -37,6 +37,7 @@ $batch_view = $batch->batch_view;
     
         float:right;
     }
+    
 </style>
 
 
@@ -45,7 +46,7 @@ $batch_view = $batch->batch_view;
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_client_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_client_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -141,13 +142,14 @@ $client_view = $client->client_view;
                                     <form action="edit_client.php" method="POST">
                                      <td style="width:20px!important;">
                                          <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_id">
-                                        <input  type="submit" class="btn btn-sm btn-warning"     value="Edit">
-                                        </td>
+                                      <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
+                                        </td>   
                                     </form>
                                         <td style="width:20px!important;">
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Delete
-                                            <span class="caret"></span></button>
+                                        <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
+                                            <span class="caret"></span>
+                                        </button>
                                         <ul class="dropdown-menu">
                                             <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
                                             <li><a href="#">No</a></li>

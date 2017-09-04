@@ -12,7 +12,7 @@ if(isset($_POST['c_id'])){
      $cid = $_POST['c_id'];
     $data = array('c_id'=> $cid);
     # Create a connection
-    $url = 'http://localhost/yogaProject/view_edit_client_api.php';
+    $url = 'http://yoga.classguru.in/view_edit_client_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');
@@ -27,7 +27,7 @@ if(isset($_POST['c_id'])){
    // echo $c_view->c_name;
    # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_batch_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);

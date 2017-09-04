@@ -6,7 +6,7 @@ if(!empty($_SESSION)){
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_batch_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -33,7 +33,7 @@ $batch_view = $batch->batch_view;
                         'batch' => $_POST['batch']
                     );
                     # Create a connection
-                    $url = 'http://localhost/yogaProject/add_client_api.php';
+                    $url = 'http://yoga.classguru.in/add_client_api.php';
                     $ch = curl_init($url);
                     # Form data string
                     $postString = http_build_query($data, '', '&');

@@ -11,7 +11,7 @@ if(isset($_POST['tokenid'])){
     $id = $_POST['tokenid'];
     $data = array('tokenid'=> $id);
     # Create a connection
-    $url = 'http://localhost/yogaProject/view_edit_enquiry_api.php';
+    $url = 'http://yoga.classguru.in/view_edit_enquiry_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');
@@ -44,10 +44,10 @@ if(isset($_POST['tokenid'])){
                                         <div class="row">
                                            <div class="col-md-12">
                                                 <div class="form-group label-floating" align="center">
-                                                    <label style="left:200px!important;" class="control-label"><strong>Enquiry Status</strong></label>
+                                                    <label for="business" style="left:280px!important;" class="control-label"><strong>Enquiry Status</strong></label>
 													<select name="status" required>
+                                                         <option value="">-- Select Status --</option>
                                                         <option value="<?php echo $enquiry_view->status;?>"><?php echo $enquiry_view->status;?></option>
-                                                        <option value="">-- Select Status --</option>
                                                         <option value="pending">Pending</option>
                                                         <option value="done">Done</option>
                                                         <option value="postponed">Postponed</option>

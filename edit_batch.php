@@ -11,7 +11,7 @@ if(isset($_POST['batch_id'])){
     $id = $_POST['batch_id'];
     $data = array('batch_id'=> $id);
     # Create a connection
-    $url = 'http://localhost/yogaProject/view_edit_batch_api.php';
+    $url = 'http://yoga.classguru.in/view_edit_batch_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');

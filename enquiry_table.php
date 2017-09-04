@@ -6,7 +6,7 @@ if(!empty($_SESSION)){
 <?php 
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_enquiry_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -124,7 +124,8 @@ $enquiry_view = $enquiry->enquiry_view;
                                                 
                                      <form action="edit_enquiry.php" method="POST">
                                         <input value="<?php echo $id; ?>" type="hidden" name="tokenid">
-                                        <td style="width:20px!important;"><input  type="submit" class="btn btn-sm btn-warning" value="Edit">
+                                        <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
+
                                          </td>
                                     </form>
                                                  
@@ -132,7 +133,7 @@ $enquiry_view = $enquiry->enquiry_view;
                                    
                                                 <td style="width:20px!important;"> 
                                                     <div class="dropdown">
-                                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+                                                        <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
                                                             <span class="caret"></span></button>
                                                         <ul class="dropdown-menu">
                                                             <li><a href="delete_enquiry_api.php?token_no=<?php echo $id;?>">Yes</a></li>

@@ -207,7 +207,7 @@ if ($conn->query($sql11) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-
+// sql to create table
 
 $sql12 = "CREATE TABLE Notification (
 note_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
@@ -221,6 +221,7 @@ if ($conn->query($sql12) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+// sql to create table
 $sql13 = "CREATE TABLE admin (
 admin_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 username VARCHAR(50) ,
@@ -232,7 +233,8 @@ if ($conn->query($sql13) === TRUE) {
 } else {
     echo "Error creating table: " . $conn->error;
 }
-
+/*
+// sql to create table
 $sql14 = "CREATE TABLE batch_client_mapping (
 bcm_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 batch_id INT(11),
@@ -243,8 +245,9 @@ if ($conn->query($sql14) === TRUE) {
     echo "Table batch_client_mapping created successfully <br> ";
 } else {
     echo "Error creating table: " . $conn->error;
-}
+}*/
 
+// sql to create table
 $sql15 = "CREATE TABLE enquiry (
 token_no INT(11) AUTO_INCREMENT PRIMARY KEY, 
 name VARCHAR(50),

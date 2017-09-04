@@ -26,7 +26,7 @@ if(isset($_SESSION["username"])){
         'password' => $_POST['password'],
     );  
     # Create a connection
-    $url = 'http://localhost/yogaProject/select_user_api.php';
+    $url = 'http://yoga.classguru.in/select_user_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');
@@ -38,7 +38,7 @@ if(isset($_SESSION["username"])){
     $response = curl_exec($ch);
     print_r($response);
     if($response === "Notadmin"){
-        echo "<script>debugger;window.location = 'login.php';</script>";
+        echo "<script>debugger;window.location = 'index.php';</script>";
     }                                                       
     curl_close($ch);
         }
