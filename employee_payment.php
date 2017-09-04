@@ -10,7 +10,7 @@ if(!empty($_SESSION)){
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/employee_payment_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/employee_payment_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -31,7 +31,7 @@ $employee_view = $employee->employee_view;
                             'checkbox' => $_POST['checkbox']
                         );
                         # Create a connection
-                        $url = 'http://localhost/yogaProject/add_employee_payment_api.php';
+                        $url = 'http://yoga.classguru.in/add_employee_payment_api.php';
                         $ch = curl_init($url);
                         # Form data string
                         $postString = http_build_query($data, '', '&');

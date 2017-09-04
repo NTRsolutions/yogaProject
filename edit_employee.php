@@ -12,7 +12,7 @@ if(isset($_POST['e_ID'])){
      $eid = $_POST['e_ID'];
     $data = array('e_ID'=> $eid);
     # Create a connection
-    $url = 'http://localhost/yogaProject/view_edit_employee_api.php';
+    $url = 'http://yoga.classguru.in/view_edit_employee_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');

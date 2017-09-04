@@ -6,7 +6,7 @@ if(!empty($_SESSION)){
 <?php include 'header.php';
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_employee_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_employee_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -49,7 +49,7 @@ $employee_view = $employee->employee_view;
                           );
                           //print_r($data);
                           # Create a connection
-                          $url = 'http://localhost/yogaproject/add_employee_attend_api.php';
+                          $url = 'http://yoga.classguru.in/add_employee_attend_api.php';
                           $ch = curl_init($url);
                           # Form data string
                           $postString = http_build_query($data, '', '&');
@@ -107,7 +107,7 @@ $employee_view = $employee->employee_view;
                         <div class="card-header" data-background-color="purple">
                             <input type="text" class="form-control"     id="myInput" onkeyup="searchTable()" placeholder="Search..">
                             <i class="material-icons icon">search</i> 
-                            <h4 class="title">Employee Details</h4>
+                            <h4 class="title">Employee Attendance Details</h4>
                         </div>
                     </div>
                     <div class="card-content">

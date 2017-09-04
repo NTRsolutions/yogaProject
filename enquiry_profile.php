@@ -11,7 +11,7 @@ if(isset($_GET['enq_id'])){
     );
     # Create a connection
     $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaproject/view_enquiry_profile_api.php");
+    curl_setopt( $ch, CURLOPT_URL, "http://yoga.classguru.in/view_enquiry_profile_api.php");
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
     # Form data string
     $postString = http_build_query($data, '', '&');

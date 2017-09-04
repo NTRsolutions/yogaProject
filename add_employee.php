@@ -19,7 +19,7 @@ if(!empty($_SESSION)){
                             'e_address' => $_POST['e_address']
                         );
                         # Create a connection
-                        $url = 'http://localhost/yogaProject/add_employee_api.php';
+                        $url = 'http://yoga.classguru.in/add_employee_api.php';
                         $ch = curl_init($url);
                         # Form data string
                         $postString = http_build_query($data, '', '&');

@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
       $e_attend_id = $_POST['e_attend_ID'];
     # Create a connection
     $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, "http://localhost/yogaProject/view_employee_attendance_api.php/?e_attend_id=$e_attend_id");
+    curl_setopt( $ch, CURLOPT_URL, "http://yoga.classguru.in/view_employee_attendance_api.php/?e_attend_id=$e_attend_id");
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
     # Get the response
     $content = curl_exec($ch);
@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_employee_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_employee_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);

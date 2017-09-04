@@ -11,7 +11,7 @@ if(isset($_POST['tokenid'])){
     $id = $_POST['tokenid'];
     $data = array('tokenid'=> $id);
     # Create a connection
-    $url = 'http://localhost/yogaProject/view_edit_enquiry_api.php';
+    $url = 'http://yoga.classguru.in/view_edit_enquiry_api.php';
     $ch = curl_init($url);
     # Form data string
     $postString = http_build_query($data, '', '&');

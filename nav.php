@@ -2,7 +2,7 @@
 include 'config.php';
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_enquiry_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_enquiry_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
