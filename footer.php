@@ -2,7 +2,7 @@
 				<div class="container-fluid">
 
                     <p class="copyright pull-right">
-						  &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+						  &copy; <script>document.write(new Date().getFullYear())</script>,copyright by <a href="http://www.classguru.in">classguru.in</a>
 					</p>
 				</div>
 			</footer></div>
