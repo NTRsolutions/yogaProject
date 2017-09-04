@@ -119,12 +119,14 @@ $employee_view = $employe->employee_view;
                                                 
                                 <form action="edit_employee.php" method="POST">
                                     <input value="<?php echo $value->e_ID;?>" type="hidden" name="e_ID">
-                                    <td style="width:20px!important;"><input  type="submit" class="btn btn-sm btn-warning"  value="Edit">
+                                    <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
+
                                     </td>
                                 </form>
                                 <td style="width:20px!important;"> 
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Delete
+                                        <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
+
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu">
                                             <li><a href='delete_employee_api.php/?e_ID=<?= $id;?>'>Yes</a></li>

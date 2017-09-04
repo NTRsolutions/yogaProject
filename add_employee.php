@@ -3,7 +3,6 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
 <?php $nav=3;include 'nav.php'; ?>
@@ -34,7 +33,6 @@ if(!empty($_SESSION)){
                         curl_close($ch);    
                         }
                     }
-
                     ?>
                     <div class="row">
 	                    <div class="col-md-8">
