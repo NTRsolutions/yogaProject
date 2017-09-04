@@ -3,29 +3,29 @@
 					<nav class="pull-left">
 						<ul>
 							<li>
-								<a href="#">
+								<a href="home.php">
 									Home
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="home.php">
 									Company
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="home.php">
 									Portfolio
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="home.php">
 								   Blog
 								</a>
 							</li>
 						</ul>
 					</nav>
 					<p class="copyright pull-right">
-						&copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+						&copy; <script>document.write(new Date().getFullYear())</script> <a href="home.php">yoga</a>, made with love for a better web
 					</p>
 				</div>
 			</footer></div>
