@@ -1,5 +1,5 @@
 <?php
-/*start   i   n  g  o  f s  e   e   s  i   o   n*/ 
+/*start   i   n  g  o  f s  e   e   s  i   o      n*/ 
 session_start();
 if(!empty($_SESSION)){
 ?>
