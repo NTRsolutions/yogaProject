@@ -7,7 +7,7 @@ if(!empty($_SESSION)){
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_e_attend_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_e_attend_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -18,7 +18,7 @@ $attend_view = $employee->e_attend_view;
 <?php 
  # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_employee_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaProject/view_employee_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
