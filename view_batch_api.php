@@ -5,7 +5,7 @@ loc no 11-- // query to database for SELECT in batch_ID table
 loc no 18--//  0 result
 */
 include 'config.php';
-   $sql = "SELECT * from  Batch ORDER BY batch_ID DESC ";
+   $sql = "SELECT * from  batch ORDER BY batch_ID DESC ";
     $result=$conn->query($sql);
     $batch=array();
     if ($result->num_rows >0){
