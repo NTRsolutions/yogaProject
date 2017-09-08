@@ -48,7 +48,7 @@ $enquiry_view = $enquiry->enquiry_view;
                         'followupdate' => $_POST['followupdate'],                   'date' => $_POST['e_date']                        
                     );
                     # Create a connection
-                    $url = 'http://localhost/yogaProject/enquiry_api.php';
+                    $url = 'http://yoga.classguru.in/enquiry_api.php';
                     $ch = curl_init($url);
                     # Form data string
                     $postString = http_build_query($data, '', '&');

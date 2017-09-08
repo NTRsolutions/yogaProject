@@ -6,7 +6,7 @@ loc no 12--//  connect query ? if it connected then execute alert record SELECT 
 loc no 19---  // else record not SELECT
 */
 include 'config.php';
-$sql = "SELECT * FROM Employee ORDER BY e_ID DESC";
+$sql = "SELECT * FROM employee ORDER BY e_ID DESC";
 $result = $conn->query($sql);
 $employee = array();
 if ($result->num_rows > 0) {
