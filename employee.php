@@ -12,6 +12,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $employe = json_decode($content);
 $employee_view = $employe->employee_view;
+
 ?>
 <?php include 'header.php'; ?>
 <style>
@@ -83,6 +84,8 @@ $employee_view = $employe->employee_view;
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
@@ -120,7 +123,6 @@ $employee_view = $employe->employee_view;
                                 <form action="edit_employee.php" method="POST">
                                     <input value="<?php echo $value->e_ID;?>" type="hidden" name="e_ID">
                                     <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
-
                                     </td>
                                 </form>
                                 <td style="width:20px!important;"> 

@@ -76,9 +76,9 @@ if(isset($_POST['submit'])){
         }
         ?>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="orange">
+                    <div class="card-header" data-background-color="blue">
                         <i class="material-icons">person</i>
                     </div>
                     <div class="card-content">
@@ -91,6 +91,57 @@ if(isset($_POST['submit'])){
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Client<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="add_client.php">
+                                <i class="material-icons">plus_one</i> Add new Client
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">touch_app</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Attendance</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="client_attendance.php">
+                                <i class="material-icons">plus_one</i> Mark Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                        <i class="material-icons">payment</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Payment</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                         <a href="client_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
@@ -154,7 +205,6 @@ if(isset($_POST['submit'])){
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><input type="hidden" name="client_id[]" value="<?php echo $value->c_ID; ?>"><?php echo $value->c_ID; ?>     </td>
                                     <td><?php echo $value->c_name." ".$value->c_surname; ?></td>
-
                                     <td><input type="checkbox" value="<?php echo $value->c_ID;  ?>" name="absent_client[]"></td>
                                 </tr><?php endforeach; ?>
                             </tbody>

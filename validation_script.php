@@ -1,12 +1,13 @@
 <script>
-    function allLatters(c_name)  
+    function allLatters(c_name, e)  
     {  
+       
         var letters = /^[A-Za-z ]+$/;  
         if(c_name.value.match(letters))  
         {  
             return true;  
         }
-        else if(c_name.which!=9){
+        else if(e.keyCode===9){
             return true;
         }
         else  
@@ -16,14 +17,14 @@
             return false;  
         }  
     }  
-    function Latters(c_surname)  
-    {  
+    function Latters(c_surname, e)  
+    { debugger;
         var letters = /^[A-Za-z ]+$/;  
         if(c_surname.value.match(letters))  
         {  
             return true;  
         }
-        else if(c_surname.which!=9){
+        else if(e.keyCode===9){
             return true;
         }
         else  
@@ -33,15 +34,15 @@
             return false;  
         }  
     }  
-    function allnumeric(c_fees)  
-    {  
+    function allnumeric(c_fees, e)  
+    {   debugger;
         var numbers = /^[0-9]+$/; 
         if(c_fees.value.match(numbers))  
         {  
             return true;  
         }
-        else if(c_fees.which!=9){
-            return true;
+       else if(e.keyCode===9){
+           return true;
         } 
         else  
         {  
@@ -50,6 +51,25 @@
             return false;  
         }  
     }  
+    
+    function allnumerics(c_recieved, e)  
+    {   debugger;
+        var numbers = /^[0-9]+$/; 
+        if(c_recieved.value.match(numbers))  
+        {  
+            return true;  
+        }
+       else if(e.keyCode===9){
+           return true;
+        } 
+        else  
+        {  
+            alert("Enter only Digits");
+            $(".validnumbers").val('');
+            return false;  
+        }  
+    }  
+    
     function phoneno(){          
         $('#phone').keypress(function(e) {
             var a = [];
@@ -60,4 +80,15 @@
                 e.preventDefault();
             });
     }
+    
+    
+     function calc_balance() {
+
+            var first_number = parseInt(document.getElementById("Text1").value);
+            var second_number = parseInt(document.getElementById("Text2").value);
+            var result = first_number - second_number;
+
+            document.getElementById("txtresult").value = result;
+        }
+    
 </script>

@@ -51,15 +51,20 @@ foreach($enquiry_view as $value){
                         <?php if($nav==4):?>
                             <a class="navbar-brand" href="#">Client Attendance</a>
 					    <?php endif;?>
-                        <?php if($nav==7):?>
-                            <a class="navbar-brand" href="#">Employee Attendance</a>
-					    <?php endif;?>
                         <?php if($nav==5):?>
                             <a class="navbar-brand" href="#">Batch</a>
 					    <?php endif;?>
                         <?php if($nav==6):?>
                             <a class="navbar-brand" href="#">Enquiry</a>
 					    <?php endif;?>
+                        <?php if($nav==7):?>
+                            <a class="navbar-brand" href="#">Employee Attendance</a>
+					    <?php endif;?>
+                        
+                        <?php if($nav==8):?>
+                            <a class="navbar-brand" href="#">Packages</a>
+					    <?php endif;?>
+                        
                     </div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">

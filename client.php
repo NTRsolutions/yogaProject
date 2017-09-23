@@ -52,6 +52,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $client = json_decode($content);
 $client_view = $client->client_view;
+    //print_r($client_view);
 ?>	   
 <div class="content">
     <div class="container-fluid">
@@ -125,36 +126,37 @@ $client_view = $client->client_view;
                                 <th></th>
                                   <th></th>
                             </thead>
-                            <tbody id="myTable"><?php $i=1;foreach($client_view as $value   ):foreach($batch_view as $value1 ): if ($value->batch_id == $value1->batch_id){?>
+                            <tbody id="myTable"><?php $i=1;foreach($client_view as $value   ): foreach($batch_view as $value1 ): if ($value->batch_id == $value1->batch_id){?>
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $id = $value->c_ID; ?></td>
-                                    <td><a href='view_client_profile.php?c_id=<?php echo $id;?>'><?php echo $value->c_name; ?></a></td> 
-                                    <td><a href='view_client_profile.php?c_id=<?php echo $id;?>'><?php echo    $value->c_surname; ?></a></td> 
+                                    <td><a href='view_client_profile.php?c_ID=<?php echo $id;?>'><?php echo $value->c_name; ?></a></td> 
+                                    <td><a href='view_client_profile.php?c_ID=<?php echo $id;?>'><?php echo $value->c_surname; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
                                     <td><?php echo $value1->batch_name;  ?></td>
                                     <?php if($value->status_payment == 'unpaid'){ ?>
-                                    <td><font style="color:red"><?php echo $value->status_payment;?>     </font></td>
+                                    <td><font style="color:red"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
                                     <?php if($value->status_payment == 'paid'){ ?>
-                                    <td><font style="color:green"><?php echo $value->status_payment;?>     </font></td>
+                                    <td><font style="color:green"><?php echo $value->status_payment;?> </font></td>
                                     <?php }?>
-                                    <form action="edit_client.php" method="POST">
-                                     <td style="width:20px!important;">
-                                         <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_id">
-                                      <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
-                                        </td>   
-                                    </form>
-                                        <td style="width:20px!important;">
-                                    <div class="dropdown">
-                                        <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
-                                            <li><a href="#">No</a></li>
-                                        </ul>
-                                            </div>
+                                    
+                                <form action="edit_client.php" method="POST">
+                                    <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_ID">
+                                    <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
+                                    </td>
+                                </form>
+                                   
+                                    <td style="width:20px!important;">
+                                        <div class="dropdown">
+                                            <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
+                                                <li><a href="#">No</a></li>
+                                            </ul>
+                                        </div>
                                     </td>                              
                                 </tr><?php } endforeach;?><?php endforeach;?>
                                 </tbody>

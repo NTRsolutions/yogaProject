@@ -14,6 +14,20 @@ $batch = json_decode($content);
 $batch_view = $batch->batch_view;
 //$batch_view = $batch->batch_view;
 ?>
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/upload_img_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$client = json_decode($content);
+$client_view = $client->client_view;
+$idArray = $client_view[0];
+ $id = $idArray->c_ID;
+ $img=$id+1;
+    //$batch_view = $batch->batch_view;
+?>
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
@@ -21,17 +35,29 @@ $batch_view = $batch->batch_view;
     <div class="content">
         <div class="container-fluid">
             <?php 
-            if(isset($_POST['submit'])){ 
-                if(isset($_POST['c_name']) && isset($_POST['c_surname']) &&isset($_POST['c_fees'])&&isset($_POST['balance']) &&isset($_POST['c_contact']) &&isset($_POST['c_address']) &&isset($_POST['batch'])){
-                    $data = array(
+            if(isset($_POST['submit']) && isset($_POST['c_name'])){ 
+                $Name = $_POST['c_name'] . $img;
+                $url = "client_image/$Name.jpg";
+                $data = array(
                         'c_name' => $_POST['c_name'],
                         'c_surname' => $_POST['c_surname'],
-                        'c_fees' => $_POST['c_fees'],
-                        'balance' => $_POST['balance'],
-                        'c_contact' => $_POST['c_contact'],
+                        'gender' => $_POST['gender'],
+                        'DOB' => $_POST['DOB'],
+                        'Anniversary' => $_POST['Anniversary'],
+                        'Age' => $_POST['Age'],
                         'c_address' => $_POST['c_address'],
-                        'batch' => $_POST['batch']
+                        'c_contact' => $_POST['c_contact'],
+                        'c_fees' => $_POST['c_fees'],
+                        'received' => $_POST['received'],
+                        'balance' => $_POST['balance'],
+                        'Register_ID' => $_POST['Register_ID'],
+                        'Lead_By' => $_POST['Lead_By'],
+                        'photo' => $url,
+                        'batch' => $_POST['batch'],
+                        'Comments' => $_POST['Comments']
                     );
+
+                
                     # Create a connection
                     $url = 'http://yoga.classguru.in/add_client_api.php';
                     $ch = curl_init($url);
@@ -46,8 +72,59 @@ $batch_view = $batch->batch_view;
                         print_r($response);
                     curl_close($ch);  
                     }
-                    }
+                    
                      ?>
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Client<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="add_client.php">
+                                <i class="material-icons">plus_one</i> Add new Client
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">touch_app</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Attendance</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="client_attendance.php">
+                                <i class="material-icons">plus_one</i> Mark Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                        <i class="material-icons">payment</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Payment</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                         <a href="client_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -56,44 +133,79 @@ $batch_view = $batch->batch_view;
                             <p class="category">Fill up the Client Form</p>
                         </div>
                         <div class="card-content">
-                            <form action="add_client.php" method="post">
+                            
+                            <form action="add_client.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Name </label>
-                                            <input  onkeyup="allLatters(c_name)" type="text" 
+                                            <input  onkeyup="allLatters(c_name, event)" type="text" 
                                             class="form-control validName" name="c_name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Surname </label>
-                                            <input  onkeyup="Latters(c_surname)" type="text" 
+                                            <input  onkeyup="Latters(c_surname, event)" type="text" 
                                              class="form-control validSurname" name="c_surname" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                       <div >
+                                            <label class="control-label" >Gender : </label>
+                                           <br> <input type="radio" name="gender" value="female">Female <br> 
+                                           <input type="radio" name="gender" value="male" >  Male 
+                                         </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label">
+                                            <label class="control-label">Date of Birth</label>
+                                            <input  type="date" class="form-control validnumbers" name="DOB" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Age</label>
+                                            <input  type="text" class="form-control" name="Age" required >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label">
+                                            <label class="control-label">Anniversary</label>
+                                            <input type="date"  class="form-control" name="Anniversary" id="phone" onkeypress="phoneno()" maxlength="10" required>
+                                        </div>
+                                    </div>
+	                            </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Fees</label>
-                                            <input  onkeyup="allnumeric(c_fees)"  type="text"  class="form-control validnumber" name="c_fees" required>
+                                            <input  onkeyup="allnumeric(c_fees, event)" id="Text1" type="text"  class="form-control validnumber" name="c_fees" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Received</label>
+                                            <input onkeyup="allnumerics(received, event)"  id="Text2" type="text" class="form-control validnumbers" name="received" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Balance</label>
-                                            <input  onkeyup="allnumeric(balance)"  type="text"  class="form-control validnumber" name="balance" required>
+                                            <input  type="text" onfocus="calc_balance()" id="txtresult"  class="form-control" name="balance" required readonly >
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Contact</label>
                                             <input type="text"  class="form-control" name="c_contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
                                         </div>
                                     </div>
 	                            </div>
-                                <div class="row">
+                               <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Address</label>
@@ -115,6 +227,53 @@ $batch_view = $batch->batch_view;
                                             </select>
                                         </div>
                                     </div>        
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Register ID </label>
+                                            <input  type="text" class="form-control " name="Register_ID" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Lead By </label>
+                                            <input  type="text" class="form-control " name="Lead_By" required>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                            <div class="col-md-6">
+                                
+                            <?php 
+                                if(isset($_POST['submit']))
+                                {
+                               
+                                //$img = file_get_contents($_FILES['img']['tmp_name']);
+                                file_put_contents("client_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
+                                }
+                            ?>
+                            Select image :<br><br>
+                            <input type="file" name="img" accept="image/*"/>
+                            
+                                <?php /*
+                                if(isset($_POST['submit'])){
+                               
+                                echo "<img src='client_image/$c_name.jpg' />";
+                                }*/
+                                ?>
+                            
+                            </div> 
+        
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Comments</label>
+                                            <textarea  cols="30" name="Comments"  class="form-control" ></textarea> 
+                                        </div>
+                                    </div>
                                 </div>
                                 <button type="submit" name="submit"class="btn btn-primary pull-right">Add</button>
                                 <div class="clearfix"></div>

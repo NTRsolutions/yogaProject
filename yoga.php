@@ -1,7 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "N5sZmB2KTdI1";
+$password = "N5sZmB2KTdI1";//N5sZmB2KTdI1
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
@@ -21,7 +22,7 @@ if ($conn->query($sql) === TRUE) {
 
 $servername = "localhost";
 $username = "root";
-$password = "N5sZmB2KTdI1";
+$password = "N5sZmB2KTdI1";//N5sZmB2KTdI1
 $dbname = "yoga";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -68,9 +69,15 @@ $sql3 = "CREATE TABLE employee (
 e_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 e_name VARCHAR(50) ,
 e_surname VARCHAR (50) ,
-address VARCHAR(50) ,
+Gender VARCHAR (50) ,
+DOB VARCHAR (50) ,
+Age VARCHAR (50) ,
+Title VARCHAR (50) ,
+Salary VARCHAR (50) ,
+Register_ID VARCHAR (50) ,
+address VARCHAR(100) ,
 contact VARCHAR(50) ,
-salary VARCHAR(50) ,
+Email VARCHAR(50) ,
 status VARCHAR(50)
 )";
 
@@ -114,10 +121,19 @@ $sql6 = "CREATE TABLE client (
 c_ID INT(11)  AUTO_INCREMENT PRIMARY KEY, 
 c_name VARCHAR(50) ,
 c_surname VARCHAR(50) ,
-address VARCHAR(50) ,
+gender VARCHAR(50) ,
+DOB VARCHAR(50) ,
+Anniversary VARCHAR(50) ,
+Age VARCHAR(50) ,
+address VARCHAR(100) ,
 contact VARCHAR(50) ,
 fees VARCHAR(50) ,
+received VARCHAR(50) ,
 balance VARCHAR(50) ,
+Register_ID VARCHAR(50) ,
+Lead_By VARCHAR(50) ,
+photo VARCHAR(50) ,
+Comments VARCHAR(50) ,
 status_payment VARCHAR(50),
 batch_id INT(11)
 )";
@@ -177,21 +193,24 @@ if ($conn->query($sql9) === TRUE) {
 }
 
 
+$sql10 = "CREATE TABLE packages (
+Cat_ID INT(10) AUTO_INCREMENT PRIMARY KEY, 
+Catogary VARCHAR(50), 
+Active VARCHAR(50),
+Name_of_plan VARCHAR(50),
+Time_unit VARCHAR(50),
+batch VARCHAR(50),
+Description VARCHAR(100)
 
-/*$sql10 = "CREATE TABLE Client_date_duration (
-c_duration_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
-c_id INT(11) ,
-start_date DATE ,
-end_date DATE
 )";
 
 if ($conn->query($sql10) === TRUE) {
-    echo "Table Client_date_duration created successfully <br>";
+    echo "Table packages created successfully <br>";
 } else {
     echo "Error creating table: " . $conn->error;
 }
 
-*/
+
 
 // sql to create table
 

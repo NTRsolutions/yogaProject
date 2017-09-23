@@ -1,13 +1,8 @@
 <div class="wrapper">
 <div class="sidebar" data-color="blue" data-image="../assets/img/sidebar-1.jpg">
-			<!--
-		        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-		        Tip 2: you can also add an image using data-image tag
-		    -->
     <div class="logo">
         <a href="#" class="simple-text">
-            Yoga Site
+            Yoga
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -43,6 +38,12 @@
                 <a href="batch.php">
                     <i class="material-icons">group_add</i>	                
                     <p>Batch</p>
+                </a>
+            </li>
+            <li  <?php if($page==8){echo "class='active'";} ?>>
+                <a href="packages.php">
+                    <i class="material-icons">local_offer</i>	             
+                    <p>packages</p>
                 </a>
             </li>
             <li  <?php if($page==7){echo "class='active'";} ?>>

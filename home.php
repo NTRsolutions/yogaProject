@@ -4,12 +4,6 @@ session_start();
 ?>
 <?php 
 
-if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
-    $username = $_POST['username']; 
-    $password = $_POST['password'];
-    $_SESSION["username"] = $username;
-    $_SESSION["password"] = $password;
-}
 if(isset($_SESSION["username"])){
 ?>
 <?php include 'header.php'; ?>
@@ -17,32 +11,7 @@ if(isset($_SESSION["username"])){
 <?php $nav=1;include 'nav.php'; ?>
 <div class="content">
     <div class="container-fluid">
-        <?php
-        if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $data = array(
-        'username' => $_POST['username'],
-        'password' => $_POST['password'],
-    );  
-    # Create a connection
-    $url = 'http://yoga.classguru.in/select_user_api.php';
-    $ch = curl_init($url);
-    # Form data string
-    $postString = http_build_query($data, '', '&');
-    # Setting our options
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    # Get the response
-    $response = curl_exec($ch);
-    print_r($response);
-    if($response === "Notadmin"){
-        echo "<script>debugger;window.location = 'index.php';</script>";
-    }                                                       
-    curl_close($ch);
-        }
-        ?>
+
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -97,7 +66,7 @@ if(isset($_SESSION["username"])){
                         <i class="material-icons">touch_app</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">Attendance</p>
+                        <p class="category"> Client Attendance</p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -114,11 +83,26 @@ if(isset($_SESSION["username"])){
                         <i class="material-icons">touch_app</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">Attendance</p>
+                        <p class="category"> Employee Attendance</p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
                             <a href="employee_attendance.php"><i class="material-icons">plus_one</i> Mark employee Attendance</a>									
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                   <i class="material-icons">sms</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Enquiry</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="enquiry_table.php"><i class="material-icons">plus_one</i> Add enquiry</a>									
                         </div>
                     </div>
                 </div>

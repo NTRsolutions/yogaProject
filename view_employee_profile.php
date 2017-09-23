@@ -27,66 +27,83 @@ $row = $result->fetch_assoc();
                                     <form action="edit_employee.php" method="post">
 	                                    <div class="row">
                                             <div class="col-md-4">
-                                            
-                                                <div class="form-group label-floating">
-													<strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $eid = $row['e_ID']; ?>
-		  											
-												</div>
+                                                 <div class="form-group label-floating">
+                                                    <strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $eid = $row['e_ID']; ?>
+                                                </div>
+	                                        </div>
+                                            <div class="col-md-4">
+                                                 <div class="form-group label-floating">
+                                                    <strong class="text-primary">Register_ID:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $row['Register_ID']; ?>
+                                                </div>
 	                                        </div>
                                         </div>
                                         <input type="hidden" name="e_ID" value="<?php echo $eid; ?>">
                                         <hr>
-                                        <div class="row">
-                                                 
-                                            <div class="col-md-4">
-												<div class="form-group label-floating">
-                                                    <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $row['e_name']; ?>
-												
-												</div>
-	                                        </div>
-                                        
-
-	                                    
-	                                        <div class="col-md-4">
-                                                <div class="form-group label-floating">
-													<strong class="text-primary">Surname:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['e_surname']; ?>
-													
-												</div>
-	                                        </div>
-                                                 
-                                        </div> 
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                            <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $row['e_name']; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                            <strong class="text-primary">Surname:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['e_surname']; ?>
+                                            </div>
+                                        </div>
+                                    </div> 
                                         <hr>
-                                        
-                                         <div class="row">
-
-	                                     <div class="col-md-4">
-                                             <div class="form-group label-floating">
-                                                 <strong class="text-primary">Address:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['address']; ?>
-													
-												</div>
-	                                        </div>
-                                                    
-                                        </div> 
-                                        <hr>
-                                        
-                                                 
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <strong class="text-primary">Gender:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Gender']; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <strong class="text-primary">Date Of Birth:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['DOB']; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <strong class="text-primary">Age:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Age']; ?>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                 <hr>
                                         <div class="row">
-                                                
                                             <div class="col-md-4">
 												<div class="form-group label-floating">
 													<strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['contact']; ?>
-					       							
-												</div>
+					       						</div>
                                             </div>
-                                        
-
-	                                    
                                             <div class="col-md-4">
 												<div class="form-group label-floating">
-                                                    <strong class="text-primary">Salary:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['salary']; ?>
+													<strong class="text-primary">Email:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['Email']; ?>
+					       						</div>
+                                            </div>
+                                        </div>
+                                    <hr>  
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group label-floating">
+                                            <strong class="text-primary">Address:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['address']; ?>
+								        </div>
+	                                </div>                    
+                                </div>
+                                         <hr>
+                                     <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group label-floating">
+                                                <strong class="text-primary">Title:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['Title']; ?>
+                                            </div>
+                                        </div>
+	                                  
+                                        <div class="col-md-4">
+								            <div class="form-group label-floating">
+                                                <strong class="text-primary">Salary:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['Salary']; ?>
 													
-												</div>
-	                                        </div>
+								            </div>
+	                                   </div>
                                                 
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
@@ -100,9 +117,7 @@ $row = $result->fetch_assoc();
                                                     <font style="color:green"><?php echo $row['status']; ?>
                                                     </font>
                                                     <?php }?>
-
-                                     	
-												</div>
+                                                </div>
 	                                        </div>
                                          
                                         </div>    

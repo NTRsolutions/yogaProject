@@ -26,6 +26,57 @@ if(isset($_POST['id'])){
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Client<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="add_client.php">
+                                <i class="material-icons">plus_one</i> Add New Client
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">touch_app</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Attendance</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="client_attendance.php">
+                                <i class="material-icons">plus_one</i> Mark Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="red">
+                        <i class="material-icons">payment</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Payment</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                         <a href="client_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
@@ -38,7 +89,8 @@ if(isset($_POST['id'])){
                                 <div class="col-md-4">
                                     <div style="margin:18px 0 0 0" class="form-group label-floating">
                                         <label for="business">Select ID:</label>
-                                        <select style="width:300px; height:38px;" name="c_id" required>
+                                        <select style="width:300px; height:38px;" name="c_id" required
+                                                <?php if(isset($_POST['id'])){echo "disabled";} ?>>
                                             <option value="<?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "" ?>"> <?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "Select ID"; ?>
                                             </option>
                                             <?php foreach($client_view as $value){?>
@@ -76,20 +128,26 @@ if(isset($_POST['id'])){
                                 </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Final Amount</label>
                                             <input type="text" class="form-control" value="<?php   echo $row['fees'] ?>" name="c_amount" required readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Recieved</label>
+                                            <input type="text" class="form-control" value="<?php   echo $row['received'] ?>" name="received" required readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Balance</label>
 
                                                     <input type="text" value="<?php   if ($row['balance'] < 1000) {  echo 0000; } else { echo $row['balance'];}   ?>" class="form-control" name="c_balance" required readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Payment</label>
                                             <input type="text" class="form-control" name="pay" required >

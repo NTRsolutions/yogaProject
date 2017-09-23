@@ -1,5 +1,5 @@
 <?php
-/*s   t   a   r    t   i   n  g  o  f s  e   e   s  i   o      n*/ 
+/*starting of seesion*/ 
 session_start();
 if(!empty($_SESSION)){
 ?>
@@ -22,35 +22,54 @@ if(!empty($_SESSION)){
 <?php $nav=5;include 'nav.php'; ?>
 <div class="content">
     <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Batch<p>
+                    </div>  
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="add_batch.php">
+                                <i class="material-icons">plus_one</i> Add New batch
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
-                        <?php 
-                    include 'config.php';                    //connect to database
-                    if(isset($_POST['submit'])){ 
-                    if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
+            <?php 
+                include 'config.php';                    //connect to database
+                if(isset($_POST['submit'])){ 
+                if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
 
-                         $batch_name = $_POST['batch_name'];
-                         $batch_timing = $_POST['batch_timing'];
-                         $data = array(
-                            'batch_name' => $_POST['batch_name'],
-                            'batch_timing' => $_POST['batch_timing'],
-                        );
-                        //print_r($data);
-                        # Create a connection
-                        $url = 'http://yoga.classguru.in/add_batch_api.php';
-                        $ch = curl_init($url);
-                        # Form data string
-                        $postString = http_build_query($data, '', '&');
-                        # Setting our options
-                        curl_setopt($ch, CURLOPT_POST, 1);
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                        # Get the response
-                        $response = curl_exec($ch);
-                        print_r($response);
-                        curl_close($ch);    
-                        }   
-                    }  
-                    ?>
+                     $batch_name = $_POST['batch_name'];
+                     $batch_timing = $_POST['batch_timing'];
+                     $data = array(
+                        'batch_name' => $_POST['batch_name'],
+                        'batch_timing' => $_POST['batch_timing'],
+                    );
+                    //print_r($data);
+                    # Create a connection
+                    $url = 'http://yoga.classguru.in/add_batch_api.php';
+                    $ch = curl_init($url);
+                    # Form data string
+                    $postString = http_build_query($data, '', '&');
+                    # Setting our options
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    # Get the response
+                    $response = curl_exec($ch);
+                    print_r($response);
+                    curl_close($ch);    
+                    }   
+                }  
+            ?>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">

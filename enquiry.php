@@ -19,6 +19,23 @@ if(!empty($_SESSION)){
         <div class="content">
             <div class="container-fluid">
                 <div class="container-fluid">
+                     <div class="row">
+                              <div class="col-lg-4 col-md-6 col-sm-6">
+							<div class="card card-stats">
+								<div class="card-header" data-background-color="orange">
+                                    <i class="material-icons">sms</i>								
+                                </div>
+                                <div class="card-content">
+									<p class="category">Enquiry</p>
+								</div>
+								<div class="card-footer">
+									<div class="stats">
+										<a href="enquiry.php"><i class="material-icons">plus_one</i> Enquiry Information</a> 
+                                    </div>
+								</div>
+							</div>
+						</div>
+                          </div>
                     <div class="row">
                         <div class="col-md-8">
                             <div class="card">
@@ -38,7 +55,7 @@ if(!empty($_SESSION)){
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Name</label>
-                                                    <input onkeyup="allLatters(e_name)" type="text" class="form-control validName" name="e_name" required>
+                                                    <input onkeyup="Latters(e_name, event)"     type="text" class="form-control validSurname" name="e_name" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,10 +74,7 @@ if(!empty($_SESSION)){
                                             </div>
                                         </div>
                                         <div class="row">
-
-                                           
-                                           
-                                             <div class="col-md-6">
+                                            <div class="col-md-6">
 												<div class="form-group label-floating">
 													<label class="control-label">Enquiry Date</label>
 													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="e_date" required>
@@ -72,8 +86,6 @@ if(!empty($_SESSION)){
 													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="followupdate" required>
                                                 </div>
                                              </div>
-                                          
-                                           
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group label-floating">

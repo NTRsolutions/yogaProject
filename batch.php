@@ -12,6 +12,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
+    
 ?>
 <?php include 'header.php'; ?>
 <style>
@@ -32,7 +33,6 @@ $batch_view = $batch->batch_view;
 
 <?php $page=6;include 'sidebar.php'; ?>
 <?php $nav=5;include 'nav.php'; ?>
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -53,6 +53,8 @@ $batch_view = $batch->batch_view;
                     </div>
                 </div>
             </div>
+        </div>
+            <div class="row">
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
@@ -72,9 +74,9 @@ $batch_view = $batch->batch_view;
                         </thead>
                         <tbody id="myTable"><?php $i=1;foreach($batch_view as $value): ?>
                             <tr>
-                                <td><?php echo $i; $i++; ?></td>
-                                <td><?php echo $id = $value->batch_id; ?></td>
-                                <td><?php echo $value->batch_name; ?></td>
+                                <td><?php echo $i; $i++; ?></td><?php  $id = $value->batch_id; ?>
+                                <td><a href="batch_detail.php?batch_id=<?php echo $id;?>&batch_name=<?php echo $value->batch_name; ?>"><?php echo $id; ?></a></td>
+                                <td><a href="batch_detail.php?batch_id=<?php echo $id;?>&batch_name=<?php echo $value->batch_name; ?>"><?php echo $value->batch_name; ?></a></td>
                                 <td><?php echo $value->batch_timing; ?></td>
                                                 <!--<td style="width:20px!important;"><a    href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
 -->

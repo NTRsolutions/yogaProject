@@ -9,7 +9,7 @@ if(!empty($_SESSION)){
 <?php $nav=3;include 'nav.php'; ?>
 <?php  
 if(isset($_POST['e_ID'])){
-     $eid = $_POST['e_ID'];
+    $eid = $_POST['e_ID'];
     $data = array('e_ID'=> $eid);
     # Create a connection
     $url = 'http://yoga.classguru.in/view_edit_employee_api.php';
@@ -23,9 +23,8 @@ if(isset($_POST['e_ID'])){
     # Get the response
     $content = curl_exec($ch);
     $employee_detail = json_decode($content);
-    
     $e_view = $employee_detail->employee_view[0];
-   // echo $c_view->c_name;
+   // print_r($e_view);
 }
 ?><!--
    # Create a connection
@@ -52,7 +51,7 @@ $batch_view = $batch->batch_view;
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Name </label>
-                                        <input onkeyup="allLatters(e_name)" type="text" class="form-control validName" value="<?php echo $e_view->e_name;?> " name="e_name" required>
+                                        <input onkeyup="allLatters(e_name)" type="text" class="form-control validSurname"  value="<?php echo $e_view->e_name;?> " name="e_name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -63,16 +62,45 @@ $batch_view = $batch->batch_view;
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">salary</label>
-                                        <input onkeyup="allnumeric(salary)" type="text" class="form-    control validnumber" value="<?php echo $e_view->salary;?> " name="salary" required>
+                                <div class="col-md-4">
+                                        <div class="form-group label">
+                                            <label class="control-label" >Gender : </label>
+                                           <input  type="text" class="form-control" value="<?php echo $e_view->Gender;?> " name="Gender" required>
+                                         </div>
+                                    </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="form-group label">
+                                        <label class="control-label">Date Of Birth</label>
+                                        <input  type="date(Y-M-d)" class="form-control" value="<?php echo $e_view->DOB;?> " name="DOB" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group label-floating">
-                                        <label class="control-label">Contact</label>
-                                        <input id="phone" onkeypress="phoneno()" maxlength="10"  type="text" class="form-control" value="<?php echo $e_view->contact;?> " name="contact" required>
+                                        <label class="control-label">Age</label>
+                                        <input type="text" class="form-control" value="<?php echo $e_view->Age;?> " name="Age" required>
+                                    </div>
+                                </div>
+                            </div>
+                                  
+                               <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                    <label class="control-label">Title</label>
+                                    <input   type="text" class="form-control validnumber" name="Title"  value="<?php echo $e_view->Title;?> " required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Salary</label>
+                                        <input  onkeyup="allnumeric(Salary, event)"   type="numbers" class="form-control validnumber" name="Salary" value="<?php echo $e_view->Salary;?>" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Register ID </label>
+                                        <input  type="text" 
+                                        class="form-control validName" name="Register_ID" value="<?php echo $e_view->Register_ID;?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +111,20 @@ $batch_view = $batch->batch_view;
                                         <textarea rows="3" cols="30" name="address"  class="form-control" required><?php echo $e_view->address;?></textarea> 
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Email</label>
+                                        <input  type="text" class="form-control validnumber" value="<?php echo $e_view->Email;?> " name="Email" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Contact</label>
+                                        <input id="phone" onkeypress="phoneno()" maxlength="10"  type="text" class="form-control" value="<?php echo $e_view->contact;?> " name="contact" required>
+                                    </div>
+                                </div>
                             </div>
+                            
                             <input type="hidden" value="<?php echo $eid; ?>" name="e_ID">
                             <button type="submit" name="submit"class="btn btn-primary pull- right">Done</button>
                             <div class="clearfix"></div>
