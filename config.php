@@ -1,7 +1,13 @@
 <?php 
 $servername = "localhost";
 $username = "root";
-$password = "N5sZmB2KTdI1";
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    $password = "";
+}
+else {
+    $password = "N5sZmB2KTdI1";
+}
+
 $dbname = "yoga";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
