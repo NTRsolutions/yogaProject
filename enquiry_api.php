@@ -8,17 +8,19 @@ loc no 58--   // if Query is empty then print as no value Found
 */
 
 include 'config.php';
-if(isset($_POST['token_no']) && isset($_POST['name']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['message']) && isset($_POST['date']) && isset($_POST['followupdate'])){
+if(isset($_POST['token_no'])/* && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['age']) && isset($_POST['email']) && isset($_POST['contact'])  && isset($_POST['date']) && isset($_POST['followupdate']) && isset($_POST['followuptime'])&& isset($_POST['message'])*/){
 
      $token_no = $_POST['token_no'];
      $name = $_POST['name'];
+     $surname = $_POST['surname'];
      $email = $_POST['email'];
      $contact = $_POST['contact'];
-     $message = $_POST['message'];
      $date = $_POST['date'];
      $followupdate = $_POST['followupdate'];
+     $followuptime = $_POST['followuptime'];
+    $message = $_POST['message'];
     
-    $sql = "INSERT INTO `enquiry` (`token_no`, `name`, `email`, `contact`, `date`, `followupdate`, `message`, `status`) VALUES ('$token_no', '$name', '$email', '$contact', '$date', '$followupdate', '$message', 'pending');";
+    $sql = "INSERT INTO `enquiry` (`token_no`, `name`,`surname`, `email`, `contact`, `date`, `followupdate`,`followuptime`, `message`, `status`) VALUES ('$token_no', '$name','$surname', '$email', '$contact', '$date', '$followupdate','$followuptime', '$message', 'pending')";
     if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">

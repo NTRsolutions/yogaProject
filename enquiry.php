@@ -46,20 +46,28 @@ if(!empty($_SESSION)){
 	                            <div class="card-content">
                                     <form action="enquiry_table.php" method="post">
                                         <div class="row">
-	                                        <div class="col-md-6">
+	                                        <div class="col-md-2">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Token Number</label>
                                                     <input type="text" class="form-control validnumber" value="<?php echo $newtoken; ?>" name="e_token" required readonly>
                                                 </div>
 	                                        </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Name</label>
                                                     <input onkeyup="Latters(e_name, event)"     type="text" class="form-control validSurname" name="e_name" required>
                                                 </div>
                                             </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label">Surname</label>
+                                                    <input onkeyup="Latters(surname, event)"     type="text" class="form-control validname" name="surname" required>
+                                                </div>
+                                            </div>
+                                             
                                         </div>
                                         <div class="row">
+                                             
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Email</label>
@@ -68,28 +76,33 @@ if(!empty($_SESSION)){
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Contact</label>
-                                                    <input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control"   name="e_contact" required>
+                                                    <label class="control-label">Contact No</label>       <input id="phone" onkeypress="phoneno()" maxlength="10" type="text" class="form-control"   name="e_contact" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Enquiry Date</label>
 													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="e_date" required>
                                                 </div>
                                              </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
 												<div class="form-group label-floating">
 													<label class="control-label">Followup Date</label>
 													<input type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control"   name="followupdate" required>
                                                 </div>
                                              </div>
+                                            <div class="col-md-4">
+												<div class="form-group label">
+													<label class="control-label">Followup Time</label>
+													<input type="time" value="<?php echo time("hh:mm:ss"); ?>" class="form-control"   name="followuptime" required>
+                                                </div>
+                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group label-floating">
-                                                <label class="control-label">Message</label>
+                                                <label class="control-label">Comment</label>
                                                 <textarea rows="3" cols="30" name="e_message"  class="form-control"     required></textarea> 
                                             </div>
                                         </div><br><br><br>

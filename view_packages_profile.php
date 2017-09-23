@@ -8,7 +8,7 @@ include 'config.php';
 $id = $_GET['Cat_ID'];
 $sql = "SELECT * FROM packages WHERE Cat_ID = '$id'";
 $result = $conn->query($sql);
-$row = $result->fetch_assoc();
+//$row = $result->fetch_assoc();
 
 //print_r($row['Cat_ID']);
 ?>

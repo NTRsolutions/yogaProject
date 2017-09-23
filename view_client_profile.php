@@ -28,21 +28,28 @@ $row = $result->fetch_assoc();
                         <form action="edit_client.php" method="post">
                             
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group label-floating">
                                       <strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $cid = $row['c_ID']; ?>
                                     </div>
                                  </div>
-                                 <div class="col-md-4">
+                                 <div class="col-md-3">
                                     <div class="form-group label-floating">
-                                      <strong class="text-primary">Register_ID:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['Register_ID']; ?>
+                                      <strong class="text-primary">PackageTime:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['package']; ?>
                                     </div>
                                 </div>
-                                <!--<div class="col-md-4">
-                                    <div class="form-group label">
-                                      <strong class="text-primary">Client Photo:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Photo']; ?>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                      <strong class="text-primary">Start Date:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['startdate']; ?>
                                     </div>
-                                </div>-->
+                                    </div>
+                                    <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                      <strong class="text-primary">End Date:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['enddate']; ?>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
                             
                            <input type="hidden" name="c_ID" value="<?php echo $cid; ?>" >

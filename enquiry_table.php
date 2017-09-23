@@ -12,8 +12,10 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $enquiry = json_decode($content);
 $enquiry_view = $enquiry->enquiry_view;
+   
 ?>
-<?php include 'header.php'; ?>
+<?php include 'header.php';  ?>
+<?php include 'config.php'; ?>
 <style>
     #myInput{
         width:20%;
@@ -30,7 +32,7 @@ $enquiry_view = $enquiry->enquiry_view;
 </style>
 
 
-  <?php $page=7;include 'sidebar.php'; ?>
+  <?php $page=7;include 'sidebar.php';   ?>
    <?php $nav=6;include 'nav.php'; ?>
 	   
            <div class="content">
@@ -38,14 +40,17 @@ $enquiry_view = $enquiry->enquiry_view;
 					<div class="row">
                          <?php 
                         if(isset($_POST['submit'])){ 
-                if(isset($_POST['e_token']) && isset($_POST['e_name']) && isset($_POST['e_mail']) && isset($_POST['e_contact']) &&isset($_POST['e_message'])){
+                if(isset($_POST['e_token']) && isset($_POST['e_name'])&& isset($_POST['surname']) && isset($_POST['e_mail']) && isset($_POST['e_contact']) && isset($_POST['e_message'])){
                     $data = array(
                         'token_no' => $_POST['e_token'],
                         'name' => $_POST['e_name'],
+                        'surname' => $_POST['surname'],
                         'email' => $_POST['e_mail'],
                         'contact' => $_POST['e_contact'],
-                        'message' => $_POST['e_message'],                        
-                        'followupdate' => $_POST['followupdate'],                   'date' => $_POST['e_date']                        
+                        'message' => $_POST['e_message'],
+                        'date' => $_POST['e_date'],
+                        'followupdate' => $_POST['followupdate'],                   
+                        'followuptime' => $_POST['followuptime'],                                        
                     );
                     # Create a connection
                     $url = 'http://yoga.classguru.in/enquiry_api.php';
@@ -100,30 +105,29 @@ $enquiry_view = $enquiry->enquiry_view;
 	                                        <th>Sr no.</th>
 	                                    	<th>Token Number</th>
 	                                    	<th>Name</th>
-	                                    	<th>Email</th>
+	                                    	<th>Surname</th>
 	                                    	<th>Contact</th>
-	                                    	<th>Follow Up</th>
+	                                    	<th>Follow Up date</th>
 	                                    	<th>Status</th>
 	                                    	
                                             <th></th>
 	                                    	<th></th>
 	                                   </thead>
 	                                    <tbody id="myTable">
-	                                        <?php $i=1;foreach($enquiry_view as $value): ?><tr>
+	                                        <?php $i=1; foreach($enquiry_view as $value ):// print_r($enquiry_view);  ?><tr>
                                             <td><?php echo $i;$i++; ?></td>
                                             <td><?php $id=$value->token_no; ?>
                                                 <a href="enquiry_profile.php?enq_id=<?php echo $id; ?>">
                                                     <?php echo $id;?>
-                                                </a>
-                                            </td>
-                                                <td><?php echo $value->name;?></td>
-                                                <td><?php echo $value->email;?></td>
-                                                <td><?php echo $value->contact;?></td>
-                                                <td><?php echo $value->followupdate;?></td>
+                                                </a></td>
+                                            <td><?php echo $value->name;?></td>
+                                            <td><?php echo $value->surname;?></td>
+                                            <td><?php echo $value->contact;?></td>
+                                            <td><?php echo $value->followupdate;?></td>
                                                 <td><?php echo $value->status;?></td>
                                                 
                                      <form action="edit_enquiry.php" method="POST">
-                                        <input value="<?php echo $id; ?>" type="hidden" name="tokenid">
+                                        <input value="<?php echo $id; ?>" type="hidden" name="e_token">
                                         <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
 
                                          </td>

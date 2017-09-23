@@ -1,7 +1,13 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "N5sZmB2KTdI1";//N5sZmB2KTdI1
+
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    $password = "";
+}
+else {
+    $password = "N5sZmB2KTdI1";
+}
 
 
 // Create connection
@@ -22,7 +28,12 @@ if ($conn->query($sql) === TRUE) {
 
 $servername = "localhost";
 $username = "root";
-$password = "N5sZmB2KTdI1";//N5sZmB2KTdI1
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    $password = "";
+}
+else {
+    $password = "N5sZmB2KTdI1";
+}
 $dbname = "yoga";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
@@ -130,7 +141,9 @@ contact VARCHAR(50) ,
 fees VARCHAR(50) ,
 received VARCHAR(50) ,
 balance VARCHAR(50) ,
-Register_ID VARCHAR(50) ,
+package VARCHAR(50) ,
+startdate VARCHAR(50) ,
+enddate VARCHAR(50) ,
 Lead_By VARCHAR(50) ,
 photo VARCHAR(50) ,
 Comments VARCHAR(50) ,

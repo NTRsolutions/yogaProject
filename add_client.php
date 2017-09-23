@@ -28,6 +28,18 @@ $idArray = $client_view[0];
  $img=$id+1;
     //$batch_view = $batch->batch_view;
 ?>
+<?php  
+# Create a connection
+$ch = curl_init();
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_packages_api.php');
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+# Get the response
+$content = curl_exec($ch);
+$packages = json_decode($content);
+$packages_view = $packages->packages_view;
+  //  print_r($packages_view);
+   
+?>
 <?php include 'config.php'; ?>
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
@@ -50,7 +62,9 @@ $idArray = $client_view[0];
                         'c_fees' => $_POST['c_fees'],
                         'received' => $_POST['received'],
                         'balance' => $_POST['balance'],
-                        'Register_ID' => $_POST['Register_ID'],
+                        'package' => $_POST['package'],
+                        'startdate' => $_POST['startdate'],
+                        'enddate' => $_POST['enddate'],
                         'Lead_By' => $_POST['Lead_By'],
                         'photo' => $url,
                         'batch' => $_POST['batch'],
@@ -206,12 +220,6 @@ $idArray = $client_view[0];
                                     </div>
 	                            </div>
                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Address</label>
-                                            <textarea rows="3" cols="30" name="c_address"  class="form-control" required></textarea> 
-                                        </div>
-                                    </div>
                                     <div style="margin:35px 0 0 0" class="col-md-6">
                                         <div class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -226,46 +234,38 @@ $idArray = $client_view[0];
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
+                                    </div>
+                                   <div style="margin:35px 0 0 0" class="col-md-6">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <p class="hidden-lg hidden-md">Package</p>
+                                            </a>
+                                            <label for="business">Select Packages:</label>
+                                            <select id="timeunit" style="width:300px; height:38px;" name="package" required><option value="">Select Packages</option>
+                                                <?php foreach($packages_view as $value): ?>
+                                                <li>
+                                                    <option value="<?php echo $value->Time_unit;?>"><?php echo $value->Catogary;?></option>
+                                                </li>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
                                     </div>        
                                 </div>
                                 
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <div class="row" >
+                                    <div class="col-md-6">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Register ID </label>
-                                            <input  type="text" class="form-control " name="Register_ID" required>
+                                            <label class="control-label">Start Date  </label>
+                                            <input type="date" id='date1' value="<?php echo date('Y-m-d'); ?>" onblur="date()" name="startdate" />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Lead By </label>
-                                            <input  type="text" class="form-control " name="Lead_By" required>
+                                            <label class="control-label">EndDate By </label>
+                                            
+                                            <input type="date" id='resultDate' name="enddate" readonly/>
                                         </div>
                                     </div>
-                                    
-                                    
-                            <div class="col-md-6">
-                                
-                            <?php 
-                                if(isset($_POST['submit']))
-                                {
-                               
-                                //$img = file_get_contents($_FILES['img']['tmp_name']);
-                                file_put_contents("client_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
-                                }
-                            ?>
-                            Select image :<br><br>
-                            <input type="file" name="img" accept="image/*"/>
-                            
-                                <?php /*
-                                if(isset($_POST['submit'])){
-                               
-                                echo "<img src='client_image/$c_name.jpg' />";
-                                }*/
-                                ?>
-                            
-                            </div> 
-        
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -273,6 +273,40 @@ $idArray = $client_view[0];
                                             <label class="control-label">Comments</label>
                                             <textarea  cols="30" name="Comments"  class="form-control" ></textarea> 
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Address</label>
+                                            <textarea cols="30" name="c_address"  class="form-control" required></textarea> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Lead By </label>
+                                            <input  type="text" class="form-control " name="Lead_By" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <?php 
+                                        if(isset($_POST['submit']))
+                                        {
+
+                                        //$img = file_get_contents($_FILES['img']['tmp_name']);
+                                        file_put_contents("client_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
+                                        }
+                                    ?>
+                                    Select image :<br><br>
+                                    <input type="file" name="img" accept="image/*"/>
+
+                                        <?php /*
+                                        if(isset($_POST['submit'])){
+
+                                        echo "<img src='client_image/$c_name.jpg' />";
+                                        }*/
+                                        ?>
+
                                     </div>
                                 </div>
                                 <button type="submit" name="submit"class="btn btn-primary pull-right">Add</button>
@@ -286,6 +320,7 @@ $idArray = $client_view[0];
     </div>
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
+<?php include 'endStart_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
 }
