@@ -13,7 +13,7 @@ if(isset($_POST['c_name'])){
      $c_fees = $_POST['c_fees'];
      $received = $_POST['received'];
      $c_balance = $_POST['balance'];
-     $Register_ID = $_POST['Register_ID'];
+    // $Register_ID = $_POST['Register_ID'];
      $Lead_By = $_POST['Lead_By'];
      $photo = $_POST['photo'];
      $Comments = $_POST['Comments'];

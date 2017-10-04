@@ -46,7 +46,7 @@ $batch_view = $batch->batch_view;
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_client_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_client_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -126,7 +126,8 @@ $client_view = $client->client_view;
                                 <th></th>
                                   <th></th>
                             </thead>
-                            <tbody id="myTable"><?php $i=1;foreach($client_view as $value   ): foreach($batch_view as $value1 ): if ($value->batch_id == $value1->batch_id){?>
+                            <tbody id="myTable"><?php $i=1; foreach($client_view as $value ): foreach($batch_view as $value1 ):
+                            if ($value->batch_id == $value1->batch_id){?>
                                 <tr>
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $id = $value->c_ID; ?></td>

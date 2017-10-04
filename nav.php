@@ -73,6 +73,9 @@ foreach($enquiry_view as $value){
                         <?php if($nav==8):?>
                             <a class="navbar-brand" href="#">Packages</a>
 					    <?php endif;?>
+                        <?php if($nav==9):?>
+                            <a class="navbar-brand" href="#">Transation</a>
+					    <?php endif;?>
                         
                     </div>
 					<div class="collapse navbar-collapse">

@@ -18,35 +18,77 @@ $row = $result->fetch_assoc();
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">fitness_center</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">view client fitness<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="client_fitness_history.php">
+                                <i class="material-icons">plus_one</i> client Fitness history
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">touch_app</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Attendance</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="client_attendance.php">
+                                <i class="material-icons">plus_one</i> Mark Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8" style="margin-right:10px!important;">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
                         <h4 class="title">Client Profile</h4>
                         <p class="category">Here goes Details of client</p>
+                        <?php echo $cid = $row['photo']; ?>
                     </div>
                     <div class="card-content">
                         <form action="edit_client.php" method="post">
                             
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group label-floating">
                                       <strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $cid = $row['c_ID']; ?>
                                     </div>
                                  </div>
                                  <div class="col-md-3">
                                     <div class="form-group label-floating">
-                                      <strong class="text-primary">PackageTime:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['package']; ?>
+                                      <strong class="text-primary">Package type:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['package']; ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                     <div class="form-group label-floating">
-                                      <strong class="text-primary">Start Date:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['startdate']; ?>
+                                      <strong class="text-primary">Start Date:<br></strong> <?php echo  $row['startdate']; ?>
                                     </div>
                                     </div>
                                     <div class="col-md-3">
                                     <div class="form-group label-floating">
-                                      <strong class="text-primary">End Date:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo  $row['enddate']; ?>
+                                      <strong class="text-primary">End Date:<br></strong> <?php echo  $row['enddate']; ?>
                                     </div>
                                     </div>
                                 </div>
@@ -91,15 +133,16 @@ $row = $result->fetch_assoc();
                              </div>                                 
                             <hr>
                             <div class="row">
-                                <div class="col-md-4">
+                               
+                                <div class="col-md-6">
                                     <div class="form-group label-floating">
-                                    <strong class="text-primary">Address:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['address']; ?>
+                                    <strong class="text-primary">View Client Attendance:&nbsp&nbsp&nbsp&nbsp</strong><a href="perticular_client_attendance.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here</a>
 
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group label-floating">
-                                    <strong class="text-primary">View Client Attendance:&nbsp&nbsp&nbsp&nbsp</strong><a href="perticular_client_attendance.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here</a>
+                                    <strong class="text-primary">View Client fitness:&nbsp&nbsp&nbsp&nbsp</strong><a href="client_fitness.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here</a>
 
                                     </div>
                                 </div>
@@ -111,6 +154,20 @@ $row = $result->fetch_assoc();
                                     <div class="form-group label-floating">
                                         <strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong> 
                                           <?php echo $row['contact']; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Email:&nbsp&nbsp&nbsp&nbsp</strong> 
+                                          <?php echo $row['email']; ?>
+                                    </div>
+                                </div>
+                                </div>
+                             <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                    <strong class="text-primary">Address:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['address']; ?>
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -160,6 +217,9 @@ $row = $result->fetch_assoc();
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 
         </div>

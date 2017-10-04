@@ -37,7 +37,12 @@ if(isset($_POST['Cat_ID'])){
     
     $package_detail = json_decode($content);
     $packages_view =$package_detail->packages_view[0];
-   // print_r($packages_view);
+    foreach($batch_view as $batchDetails){
+        if($packages_view->batch == $batchDetails->batch_id){
+            $batch_name = $batchDetails->batch_name;
+        }
+    }
+    //print_r($content);
 }
 ?>
     <div class="content">
@@ -61,41 +66,26 @@ if(isset($_POST['Cat_ID'])){
                     </div>
                 </div>
             </div>
-            </div>
-            
-            <!--<div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">touch_app</i>
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">people</i>
                     </div>
                     <div class="card-content">
-                        <p class="category">Attendance</p>
-                    </div>
+                        <p class="category">Batch<p>
+                    </div>  
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="client_attendance.php">
-                                <i class="material-icons">plus_one</i> Mark Attendance
+                            <a href="add_batch.php">
+                                <i class="material-icons">plus_one</i> Add New batch
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="red">
-                        <i class="material-icons">payment</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Payment</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                         <a href="client_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-            </div>-->
+            
+            
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -136,7 +126,11 @@ if(isset($_POST['Cat_ID'])){
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                             </a>
                                             <label for="business">Time unit:</label>
-                                            <select style="width:300px; height:38px;" name="Time_unit"  required><option value="<?php echo $packages_view->Time_unit; ?>">Time unit:</option>
+                                            <select style="width:300px; height:38px;" name="Time_unit"  required>
+                                                  <li>
+                                                    <option value="<?php echo Cat_ID;?>"><?php echo $packages_view->Time_unit;?></option>
+                                                  </li>
+                                                <?php echo $packages_view->Time_unit; ?><option value="<?php echo $packages_view->Time_unit; ?>">Time unit:</option>
                                                 
                                                 <li>
                                                     <option value="Monthly">Monthly</option>
@@ -153,7 +147,11 @@ if(isset($_POST['Cat_ID'])){
                                                 <p class="hidden-lg hidden-md">Notifications</p>
                                             </a>
                                             <label for="business">Select Batch:</label>
-                                            <select style="width:300px; height:38px;" name="batch" required><option value="<?php echo $packages_view->batch; ?>">Select Batch</option>
+                                            <select style="width:300px; height:38px;" name="batch" required>
+                                                 <li>
+                                                    <option value="<?php echo $packages_view->batch;?>"><?php echo $batch_name;?></option>
+                                                 </li>
+                                                <option value="<?php echo $packages_view->batch; ?>">Select Batch</option>
                                                 <?php foreach($batch_view as $value): ?>
                                                 <li>
                                                     <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>

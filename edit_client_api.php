@@ -21,18 +21,17 @@ if(isset($_POST['c_ID']) /*&& isset($_POST['c_surname']) && isset($_POST['gender
      $c_contact = $_POST['contact'];
      $c_fees = $_POST['fees'];
      //$received = $_POST['received'];
-     $Register_ID = $_POST['Register_ID'];
+    // $Register_ID = $_POST['Register_ID'];
      //$Lead_By= $_POST['Lead_By'];
     // $photo= $_POST['photo'];
      $Comments= $_POST['Comments'];
      //$status_payment= $_POST['status_payment'];
      $batch_id = $_POST['batch'];
     
-    $sql = "UPDATE `client` SET `c_name` = '$c_name', `c_surname` = '$c_surname', `gender` = '$gender', `DOB` = '$DOB',`Anniversary` = '$Anniversary', `Age` = '$Age', `address` = '$c_address', `contact` = '$c_contact', `fees` = '$c_fees',  `Register_ID` = '$Register_ID',   `Comments` = '$Comments', `status_payment` = 'unpaid' ,`batch_id` = '$batch_id' WHERE `c_ID` = '$c_id'";
+    $sql = "UPDATE `client` SET `c_name` = '$c_name', `c_surname` = '$c_surname', `gender` = '$gender', `DOB` = '$DOB',`Anniversary` = '$Anniversary', `Age` = '$Age', `address` = '$c_address', `contact` = '$c_contact', `fees` = '$c_fees', `Comments` = '$Comments', `status_payment` = 'unpaid' ,`batch_id` = '$batch_id' WHERE `c_ID` = '$c_id'";
     /* `received` = '$received',`Lead_By` = '$Lead_By',`photo` = '$photo' ";*/
     
-   /* $sql = "UPDATE `packages` SET `Catogary` = '$Catogary', `Active` = '$Active', `Name_of_plan` = '$Name_of_plan', `Time_unit` = '$Time_unit', `batch` = '$batch', `Description` = '$Description'  WHERE `packages`. `Cat_ID` = '$Cat_ID'";
-    */
+   
     if ($conn->query($sql) === TRUE) {
         header('Location: client.php');
     }

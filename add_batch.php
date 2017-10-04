@@ -43,7 +43,7 @@ if(!empty($_SESSION)){
         </div>
         <div class="row">
             <?php 
-                include 'config.php';                    //connect to database
+                include 'config.php';                 //connect to database
                 if(isset($_POST['submit'])){ 
                 if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
 

@@ -25,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating database: " . $conn->error;
 }
 
-
+/// databse connect
 $servername = "localhost";
 $username = "root";
 if($_SERVER['SERVER_NAME'] == 'localhost'){
@@ -41,7 +41,6 @@ $conn = new mysqli($servername, $username, $password,$dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-
 // sql to create table
 
 $sql1 = "CREATE TABLE e_attend (
@@ -127,7 +126,6 @@ if ($conn->query($sql5) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-
 $sql6 = "CREATE TABLE client (
 c_ID INT(11)  AUTO_INCREMENT PRIMARY KEY, 
 c_name VARCHAR(50) ,
@@ -144,6 +142,7 @@ balance VARCHAR(50) ,
 package VARCHAR(50) ,
 startdate VARCHAR(50) ,
 enddate VARCHAR(50) ,
+email VARCHAR(50) ,
 Lead_By VARCHAR(50) ,
 photo VARCHAR(50) ,
 Comments VARCHAR(50) ,
@@ -172,7 +171,6 @@ if ($conn->query($sql7) === TRUE) {
 } else {
     echo "Error creating table: " . $conn->error;
 }
-
 
 
 $sql8 = "CREATE TABLE c_attend (
@@ -283,10 +281,12 @@ if ($conn->query($sql14) === TRUE) {
 $sql15 = "CREATE TABLE enquiry (
 token_no INT(11) AUTO_INCREMENT PRIMARY KEY, 
 name VARCHAR(50),
+surname VARCHAR(50),
 email VARCHAR(50),
 contact VARCHAR(50),
 date VARCHAR(50),
 followupdate VARCHAR(50),
+followuptime VARCHAR(50),
 status VARCHAR(50),
 message VARCHAR(100)
 )";
@@ -297,6 +297,88 @@ if ($conn->query($sql15) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+// sql to create table
+
+$sql16 = "CREATE TABLE client_fitness (
+fitness_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+c_ID  VARCHAR(50), 
+date_before VARCHAR(50) , 
+Diet_before  VARCHAR(50) ,
+Weight_before VARCHAR(50) ,
+date_after VARCHAR(50) ,
+Diet_after VARCHAR(50) ,
+Weight_after VARCHAR(50),
+date_latest VARCHAR(50) ,
+Diet_latest VARCHAR(50) ,
+Weight_latest VARCHAR(50)
+)";
+
+if ($conn->query($sql16) === TRUE) {
+    echo "Table client_fitness created successfully <br>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// sql to create table
+$sql17 = "CREATE TABLE Income (
+In_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+bill_no VARCHAR(50),
+date VARCHAR(50),
+name VARCHAR(50),
+amount VARCHAR(50)
+
+)";
+
+if ($conn->query($sql17) === TRUE) {
+    echo "Table Income created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// sql to create table
+$sql18 = "CREATE TABLE Expence (
+Out_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+bill_no VARCHAR(50),
+date VARCHAR(50),
+name VARCHAR(50),
+amount VARCHAR(50)
+)";
+
+if ($conn->query($sql18) === TRUE) {
+    echo "Table Expence created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// sql to create table
+$sql19 = "CREATE TABLE Transaction (
+Tras_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+date VARCHAR(50),
+in_amount VARCHAR(50),
+out_amount VARCHAR(50),
+profit VARCHAR(50),
+loss VARCHAR(50)
+)";
+
+if ($conn->query($sql19) === TRUE) {
+    echo "Table Transaction created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// sql to create table
+$sql20 = "CREATE TABLE total_income_expence (
+Tras_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+date VARCHAR(50),
+income VARCHAR(50),
+expence VARCHAR(50)
+)";
+
+if ($conn->query($sql20) === TRUE) {
+    echo "Table total_income_expence created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
 
 $conn->close();
 ?>

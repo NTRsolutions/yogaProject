@@ -18,6 +18,7 @@ if(isset($_POST['id'])){
     $sql = "SELECT * FROM client WHERE c_ID = '$cid'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
+   // print_r($row);
 }
 ?>
 <?php include 'header.php'; ?>
@@ -144,7 +145,7 @@ if(isset($_POST['id'])){
                                         <div class="form-group label-floating">
                                             <label class="control-label">Balance</label>
 
-                                                    <input type="text" value="<?php   if ($row['balance'] < 1000) {  echo 0000; } else { echo $row['balance'];}   ?>" class="form-control" name="c_balance" required readonly>
+                                                    <input type="text" value="<?php   if ($row['balance'] < 00000) {  echo 0000; } else { echo $row['balance'];}   ?>" class="form-control" name="c_balance" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">

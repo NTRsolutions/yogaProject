@@ -14,7 +14,7 @@ $sql = "SELECT * FROM `enquiry` WHERE `token_no`='$id'";
         // output data of each row
         $row = $result->fetch_assoc(); 
        
-     array_push($enquiry,array('tokenid'=>$row['token_no'],'name'=>$row['name'],'email'=>$row['email'],'contact'=>$row['contact'],'followupdate'=>$row['followupdate'],'message'=>$row['message'],'date'=>$row['date'],'status'=>$row['status']));
+     array_push($enquiry,array('tokenid'=>$row['token_no'],'name'=>$row['name'],'surname'=>$row['surname'],'email'=>$row['email'],'contact'=>$row['contact'],'followupdate'=>$row['followupdate'],'followuptime'=>$row['followuptime'],'message'=>$row['message'],'date'=>$row['date'],'status'=>$row['status']));
         
         $enquiry_view = array('enquiry_view'=>$enquiry);
         echo json_encode($enquiry_view);

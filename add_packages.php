@@ -69,40 +69,7 @@ $batch_view = $batch->batch_view;
                 </div>
             </div>
             </div>
-            <!--<div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">touch_app</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Attendance</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="client_attendance.php">
-                                <i class="material-icons">plus_one</i> Mark Attendance
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="red">
-                        <i class="material-icons">payment</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Payment</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                         <a href="client_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            --><div class="row">
+          <div class="row">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header" data-background-color="purple">

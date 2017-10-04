@@ -40,16 +40,23 @@
                     <p>Batch</p>
                 </a>
             </li>
-            <li  <?php if($page==8){echo "class='active'";} ?>>
+           
+            <li  <?php if($page==7){echo "class='active'";} ?>>
+                <a href="enquiry_table.php">
+                    <i class="material-icons">sms</i>
+                    <p>Enquiry</p>
+                </a>
+            </li>
+             <li  <?php if($page==8){echo "class='active'";} ?>>
                 <a href="packages.php">
                     <i class="material-icons">local_offer</i>	             
                     <p>packages</p>
                 </a>
             </li>
-            <li  <?php if($page==7){echo "class='active'";} ?>>
-                <a href="enquiry_table.php">
-                    <i class="material-icons">sms</i>
-                    <p>Enquiry</p>
+             <li  <?php if($page==9){echo "class='active'";} ?>>
+                <a href="money_income.php">
+                   <i class="material-icons">attach_money</i>	             
+                    <p>Transaction</p>
                 </a>
             </li>
         </ul>

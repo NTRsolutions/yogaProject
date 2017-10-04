@@ -24,6 +24,7 @@ if(isset($_POST['c_ID'])){
     $content = curl_exec($ch);
     $client_detail = json_decode($content);
     $client_view = $client_detail->client_view[0];
+    //print_r($client_view);
    
    # Create a connection
 $ch = curl_init();
@@ -33,6 +34,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
+   // print_r($batch_view);
 }
 /*if(isset($_POST['edit'])){
      
@@ -83,8 +85,8 @@ $batch_view = $batch->batch_view;
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Register ID </label>
-                                            <input onkeyup="allLatters(Register_ID )" type="text" class="form-control validName" value="<?php echo $client_view->Register_ID ;?> " name="Register_ID" required>
+                                            <label class="control-label">Client ID </label>
+                                            <input onkeyup="allLatters(Register_ID )" type="text" class="form-control validName" value="<?php echo $client_view->c_ID ;?> " name="c_ID" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

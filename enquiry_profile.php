@@ -48,84 +48,84 @@ if(isset($_GET['enq_id'])){
 	                                <h4 class="title">Enquiry</h4>
 									<p class="category">Here goes Details of Enquiry</p>
 	                            </div>
-	                            <div class="card-content">
-	                                <form action="edit_enquiry.php" method="post">
-	                                    <div class="row">
-	                                        <div class="col-md-4">
-                                            
-												<div class="form-group label-floating">
-													<strong class="text-primary">Token No:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $tokenid = $detail_enquiry->token_no; ?>
-												</div>
-	                                        </div>
-                                        
-	                                        <div class="col-md-4">
-                                            
-												<div class="form-group label-floating">
-													<strong class="text-primary">Date:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->date; ?>
-												</div>
-	                                        </div>
-                                            <div class="col-md-4">
-                                            
-												<div class="form-group label-floating">
-													<strong class="text-primary">FollowUp Date:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->followupdate; ?>
-												</div>
-	                                        </div>
-                                        </div>
-                                         <hr>
-                                        
-                                             <div class="row">
+                <div class="card-content">
+                    <form action="enquiry_table.php" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <strong class="text-primary">Token No:&nbsp&nbsp&nbsp&nbsp</strong>
+                                <?php echo $tokenid = $detail_enquiry->token_no; ?>
+                            </div>
+                            </div>
 
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>
-												    <?php echo $detail_enquiry->name; ?>
-												</div>
-	                                        </div>
-                                         <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Email Address:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->email; ?>
-												</div>
-	                                        </div>
-                                             
-                                        </div> 
-                                        
-                                        <hr>
-                                         
-
-	                                             
-                                     
-                                         
-                                        
-                                                 
-	                                        <div class="row">
-
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong>
-												    <?php echo $detail_enquiry->contact; ?>
-												</div>
-	                                        </div>
-                                        
-                                            
-	                                         
-	                                        <div class="col-md-6">
-												<div class="form-group label-floating">
-													<strong class="text-primary">Message:&nbsp&nbsp&nbsp&nbsp</strong>
-													<?php echo $detail_enquiry->message; ?>
-												</div>
-	                                        </div>
-                                                   
-                                        </div>    
-                                      <hr>
-                                        <input type="hidden" name="tokenid" value="<?php echo $tokenid;?>" >
-	                                    <button type="submit" class="btn btn-primary pull-right">Update Enquiry</button>
-	                                    <div class="clearfix"></div>
-	                                </form>
-	                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">Date:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->date; ?>
+                                </div>
+                            </div>
+                            </div>
+                            <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">FollowUp Date:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->followupdate; ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">FollowUp Time:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->followuptime; ?>
+                                </div>
+                            </div>
+                            </div>
+                         <hr>
+                     <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->name; ?>
+                                </div>
+                            </div>
+                         <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">Surname:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->surname; ?>
+                                </div>
+                            </div>
+                        
+                        </div> 
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->contact; ?>
+                                </div>
+                            </div>
+                         <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    <strong class="text-primary">Email Address:&nbsp&nbsp&nbsp&nbsp</strong>
+                                    <?php echo $detail_enquiry->email; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    <div class="class">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                <strong class="text-primary">comment:&nbsp&nbsp&nbsp&nbsp</strong>
+                                <?php echo $detail_enquiry->message; ?>
+                            </div>
+                        </div>
+                    </div>    
+                      <hr>
+                        <input type="hidden" name="tokenid" value="<?php echo $tokenid;?>" >
+                        <button type="submit" class="btn btn-primary pull-right">Back</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
 	                        </div>
 	                    </div>
                         
