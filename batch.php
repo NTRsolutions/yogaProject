@@ -12,7 +12,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
-    
+//print_r($content);
 ?>
 <?php include 'header.php'; ?>
 <style>
@@ -53,6 +53,40 @@ $batch_view = $batch->batch_view;
                     </div>
                 </div>
             </div>
+             <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">View Trainer<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="trainer.php">
+                                <i class="material-icons">plus_one</i> View Trainer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Add Trainer<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="add_trainer.php">
+                                <i class="material-icons">plus_one</i> Add New Trainer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
             <div class="row">
             <div class="col-md-12">
@@ -70,7 +104,7 @@ $batch_view = $batch->batch_view;
                             <th>Batch id</th>
                             <th>Name</th>
                             <th>Timings</th>
-                            <th></th>
+                            <th>Trainer Name</th>
                         </thead>
                         <tbody id="myTable"><?php $i=1;foreach($batch_view as $value): ?>
                             <tr>
@@ -78,6 +112,7 @@ $batch_view = $batch->batch_view;
                                 <td><a href="batch_detail.php?batch_id=<?php echo $id;?>&batch_name=<?php echo $value->batch_name; ?>"><?php echo $id; ?></a></td>
                                 <td><a href="batch_detail.php?batch_id=<?php echo $id;?>&batch_name=<?php echo $value->batch_name; ?>"><?php echo $value->batch_name; ?></a></td>
                                 <td><?php echo $value->batch_timing; ?></td>
+                                <td><?php echo $value->e_name; ?></td>
                                                 <!--<td style="width:20px!important;"><a    href="edit_batch.php" class="btn btn-sm btn-warning">Edit</a></td>
 -->
                                 <form action="edit_batch.php" method="POST">

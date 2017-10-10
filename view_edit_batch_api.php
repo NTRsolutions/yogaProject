@@ -16,7 +16,7 @@ if(isset($_POST["batch_id"])){
         // output data of each row
         $row = $result->fetch_assoc(); 
         
-     array_push($batch,array('batch_id'=>$row['batch_id'],'batch_name'=>$row['batch_name'],'batch_timing'=>$row['batch_timing']));
+     array_push($batch,array('batch_id'=>$row['batch_id'],'batch_name'=>$row['batch_name'],'batch_timing'=>$row['batch_timing'],'e_name'=>$row['e_name']));
         
         $batch_view = array('batch_view'=>$batch);
         echo json_encode($batch_view);

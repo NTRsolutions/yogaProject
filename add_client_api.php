@@ -22,8 +22,9 @@ if(isset($_POST['c_name'])){
      $package = $_POST['package'];
      $startdate = $_POST['startdate'];
      $enddate = $_POST['enddate'];
+     $email = $_POST['email'];
     
-    $sql = "INSERT INTO `client` ( `c_name`, `c_surname`, `gender`, `DOB`, `Anniversary`, `Age`, `address`, `contact`, `fees`, `received`, `balance`, `package`, `Lead_By`, `photo`, `Comments`, `status_payment`, `batch_id`, `startdate`, `enddate`) VALUES ( '$c_name','$c_surname','$gender', '$DOB', '$anniversary', '$age', '$c_address' , '$c_contact', '$c_fees', '$received', '$c_balance', '$package', '$Lead_By', '$photo', '$Comments', 'unpaid', '$c_batch', '$startdate', '$enddate')";
+    $sql = "INSERT INTO `client` ( `c_name`, `c_surname`, `gender`, `DOB`, `Anniversary`, `Age`, `address`, `contact`, `fees`, `received`, `balance`, `package`, `Lead_By`, `photo`, `Comments`, `status_payment`, `batch_id`, `startdate`, `enddate`, `email`) VALUES ( '$c_name','$c_surname','$gender', '$DOB', '$anniversary', '$age', '$c_address' , '$c_contact', '$c_fees', '$received', '$c_balance', '$package', '$Lead_By', '$photo', '$Comments', 'Inactive', '$c_batch', '$startdate', '$enddate', '$email')";
                                                            // query to database for insert data in      client table
     if ($conn->query($sql) === TRUE) {              // checked does query connect ? if it connected then execute                                                        next loop and print successfull
         ?> 

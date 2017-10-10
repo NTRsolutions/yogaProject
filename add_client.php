@@ -12,7 +12,7 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 $content = curl_exec($ch);
 $batch = json_decode($content);
 $batch_view = $batch->batch_view;
-//$batch_view = $batch->batch_view;
+//print_r($batch_view);
 ?>
 <?php  
 # Create a connection
@@ -54,6 +54,7 @@ if(isset($_POST['submit']) && isset($_POST['c_name'])){
             'c_name' => $_POST['c_name'],
             'c_surname' => $_POST['c_surname'],
             'gender' => $_POST['gender'],
+            'email' => $_POST['email'],
             'DOB' => $_POST['DOB'],
             'Anniversary' => $_POST['Anniversary'],
             'Age' => $_POST['Age'],
@@ -73,7 +74,7 @@ if(isset($_POST['submit']) && isset($_POST['c_name'])){
 
 
         # Create a connection
-        $url = 'http://localhost/yogaproject/add_client_api.php';
+        $url = 'http://yoga.classguru.in/add_client_api.php';
         $ch = curl_init($url);
         # Form data string
         $postString = http_build_query($data, '', '&');
@@ -88,18 +89,21 @@ if(isset($_POST['submit']) && isset($_POST['c_name'])){
         }
 
          ?> 
+
+    
 <?php 
 if(isset($_POST['date_before'])){ 
     
     $data = array(
             'date_before' => $_POST['date_before'],
             'Diet_before' => $_POST['Diet_before'],
-            'Weight_before' => $_POST['Weight_before']
+            'Weight_before' => $_POST['Weight_before'],
+            'height_before' => $_POST['height_before']
         );
 
 
         # Create a connection
-        $url = 'http://localhost/yogaproject/add_client_fitness_api.php';
+        $url = 'http://yoga.classguru.in/add_client_fitness_api.php';
         $ch = curl_init($url);
         # Form data string
         $postString = http_build_query($data, '', '&');
@@ -174,20 +178,33 @@ if(isset($_POST['date_before'])){
                         </div>
                         <div class="card-content">
                             
-                            <form action="add_client.php" method="post" enctype="multipart/form-data">
+                            <form action="add_client.php" method="post" enctype="multipart/form-data"><h4 style="color:#1a1aff"> Personal Detail</h4>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Name </label>
+                                            <label class="control-label">Name  </label>
                                             <input  onkeyup="allLatters(c_name, event)" type="text" 
                                             class="form-control validName" name="c_name" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Surname </label>
+                                            <label class="control-label">Surname</label>
                                             <input  onkeyup="Latters(c_surname, event)" type="text" 
                                              class="form-control validSurname" name="c_surname" required>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Contact</label>
+                                            <input type="text"  class="form-control" name="c_contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Email</label>
+                                            <input   type="text" 
+                                            class="form-control validemail" name="email" >
                                         </div>
                                     </div>
                                 </div>
@@ -221,33 +238,7 @@ if(isset($_POST['date_before'])){
                                         </div>
                                     </div>
 	                            </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Fees</label>
-                                            <input  onkeyup="allnumeric(c_fees, event)" id="Text1" type="text"  class="form-control validnumber" name="c_fees" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Received</label>
-                                            <input onkeyup="allnumerics(received, event)"  id="Text2" type="text" class="form-control validnumbers" name="received" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group label">
-                                            <label class="control-label">Balance</label>
-                                            <input  type="text" onfocus="calc_balance()" id="txtresult"  class="form-control" name="balance" required readonly >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Contact</label>
-                                            <input type="text"  class="form-control" name="c_contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
-                                        </div>
-                                    </div>
-	                            </div>
+                         
                              <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
@@ -269,21 +260,17 @@ if(isset($_POST['date_before'])){
                                             <input  type="text" class="form-control " name="Lead_By" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                <div class="col-md-6">
                                     <?php 
                                         if(isset($_POST['submit']))
-                                        {
-
-                                        //$img = file_get_contents($_FILES['img']['tmp_name']);
-                                        file_put_contents("client_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
+                                        { file_put_contents("client_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
                                         }
                                     ?>
                                     Select image :<br><br>
                                     <input type="file" name="img" accept="image/*"/>
-
                                 </div>
                             </div>
-                            <hr><h4>Fill Batch & packages Detail</h4>
+                            <hr><h4 style="color:#1a1aff"> Packages & Fitness Detail</h4>
                                <div class="row">
                                     <div style="margin:35px 0 0 0" class="col-md-6">
                                         <div class="dropdown">
@@ -294,7 +281,7 @@ if(isset($_POST['date_before'])){
                                             <select style="width:300px; height:38px;" name="batch" required><option value="">Select Batch</option>
                                                 <?php foreach($batch_view as $value): ?>
                                                 <li>
-                                                    <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name;?></option>
+                                                    <option value="<?php echo $value->batch_id;?>"><?php echo "Name : ".$value->batch_name;  echo "Time : ".$value->batch_timing;?></option>
                                                 </li>
                                                 <?php endforeach; ?>
                                             </select>
@@ -326,30 +313,63 @@ if(isset($_POST['date_before'])){
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">EndDate By </label>
+                                            <label class="control-label">End Date By </label>
                                             
-                                            <input type="date" id='resultDate' name="enddate" readonly/>
+                                            <input type="date" id='resultDate' name="enddate" required/>
                                         </div>
                                     </div>
                                 </div>
-                                <h4> Fill Fitness Detail</h4>
                             <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group label">
-                                    <label class="control-label">Date</label>
-                                    <input type="date" class="form-control" name="date_before" required>
-                                </div>
-                            </div> 
-                            <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Fees</label>
+                                            <input  onkeyup="allnumeric(c_fees, event)" id="Text1" type="text"  class="form-control validnumber" name="c_fees" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Received</label>
+                                            <input onkeyup="allnumerics(received, event)"  id="Text2" type="text" class="form-control validnumbers" name="received" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label">
+                                            <label class="control-label">Balance</label>
+                                            <input  type="text" onfocus="calc_balance()" id="txtresult"  class="form-control" name="balance" required readonly >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label">
+                                            <label class="control-label">Date</label>
+                                            <input type="date" class="form-control" name="date_before" required>
+                                        </div>
+                                    </div>
+	                            </div>    
+                              
+                        <div class="row">
+                            
+                            <div class="col-md-3">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">nutritions/Diet</label>
+                                    <label class="control-label">Nutritions/Diet</label>
                                     <input type="text" class="form-control" name="Diet_before" required>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Weight</label>
+                                    <label class="control-label">Weight (KG)</label>
                                     <input type="text" class="form-control" name="Weight_before" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Height (CM)</label>
+                                    <input type="text" class="form-control" name="height_before" required>
+                                </div>
+                            </div> 
+                            <div class="col-md-3">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Comments</label>
+                                    <input type="text" class="form-control" name="Comments" required>
                                 </div>
                             </div>
                          </div>

@@ -46,7 +46,7 @@ $batch_view = $batch->batch_view;
 <?php  
 # Create a connection
 $ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_client_api.php');
+curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_client_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
@@ -135,30 +135,30 @@ $client_view = $client->client_view;
                                     <td><a href='view_client_profile.php?c_ID=<?php echo $id;?>'><?php echo $value->c_surname; ?></a></td> 
                                     <td><?php echo $value->contact; ?></td>
                                     <td><?php echo $value1->batch_name;  ?></td>
-                                    <?php if($value->status_payment == 'unpaid'){ ?>
+                                    <?php if($value->status_payment == 'Inactive'){ ?>
                                     <td><font style="color:red"><?php echo $value->status_payment;?></font></td>
                                     <?php }?>
-                                    <?php if($value->status_payment == 'paid'){ ?>
+                                    <?php if($value->status_payment == 'Active'){ ?>
                                     <td><font style="color:green"><?php echo $value->status_payment;?> </font></td>
                                     <?php }?>
                                     
-                                <form action="edit_client.php" method="POST">
-                                    <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_ID">
-                                    <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
-                                    </td>
-                                </form>
+                        <form action="edit_client.php" method="POST">
+                            <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_ID">
+                            <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
+                            </td>
+                        </form>
                                    
-                                    <td style="width:20px!important;">
-                                        <div class="dropdown">
-                                            <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
-                                                <li><a href="#">No</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>                              
+                        <td style="width:20px!important;">
+                            <div class="dropdown">
+                                <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
+                                    <li><a href="#">No</a></li>
+                                </ul>
+                            </div>
+                        </td>                              
                                 </tr><?php } endforeach;?><?php endforeach;?>
                                 </tbody>
                         </table>

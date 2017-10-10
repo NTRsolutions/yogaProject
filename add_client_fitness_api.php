@@ -1,15 +1,29 @@
 <?php 
-include 'config.php';                                   //connect to databasse
-if(isset($_POST['date_before']) && isset($_POST['Diet_before']) && isset($_POST['Weight_before'])/* && isset($_POST['date_after']) && isset($_POST['Diet_after']) && isset($_POST['Weight_after'])*/){               //if batch name and batch time is                                                                                  submited then go in if condition
+include 'config.php';
+$sql="SELECT * FROM client ORDER BY c_ID DESC LIMIT 1";
+      $result=$conn->query($sql);
+    $client=array();
+    if ($result->num_rows >0){
+     // output data of each row
+    while($row = $result->fetch_assoc()){
+   array_push($client,array('c_ID'=>$row['c_ID']));
+    }
+        
+    }  $c_ID=$client[0];
+$c_ID1=$c_ID['c_ID'];
+//print_r($c_ID1);
+
+
+//connect to databasse
+if(isset($_POST['date_before']) && isset($_POST['Diet_before']) && isset($_POST['Weight_before'])){               //if batch name and batch time is                                                                                  submited then go in if condition
     $date_before = $_POST['date_before'];
     $Diet_before = $_POST['Diet_before'];
     $Weight_before = $_POST['Weight_before'];
- /*   $date_after = $_POST['date_after'];
-    $Diet_after = $_POST['Diet_after'];
-    $Weight_after = $_POST['Weight_after'];*/
-    $sql = "INSERT INTO client_fitness (date_before, Diet_before, Weight_before) 
-        VALUES ('$date_before','$Diet_before', '$Weight_before')";            // insert into batch table if batch name and batch                                                                 time is set
-     if ($conn->query($sql) === TRUE) {
+    $height_before = $_POST['height_before'];
+ 
+    $sql = "INSERT INTO client_fitness (c_ID,date_before, Diet_before, Weight_before,height_before,bmi) 
+        VALUES ('$c_ID1','$date_before','$Diet_before', '$Weight_before', '$height_before','22')";            // insert into batch table if batch name and batch                                                                 time is set
+     if ($conn->query($sql) === TRUE){
         header('Location: client.php');                      // if query is connected then print as success and go                                                                     in next loop
         ?> 
 <div class="alert alert-success" role="alert">

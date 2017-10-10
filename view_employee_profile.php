@@ -3,12 +3,16 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
+
 <?php 
 include 'config.php';
 $id = $_GET['e_id'];
 $sql = "SELECT * FROM employee WHERE e_ID = '$id'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+    $name=$row['e_name'];
+ $surname=$row['e_surname'];
+   // print_r($row);
 ?>
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
@@ -19,56 +23,68 @@ $row = $result->fetch_assoc();
 	                <div class="row">
 	                    <div class="col-md-8">
 	                        <div class="card">
-	                            <div class="card-header" data-background-color="purple">
-	                                <h4 class="title">Employee Profile</h4>
-									<p class="category">Here goes Details of Employee</p>
-	                            </div>
+                            <div class="card-header" data-background-color="purple">
+                            <h4 class="title">Employee Profile</h4>
+                            <!-- <p class="category">Here goes Details of client</p>-->
+                            <div><div class="row"><div class="col-md-4">
+                            <?php  echo "<img style='width:100px; height:100px; '  src=".$row['photo']." />"; ?>
+                            </div><div class="col-md-2"> Employee ID :<?php echo $cid = $row['e_ID']; ?></div><div class="col-md-3"> Name :<?php echo $name = $row['e_name']; ?></div><div class="col-md-3"> Surname :<?php echo $surname = $row['e_surname']; ?></div></div></div>
+                            </div>
 	                            <div class="card-content">
                                     <form action="edit_employee.php" method="post">
-	                                    <div class="row">
-                                            <div class="col-md-4">
-                                                 <div class="form-group label-floating">
-                                                    <strong class="text-primary">ID:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $eid = $row['e_ID']; ?>
-                                                </div>
-	                                        </div>
-                                            <div class="col-md-4">
-                                                 <div class="form-group label-floating">
-                                                    <strong class="text-primary">Register_ID:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $row['Register_ID']; ?>
-                                                </div>
-	                                        </div>
+                                <div class="row">
+                                   
+                                         <?php  $eid = $row['e_ID']; ?>
+                                        
+                                    
+                                    <div class="col-md-4">
+                                         <div class="form-group label-floating">
+                                            <strong class="text-primary">Register_ID:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $row['Register_ID']; ?>
                                         </div>
-                                        <input type="hidden" name="e_ID" value="<?php echo $eid; ?>">
-                                        <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                            <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $row['e_name']; ?>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                         <div class="form-group label-floating">
+                                            <strong class="text-primary">ID Proof:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $row['id_name']; ?>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                            <strong class="text-primary">Surname:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['e_surname']; ?>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                         <div class="form-group label-floating">
+                                            <strong class="text-primary">ID No:&nbsp&nbsp&nbsp&nbsp</strong><?php echo $row['id_no']; ?>
                                         </div>
-                                    </div> 
-                                        <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                                <strong class="text-primary">Gender:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Gender']; ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                                <strong class="text-primary">Date Of Birth:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['DOB']; ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group label-floating">
-                                                <strong class="text-primary">Age:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Age']; ?>
-                                            </div>
-                                        </div>
-                                    </div>  
+                                    </div>
+                                </div>
+                                <input type="hidden" name="e_ID" value="<?php echo $eid; ?>">
+                                <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                    <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong>    <?php echo $row['e_name']; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                    <strong class="text-primary">Surname:&nbsp&nbsp&nbsp&nbsp</strong>  <?php echo $row['e_surname']; ?>
+                                    </div>
+                                </div>
+                            </div> 
+                                <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Gender:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Gender']; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Date Of Birth:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['DOB']; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Age:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['Age']; ?>
+                                    </div>
+                                </div>
+                            </div>  
                                  <hr>
                                         <div class="row">
                                             <div class="col-md-4">
@@ -124,8 +140,11 @@ $row = $result->fetch_assoc();
                                         <hr>     
 	                          
 	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-	                                    <div class="clearfix"></div>
+	                                    
 	                                </form>
+                                     <a href='delete_employee_api.php/?e_ID=<?= $id;?>'>
+                                        <button  name="e_ID" class="btn btn-primary pull-right" style="background-color:red">Delete </button></a>
+                                    <div class="clearfix"></div>
 	                            </div>
 	                        </div>
 	                    </div>

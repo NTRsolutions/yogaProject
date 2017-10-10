@@ -128,7 +128,7 @@ $employee_view = $employee->employee_view;
                                 <div class="col-md-2">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Salary</label>
-                                        <input type="text" value="<?php echo $value->salary;?>" class="form-control" name="salary[]" readonly>
+                                        <input type="text" value="<?php echo $value->Salary;?>" class="form-control" name="salary[]" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-2">

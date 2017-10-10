@@ -12,7 +12,8 @@ if(isset($_POST['batch_id']) && isset($_POST['batch_name']) && isset($_POST['bat
     $id = $_POST["batch_id"];
      $batch_name = $_POST['batch_name'];
      $batch_timing = $_POST['batch_timing'];
-    $sql = "UPDATE `batch` SET `batch_name` = '$batch_name', `batch_timing` = '$batch_timing' WHERE `batch`.`batch_id` = '$id'";
+     $e_name = $_POST['e_name'];
+    $sql = "UPDATE `batch` SET `batch_name` = '$batch_name', `batch_timing` = '$batch_timing' , `e_name` = '$e_name' WHERE `batch`.`batch_id` = '$id'";
     if ($conn->query($sql) === TRUE) {
         header('Location: batch.php');
     }

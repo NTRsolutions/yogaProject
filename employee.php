@@ -35,7 +35,7 @@ $employee_view = $employe->employee_view;
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-4">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="orange">
                         <i class="material-icons">people</i>
@@ -52,7 +52,24 @@ $employee_view = $employe->employee_view;
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="material-icons">people</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Trainer<p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="trainer.php">
+                                <i class="material-icons">plus_one</i> View Trainer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="green">
                         <i class="material-icons">touch_app</i>
@@ -69,7 +86,7 @@ $employee_view = $employe->employee_view;
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="col-lg-3 col-md-4 col-sm-4">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="red">
                         <i class="material-icons">payment</i>

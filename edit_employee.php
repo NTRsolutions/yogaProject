@@ -24,7 +24,7 @@ if(isset($_POST['e_ID'])){
     $content = curl_exec($ch);
     $employee_detail = json_decode($content);
     $e_view = $employee_detail->employee_view[0];
-   // print_r($e_view);
+    //print_r($e_view);
 }
 ?><!--
    # Create a connection

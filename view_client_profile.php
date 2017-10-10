@@ -9,7 +9,9 @@ $id = $_GET['c_ID'];
 $sql = "SELECT * FROM client WHERE c_ID = '$id'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-   //print_r($row['Photo']);
+    $name=$row['c_name'];
+    $surname=$row['c_surname'];
+  //print_r($row);
 ?>
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
@@ -18,6 +20,25 @@ $row = $result->fetch_assoc();
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+            
+            
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="material-icons">touch_app</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Attendance</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="perticular_client_attendance.php?cid=<?php echo $id;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">
+                                <i class="material-icons">plus_one</i> View Attendance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -29,7 +50,7 @@ $row = $result->fetch_assoc();
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="client_fitness_history.php">
+                            <a href="client_fitness.php?cid=<?php echo $id;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">
                                 <i class="material-icons">plus_one</i> client Fitness history
                             </a>
                         </div>
@@ -63,8 +84,10 @@ $row = $result->fetch_assoc();
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
                         <h4 class="title">Client Profile</h4>
-                        <p class="category">Here goes Details of client</p>
-                        <?php echo $cid = $row['photo']; ?>
+                       <!-- <p class="category">Here goes Details of client</p>-->
+                        <div><div class="row"><div class="col-md-4">
+                        <?php  echo "<img style='width:100px; height:100px; '  src=".$row['photo']." />"; ?>
+                            </div><div class="col-md-2"> Client ID :<?php echo $cid = $row['c_ID']; ?></div><div class="col-md-3"> Name :<?php echo $name = $row['c_name']; ?></div><div class="col-md-3"> Surname :<?php echo $surname = $row['c_surname']; ?></div></div></div>
                     </div>
                     <div class="card-content">
                         <form action="edit_client.php" method="post">
@@ -95,20 +118,7 @@ $row = $result->fetch_assoc();
                             </div>
                             
                            <input type="hidden" name="c_ID" value="<?php echo $cid; ?>" >
-                             <hr>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <strong class="text-primary">Name:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $name = $row['c_name']; ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <strong class="text-primary">Surname:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $surname = $row['c_surname']; ?>
-
-                                    </div>
-                                </div>
-                            </div> 
+                          
                              <hr>
 
                              <div class="row">
@@ -131,58 +141,60 @@ $row = $result->fetch_assoc();
                                     </div>
                                 </div>
                              </div>                                 
-                            <hr>
+                         <hr>
                             <div class="row">
-                               
                                 <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                    <strong class="text-primary">View Client Attendance:&nbsp&nbsp&nbsp&nbsp</strong><a href="perticular_client_attendance.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here</a>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                    <strong class="text-primary">View Client fitness:&nbsp&nbsp&nbsp&nbsp</strong><a href="client_fitness.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here</a>
-
-                                    </div>
-                                </div>
-                            </div>
-                           <hr>
-                           
-                            <div class="row">
-                                <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <strong class="text-primary">Contact:&nbsp&nbsp&nbsp&nbsp</strong> 
                                           <?php echo $row['contact']; ?>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <strong class="text-primary">Email:&nbsp&nbsp&nbsp&nbsp</strong> 
                                           <?php echo $row['email']; ?>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                              <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group label-floating">
-                                    <strong class="text-primary">Address:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['address']; ?>
-
+                                    <strong class="text-primary" >Address:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['address']; ?>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <strong class="text-primary">Comments:&nbsp&nbsp&nbsp&nbsp</strong> 
                                           <?php echo $row['Comments']; ?>
                                     </div>
                                 </div> 
                             </div>
-                            <hr>
+                        <!--<hr>
                            
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                    <strong class="text-primary">View Client Attendance:&nbsp&nbsp&nbsp&nbsp</strong><a href="perticular_client_attendance.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here<button style="color:black";>Click Here</button></a>
+
+                                    </div>
+                                </div>-->
+                               <!-- <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                    <strong  class="text-primary">View Client fitness:&nbsp&nbsp&nbsp&nbsp</strong><a href="client_fitness.php?cid=<?php echo $cid;?>&cname=<?php echo $name; ?>&csurname=<?php echo $surname; ?>">Click Here<button style="color:black";>Click Here</button></a>
+
+                                    </div>
+                                </div>
+                            </div>-->
+                           <hr>
+                        <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <strong class="text-primary">Fees:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['fees']; ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <strong class="text-primary">Recived:&nbsp&nbsp&nbsp&nbsp</strong> <?php echo $row['received']; ?>
                                     </div>
                                 </div>
 
@@ -200,20 +212,14 @@ $row = $result->fetch_assoc();
                                         <?php }?>
                                         </div>
                                 </div> 
-                            </div>   <hr> 
-                               <div class="row"> 
-                                <div class="col-md-8">
-                                    <div class="form-group label">
-                                      <strong class="text-primary">Client Photo:&nbsp&nbsp&nbsp&nbsp</strong> 
-                                        <?php echo "<img style='width:187px;' src=".$row['photo']." />"; ?>
-                                    </div>
-                                </div>
-                                </div>    
-                              
-
-                            <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                            <div class="clearfix"></div>
+                            </div> 
+                           
+                            <button type="submit" class="btn btn-primary pull-right">Edit</button>
+                            
                         </form>
+                         <a href='delete_client_api.php/?c_ID=<?= $id;?>'>
+                            <button  name="c_ID" class="btn btn-primary pull-right" style="background-color:red">Delete </button></a>
+                            <div class="clearfix"></div>
                     </div>
                 </div>
             </div>

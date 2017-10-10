@@ -8,10 +8,23 @@ if(!empty($_SESSION)){
 <?php $nav=3;include 'nav.php'; ?>
 <div class="content">
     <div class="container-fluid">
+        
+<?php 
+$sql="SELECT * FROM employee ORDER BY e_ID DESC LIMIT 1";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$id=$row['e_ID'];
+$img=$id+1;
+                      
+//print_r($img);
+?>        
+        
 <?php 
 if(isset($_POST['submit'])){
     if(isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['Gender'])&& isset($_POST['DOB'])&& isset($_POST['Age']) &&isset($_POST['Title']) && isset($_POST['Salary']) && isset($_POST['Register_ID'])&& isset($_POST['address'])&& isset($_POST['contact'])&& isset($_POST['Email'])){
-    $data = array(
+$Name = $_POST['e_name'] . $img;
+$url = "empl_image/$Name.jpg";
+    $data = array( 
         'e_name' => $_POST['e_name'],
         'e_surname' => $_POST['e_surname'],
         'Gender' => $_POST['Gender'],
@@ -22,7 +35,12 @@ if(isset($_POST['submit'])){
         'Register_ID' => $_POST['Register_ID'],
         'address' => $_POST['address'],
         'contact' => $_POST['contact'],
-        'Email' => $_POST['Email']
+        'Email' => $_POST['Email'],
+        'id_name' => $_POST['id_name'],
+        'id_no' => $_POST['id_no'],
+        'photo' => $url
+        
+
         
         );
     # Create a connection
@@ -100,7 +118,7 @@ if(isset($_POST['submit'])){
                         <p class="category">Fill up the employee Form</p>
                     </div>
                     <div class="card-content">
-                        <form action="add_employee.php" method="post">
+                        <form action="add_employee.php" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
@@ -117,26 +135,28 @@ if(isset($_POST['submit'])){
                             </div>
                             
                             <div class="row">
-                                    <div class="col-md-4">
-                                        <div >
-                                            <label class="control-label" >Gender : </label>
-                                           <br> <input type="radio" name="Gender" value="female">Female <br> 
-                                           <input type="radio" name="Gender" value="male" >  Male 
-                                         </div>
+                                <div class="col-md-4">
+                                     <div >
+                                        Gender :<select style="width:120px; height:40px;" name="Gender" required>
+                                        <option >Select Gender</option>
+                                        <option name="Gender" value="male">Male</option>
+                                        <option name="Gender"  value="female">Female</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label">
-                                            <label class="control-label">Date of Birth</label>
-                                            <input   type="date" class="form-control validnumbers" name="DOB" required>
-                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label">
+                                        <label class="control-label">Date of Birth</label>
+                                        <input   type="date" class="form-control validnumbers" name="DOB" required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Age</label>
-                                            <input   onkeyup="allnumeric(Age, event)" type="text" class="form-control" name="Age" required >
-                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Age</label>
+                                        <input   onkeyup="allnumeric(Age, event)" type="text" class="form-control" name="Age" required >
                                     </div>
-                            </div>
+                                </div>
+                        </div>
                                 
                             <div class="row">
                                 <div class="col-md-4">
@@ -178,9 +198,36 @@ if(isset($_POST['submit'])){
                                         <input  type="email" class="form-control validemail" name="Email" required >
                                     </div>
                                 </div>
+                            </div> 
+                            <div class="row">
+                               
+                               <div class="col-md-3">
+                                   <div class="form-group label-floating">
+                                        <label class="control-label">Identity Proof Name</label>
+                                        <input  type="Text" class="form-control validemail" name="id_name" required >
+                                    </div>
+                                 
+                                </div>
+                                <div class="col-md-3">
+                                   <div class="form-group label-floating">
+                                        <label class="control-label">Identity No</label>
+                                        <input  type="text" class="form-control validemail" name="id_no" required >
+                                    </div>
+                                 
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <?php 
+                                        if(isset($_POST['submit']))
+                                        { file_put_contents("empl_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
+                                        }
+                                    ?>
+                                    Select image :<br><br>
+                                    <input type="file" name="img" accept="image/*"/>
+                                </div>
                             </div>
                             
-                            <button type="submit" name="submit"class="btn btn-primary pull- right">Add</button>
+                            <button type="submit" name="submit"class="btn btn-primary pull- right">Submit</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

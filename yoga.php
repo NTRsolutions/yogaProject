@@ -46,7 +46,8 @@ if ($conn->connect_error) {
 $sql1 = "CREATE TABLE e_attend (
 e_attend_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 date date,
-time VARCHAR(50)
+in_time VARCHAR(50),
+out_time VARCHAR(50)
 )";
 
 if ($conn->query($sql1) === TRUE) {
@@ -88,7 +89,10 @@ Register_ID VARCHAR (50) ,
 address VARCHAR(100) ,
 contact VARCHAR(50) ,
 Email VARCHAR(50) ,
-status VARCHAR(50)
+photo VARCHAR(50) ,
+status VARCHAR(50),
+id_name VARCHAR(50) ,
+id_no VARCHAR(50) 
 )";
 
 if ($conn->query($sql3) === TRUE) {
@@ -117,7 +121,8 @@ if ($conn->query($sql4) === TRUE) {
 $sql5 = "CREATE TABLE batch (
 batch_id INT(11) AUTO_INCREMENT PRIMARY KEY, 
 batch_name VARCHAR(50) ,
-batch_timing VARCHAR(50)
+batch_timing VARCHAR(50),
+e_name VARCHAR(50)
 )";
 
 if ($conn->query($sql5) === TRUE) {
@@ -305,12 +310,12 @@ c_ID  VARCHAR(50),
 date_before VARCHAR(50) , 
 Diet_before  VARCHAR(50) ,
 Weight_before VARCHAR(50) ,
-date_after VARCHAR(50) ,
-Diet_after VARCHAR(50) ,
-Weight_after VARCHAR(50),
+height_before VARCHAR(50) ,
 date_latest VARCHAR(50) ,
 Diet_latest VARCHAR(50) ,
-Weight_latest VARCHAR(50)
+Weight_latest VARCHAR(50),
+height_latest VARCHAR(50),
+bmi VARCHAR(50)
 )";
 
 if ($conn->query($sql16) === TRUE) {
@@ -320,13 +325,15 @@ if ($conn->query($sql16) === TRUE) {
 }
 
 // sql to create table
-$sql17 = "CREATE TABLE Income (
-In_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
-bill_no VARCHAR(50),
+$sql17 = "CREATE TABLE income (
+in_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+in_name VARCHAR(50),
+bank_name VARCHAR(50),
+cheque_no VARCHAR(50),
+amount VARCHAR(50),
 date VARCHAR(50),
-name VARCHAR(50),
-amount VARCHAR(50)
-
+c_d VARCHAR(50),
+balance VARCHAR(50)
 )";
 
 if ($conn->query($sql17) === TRUE) {
@@ -335,7 +342,7 @@ if ($conn->query($sql17) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
-// sql to create table
+/*// sql to create table
 $sql18 = "CREATE TABLE Expence (
 Out_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 bill_no VARCHAR(50),
@@ -348,9 +355,9 @@ if ($conn->query($sql18) === TRUE) {
     echo "Table Expence created successfully <br> ";
 } else {
     echo "Error creating table: " . $conn->error;
-}
+}*/
 
-// sql to create table
+/*// sql to create table
 $sql19 = "CREATE TABLE Transaction (
 Tras_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 date VARCHAR(50),
@@ -364,9 +371,9 @@ if ($conn->query($sql19) === TRUE) {
     echo "Table Transaction created successfully <br> ";
 } else {
     echo "Error creating table: " . $conn->error;
-}
+}*/
 
-// sql to create table
+/*// sql to create table
 $sql20 = "CREATE TABLE total_income_expence (
 Tras_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 date VARCHAR(50),
@@ -378,7 +385,78 @@ if ($conn->query($sql20) === TRUE) {
     echo "Table total_income_expence created successfully <br> ";
 } else {
     echo "Error creating table: " . $conn->error;
+}*/
+
+$sql21 = "CREATE TABLE trainer (
+e_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+e_name VARCHAR(50) ,
+e_surname VARCHAR (50) ,
+Gender VARCHAR (50) ,
+DOB VARCHAR (50) ,
+Age VARCHAR (50) ,
+Title VARCHAR (50) ,
+Salary VARCHAR (50) ,
+Register_ID VARCHAR (50) ,
+address VARCHAR(100) ,
+contact VARCHAR(50) ,
+Email VARCHAR(50) ,
+photo VARCHAR(50) ,
+status VARCHAR(50),
+id_name VARCHAR(50) ,
+id_no VARCHAR(50)
+)";
+
+if ($conn->query($sql21) === TRUE) {
+    echo "Table trainer created successfully <br>";
+} else {
+    echo "Error creating table: " . $conn->error;
 }
+
+
+// sql to create table
+
+$sql22 = "CREATE TABLE t_attend (
+e_attend_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+date date,
+in_time VARCHAR(50),
+out_time VARCHAR(50)
+)";
+
+if ($conn->query($sql22) === TRUE) {
+    echo "Table t_attend created successfully <br>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+
+
+$sql23 = "CREATE TABLE t_attend_pa (
+e_pa_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+e_attend_id INT(11) ,
+e_id VARCHAR(50) ,
+attendance VARCHAR(50)
+)";
+
+if ($conn->query($sql23) === TRUE) {
+    echo "Table t_attend_pa created successfully <br>";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// sql to create table
+$sql24 = "CREATE TABLE trainer_payment (
+e_payment_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
+e_id INT(11) ,
+payment_date DATE ,
+payment_mode VARCHAR(50)
+)";
+
+if ($conn->query($sql24) === TRUE) {
+    echo "Table trainer_payment created successfully <br> ";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
 
 $conn->close();
 ?>

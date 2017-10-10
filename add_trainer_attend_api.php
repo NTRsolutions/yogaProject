@@ -13,7 +13,6 @@ if(isset($_POST['date']) /*&& isset($_POST['timing'])*/ && isset($_POST['eid']) 
     $date = $_POST['date'];
     $in_time = $_POST['in_time'];
     $out_time = $_POST['out_time'];
-    $hd_fd = $_POST['hd_fd'];
     $eid = $_POST['eid'];
     $eid = implode(",",$eid);
     if(!isset($_POST['checkbox'])){
@@ -21,21 +20,15 @@ if(isset($_POST['date']) /*&& isset($_POST['timing'])*/ && isset($_POST['eid']) 
         $absent_id=NULL;
     }else{
         $checkbox = $_POST['checkbox'];
-        foreach($checkbox as $absentid){
-            if(in_array($absentid,$hd_fd)){
-                $halffulabsentid[] = $absentid."-half";
-            }
-            else{
-                $halffulabsentid[] = $absentid."-full";
-            }
-        }
-        $absent_id = implode(",",$halffulabsentid);
+        $absent_id = implode(",",$checkbox);
     }
-    $sql = "INSERT INTO `e_attend` (`date`, `in_time`, `out_time`) VALUES ('$date', '$in_time', '$out_time')";
+    
+    
+    $sql = "INSERT INTO `t_attend` (`date`, `in_time`, `out_time`) VALUES ('$date', '$in_time', '$out_time')";
      if ($conn->query($sql) === TRUE) {
          $last_id = $conn->insert_id;
      }
-         $sql = "INSERT INTO `e_attend_pa`(`e_attend_id`, `e_id`, `attendance`) VALUES ('$last_id','$eid','$absent_id')";
+         $sql = "INSERT INTO `t_attend_pa`(`e_attend_id`, `e_id`, `attendance`) VALUES ('$last_id','$eid','$absent_id')";
      if ($conn->query($sql) === TRUE) {
         ?> 
 <div class="alert alert-success" role="alert">

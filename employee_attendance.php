@@ -34,7 +34,9 @@ width:20%;
 <?php 
   if(isset($_POST['submit'])){
       $date = $_POST['date'];
-      $timing = $_POST['timing'];
+      $in_time = $_POST['in_time'];
+      $out_time = $_POST['out_time'];
+      $hd_fd = $_POST['hd_fd'];
       $eid = $_POST['eid'];
       if(!isset($_POST['checkbox'])){
           $checkbox=NULL;
@@ -43,13 +45,15 @@ width:20%;
       }
       $data = array(
           'date' => $date,
-          'timing' => $timing,
+          'in_time' => $in_time,
+          'out_time' => $out_time,
+          'hd_fd' => $hd_fd,
           'eid'=>$eid,
           'checkbox' => $checkbox
       );
       //print_r($data);
       # Create a connection
-      $url = 'http://yoga.classguru.in/add_employee_attend_api.php';
+      $url = 'http://localhost/yogaproject/add_employee_attend_api.php';
       $ch = curl_init($url);
       # Form data string
       $postString = http_build_query($data, '', '&');
@@ -137,17 +141,26 @@ width:20%;
                             <h4 class="title">Employee Attendance</h4>
                         </div>
                         <div class="card-content">
+                            
                             <div class="col-md-6">
                                 <div class="form-group label-   floating">
                                     <input type="date" class="form-control" value="<?php echo date("Y-m-d"); ?>"name="date">
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">In Time :
                                     <div class="form-group label-floating">
-                                        <label class="control-label">Timing</label>
-                                        <input type="text" class="form-control" name="timing">
+                                        <label class="control-label"></label>
+                                        <input type="time" class="form-control" name="in_time">
                                     </div>
+                                </div>
+                                <div class="col-md-3">Out Time :
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"></label>
+                                        <input type="time" class="form-control" name="out_time">
+                                    </div>
+                                </div> 
+                              
                                 </div>
                             </div>
                         </div>
@@ -167,6 +180,7 @@ width:20%;
                                 <th>Sr no.</th>
                                 <th>Employee Id</th>
                                 <th>Name</th>
+                                <th>Duration</th>
                                 <th>Mark Absent </th>
                             </thead>
                             <tbody id="myTable"><?php  $i=1;foreach($employee_view as $value): ?>
@@ -175,6 +189,14 @@ width:20%;
                                     <td><?php echo $i;$i++; ?></td>
                                     <td><?php echo $value->e_ID; ?></td>
                                     <td><?php echo $value->e_name." ".$value->e_surname; ?></td>
+                                    <td> 
+                                        <select name="hd_fd[]">
+                                        <option> Select Duration :</option>
+                                        <option value=""> Full day</option>
+                                        <option  value="<?php echo $value->e_ID; ?>"> Half day</option>
+                                        </select> 
+                                        
+                                    </td>
                                     <td><input type="checkbox"  value="<?php echo $value->e_ID; ?>" name="checkbox[]" ></td>
                                 </tr><?php endforeach; ?>
                             </tbody>
@@ -188,7 +210,7 @@ width:20%;
             </form>
         </div>
     </div>
-</div>
+
 <?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>

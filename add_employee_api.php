@@ -20,9 +20,12 @@ if(isset($_POST['e_name'])){
         $address = $_POST['address'];
         $contact = $_POST['contact'];
         $Email = $_POST['Email'];
-       $status = 'unpaid';
+        $photo = $_POST['photo'];
+        $status = 'unpaid';
+        $id_name = $_POST['id_name'];
+        $id_no = $_POST['id_no'];
     
-   $sql = "INSERT INTO `employee` (`e_name`, `e_surname`, `Gender`, `DOB`, `Age`, `Title`, `Salary`, `Register_ID`, `address`, `contact`, `Email`, `status`) VALUES ('$e_name', '$e_surname', '$Gender', '$DOB', '$Age', '$Title', '$Salary', '$Register_ID', '$address', '$contact', '$Email', '$status')";
+   $sql = "INSERT INTO `employee` (`e_name`, `e_surname`, `Gender`, `DOB`, `Age`, `Title`, `Salary`, `Register_ID`, `address`, `contact`, `Email`, `photo`, `status`, `id_name`, `id_no`) VALUES ('$e_name', '$e_surname', '$Gender', '$DOB', '$Age', '$Title', '$Salary', '$Register_ID', '$address', '$contact', '$Email','$photo', '$status','$id_name', '$id_no')";
     
     if ($conn->query($sql) === TRUE) {
         ?> 
