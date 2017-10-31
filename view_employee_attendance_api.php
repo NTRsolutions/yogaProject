@@ -12,8 +12,7 @@ if(isset($_GET['e_attend_id'])){
     $attend = array();
     if ($result->num_rows > 0) {
         // output data of each row
-        while($row = $result->fetch_assoc()) {
-            array_push($attend,array('e_attend_id'=>$row['e_attend_id'],'e_id'=>$row['e_id'],'attendance'=>$row['attendance']));
+        while($row = $result->fetch_assoc()) { array_push($attend,array('e_attend_id'=>$row['e_attend_id'],'e_id'=>$row['e_id'],'attendance'=>$row['attendance']));
         }
         $attend_view = array('attendance_view'=>$attend);
         echo json_encode($attend_view);

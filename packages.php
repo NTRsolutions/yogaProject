@@ -42,6 +42,22 @@ $batch_view = $batch->batch_view;
     
         float:right;
     }
+    #inlist{
+        overflow: hidden;
+        word-wrap:normal |break-word;
+    }
+    .dropdown-menu_1 {
+  position: relative;
+}
+    
+    #drop_style{
+      min-width: 50px!important; 
+    }
+  
+    .dropdown-toggle_1 {
+       float:left;
+       margin-top:20px;
+}
 </style>
 
 <?php $page=8;include 'sidebar.php'; ?>
@@ -95,22 +111,23 @@ $batch_view = $batch->batch_view;
                         <h4 class="title">Packages Details</h4>
                     </div>
                 </div>
-                <div class="card-content">
-                    <table class="table table-hover">
+               
+                <div class="card-content table-responsive">
+                    <table id="inlist" class="table table-hover table-striped">
                         <thead class="text-primary">
                             <th>Sr No</th>
-                            <th>Catogary No</th>
-                            <th>Catogary</th>
+                            <!--<th>Catogary No</th>-->
+                            <th>category</th>
                             <th>Name of plan </th>
                             <th>Active </th>
                             <th>Time unit</th>
                             <th> batch id</th>
                            <!-- <th>Description</th>-->
                         </thead>
-                        <tbody id="myTable"><?php $i=1;foreach($packages_view as $value): ?><?php $i=1;foreach($batch_view as $value1 ): if ($value->batch == $value1->batch_id){ ?>
+                        <tbody id="myTable"><?php $i=1;foreach($packages_view as $value): ?><?php foreach($batch_view as $value1 ): if ($value->batch == $value1->batch_id){ ?>
                             <tr>
                                 <td><?php echo $i; $i++; ?></td>
-                                <td><?php echo $value->Cat_ID; ?></td>
+                              <!--  <td><?php echo $value->Cat_ID; ?></td>-->
                                 <!--<td><a href='view_packages_profile.php?Cat_ID=<?php echo $cat_id;?>'><?php echo $cat_id = $value->Cat_ID; ?></a></td>-->
                                 <td><a href='view_packages_profile.php?Cat_ID=<?php echo $cat_id;?>'><?php echo $cat_id = $value->Catogary; ?></a></td>
                                 <!--<td><?php echo $cat_id = $value->Cat_ID; ?></td>
@@ -121,23 +138,28 @@ $batch_view = $batch->batch_view;
                                 <td><?php  echo $value1->batch_name;  ?></td>
                                 <!--<td><?php echo $value->Description; ?></td>-->
                                             
-                           <form action="edit_packages.php" method="POST">
-                                    <td style="width:20px!important;">
-                                            <input value="<?php echo $value->Cat_ID;?>" type="hidden" name="Cat_ID">
-                                           <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
-                                    </td>
-                                </form>
-                                <td style="width:20px!important;">      
-                                    <div class="dropdown">
-                                        <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle"  type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='delete_packages_api.php?Cat_ID=<?php echo $cat_id;?>'>Yes Confirm</a></li>
-                                            <li><a href="#">No</a></li>
-                                        </ul>
-                                    </div>
-                                </td>                                 
-                            </tr>
+                   <form action="edit_packages.php" method="POST">
+                        <td style="width:20px!important;">
+<!--user access control for edit button-->                            
+                            <?php if((($_SESSION['permission']== 'admin' ||'superadmin') || ($_SESSION['permission']== 'operator'))&&($_SESSION['permission'] != 'user' )){?>
+                                <input value="<?php echo $value->Cat_ID;?>" type="hidden" name="Cat_ID">
+                               <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value=""><?php }?>
+                        </td>
+                  </form>
+<!--user access control for delete button-->                                
+                        <?php  if(($_SESSION['permission'] == 'admin' || 'superadmin' )&&(($_SESSION['permission']!='operator')&&($_SESSION['permission']!= 'user'))){?> 
+                        <td>      
+                            <div class="dropdown">
+                             <button  class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle_1" type="button" data-toggle="dropdown">
+                                    <i class="material-icons">delete</i>
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu_1" id="drop_style">
+                                    <li><a tabindex="-1" href='delete_packages_api.php?Cat_ID=<?php echo $cat_id;?>'>Yes</a></li>
+                                    <li><a tabindex="-1" href="#">No</a></li>
+                                </ul>
+                            </div>
+                        </td>  <?php } ?>                               
+                        </tr>
                             <?php } endforeach; ?><?php endforeach; ?>
                         </tbody>
                     </table>
@@ -146,10 +168,23 @@ $batch_view = $batch->batch_view;
         </div>
     </div>
 </div>
+
+<script>
+$('.dropdown-toggle_1').click(function() {
+  dropDownFixPosition($('button'), $('.dropdown-menu_1'));
+});
+
+function dropDownFixPosition(button, dropdown) {
+  var dropDownTop = button.offset().top + button.outerHeight();
+  dropdown.css('top', dropDownTop + "px");
+  dropdown.css('right', button.offset().right + "px");
+}
+
+</script>
 <?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

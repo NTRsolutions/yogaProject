@@ -37,7 +37,25 @@ $batch_view = $batch->batch_view;
     
         float:right;
     }
+    #inlist{
+        overflow: hidden;
+        word-wrap:normal |break-word;
+    }
+
     
+    .dropdown-menu_1 {
+  position: relative;
+}
+    
+    #drop_style{
+      min-width: 50px!important; 
+    }
+  
+    .dropdown-toggle_1 {
+       float:left;
+       margin-top:20px;
+}
+   
 </style>
 
 
@@ -57,6 +75,7 @@ $client_view = $client->client_view;
 <div class="content">
     <div class="container-fluid">
         <div class="row">
+<!--card for add client,client payment,client attendance-->
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="orange">
@@ -107,14 +126,16 @@ $client_view = $client->client_view;
                 </div>
             </div>
             <div class="col-md-12">
+<!--tabular form information of client form database-->
                 <div class="card card-plain">
                     <div class="card-header" data-background-color="purple">
                         <input type="text" class="form-control" id="myInput" onkeyup="searchTable()" placeholder="Search..">
                         <i class="material-icons icon">search</i> 
                         <h4 class="title">Client Details</h4>
                     </div>
-                    <div class="card-content">
-                        <table class="table table-hover">
+                    
+                    <div class="card-content table-responsive">
+                    <table id="inlist" class="table table-hover table-striped">
                             <thead class="text-primary">
                                 <th>Sr no.</th>
                                 <th>Client ID</th>
@@ -141,24 +162,31 @@ $client_view = $client->client_view;
                                     <?php if($value->status_payment == 'Active'){ ?>
                                     <td><font style="color:green"><?php echo $value->status_payment;?> </font></td>
                                     <?php }?>
-                                    
+                           
+<!--user access control form edit button-->                                   
+                    <?php if((($_SESSION['permission']== 'admin' ||'superadmin') || ($_SESSION['permission']== 'operator'))&&($_SESSION['permission'] != 'user' )){?>        
                         <form action="edit_client.php" method="POST">
                             <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_ID">
                             <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
                             </td>
                         </form>
-                                   
-                        <td style="width:20px!important;">
+                    <?php }?>
+<!--user access control form delete button-->                                       
+                    <?php  if(($_SESSION['permission'] == 'admin' || 'superadmin' )&&(($_SESSION['permission']!='operator')&&($_SESSION['permission']!= 'user'))){?>    
+                        <td>
                             <div class="dropdown">
-                                <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
-                                    <span class="caret"></span>
+                                <button  class="btn btn-sm btn-primary dropdown-toggle dropdown-toggle_1" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
+                                <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
-                                    <li><a href="#">No</a></li>
+                                <ul class="dropdown-menu dropdown-menu_1" id="drop_style">
+
+
+                                <li><a tabindex="-1" href='delete_client_api.php/?c_ID=<?= $id;?>'>Yes</a></li>
+                                <li><a tabindex="-1" href="#">No</a></li>
                                 </ul>
                             </div>
-                        </td>                              
+                        </td> <?php }  ?>
+                   
                                 </tr><?php } endforeach;?><?php endforeach;?>
                                 </tbody>
                         </table>
@@ -168,10 +196,13 @@ $client_view = $client->client_view;
         </div>
     </div>
 </div>
+<!--include footer ,serch script ...add end of session-->
 <?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else 
+    header('Location: index.php');
+    //echo "<h1>No User Logged In</h1>";
 ?>

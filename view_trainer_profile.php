@@ -135,8 +135,9 @@ $row = $result->fetch_assoc();
 	                                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
 	                                    
 	                                </form>
+                                        <?php  if(($_SESSION['permission'] == 'admin' || 'superadmin' )&&(($_SESSION['permission']!='operator')&&($_SESSION['permission']!= 'user'))){?> 
                                          <a href='delete_trainer_api.php/?e_ID=<?= $id;?>'>
-                                        <button  name="e_ID" class="btn btn-primary pull-right" style="background-color:red">Delete </button></a>
+                                        <button  name="e_ID" class="btn btn-primary pull-right" style="background-color:red">Delete </button></a><?php }?>
                                     <div class="clearfix"></div>
 	                            </div>
 	                        </div>
@@ -148,5 +149,5 @@ $row = $result->fetch_assoc();
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else  {header('Location: index.php');}// echo "<h1>No User Logged In</h1>";
 ?>

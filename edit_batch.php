@@ -7,6 +7,7 @@ if(!empty($_SESSION)){
 <?php $page=6;include 'sidebar.php'; ?>
 <?php $nav=5;include 'nav.php'; ?>
 <?php  
+/*api connect for edit view batch */
 if(isset($_POST['batch_id'])){
     $id = $_POST['batch_id'];
     $data = array('batch_id'=> $id);
@@ -50,6 +51,7 @@ $employee_view = $employe->employee_view;
                     </div>
                     <div class="card-content">
                         <form action="edit_batch_api.php" method="post">
+<!--view batch detil -->                            
                              <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group label-floating">
@@ -93,5 +95,5 @@ $employee_view = $employe->employee_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

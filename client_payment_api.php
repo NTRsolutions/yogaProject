@@ -16,11 +16,13 @@ if(isset($_POST['c_id']) && isset($_POST['date']) && isset($_POST['paymode']) &&
     $c_id = $_POST['c_id'];
     $date = $_POST['date'];
     $paymode = $_POST['paymode'];
+    $received = $_POST['received'];
     $c_amount = $_POST['c_amount'];
     $c_balance = $_POST['c_balance'];
     $c_pay = $_POST['pay'];
+    $received_1=$c_pay+$received;
     $final_balance = $c_balance - $c_pay;
-    $sql = "UPDATE `client` SET  `balance` = '$final_balance',`status_payment` = 'Active' WHERE `client`.`c_ID` = '$c_id'";
+    $sql = "UPDATE `client` SET  `received` = '$received_1',`balance` = '$final_balance',`status_payment` = 'Active' WHERE `client`.`c_ID` = '$c_id'";
     $sql1 = "INSERT INTO `client_payment` (`c_id`, `payment_date`, `payment_mode`) VALUES ( '$c_id', '$date', '$paymode');";
     $conn->query($sql);
         

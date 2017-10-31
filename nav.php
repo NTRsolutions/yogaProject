@@ -74,7 +74,7 @@ foreach($enquiry_view as $value){
                             <a class="navbar-brand" href="#">Packages</a>
 					    <?php endif;?>
                         <?php if($nav==9):?>
-                            <a class="navbar-brand" href="#">Transation</a>
+                            <a class="navbar-brand" href="#">Account</a>
 					    <?php endif;?>
                         
                     </div>

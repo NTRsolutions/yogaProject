@@ -44,6 +44,11 @@ $client_view = $client->client_view;
     
         float:right;
     }
+    #inlist{
+        overflow: hidden;
+        word-wrap:normal |break-word;
+    }
+  
 </style>
 <?php $page=4;include 'sidebar.php'; ?>
    <?php $nav=4;include 'nav.php'; ?>
@@ -61,30 +66,51 @@ $client_view = $client->client_view;
 
 
                                 </div>
-	                            </div>
-	                            <div class="card-content">
-                                    
-                                        <table class="table table-hover">
-                                            <thead class="text-primary">
-                                                <th>Sr no.</th>
-                                                <th>Client Id</th>
-                                                <th>Client name</th>
-                                                <th>Attendance </th>
-                                            </thead>
-                                           
-                                            <tbody id="myTable"><?php        $i=1;foreach($c_id as $value):    
-                                                foreach($client_view as $clientvalue):
-                                                if($clientvalue->c_ID == $value){
-                                                ?> 
-                                                <tr>
-                                                    <td><?php echo $i;$i++; ?></td>
-                                                    <td><?php echo $value;?></td>
-                                                    <td><?php echo $clientvalue->c_name." ".$clientvalue->c_surname;?></td>
-                                                    <td><?php $ab = in_array($value,$attendance); 
-                                                    if($ab >0){ echo "<font color='red'>absent</font>";}
-                                                    else {echo "<font color='green'>present</font";}?>  </td>
+                           </div>
+                    <div class="card-content table-responsive">
+                    <table id="inlist" class="table table-hover table-striped">
+                            <thead class="text-primary">
+                                <th>Sr no.</th>
+                                <th>Client Id</th>
+                                <th>Client name</th>
+                                <th>Attendance </th>
+                            </thead>
+
+                            <tbody id="myTable"><?php $absentc=0;$presentc=0;foreach($c_id as $value):    
+                                foreach($client_view as $clientvalue):
+                                if($clientvalue->c_ID == $value){
+                                ?> 
+                                <tr>
+                                    <td><?php echo $i;$i++; ?></td>
+                                    <td><?php echo $value;?></td>
+                                    <td><?php echo $clientvalue->c_name." ".$clientvalue->c_surname;?></td>
+                                    <td><?php $ab = in_array($value,$attendance); 
+                                    if($ab >0){$absentc++; echo "<font color='red'>absent</font>";}
+                                    else {$presentc++;echo "<font color='green'>present</font";}?>  </td>
                             </tr><?php }endforeach;endforeach; ?>
                         </tbody>
+                    </table>
+                    <table  class="table table-hover">
+                            <tr>
+                            <thead class="text-primary">
+                            <th> Total Attendance</th>
+                            <th>Present</th>
+                            <th>Absent</th>
+                            </thead>
+                            </tr>
+                                
+                   <!--         <tr><?php echo $client_no=count($value['date']);
+                           echo $c_absent= count($absent); ?>
+                            <?php echo $present=$client_no-$c_absent; ?>
+                                
+                                <?php  echo count($client_no);
+                                echo count($absent); ?>-->
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><?php echo $presentc;?></td>
+                            <td><?php echo $absentc; ?></td>
+                        </tr>
+
                     </table>
                 </div>
             </div>
@@ -97,5 +123,5 @@ $client_view = $client->client_view;
 <?php include 'tablesearch_script.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else  {header('Location: index.php');}// echo "<h1>No User Logged In</h1>";
 ?>

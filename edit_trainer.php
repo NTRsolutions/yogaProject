@@ -47,6 +47,7 @@ $batch_view = $batch->batch_view;
                         <p class="category">Fill up the Trainer Form</p>
                     </div>
                     <div class="card-content">
+<!-- form start here edit trainer -->                        
                         <form action="edit_trainer_api.php" method="post">
                             <div class="row">
                                 <div class="col-md-6">
@@ -130,16 +131,18 @@ $batch_view = $batch->batch_view;
                             <button type="submit" name="submit"class="btn btn-primary pull- right">Done</button>
                             <div class="clearfix"></div>
                         </form>
+<!--end of form-->                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--footer validation script, end of session-->
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}///echo "<h1>No User Logged In</h1>";
 ?>

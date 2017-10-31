@@ -2,6 +2,8 @@
 // Start the session
 session_start();
 if(!empty($_SESSION)){
+if(($_SESSION['permission']!='operator') && ($_SESSION['permission']!='user')){
+/*session for user access control*/
 ?>
 <?php  
 # Create a connection
@@ -39,6 +41,19 @@ if(isset($_POST['submit'])){
     
         float:right;
     }
+      .selectpicker_style {
+       width:250px;
+       height:33px;
+        }
+    
+     .field_top{
+        top:-27px!important;
+    }
+    
+      .color_style {
+        color:red;
+    }
+    
 </style>
 <?php $page=4;include 'sidebar.php'; ?>
 <?php $nav=4;include 'nav.php'; ?>
@@ -67,7 +82,7 @@ if(isset($_POST['submit'])){
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         # Get the response
         $response = curl_exec($ch);
-        print_r($response);
+        //print_r($response);
         curl_close($ch);
         $sql = "SELECT MAX(`c_attend_ID`) FROM c_attend";
         $result = $conn->query($sql);
@@ -76,6 +91,7 @@ if(isset($_POST['submit'])){
         }
         ?>
         <div class="row">
+<!-- card for view client add client,client attendance,client payment-->
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="blue">
@@ -149,28 +165,32 @@ if(isset($_POST['submit'])){
                         <!--<p class="category"></p>-->
                     </div>
                     <div class="card-content">
+<!-- form for enter batch detail-->                        
                         <form action="client_attendance.php" method="post">
                             <div class="col-md-4">
-                                <div style="width:200px;" class="form-group label-floating">
-                                        <label for="business">Select Batch:</label>
-                                    <select style="width:300px; height:38px;" name="batch_id" required>
+                                <div style="padding:32px 0px 0px 0px!important;">
+                                <div style="width:250px;" class="form-group label-floating">
+                            <label class="control-label">Select Batch<span class="required color_style"> * </span></label>
+                                    <select class="selectpicker_style" name="batch_id" required>
                                         <option value="">Name ---  Timing</option>
                                         <?php foreach($batch_view   as $value): ?>
                                         <option value="<?php echo $value->batch_id;?>"><?php echo $value->batch_name." --- ".$value->batch_timing; ?></option>
                                         <?php endforeach?>
                                     </select>
                                 </div>
+                             </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group label-floating">
+                                       <label class="control-label">Date <span class="required color_style"> * </span></label>
                                     <!--<label class="control-label">date</label>-->
-                                    <input style="margin-top:28px;" type="date" class="form-control" value="<?php echo date("Y-m-d"); ?>"name="date">
+                                    <input style="margin-top:28px;" type="date" class="form-control" value="<?php echo date("Y-m-d"); ?>"name="date" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Timing</label>
-                                    <input style="margin-top:28px;" type="text" class="form-control" name="timing">
+                                    <label class="control-label field_top">Timing <span class="required color_style"> * </span></label>
+                                    <input style="margin-top:28px;" type="text" class="form-control" name="timing" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -181,6 +201,7 @@ if(isset($_POST['submit'])){
                     </div>
                 </div>
             </div>
+<!--if batch detail is submited then view client detail of that batch-->                
             <?php if(isset($_POST['submit'])):?>
             <div class="col-md-12">
                 <div class="card card-plain">
@@ -191,7 +212,8 @@ if(isset($_POST['submit'])){
                     </div>
                 </div>
                 <div class="card-content">
-                    <form action="mark_client_attend.php" method="post">
+                    <form action="mark_client_attend_api.php" method="post">
+<!--client detail of batch -->                        
                         <table class="table table-hover">
                             <thead class="text-primary">
                                 <th>Sr no.</th>
@@ -224,6 +246,10 @@ if(isset($_POST['submit'])){
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
+} else{
+    
+echo '<script language="javascript">';
+echo 'alert("Access denied");window.location = "view_attendance.php" </script>';}
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

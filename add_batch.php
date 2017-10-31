@@ -2,9 +2,14 @@
 /*starting of seesion*/ 
 session_start();
 if(!empty($_SESSION)){
+if(($_SESSION['permission']=='admin') || ($_SESSION['permission']=='superadmin')||($_SESSION['permission']!='operator') && ($_SESSION['permission']!='user')){
+/* access control to user by session*/
 ?>
 <?php include 'header.php'; ?>
 <style>
+    .color_style {
+        color:red;
+    }
     #myInput{
         width:20%;
         float:right;
@@ -17,6 +22,23 @@ if(!empty($_SESSION)){
     .icon{
         float:right;
     }
+    .selectpicker_style {
+       width:250px;
+       height:30px;
+        }
+    .selectpicker_style_1 {
+       width:200px;
+       height:30px;
+        }
+    .field_top{
+        top:-27px!important;
+    } 
+     @media screen (min-width:320px) and (max-width:750px) {
+    .selectpicker_style {
+       width:50px;
+       height:30px;
+    }
+    }
 </style>
 <?php $page=6;include 'sidebar.php'; ?>
 <?php $nav=5;include 'nav.php'; ?>
@@ -28,6 +50,7 @@ curl_setopt( $ch, CURLOPT_URL, 'http://yoga.classguru.in/view_trainer_api.php');
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 # Get the response
 $content = curl_exec($ch);
+/*get content of url*/                         
 $employe = json_decode($content);
 $employee_view = $employe->employee_view;
 //print_r($employee_view);
@@ -35,6 +58,7 @@ $employee_view = $employe->employee_view;
 
 <div class="content">
     <div class="container-fluid">
+        <!--card start here for add new batch-->
           <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -58,7 +82,7 @@ $employee_view = $employe->employee_view;
             <?php 
                 include 'config.php';                 //connect to database
                 if(isset($_POST['submit'])){ 
-                if(isset($_POST['batch_name']) && isset($_POST['batch_timing'])){
+                if(isset($_POST['batch_name']) ){
 
                      $batch_name = $_POST['batch_name'];
                      $batch_timing = $_POST['batch_timing'];
@@ -70,7 +94,7 @@ $employee_view = $employe->employee_view;
                     );
                     //print_r($data);
                     # Create a connection
-                    $url = 'http://localhost/yogaproject/add_batch_api.php';
+                    $url = 'http://yoga.classguru.in/add_batch_api.php';
                     $ch = curl_init($url);
                     # Form data string
                     $postString = http_build_query($data, '', '&');
@@ -93,19 +117,20 @@ $employee_view = $employe->employee_view;
                     </div>
                     <div class="card-content">
                         <form action="add_batch.php" method="post">
-                            <div class="row">
+                            <!--form start for add new batch-->
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Name</label>
+                                    <label class="control-label field_top">Name<span class="required color_style"> * </span></label>
                                     <input type="text" class="form-control" name="batch_name" required>
                                 </div>
                             </div>
                              <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Time</label>
-                                        <input type="text" class="form-control"         name="batch_timing" required>
-                                    </div>
+                                 <div class="form-group label-floating">
+                                     <label class="control-label field_top">Time<span class="required color_style"> * </span></label>
+                                    <input type="text" class="form-control"         name="batch_timing" required>
                                 </div>
+                            </div>
                                 <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Trainer</label>
@@ -125,11 +150,17 @@ $employee_view = $employe->employee_view;
         </div>
     </div>
 </div>
+<!--footer,table serch script and session end here-->
 <?php include 'footer.php'; ?>
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
+} 
+    else{
+echo '<script language="javascript">';
+echo 'alert("Access denied");window.location = "batch.php" </script>';}
 }
-else echo "<h1>No User Logged In</h1>";
+header('Location: index.php');
+//else echo "<h1>No User Logged In</h1>";
 ?>
 

@@ -48,6 +48,7 @@ e_attend_ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 date date,
 in_time VARCHAR(50),
 out_time VARCHAR(50)
+
 )";
 
 if ($conn->query($sql1) === TRUE) {
@@ -260,7 +261,8 @@ if ($conn->query($sql12) === TRUE) {
 $sql13 = "CREATE TABLE admin (
 admin_ID INT(11) AUTO_INCREMENT PRIMARY KEY, 
 username VARCHAR(50) ,
-password VARCHAR(50)
+password VARCHAR(50),
+permission VARCHAR(50)
 )";
 
 if ($conn->query($sql13) === TRUE) {

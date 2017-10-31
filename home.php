@@ -1,7 +1,9 @@
 <?php
 // Start the session
 session_start();
+
 ?>
+<?php include 'config.php'; ?>
 <?php 
 
 if(isset($_SESSION["username"])){
@@ -11,7 +13,7 @@ if(isset($_SESSION["username"])){
 <?php $nav=1;include 'nav.php'; ?>
 <div class="content">
     <div class="container-fluid">
-
+<!--card for add,client,add emplyee..etc-->
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
@@ -47,7 +49,7 @@ if(isset($_SESSION["username"])){
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="red">
+                    <div class="card-header" data-background-color="blue">
                         <i class="material-icons">group_add</i>
                     </div>
                     <div class="card-content">
@@ -60,17 +62,17 @@ if(isset($_SESSION["username"])){
                     </div>
                 </div>
             </div>  
-            <div class="col-lg-6 col-md-6 col-sm-6">
+           <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="blue">
-                        <i class="material-icons">touch_app</i>
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">people</i>
                     </div>
                     <div class="card-content">
-                        <p class="category"> Client Attendance</p>
+                        <p class="category">Trainer</p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="client_attendance.php"><i class="material-icons">plus_one</i> Mark client Attendance</a>									
+                            <a href="add_trainer.php"><i class="material-icons">plus_one</i> Add New Trainer</a>
                         </div>
                     </div>
                 </div>
@@ -79,22 +81,22 @@ if(isset($_SESSION["username"])){
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="blue">
-                        <i class="material-icons">touch_app</i>
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">local_offer</i>
                     </div>
                     <div class="card-content">
-                        <p class="category"> Employee Attendance</p>
+                        <p class="category">Packages</p>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="employee_attendance.php"><i class="material-icons">plus_one</i> Mark employee Attendance</a>									
+                            <a href="add_packages.php"><i class="material-icons">plus_one</i> Add New Packages</a>
                         </div>
                     </div>
                 </div>
             </div>
              <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header" data-background-color="red">
+                    <div class="card-header" data-background-color="blue">
                    <i class="material-icons">sms</i>
                     </div>
                     <div class="card-content">
@@ -110,9 +112,10 @@ if(isset($_SESSION["username"])){
         </div>
     </div>
 </div>
+<!--footer and session end-->
 <?php include 'footer.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php }
-else 
-    echo "<h1>Not a Valid user</h1>";
+else {header('Location: index.php');}
+    //echo "<h1>Not a Valid user</h1>";
 ?>

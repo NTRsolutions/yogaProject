@@ -2,11 +2,11 @@
 include 'config.php';
 /*
 loc no 2-- //connect to database
- loc no 25-- // query to database for insert data in e_attend table
- loc no 30-- // query to database for insert data in e_attend_pa table
-  loc no 31--// checked does query connect ? if it connected then execute                                                        next loop and print successfull
- loc no 46--  // if query is not connected to databse then execute next loop and print as                                             unsuccessfull
- loc no 66--   // if Query is empty then print as no value fount
+loc no 25-- // query to database for insert data in e_attend table
+loc no 30-- // query to database for insert data in e_attend_pa table
+loc no 31--// checked does query connect ? if it connected then execute                                                        next loop and print successfull
+loc no 46--  // if query is not connected to databse then execute next loop and print as                                             unsuccessfull
+loc no 66--   // if Query is empty then print as no value fount
 */
 
 if(isset($_POST['date']) /*&& isset($_POST['timing'])*/ && isset($_POST['eid']) ){ 

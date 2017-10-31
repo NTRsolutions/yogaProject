@@ -81,6 +81,43 @@
             });
     }
     
+    /* validation for employee*/
+    function allLatters(e_name, e)  
+    {  
+       
+        var letters = /^[A-Za-z ]+$/;  
+        if(e_name.value.match(letters))  
+        {  
+            return true;  
+        }
+        else if(e.keyCode===9){
+            return true;
+        }
+        else  
+        {  
+            alert("Enter only alphabets");
+            $(".validName").val('');
+            return false;  
+        }  
+    } 
+    function Latters(e_surname, e)  
+    { debugger;
+        var letters = /^[A-Za-z ]+$/;  
+        if(e_surname.value.match(letters))  
+        {  
+            return true;  
+        }
+        else if(e.keyCode===9){
+            return true;
+        }
+        else  
+        {  
+            alert("Enter only alphabets");
+            $(".validSurname").val('');
+            return false;  
+        }  
+    } 
+    
     
      function calc_balance() {
 
@@ -90,5 +127,9 @@
 
             document.getElementById("txtresult").value = result;
         }
+    
+    
+        
+
     
 </script>

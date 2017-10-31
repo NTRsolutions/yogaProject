@@ -29,6 +29,11 @@ $employee_view = $employe->employee_view;
     
         float:right;
     }
+    #inlist{
+        overflow: hidden;
+        word-wrap:normal |break-word;
+    }
+
 </style>
 <?php $page=3;include 'sidebar.php'; ?>
 <?php $nav=3;include 'nav.php'; ?>
@@ -52,7 +57,7 @@ $employee_view = $employe->employee_view;
                     </div>
                 </div>
             </div>
-              <div class="col-lg-3 col-md-4 col-sm-4">
+            <div class="col-lg-3 col-md-4 col-sm-4">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="blue">
                         <i class="material-icons">people</i>
@@ -111,8 +116,10 @@ $employee_view = $employe->employee_view;
                         <h4 class="title">Trainer Details</h4>
                     </div>
                 </div>
-                <div class="card-content">
-                    <table class="table table-hover" >
+               
+                <div class="card-content table-responsive">
+                    <table id="inlist" class="table table-hover table-striped"><div class="card-content">
+                  
                         <thead class="text-primary">
                             <th>Sr no.</th>
                             <th>ID</th>
@@ -136,23 +143,29 @@ $employee_view = $employe->employee_view;
                                 <?php if($value->status == 'paid'){ ?>
                                 <td><font style="color:green"><?php echo $value->status;?></font></td>
                                 <?php }?>
-                                                
+                                   
+<!--user access control for edit button-->
+                                <?php if((($_SESSION['permission']== 'admin' ||'superadmin') || ($_SESSION['permission']== 'operator'))&&($_SESSION['permission'] != 'user' )){?>
                                 <form action="edit_trainer.php" method="POST">
                                     <input value="<?php echo $value->e_ID;?>" type="hidden" name="e_ID">
                                     <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
                                     </td>
-                                </form>
-                                <td style="width:20px!important;"> 
-                                    <div class="dropdown">
-                                        <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
+                                </form><?php }?>
+                                
+  <!--user access control for delete button-->                              
+                            <td style="width:20px!important;"> 
+                                <div class="dropdown">
+                                    <?php  if(($_SESSION['permission'] == 'admin' || 'superadmin' )&&(($_SESSION['permission']!='operator')&&($_SESSION['permission']!= 'user'))){?>
+                                    
+                                    <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
 
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href='delete_trainer_api.php/?e_ID=<?= $id;?>'>Yes</a></li>
-                                            <li><a href="#">No</a></li>
-                                        </ul>
-                                    </div>
-                                </td>                  
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href='delete_trainer_api.php/?e_ID=<?= $id;?>'>Yes</a></li>
+                                        <li><a href="#">No</a></li>
+                                    </ul><?php }?>
+                                </div>
+                            </td>                  
                             </tr><?php endforeach;?>
                         </tbody>
                     </table>
@@ -166,5 +179,5 @@ $employee_view = $employe->employee_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

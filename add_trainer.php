@@ -2,13 +2,38 @@
 // Start the session
 session_start();
 if(!empty($_SESSION)){
+if(($_SESSION['permission']!='operator') && ($_SESSION['permission']!='user')){
+/*user access contrl by session*/
 ?>
 <?php include 'header.php'; ?>
 <?php $page=3;include 'sidebar.php'; ?>
 <?php $nav=3;include 'nav.php'; ?>
 <div class="content">
     <div class="container-fluid">
+<style>
+    .color_style {
+        color:red;
+    }
+    .selectpicker_style {
+       width:250px;
+       height:30px;
+        }
+    .selectpicker_style_1 {
+       width:200px;
+       height:30px;
+        }
+    .field_top{
+        top:-27px!important;
+    } 
+     @media screen (min-width:320px) and (max-width:750px) {
+    .selectpicker_style {
+       width:50px;
+       height:30px;
+    }
+    }
+</style>        
 <?php 
+  /*query for getting last inserted triner id from databse*/
 $sql="SELECT * FROM trainer ORDER BY e_ID DESC LIMIT 1";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
@@ -16,13 +41,13 @@ $id=$row['e_ID'];
 $img=$id+1;
                       
 //print_r($img);
-?>         
+?>       
         
 <?php 
 if(isset($_POST['submit'])){
     if(isset($_POST['e_name']) && isset($_POST['e_surname']) && isset($_POST['Gender']) && isset($_POST['DOB']) && isset($_POST['Age']) && isset($_POST['Title']) && isset($_POST['Salary']) && isset($_POST['Register_ID']) && isset($_POST['address']) && isset($_POST['contact']) && isset($_POST['Email'])){
         $Name = $_POST['e_name'] . $img;
-    $url = "trainer_image/$Name.jpg";
+    $url = "assets/trainer_image/$Name.jpg";
     $data = array(
         'e_name' => $_POST['e_name'],
         'e_surname' => $_POST['e_surname'],
@@ -57,7 +82,9 @@ if(isset($_POST['submit'])){
     }
 }
 ?>
+
 <div class="row">
+<!-- start card for add employee,view trainer-->
   <div class="col-lg-3 col-md-4 col-sm-4">
     <div class="card card-stats">
         <div class="card-header" data-background-color="orange">
@@ -110,22 +137,22 @@ if(isset($_POST['submit'])){
     </div>
 </div>
   <div class="col-lg-3 col-md-4 col-sm-4">
-    <div class="card card-stats">
-        <div class="card-header" data-background-color="red">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="red">
             <i class="material-icons">payment</i>
-        </div>
-        <div class="card-content">
+            </div>
+            <div class="card-content">
             <p class="category">Payment</p>
-        </div>
-        <div class="card-footer">
-            <div class="stats">
-                <a href="employee_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <a href="employee_payment.php"><i class="material-icons">plus_one</i> Add Payment</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>  
-        <div class="row">
+      <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
@@ -134,112 +161,119 @@ if(isset($_POST['submit'])){
                     </div>
                     <div class="card-content">
                         <form action="add_trainer.php" method="post" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Name </label>
-                                     <input  onkeyup="allLatters(e_name, event)"  type="text" class="form-control validName" name="e_name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Surname </label>
-                                   <input onkeyup="Latters(e_surname, event)"  type="text" class="form-control validSurname" name="e_surname" required>
-                                    </div>
+<!-- form for add new employee-->
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                <label class="control-label field_top">Name <span class="required color_style"> * </span></label>
+                                <input  onkeyup="allLatters(e_name, event)" type="text" 
+                                class="form-control validName" name="e_name" required>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                <label class="control-label field_top">Surname <span class="required color_style"> * </span></label>
+                                <input  onkeyup="Latters(e_surname, event)" type="text" 
+                                 class="form-control validSurname" name="e_surname" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                   <div style="padding:5px 0px 0px 0px;"> 
+                                    <label class="control-label">Gender <span class="required color_style"> * </span></label>
+                                    <select class="selectpicker_style_1" name="Gender" required>
+                                    <option >Select Gender </option>
+                                    <option name="Gender" value="male">Male</option>
+                                    <option name="Gender" value="female">Female</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
                             
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div >
-                                        Gender :<select style="width:120px; height:40px;" name="Gender" required>
-                                        <option >Select Gender</option>
-                                        <option name="Gender" value="male">Male</option>
-                                        <option name="Gender"  value="female">Female</option>
-                                        </select>
+                        <div class="row">                               
+                            <div class="col-md-4">
+                                <div class="form-group label">
+                                    <label class="control-label">Date of Birth</label>
+                                    <input   type="date" class="form-control validnumbers" name="DOB" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                               <div class="form-group label-floating">
+                                    <label class="control-label field_top">Contact <span class="required color_style"> * </span></label>
+                                    <input type="text" class="form-control" name="contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label field_top">Email</label>
+                                    <input type="Email" class="form-control" name="Email" >
+                                </div>
+                            </div>
+                        </div>
+                                
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                <label class="control-label">Title</label>
+                                <input   type="text" class="form-control" name="Title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Salary<span class="required color_style"> * </span></label>
+                                    <input  onkeyup="allnumeric(Salary, event)"   type="numbers" class="form-control validnumber" name="Salary" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Age <span class="required color_style"> * </span></label>
+                                    <input type="numbers" class="form-control validnumber" name="Age" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">                               
+                               <div class="col-md-4">
+                                   <div class="form-group label-floating">
+                                        <label class="control-label">Identity Proof Name<span class="required color_style"> * </span></label>
+                                        <input  type="Text" class="form-control" name="id_name" required >
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group label">
-                                        <label class="control-label">Date of Birth</label>
-                                        <input   type="date" class="form-control validnumbers" name="DOB" required>
-                                    </div>
+                                   <div class="form-group label-floating">
+                                        <label class="control-label">Identity No<span class="required color_style"> * </span></label>
+                                        <input  type="text" class="form-control" name="id_no" required >
+                                    </div>                                
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Age</label>
-                                        <input   onkeyup="allnumeric(Age, event)" type="text" class="form-control" name="Age" required >
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Register ID <span class="required color_style"> * </span></label>
+                                    <input  type="text" 
+                                    class="form-control" name="Register_ID" required>
                                 </div>
                             </div>
                                 
+                        </div>    
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <div class="form-group label-floating">
-                                    <label class="control-label">Title</label>
-                                    <input   type="text" class="form-control validnumber" name="Title" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Salary</label>
-                                        <input  onkeyup="allnumeric(Salary, event)"   type="numbers" class="form-control validnumber" name="Salary" required>
+                                    <label class="control-label">Address<span class="required color_style"> * </span></label>
+                                    <textarea rows="1" cols="30" name="address" class="form-control" required></textarea> 
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Register ID </label>
-                                        <input  type="text" 
-                                        class="form-control validName" name="Register_ID" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                    <label class="control-label">Address</label>
-                                    <textarea rows="3" cols="30" name="address" class="form-control" required></textarea> 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div  class="form-group label-floating">
-                                    <label class="control-label">Contact</label>
-                                    <input type="text" class="form-control"    name="contact" id="phone" onkeypress="phoneno()" maxlength="10" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Email ID</label>
-                                        <input  type="email" class="form-control validemail" name="Email" required >
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="row">
-                               <div class="col-md-3">
-                                   <div class="form-group label-floating">
-                                        <label class="control-label">Identity Proof Name</label>
-                                        <input  type="Text" class="form-control validemail" name="id_name" required >
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                   <div class="form-group label-floating">
-                                        <label class="control-label">Identity No</label>
-                                        <input  type="text" class="form-control validemail" name="id_no" required >
-                                    </div>
-                                </div>
-                               <div class="col-md-6">
                                     <?php 
                                         if(isset($_POST['submit']))
-                                        { file_put_contents("trainer_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
+                                        { file_put_contents("assets/trainer_image/$Name.jpg",file_get_contents($_FILES['img']['tmp_name']));
                                         }
                                     ?>
                                     Select image :<br><br>
                                     <input type="file" name="img" accept="image/*"/>
+                                    
                                 </div>
-                             
-                            </div>
+                            </div> 
                             
-                            <button type="submit" name="submit"class="btn btn-primary pull- right">Add</button>
+                            <button type="submit" name="submit"class="btn btn-primary pull- right">Submit</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -248,10 +282,17 @@ if(isset($_POST['submit'])){
         </div>
     </div>
 </div>
+<!--included file of footer,table serch script and session end here-->
 <?php include 'footer.php'; ?>
 <?php include 'validation_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
+} 
+  else{  
+echo '<script language="javascript">';
+echo 'alert("Access denied");window.location = "employee.php" </script>';
+  }
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>
+

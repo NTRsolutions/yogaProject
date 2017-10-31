@@ -2,6 +2,8 @@
 // Start the session
 session_start();
 if(!empty($_SESSION)){
+if(($_SESSION['permission']!='operator') && ($_SESSION['permission']!='user')){
+/*user acceess control by session */
 ?>
 <?php include 'header.php';
 # Create a connection
@@ -65,74 +67,75 @@ width:20%;
       curl_close($ch);
   }
 ?>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="blue">
-                        <i class="material-icons">people</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Trainer</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="view_trainer_attendance.php"><i class="material-icons">plus_one</i> View Trainer attendance</a> 
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+                    <i class="material-icons">people</i>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-4">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="green">
-                        <i class="material-icons">people</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Trainer<p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="trainer.php">
-                                <i class="material-icons">plus_one</i> View Trainer
-                            </a>
-                        </div>
-                    </div>
+                <div class="card-content">
+                    <p class="category">Trainer</p>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="orange">
-                        <i class="material-icons">people</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Trainer<p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="add_trainer.php">
-                                <i class="material-icons">plus_one</i> Add New Trainer
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="red">
-                        <i class="material-icons">payment</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Trainer Payment</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="trainer_payment.php"><i class="material-icons">plus_one</i> Add Trainer Payment</a>
-                        </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="view_trainer_attendance.php"><i class="material-icons">plus_one</i> View Trainer attendance</a> 
                     </div>
                 </div>
             </div>
         </div>
-            <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-4">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="green">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Trainer<p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="trainer.php">
+                            <i class="material-icons">plus_one</i> View Trainer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="orange">
+                    <i class="material-icons">people</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Trainer<p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="add_trainer.php">
+                            <i class="material-icons">plus_one</i> Add New Trainer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+                <div class="card-header" data-background-color="red">
+                    <i class="material-icons">payment</i>
+                </div>
+                <div class="card-content">
+                    <p class="category">Trainer Payment</p>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="trainer_payment.php"><i class="material-icons">plus_one</i> Add Trainer Payment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+<!--form start here-->            
             <form action="trainer_attendance.php" method="post">
                 <div class="col-md-12">
                     <div class="card">
@@ -195,6 +198,7 @@ width:20%;
                     </div>
                 </div>
             </form>
+            <!--form end here-->
         </div>
     </div>
 </div>
@@ -202,6 +206,10 @@ width:20%;
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
+} else{
+    
+echo '<script language="javascript">';
+echo 'alert("Access denied");window.location = "view_trainer_attendance.php" </script>';}
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}// echo "<h1>No User Logged In</h1>";
 ?>

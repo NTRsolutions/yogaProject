@@ -3,11 +3,12 @@
 session_start();
 if(!empty($_SESSION)){
 ?>
-<?php include 'config.php'; ?>
+<?php include 'config.php'; ?><!--database connection-->
 <?php include 'header.php'; ?>
 <?php $page=2;include 'sidebar.php'; ?>
 <?php $nav=2;include 'nav.php'; ?>
-<?php   
+<?php  
+/*api for  viee and edit client*/                      
 if(isset($_POST['c_ID'])){
      $cid = $_POST['c_ID'];
     $data = array('c_ID'=> $cid);
@@ -81,6 +82,7 @@ $batch_view = $batch->batch_view;
                             <p class="category">Edit Client Detail</p>
                         </div>
                         <div class="card-content">
+ <!--form for detail information of client-->
                             <form action="edit_client_api.php" method="post">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -151,11 +153,16 @@ $batch_view = $batch->batch_view;
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-6">
-                                        <div style="margin:35px 0 0 0" class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <p class="hidden-lg hidden-md">Notifications</p>
-                                            </a>
+                                        <div class="col-md-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Comments</label>
+                                            <textarea rows="3" cols="30" name="Comments"  class="form-control" required><?php echo $client_view->Comments;?></textarea> 
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class=row>
+                                 <div class="col-md-6">
+                                        <div style="padding:3px 0px 0px 0px!important">
                                             <?php foreach($batch_view as $value){if($client_view->batch_name == $value->batch_name){ $id = $value->batch_id;}}?>
                                             <label for="business">Select Batch:</label>
                                             <select style="width:300px; height:38px;" name="batch" required>
@@ -170,15 +177,6 @@ $batch_view = $batch->batch_view;
                                             </select>
                                         </div>                             
                                     </div> 
-                                </div>
-                            <div class=row>
-                                <div class="col-md-5">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Comments</label>
-                                            <textarea rows="3" cols="30" name="Comments"  class="form-control" required><?php echo $client_view->Comments;?></textarea> 
-                                        </div>
-                                    </div>
-                                
                                    <!-- <div class="col-md-1">
                                         <div class="form-group label">
                                             <label class="control-label" >Change Photo<br><br><strong class="text-primary">click here</strong></label>
@@ -196,8 +194,9 @@ $batch_view = $batch->batch_view;
                                     </div>
                                 </div>
                                 <input type="hidden" value="<?php echo $cid; ?>" name="c_ID"> 
-                                <button type="submit" name="edit"class="btn btn-primary pull-right">Done</button>
-                                <div class="clearfix"></div>
+                                <hr>
+                            <center> <button type="submit" name="edit"class="btn btn-primary">Done</button></center>   
+                              
                             </form>
                         </div>
                     </div>
@@ -210,5 +209,5 @@ $batch_view = $batch->batch_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}// echo "<h1>No User Logged In</h1>";
 ?>

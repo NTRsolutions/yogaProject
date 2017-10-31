@@ -15,15 +15,14 @@
 
 	<!-- Material Dashboard javascript methods -->
 	<script src="assets/js/material-dashboard.js"></script>
-
+	<!-- javascript for brawser independent-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+    <script>
+    webshims.setOptions('forms-ext', {type: 'date'});
+    webshims.setOptions('forms-ext', {type: 'time'});
+    webshims.polyfill('forms forms-ext');
+    </script>
 	
-	<!--<script type="text/javascript">
-    	$(document).ready(function(){
-
-			// Javascript method's body can be found in assets/js/demos.js
-        	demo.initDashboardPageCharts();
-
-    	});
-	</script>-->
 
 </html>

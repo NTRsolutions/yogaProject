@@ -25,10 +25,10 @@ if(isset($_POST['c_ID']) /*&& isset($_POST['c_surname']) && isset($_POST['gender
      //$Lead_By= $_POST['Lead_By'];
     // $photo= $_POST['photo'];
      $Comments= $_POST['Comments'];
-     //$status_payment= $_POST['status_payment'];
+    $status_payment= $_POST['status_payment'];
      $batch_id = $_POST['batch'];
     
-    $sql = "UPDATE `client` SET `c_name` = '$c_name', `c_surname` = '$c_surname', `gender` = '$gender', `DOB` = '$DOB',`Anniversary` = '$Anniversary', `Age` = '$Age', `address` = '$c_address', `contact` = '$c_contact', `fees` = '$c_fees', `Comments` = '$Comments', `status_payment` = 'unpaid' ,`batch_id` = '$batch_id' WHERE `c_ID` = '$c_id'";
+    $sql = "UPDATE `client` SET `c_name` = '$c_name', `c_surname` = '$c_surname', `gender` = '$gender', `DOB` = '$DOB',`Anniversary` = '$Anniversary', `Age` = '$Age', `address` = '$c_address', `contact` = '$c_contact', `fees` = '$c_fees', `Comments` = '$Comments', `status_payment` = '$status_payment' ,`batch_id` = '$batch_id' WHERE `c_ID` = '$c_id'";
     /* `received` = '$received',`Lead_By` = '$Lead_By',`photo` = '$photo' ";*/
     
    

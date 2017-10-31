@@ -2,6 +2,9 @@
 // Start the session
 session_start();
 if(!empty($_SESSION)){
+if(($_SESSION['permission']!='operator') && ($_SESSION['permission']!='user')){
+/*usr access control*/
+
 ?>
 <?php include 'header.php';
 # Create a connection
@@ -53,7 +56,7 @@ width:20%;
       );
       //print_r($data);
       # Create a connection
-      $url = 'http://localhost/yogaproject/add_employee_attend_api.php';
+      $url = 'http://yoga.classguru.in/add_employee_attend_api.php';
       $ch = curl_init($url);
       # Form data string
       $postString = http_build_query($data, '', '&');
@@ -134,6 +137,7 @@ width:20%;
             </div>
         </div>
             <div class="row">
+<!--form starst here-->                
             <form action="employee_attendance.php" method="post">
                 <div class="col-md-12">
                     <div class="card">
@@ -208,6 +212,7 @@ width:20%;
                     </div>
                 </div>
             </form>
+<!--form end here-->
         </div>
     </div>
 
@@ -215,6 +220,10 @@ width:20%;
 <?php include 'tablesearch_script.php'; ?>
 <?php include 'script_include.php'; ?>
 <?php
+} else{
+    
+echo '<script language="javascript">';
+echo 'alert("Access denied");window.location = "view_employee_attendance.php" </script>';}
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

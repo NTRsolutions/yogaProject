@@ -26,16 +26,7 @@ if(isset($_POST['e_ID'])){
     $e_view = $employee_detail->employee_view[0];
     //print_r($e_view);
 }
-?><!--
-   # Create a connection
-$ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, 'http://localhost/yogaproject/view_batch_api.php');
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-# Get the response
-$content = curl_exec($ch);
-$batch = json_decode($content);
-$batch_view = $batch->batch_view;
-}-->
+?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -46,6 +37,7 @@ $batch_view = $batch->batch_view;
                         <p class="category">Fill up the Employee Form</p>
                     </div>
                     <div class="card-content">
+<!-- start for of edit client-->                        
                         <form action="edit_employee_api.php" method="post">
                             <div class="row">
                                 <div class="col-md-6">
@@ -129,6 +121,7 @@ $batch_view = $batch->batch_view;
                             <button type="submit" name="submit"class="btn btn-primary pull- right">Done</button>
                             <div class="clearfix"></div>
                         </form>
+<!--end of form-->                        
                     </div>
                 </div>
             </div>
@@ -140,5 +133,5 @@ $batch_view = $batch->batch_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

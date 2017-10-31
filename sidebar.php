@@ -31,6 +31,7 @@
                 <ul class="dropdown-menu">
                     <li  <?php if($page==4){echo "class='active'";} ?>><a href="client_attendance.php">Client Attendance</a></li>
                     <li  <?php if($page==5){echo "class='active'";} ?>><a href="employee_attendance.php">Employee Attendance</a></li>
+                    <li  <?php if($page==5){echo "class='active'";} ?>><a href="trainer_attendance.php">Trainer Attendance</a></li>
                 </ul>
                 </div>
             </li>
@@ -56,7 +57,7 @@
              <li  <?php if($page==9){echo "class='active'";} ?>>
                 <a href="money_income.php">
                    <i class="material-icons">attach_money</i>	             
-                    <p>Transaction</p>
+                    <p>Account</p>
                 </a>
             </li>
         </ul>

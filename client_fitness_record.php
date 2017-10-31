@@ -146,7 +146,7 @@ $client_view = $client->client_view;
                                     </td>
                                 </form>
                                    
-                                    <td style="width:20px!important;">
+                                    <td>
                                         <div class="dropdown">
                                             <button style="width:56px;" class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="material-icons">delete</i>
                                                 <span class="caret"></span>
@@ -171,5 +171,5 @@ $client_view = $client->client_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

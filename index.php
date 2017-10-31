@@ -1,15 +1,21 @@
 <?php
 // Start the session
 session_start();
-
  
 ?>
+
 <?php
 if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
+    include 'config.php';
     $username = $_POST['username']; 
     $password = $_POST['password'];
+    $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password' ";
+    $result=mysqli_query($conn,$sql);
+    $row = $result->fetch_assoc();
+    
     $_SESSION["username"] = $username;
     $_SESSION["password"] = $password;
+    $_SESSION["permission"] = $row['permission'];
 }
     if(isset($_POST['login'])&&!empty($_POST['username'])&&!empty($_POST['password'])){
 $username = $_POST['username'];

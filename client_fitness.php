@@ -22,6 +22,7 @@ if(!empty($_SESSION)){
 <?php $nav=2;include 'nav.php'; ?>
 
 <?php 
+/* get perticular client id by api*/
 include 'config.php';
 $id = $_GET['cid'];
 $c_name = $_GET['cname'];
@@ -49,9 +50,7 @@ $fitness=$client_fitness_view;
 
 <div class="content">
     <div class="container-fluid">
-          
-   
-        
+         
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -66,8 +65,7 @@ $fitness=$client_fitness_view;
                     <div class="card-content">
                         <form action="client_fitness_api.php" name="bmiForm" method="post">
                             <input type="hidden" value="<?php echo $id; ?>" name="c_ID" />
-                            
-   
+<!--insert client fitness detail add calculate bmi-->                            
                     <h4 >Latest</h4>
                          <div class="row">
                             <div class="col-md-3">
@@ -110,7 +108,7 @@ $fitness=$client_fitness_view;
             </div>
         </div>
 
-
+<!--client fitness history-->
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-plain">
@@ -143,9 +141,7 @@ $fitness=$client_fitness_view;
                                     <td><?php echo $value->height_before;echo $value->height_latest;?></td>
                                     
                                     <td><?php  echo $value->bmi;?></td>
-                                    
-                                    
-                                    
+                                 
                                <!-- <form action="edit_client.php" method="POST">
                                     <input value="<?php echo $value->c_ID;?>" type="hidden" name="c_ID">
                                     <td style="width:20px!important;"> <input style="width:50px; height:28px;" src="assets/img/edit.png" class="btn btn-xs btn-warning" type="image" alt="submit" value="">
@@ -176,7 +172,7 @@ $fitness=$client_fitness_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>
 
 

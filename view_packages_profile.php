@@ -113,7 +113,7 @@ $batch_view = $batch->batch_view;
                             <p class="category">Fill up the packages Form</p>
                         </div>
                         <div class="card-content">
-                            
+<!--start form-->                            
                             <form action="packages.php" method="post" >
                                 <div class="row">
                                     <div class="col-md-4">
@@ -154,14 +154,12 @@ $batch_view = $batch->batch_view;
                                              class="form-control validSurname" name="Name_of_plan" value=<?php echo $value->batch_name; ?> readonly required>
                                         <?php } endforeach; ?>
                                          </div>
-                                         </div>
+                                    </div>
                                         
                                         
-                                    </div>  
+                            </div>  
                                      
                                
-                                    
-	                    
                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group label-floating">
@@ -176,6 +174,7 @@ $batch_view = $batch->batch_view;
                                  <button type="submit" class="btn btn-primary pull-right">Done</button>
                                 <div class="clearfix"></div>
                             </form>
+<!--end of form-->                            
                         </div>
                     </div>
                 </div>
@@ -187,5 +186,5 @@ $batch_view = $batch->batch_view;
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else  {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

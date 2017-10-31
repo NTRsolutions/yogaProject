@@ -51,27 +51,7 @@ if(!empty($_SESSION)){*/
 <?php $nav=5;include 'nav.php'; ?>
 <div class="content">
     <div class="container-fluid">
-<!--
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header" data-background-color="orange">
-                        <i class="material-icons">people</i>
-                    </div>
-                    <div class="card-content">
-                        <p class="category">Batch<p>
-                    </div>  
-                    <div class="card-footer">
-                        <div class="stats">
-                            <a href="add_batch.php">
-                                <i class="material-icons">plus_one</i> Add New batch
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
--->
+
         <div class="row">
               <div class="col-md-12">
                 <div class="card">
@@ -128,17 +108,38 @@ if(!empty($_SESSION)){*/
                             <th>Attendance</th>
                         </thead>
                         <tbody id="myTable">
-                          <?php foreach($data as $value): ?>  <tr>
-                                <td>1</td>
-                            <td><?php echo $value['date'];?></td>
+                          <?php $i=1;$absentc=0;$presentc=0;foreach($data as $value): ?>  <tr>
+                                <td><?php echo $i;$i++; ?></td>
+                                <td><?php echo $value['date'];?></td>
                                 <td>
                                     <?php $absent = explode(",",$value['absent']);
                                     $ab = in_array("$c_id",$absent);
-                                    if($ab >0){ echo "<font color='red'>absent</font>";}
-                                    else {echo "<font color='green'>present</font";} 
+                                    if($ab >0){ $absentc++; echo "<font color='red'>absent</font>";}
+                                    else { $presentc++;echo "<font color='green'>present</font";} 
                                     ?>
-                            </td>
+                                </td>
                             </tr><?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                    <br>
+                    <br>
+                    <br>
+                <div class="card-content">
+                    <table  class="table table-hover" style="width:50%">
+                        <col align="left">
+                            <thead class="text-primary">
+                            <th>Total Attendance</th>
+                            <th>Present</th>
+                            <th>Absent</th>
+                            </thead>
+                    
+                         <tbody id="myTable">
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><?php echo $presentc;?></td>
+                            <td><?php echo $absentc; ?></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

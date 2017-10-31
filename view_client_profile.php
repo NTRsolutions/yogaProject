@@ -4,7 +4,7 @@ session_start();
 if(!empty($_SESSION)){
 ?>
 <?php 
-include 'config.php';
+include 'config.php'; /*database connection*/
 $id = $_GET['c_ID'];
 $sql = "SELECT * FROM client WHERE c_ID = '$id'";
 $result = $conn->query($sql);
@@ -20,8 +20,7 @@ $row = $result->fetch_assoc();
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            
-            
+<!--card is added here-->            
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header" data-background-color="blue">
@@ -91,7 +90,7 @@ $row = $result->fetch_assoc();
                     </div>
                     <div class="card-content">
                         <form action="edit_client.php" method="post">
-                            
+ <!--start of form-->                           
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="form-group label-floating">
@@ -198,7 +197,7 @@ $row = $result->fetch_assoc();
                                     </div>
                                 </div>
 
-                                    <div class="col-md-4">
+                                <div class="col-md-4">
                                     <div class="form-group label-floating">
                                         <strong class="text-primary">Payment Status:&nbsp&nbsp&nbsp&nbsp</strong>
 
@@ -210,16 +209,23 @@ $row = $result->fetch_assoc();
                                         <font style="color:green"><?php echo $row['status_payment']; ?>
                                         </font>
                                         <?php }?>
-                                        </div>
+                                    </div>
                                 </div> 
                             </div> 
-                           
-                            <button type="submit" class="btn btn-primary pull-right">Edit</button>
-                            
+                            <hr>
+<!--user access control for edit button-->     
+                            <center>
+                           <?php if((($_SESSION['permission']== 'admin' ||'superadmin') || ($_SESSION['permission']== 'operator'))&&($_SESSION['permission'] != 'user' )){?>
+                      <button style="margin-right:20px;" type="submit" class="btn btn-primary">Edit</button>
+                            <?php }?>
                         </form>
+            <!--form ended here-->    
+<!--user access control for delete button-->                        
+                        <?php if(($_SESSION['permission']== 'admin' || 'superadmin')&&($_SESSION['permission'] != 'operator'  )&&($_SESSION['permission'] != 'user'  )){?>
                          <a href='delete_client_api.php/?c_ID=<?= $id;?>'>
-                            <button  name="c_ID" class="btn btn-primary pull-right" style="background-color:red">Delete </button></a>
-                            <div class="clearfix"></div>
+                          <button  name="c_ID" class="btn btn-danger" style="background-color:red">Delete</button></a><?php } ?>
+                          </center>
+                          
                     </div>
                 </div>
             </div>
@@ -236,5 +242,5 @@ $row = $result->fetch_assoc();
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else  {header('Location: index.php');}//echo "<h1>No User Logged In</h1>";
 ?>

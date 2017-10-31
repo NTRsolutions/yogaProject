@@ -40,6 +40,7 @@ if(isset($_POST['e_token'])){
                     </div>
                     <div class="card-content">
                         <form action="enquiry_edit_api.php" method="post">
+<!--start of form odf edit enquiry -->                            
                             <div class="row">
                                <div class="col-md-12">
                                     <div class="form-group label-floating" align="center">
@@ -128,10 +129,11 @@ if(isset($_POST['e_token'])){
 
                             <div class="clearfix"></div>
                         </form>
+<!--end of form-->                        
                     </div>
                 </div>
             </div>
-</div>
+        </div>
     </div>
 </div>
 
@@ -140,5 +142,5 @@ if(isset($_POST['e_token'])){
 <?php include 'script_include.php'; ?>
 <?php
 }
-else echo "<h1>No User Logged In</h1>";
+else {header('Location: index.php');}// echo "<h1>No User Logged In</h1>";
 ?>

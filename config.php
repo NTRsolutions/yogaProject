@@ -1,4 +1,5 @@
 <?php 
+/* config flie  for database connection*/
 $servername = "localhost";
 $username = "root";
 if($_SERVER['SERVER_NAME'] == 'localhost'){
