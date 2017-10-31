@@ -95,7 +95,7 @@ if(isset($_POST['id'])){
                                             <option value="<?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "" ?>"> <?php if(isset($_POST["c_id"])){echo $_POST["c_id"];}else echo "Select ID"; ?>
                                             </option>
                                             <?php foreach($client_view as $value){?>
-                                            <option value="<?php echo $value->c_ID; ?>"><?php echo $value->c_ID." - - ".$value->c_name; ?></option>
+                                            <option value="<?php echo $value->c_ID; ?>"><?php echo $value->c_ID; ?></option>
                                             <?php } ?> 
                                         </select>
                                     </div>
